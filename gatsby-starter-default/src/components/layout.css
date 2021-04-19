@@ -399,7 +399,8 @@ p {
   padding-top: 0;
   margin-bottom: 1.45rem;
 }
-pre {
+
+/* pre {
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
@@ -411,7 +412,7 @@ pre {
   overflow: auto;
   word-wrap: normal;
   padding: 1.45rem;
-}
+} */
 table {
   margin-left: 0;
   margin-right: 0;
@@ -592,13 +593,17 @@ pre tt:after {
 } */
 
 .inline-code > span {
-  display: inline;
-  padding: 0.2em 0.3em;
+  display: inline!important;
+  padding: 0.2em 0.3em!important;
   font-size: 0.85rem;
 }
 
 .inline-code :not(pre) > code[class*="language-"] {
   background: none;
+}
+
+code[class*="language-"] {
+  color: unset;
 }
 
 @media only screen and (max-width: 480px) {

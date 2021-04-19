@@ -1,12 +1,11 @@
 import * as React from "react"
-import { useEffect } from "react"
 import { graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import BlockContent from '@sanity/block-content-to-react'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Prism from "prismjs"
-
+import SyntaxHighlighter from 'react-syntax-highlighter'
+import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 export const pageQuery = graphql`
   query {
     allSanityPost{
@@ -21,37 +20,30 @@ export const pageQuery = graphql`
 }
 `
 
+const code = props => {
+  return (
+    <span className={"inline-code"}>
+    <SyntaxHighlighter language={"text"} style={nightOwl} PreTag={"span"} >
+      {props.children}
+    </SyntaxHighlighter>
+    </span>
+  )
+}
 
+const serializers = {
+  types: {
+    exampleUsage: props => (
+      <SyntaxHighlighter language={props.node.language} style={nightOwl} showLineNumbers>
+      {props.node.code}
+    </SyntaxHighlighter>
+    )
+  },
+  marks: {code}
+}
 
 
 
 const IndexPage = ({ data }) => {
-  const code = props => {
-    return (
-      <code className="language-javascript">{props.children}</code>
-    
-    )
-  }
-  
-  const serializers = {
-    types: {
-      exampleUsage: props => (
-        <pre>
-              <code className={`language-${props.node.language}`}>{props.node.code}</code>
-            </pre>
-      )
-    },
-    marks: {code}
-  }
-  
-  useEffect(() => {
-    // call the highlightAll() function to style our code blocks
-    Prism.highlightAll()
-  })
-
-
-
-
   const posts = data.allSanityPost.edges.map(post => (
     <div key={post.node.title} style={{backgroundColor: '#ddd', padding: '20px', margin: '20px 0'}}>
       <h2>{post.node.title}</h2>
