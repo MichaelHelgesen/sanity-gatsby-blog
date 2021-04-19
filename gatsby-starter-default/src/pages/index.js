@@ -56,7 +56,7 @@ const IndexPage = ({ data }) => {
   ))
   return (
     <Layout>
-      <h1>My blog posts:</h1>
+      <h1>Blogginnlegg:</h1>
       {posts}
     </Layout>
   )
