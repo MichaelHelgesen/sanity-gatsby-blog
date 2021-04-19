@@ -32,7 +32,11 @@ export default {
                         type: 'block'
                     },
                     {
-                        type: 'image'
+                        type: 'image',
+                        options: {
+                            hotspot: true,
+                            metadata: ['location', 'palette']
+                        },
                     },
                     {
                         name: 'exampleUsage',

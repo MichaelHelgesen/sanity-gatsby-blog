@@ -37,6 +37,14 @@ module.exports = {
         watchMode: true,
       },
     },
+    {
+      resolve: "gatsby-plugin-sanity-image",
+      options: {
+        // Sanity project info (required)
+        projectId: "esnfvjjt",
+        dataset: "production",
+      },
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
