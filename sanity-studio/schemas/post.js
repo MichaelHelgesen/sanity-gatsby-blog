@@ -6,47 +6,47 @@ export default {
     type: 'document',
     fields: [
         {
-            title: 'Title',
+            title: 'Tittel',
             name: 'title',
             type: 'string',
             validation: Rule => Rule.required()
         },
         {
-            title: 'Date',
+            title: 'Dato',
             name: 'date',
             type: 'datetime',
             validation: Rule => Rule.required()
         },
         {
-            title: 'Description',
+            title: 'Ingress',
             name: 'description',
             type: 'string',
             validation: Rule => Rule.required()
         },
         {
-            title: 'Content',
+            title: 'Brødtekst',
             name: 'content',
             type: 'array',
             of: [
-                    {
-                        type: 'block'
+                {
+                    type: 'block'
+                },
+                {
+                    type: 'image',
+                    options: {
+                        hotspot: true,
+
                     },
-                    {
-                        type: 'image',
-                        options: {
-                            hotspot: true,
-                            metadata: ['location', 'palette']
-                        },
-                    },
-                    {
-                        name: 'exampleUsage',
-                        title: 'Example usage',
-                        type: 'code',
-                        options: {
-                            theme: "monokai"
-                        }
-                      }
-                ]
+                },
+                {
+                    name: 'exampleUsage',
+                    title: 'Example usage',
+                    type: 'code',
+                    options: {
+                        theme: "monokai"
+                    }
+                }
+            ]
         }
     ]
 }

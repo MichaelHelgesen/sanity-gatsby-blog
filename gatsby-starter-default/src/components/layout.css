@@ -595,7 +595,6 @@ pre tt:after {
 .inline-code > span {
   display: inline!important;
   padding: 0.2em 0.3em!important;
-  font-size: 0.85rem;
 }
 
 .inline-code :not(pre) > code[class*="language-"] {
@@ -604,6 +603,7 @@ pre tt:after {
 
 code[class*="language-"] {
   color: unset;
+  font-size: .85em;
 }
 
 @media only screen and (max-width: 480px) {
