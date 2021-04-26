@@ -42,6 +42,7 @@ module.exports = {
       options: {
         // Sanity project info (required)
         projectId: "esnfvjjt",
+        quality: 75,
         dataset: "production",
       },
     }

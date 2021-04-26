@@ -40,7 +40,7 @@ export default {
                 },
                 {
                     name: 'exampleUsage',
-                    title: 'Example usage',
+                    title: 'Kodeeksempel',
                     type: 'code',
                     options: {
                         theme: "monokai"

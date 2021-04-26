@@ -594,7 +594,7 @@ pre tt:after {
 
 .inline-code > span {
   display: inline!important;
-  padding: 0.2em 0.3em!important;
+  padding: 0 0.2em 0.2em 0.2em!important;
 }
 
 .inline-code :not(pre) > code[class*="language-"] {
