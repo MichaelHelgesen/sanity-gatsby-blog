@@ -29,7 +29,10 @@ export const pageQuery = graphql`
     }){
       edges {
         node {
-        title
+          title
+          slug {
+            current
+          }
           date(formatString: "DD.MM.YYYY")
           description
           _rawContent
@@ -48,12 +51,7 @@ const IndexPage = ({ data }) => {
       <h2>{post.node.title}</h2>
       <small>{post.node.date}</small>
       <p>{post.node.description}</p>
-      <div style={{ backgroundColor: '#eee', padding: '20px' }}>
-        <BlockContent
-          blocks={post.node._rawContent}
-          serializers={serializers}
-        />
-      </div>
+      <p><a href={post.node.slug ? post.node.slug.current : post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}>Les mer</a></p>
     </div>
   ))
   return (
