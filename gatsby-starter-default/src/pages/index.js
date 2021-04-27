@@ -2,13 +2,11 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import BlockContent from '@sanity/block-content-to-react'
 import Layout from "../components/layout"
-import SyntaxHighlighter from 'react-syntax-highlighter'
-import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/hljs'
-import Image from "gatsby-plugin-sanity-image"
+import serializers from "../components/serializers"
 //import sanityImageUrl from "@sanity/image-url"
 //import sanityClient from "@sanity/client"
 //import imageUrlBuilder from '@sanity/image-url'
-import SanityImage from "gatsby-plugin-sanity-image"
+//import SanityImage from "gatsby-plugin-sanity-image"
 
 /* const client = sanityClient({
   dataset: "production",
@@ -41,43 +39,7 @@ export const pageQuery = graphql`
   }
 `
 
-const serializers = {
-  types: {
-    exampleUsage: props => (
-      <SyntaxHighlighter language={props.node.language} style={nightOwl} showLineNumbers wrapLines={true} lineNumberStyle
-        lineProps={lineNumber => {
-          let style = { display: 'block' };
-          if (props.node.highlightedLines) {
-            if (props.node.highlightedLines.includes(lineNumber)) {
-              style.backgroundColor = '#063558';
-            }
-          }
-          return { style };
-        }}
-      >
-        {props.node.code}
-      </SyntaxHighlighter>
-    ),
-    image: props => {
-      return (
-        <Image {...props.node}
-        alt={"d"}
-        />
-      )
-    },
-  },
-  marks: {
-    code: props => {
-      return (
-        <span className={"inline-code"}>
-          <SyntaxHighlighter language={"text"} style={nightOwl} PreTag={"span"} >
-            {props.children}
-          </SyntaxHighlighter>
-        </span>
-      )
-    } 
-  }
-}
+
 
 
 const IndexPage = ({ data }) => {
@@ -96,7 +58,13 @@ const IndexPage = ({ data }) => {
   ))
   return (
     <Layout>
-      <h1>Blogginnlegg:</h1>
+      <div className={"intro"}>
+        <p>
+          Hei, og velkommen til Mikkes blogg. Jeg ønsker ikke å vente med å skrive til bloggen er ferdig utviklet. 
+          Av den grunn kan designet virke noe simpelt, men endringer og forbedringer vil gjennomføres med jevne mellomrom. 
+        </p>
+      </div>
+      <h2>Blogginnlegg:</h2>
       {posts}
     </Layout>
   )

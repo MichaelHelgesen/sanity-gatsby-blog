@@ -1,5 +1,3 @@
-// in post.js
-
 export default {
     title: 'Blogginnlegg',
     name: 'post',
@@ -10,6 +8,19 @@ export default {
             name: 'title',
             type: 'string',
             validation: Rule => Rule.required()
+        },
+        {
+            title: "Slug",
+            name: "slug",
+            type: "slug",
+            options: {
+                source: "title",
+                maxLength: 200,
+                slugify: input => input
+                         .toLowerCase()
+                         .replace(/\s+/g, '-')
+                         .slice(0, 200)
+            }
         },
         {
             title: 'Dato',
@@ -35,16 +46,12 @@ export default {
                     type: 'image',
                     options: {
                         hotspot: true,
-
                     },
                 },
                 {
                     name: 'exampleUsage',
                     title: 'Kodeeksempel',
-                    type: 'code',
-                    options: {
-                        theme: "monokai"
-                    }
+                    type: "exampleUsage"
                 }
             ]
         }
