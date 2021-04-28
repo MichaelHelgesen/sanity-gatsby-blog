@@ -51,7 +51,7 @@ const IndexPage = ({ data }) => {
       <h2>{post.node.title}</h2>
       <small>{post.node.date}</small>
       <p>{post.node.description}</p>
-      <p><a href={post.node.slug ? post.node.slug.current : post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}>Les mer</a></p>
+      <a href={post.node.slug ? post.node.slug.current : post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}>Les mer</a>
     </div>
   ))
   return (

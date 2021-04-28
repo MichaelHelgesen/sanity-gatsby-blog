@@ -1,10 +1,6 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/node-apis/
- */
-
-// You can delete this file if you're not using it
+exports.onCreateNode = ({ node }) => {
+    console.log(`Node created of type "${node.internal.type}"`)
+  }
 
 exports.createPages = async function ({ actions, graphql }) {
     const { createPage } = actions;
@@ -28,6 +24,22 @@ exports.createPages = async function ({ actions, graphql }) {
         }
     }
 `)
+
+    // Create single blogpost
+    data.allSanityPost.edges.forEach(({ node }) => {
+        const title = node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200);
+        const id = node.id;
+        const slug = !node.slug ? title : node.slug.current;
+        createPage({
+            path: slug,
+            component: require.resolve(`./src/templates/blogPost.js`),
+            context: { id },
+        })
+    })
+}
+
+
+
     // Create paginated pages for posts
 
     /*     const postPerPage = 3;
@@ -45,17 +57,3 @@ exports.createPages = async function ({ actions, graphql }) {
             }
         })
     }) */
-
-    // Create single blogpost
-    data.allSanityPost.edges.forEach(({ node }) => {
-        const title = node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200);
-        const id = node.id;
-        const slug = !node.slug ? title : node.slug.current;
-        createPage({
-            path: slug,
-            component: require.resolve(`./src/templates/blogPost.js`),
-            context: { id },
-        })
-    })
-}
-
