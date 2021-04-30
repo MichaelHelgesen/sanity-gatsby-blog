@@ -22,9 +22,12 @@ import Image from "gatsby-plugin-sanity-image"
           ),
           image: props => {
             return (
+              <div>
               <Image {...props.node}
-              alt={"d"}
+              alt={props.node.alt}
               />
+              <p>{props.node.description}</p>
+            </div>
             )
           },
         },

@@ -16,7 +16,6 @@ export const pageQuery = graphql`
   }
 `
 
-
 const blogPost = ({ data }) => {
     const post = data.sanityPost;
     
@@ -33,10 +32,13 @@ const blogPost = ({ data }) => {
           <small>{post.date}</small>
           <p>{post.description}</p>
           <div style={{ backgroundColor: '#eee', padding: '20px' }}>
+            {post._rawContent ?
             <BlockContent
-              blocks={post._rawContent}
-              serializers={serializers}
-            />
+            blocks={post._rawContent}
+            serializers={serializers}
+          /> : null
+            }
+            
           </div>
         </div>
         </Layout>
