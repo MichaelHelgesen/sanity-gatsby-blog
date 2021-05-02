@@ -20,7 +20,7 @@ import Image from "gatsby-plugin-sanity-image"
               {props.node.code}
             </SyntaxHighlighter>
           ),
-          image: props => {
+          bodyImage: props => {
             return (
               <div>
               <Image {...props.node}

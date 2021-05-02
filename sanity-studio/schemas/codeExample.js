@@ -1,6 +1,6 @@
 export default {
         name: 'exampleUsage',
-        title: 'Kodeeksempel',
+        title: 'Eksempelkode',
         type: 'code',
         options: {
             theme: "monokai"
