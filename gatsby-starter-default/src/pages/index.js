@@ -58,7 +58,7 @@ const IndexPage = ({ data }) => {
     <Layout>
       <div className={"intro"}>
         <p>
-          Hei, og velkommen til Mikkes blogg. Jeg ønsker ikke å vente med å skrive til bloggen er ferdig utviklet. 
+          Hei, og velkommen til Mikkes blogg! Jeg ønsker ikke å vente med å skrive til bloggen er ferdig utviklet. 
           Av den grunn kan designet virke noe simpelt, men endringer og forbedringer vil gjennomføres med jevne mellomrom. 
         </p>
       </div>
