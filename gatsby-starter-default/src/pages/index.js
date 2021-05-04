@@ -1,8 +1,6 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import BlockContent from '@sanity/block-content-to-react'
 import Layout from "../components/layout"
-import serializers from "../components/serializers"
 //import sanityImageUrl from "@sanity/image-url"
 //import sanityClient from "@sanity/client"
 //import imageUrlBuilder from '@sanity/image-url'

@@ -2,7 +2,7 @@ import * as React from "react"
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import Image from "gatsby-plugin-sanity-image"
-import { FaExternalLinkAlt } from 'react-icons/fa'
+import { CgExternal } from "react-icons/cg";
 
     const serializers = {
         types: {
@@ -53,10 +53,12 @@ import { FaExternalLinkAlt } from 'react-icons/fa'
             )
           },
           internalLink: ({mark, children}) => {
-            return <a href={mark.reference.slug.current}>{children}</a>
+            return <a href={
+              mark.reference.slug ? mark.reference.slug.current : mark.reference.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)
+            }>{children}</a>
           },
           link: props => {
-            return <a href={props.mark.href}>{props.children}<FaExternalLinkAlt/></a>
+            return <a href={props.mark.href}>{props.children} <CgExternal/></a>
           },
         },
         

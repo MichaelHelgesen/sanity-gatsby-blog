@@ -1,5 +1,8 @@
+import { CgInternal } from "react-icons/cg";
+
 export default {
     name: "internalLink",
+    icon: CgInternal,
     type: "object",
     title: "Intern link",
     fields: [
@@ -9,7 +12,7 @@ export default {
             title: "Referanse",
             to: [
                 {  
-                    type: "post"
+                    type: "post",
                 },
             ]
         }

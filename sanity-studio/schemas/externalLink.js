@@ -1,9 +1,10 @@
 export default {
     name: 'externalLink',
+    title: 'Ekstern lenke',
     type: 'object',
-    title: 'link',
     fields: [
         {
+            description: 'Lenke til ekstern side',
             name: 'href',
             type: 'url'
         }
