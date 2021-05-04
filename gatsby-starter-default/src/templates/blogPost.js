@@ -11,7 +11,7 @@ export const pageQuery = graphql`
             title
             date(formatString: "DD.MM.YYYY")
             description
-            _rawContent
+            _rawContent(resolveReferences:{maxDepth:5})
       }
   }
 `

@@ -2,6 +2,7 @@ import * as React from "react"
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import Image from "gatsby-plugin-sanity-image"
+import { FaExternalLinkAlt } from 'react-icons/fa'
 
     const serializers = {
         types: {
@@ -26,10 +27,20 @@ import Image from "gatsby-plugin-sanity-image"
               <Image {...props.node}
               alt={props.node.alt}
               />
-              <p>{props.node.description}</p>
+              <p className={"image-description"}>{props.node.description}</p>
             </div>
             )
           },
+          tipField: props => {
+            const color = props.node.tipColor ? props.node.tipColor : "green";
+            return (
+              <div>
+                <p style={{ backgroundColor: `${color}`, padding: '20px' }}>
+                  {props.node.tipText}
+                </p>
+              </div>
+            )
+          }
         },
         marks: {
           code: props => {
@@ -40,9 +51,15 @@ import Image from "gatsby-plugin-sanity-image"
                 </SyntaxHighlighter>
               </span>
             )
-          } 
-        }
+          },
+          internalLink: ({mark, children}) => {
+            return <a href={mark.reference.slug.current}>{children}</a>
+          },
+          link: props => {
+            return <a href={props.mark.href}>{props.children}<FaExternalLinkAlt/></a>
+          },
+        },
+        
       }
-
 
 export default serializers;

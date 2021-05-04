@@ -40,19 +40,31 @@ export default {
             type: 'array',
             of: [
                 {
-                    type: 'block'
+                    type: 'block',
+                    marks: {
+                        annotations: [
+                            {
+                                name: 'link',
+                                type: 'externalLink',
+                            },
+                            {
+                                name: "internalLink",
+                                type: "internalLink",
+
+                            }
+                        ]
+                    },
                 },
                 {
-                    type: 'bodyImage',   
+                    type: 'bodyImage',
                 },
                 {
-                    type: "image",
-                    hidden: true
-                },
-                {
-                    name: 'exampleUsage',
                     title: 'Kodeeksempel',
                     type: "exampleUsage"
+                },
+                {
+                    title: "Tipsfelt",
+                    type: "tipField"
                 }
             ]
         }
