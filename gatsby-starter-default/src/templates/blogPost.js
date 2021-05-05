@@ -11,6 +11,7 @@ export const pageQuery = graphql`
             title
             date(formatString: "DD.MM.YYYY")
             description
+            introduction
             _rawContent(resolveReferences:{maxDepth:10})
       }
   }
@@ -30,7 +31,9 @@ const blogPost = ({ data }) => {
           <div style={{ backgroundColor: '#ddd', padding: '20px', margin: '20px 0' }}>
           <h2>{post.title}</h2>
           <small>{post.date}</small>
-          <p>{post.description}</p>
+          <p>{
+            post.introduction ? post.introduction : post.description
+          }</p>
           <div style={{ backgroundColor: '#eee', padding: '20px' }}>
             {post._rawContent ?
             <BlockContent

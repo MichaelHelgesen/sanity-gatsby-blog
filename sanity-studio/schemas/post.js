@@ -23,15 +23,21 @@ export default {
             }
         },
         {
-            title: 'Dato',
-            name: 'date',
-            type: 'datetime',
+            description: "En kort beskrivelse til blogglisten.",
+            name: 'description',
+            title: 'Beskrivelse',
+            type: 'string',
             validation: Rule => Rule.required()
         },
         {
             title: 'Ingress',
-            name: 'description',
+            name: 'introduction',
             type: 'string',
+        },
+        {
+            title: 'Dato',
+            name: 'date',
+            type: 'datetime',
             validation: Rule => Rule.required()
         },
         {

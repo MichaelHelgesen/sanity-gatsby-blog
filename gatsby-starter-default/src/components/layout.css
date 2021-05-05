@@ -608,6 +608,7 @@ code[class*="language-"] {
 
 pre {
   border-radius: 5px;
+  margin: 0 0 1.45rem 0;
 }
 
 .intro {
@@ -629,6 +630,20 @@ pre {
   font-size: .8em;
   margin-top: -20px;
 }
+
+.tipField {
+  padding: 20px;
+  margin-bottom: 1.45rem; 
+}
+
+.tipField p {
+  margin-bottom: 0;
+}
+
+.tipField h4 {
+  margin-bottom: 10px;
+}
+
 
 @media only screen and (max-width: 480px) {
   html {

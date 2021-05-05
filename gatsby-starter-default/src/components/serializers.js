@@ -2,7 +2,9 @@ import * as React from "react"
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import Image from "gatsby-plugin-sanity-image"
-import { CgExternal } from "react-icons/cg";
+import { CgExternal } from "react-icons/cg"
+import BlockContent from '@sanity/block-content-to-react'
+
 
     const serializers = {
         types: {
@@ -32,12 +34,20 @@ import { CgExternal } from "react-icons/cg";
             )
           },
           tipField: props => {
-            const color = props.node.tipColor ? props.node.tipColor : "green";
+            console.log("tipField", props)
+            const color = props.node.tipColor ? props.node.tipColor : "#baffdc";
             return (
-              <div>
-                <p style={{ backgroundColor: `${color}`, padding: '20px' }}>
-                  {props.node.tipText}
-                </p>
+              <div className={"tipField"}style={{ backgroundColor: `${color}`}}>
+                <h4>
+                  {props.node.tipTitle ? props.node.tipTitle : (props.node.tipText ? props.node.tipText : null)}
+                </h4>
+                {props.node.tipContent ?
+                  <BlockContent 
+                    blocks={props.node.tipContent} 
+                    serializers={serializers}
+                  />
+                  : null
+                }
               </div>
             )
           }
