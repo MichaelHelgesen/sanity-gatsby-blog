@@ -41,6 +41,22 @@ export default {
             validation: Rule => Rule.required()
         },
         {
+            name: "category",
+            title: "Kategori",
+            type: "array",
+            of: [
+                {
+                    type: 'reference',
+                    to: [
+                        { type: 'categories' },
+                    ]
+                },
+            ],
+            options: {
+                layout: "tags"
+              }
+        },
+        {
             title: 'Brødtekst',
             name: 'content',
             type: 'array',

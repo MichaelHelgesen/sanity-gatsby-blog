@@ -34,6 +34,9 @@ export const pageQuery = graphql`
           date(formatString: "DD.MM.YYYY")
           description
           introduction
+          category {
+            categoryTitle
+          }
           _rawContent
         }
       }
@@ -45,10 +48,19 @@ export const pageQuery = graphql`
 
 
 const IndexPage = ({ data }) => {
+  
   const posts = data.allSanityPost.edges.map(post => (
     <div key={post.node.title} style={{ backgroundColor: '#ddd', padding: '20px', margin: '20px 0' }}>
       <h2>{post.node.title}</h2>
-      <small>{post.node.date}</small>
+      <small>{post.node.date}
+        {
+          post.node.category.length ?
+            post.node.category.map(cat => (
+              <span> {cat.categoryTitle} </span>
+            )) :
+            <span> ukategorisert </span>
+        }
+      </small>
       <p>{post.node.description}</p>
       <a href={post.node.slug ? post.node.slug.current : post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}>Les mer</a>
     </div>
