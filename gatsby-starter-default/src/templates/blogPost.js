@@ -11,6 +11,9 @@ export const pageQuery = graphql`
             title
             date(formatString: "DD.MM.YYYY")
             description
+            category {
+                categoryTitle
+            }
             introduction
             _rawContent(resolveReferences:{maxDepth:10})
       }
@@ -30,7 +33,15 @@ const blogPost = ({ data }) => {
           </div>
           <div style={{ backgroundColor: '#ddd', padding: '20px', margin: '20px 0' }}>
           <h2>{post.title}</h2>
-          <small>{post.date}</small>
+          <small>{post.date}
+        {
+          post.category.length ?
+            post.category.map(cat => (
+              <span> {cat.categoryTitle} </span>
+            )) :
+            <span> ukategorisert </span>
+        }
+      </small>
           <p>{
             post.introduction ? post.introduction : post.description
           }</p>

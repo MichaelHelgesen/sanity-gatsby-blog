@@ -34,12 +34,11 @@ import BlockContent from '@sanity/block-content-to-react'
             )
           },
           tipField: props => {
-            console.log("tipField", props)
             const color = props.node.tipColor ? props.node.tipColor : "#baffdc";
             return (
               <div className={"tipField"}style={{ backgroundColor: `${color}`}}>
                 <h4>
-                  {props.node.tipTitle ? props.node.tipTitle : (props.node.tipText ? props.node.tipText : null)}
+                  {props.node.tipText ? props.node.tipText : (props.node.tipTitle ? props.node.tipTitle : null)}
                 </h4>
                 {props.node.tipContent ?
                   <BlockContent 
