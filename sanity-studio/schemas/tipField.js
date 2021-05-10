@@ -31,9 +31,9 @@ export default {
             type: "string",
             options: {
                 list: [
-                    {title: 'Grønn', value: '#baffdc'},
-                    {title: 'Gul', value: '#ffffde'},
-                    {title: 'Rød', value: '#ffbaba'}
+                    { title: 'Grønn', value: '#baffdc' },
+                    { title: 'Gul', value: '#ffffde' },
+                    { title: 'Rød', value: '#ffbaba' }
                 ]
             }
         },
@@ -45,6 +45,9 @@ export default {
             of: [
                 {
                     type: "block",
+                    lists: [
+                        // None
+                    ],
                     marks: {
                         annotations: [
                             {
@@ -56,8 +59,16 @@ export default {
                                 type: "internalLink",
 
                             }
+                        ],
+                        decorators: [
+                            { title: 'Strong', value: 'strong' },
+                            { title: 'Emphasis', value: 'em' }
                         ]
                     },
+                    styles: [
+                        { title: 'Normal', value: 'normal' },
+                    ],
+
                 }
             ]
         },
