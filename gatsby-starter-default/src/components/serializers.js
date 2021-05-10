@@ -63,7 +63,7 @@ import BlockContent from '@sanity/block-content-to-react'
           },
           internalLink: ({mark, children}) => {
             return <a href={
-              mark.reference.slug ? mark.reference.slug.current : mark.reference.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)
+              mark.reference.slug ? `/${mark.reference.slug.current}` : `/${mark.reference.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`
             }>{children}</a>
           },
           link: props => {
