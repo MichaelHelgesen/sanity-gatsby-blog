@@ -55,8 +55,8 @@ const IndexPage = ({ data }) => {
       <small>{post.node.date}
         {
           post.node.category.length ?
-            post.node.category.map(cat => (
-              <span> {cat.categoryTitle} </span>
+            post.node.category.map((cat, index) => (
+              <span key={index}> {cat.categoryTitle} </span>
             )) :
             <span> ukategorisert </span>
         }
