@@ -52,13 +52,13 @@ const IndexPage = ({ data }) => {
   const posts = data.allSanityPost.edges.map(post => (
     <div key={post.node.title} style={{ backgroundColor: '#ddd', padding: '20px', margin: '20px 0' }}>
       <h2>{post.node.title}</h2>
-      <small>{post.node.date}
+      <small>{post.node.date} - 
         {
           post.node.category.length ?
             post.node.category.map((cat, index) => (
-              <span key={index}> {cat.categoryTitle} </span>
+              <span key={index}> #{cat.categoryTitle} </span>
             )) :
-            <span> ukategorisert </span>
+            <span> #ukategorisert </span>
         }
       </small>
       <p>{post.node.description}</p>

@@ -52,9 +52,7 @@ export default {
                     ]
                 },
             ],
-            options: {
-                layout: "tags"
-              }
+
         },
         {
             title: 'Brødtekst',
