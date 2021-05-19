@@ -43,10 +43,6 @@ export const pageQuery = graphql`
     }
   }
 `
-
-
-
-
 const IndexPage = ({ data }) => {
   
   const posts = data.allSanityPost.edges.map(post => (

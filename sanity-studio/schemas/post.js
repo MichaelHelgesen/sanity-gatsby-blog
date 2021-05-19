@@ -47,12 +47,33 @@ export default {
             of: [
                 {
                     type: 'reference',
-                    to: [
-                        { type: 'categories' },
-                    ]
+                    to: [{ type: 'categories' }],
+                    /* validation: Rule => Rule.custom((categoryName, context) => {
+                        //const categoryArray = Rule.valueOfField("category");
+                        const n = categoryArray.includes(title);
+                        console.log(context.document.category)
+                        //console.log(categoryArray)
+                        console.log(categoryName)
+                        if (context.document.category.includes(categoryName)) return "Denne kategorien er allerede valgt"
+                        return true
+                        
+                    }), */
+                    options: {
+                        filter: ({ parent }) => {
+                            let exstingCategories = []
+                            parent.forEach(element => {
+                                exstingCategories.push(element._ref)
+                            });
+                            return {
+                                filter: "_id in $ref == false",
+                                params: {
+                                    ref: exstingCategories
+                                }
+                            }
+                        }
+                    }
                 },
             ],
-
         },
         {
             title: 'Brødtekst',
