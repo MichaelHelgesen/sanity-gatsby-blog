@@ -42,8 +42,8 @@ const blogPost = ({ data }) => {
             <span> ukategorisert </span>
         }
       </small>
-          <p>{
-            post.introduction ? post.introduction : post.description
+          <p className={"ingress"}>{
+            post.introduction || post.description
           }</p>
           <div style={{ backgroundColor: '#eee', padding: '20px' }}>
             {post._rawContent ?

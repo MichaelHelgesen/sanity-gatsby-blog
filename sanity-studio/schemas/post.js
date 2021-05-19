@@ -48,16 +48,6 @@ export default {
                 {
                     type: 'reference',
                     to: [{ type: 'categories' }],
-                    /* validation: Rule => Rule.custom((categoryName, context) => {
-                        //const categoryArray = Rule.valueOfField("category");
-                        const n = categoryArray.includes(title);
-                        console.log(context.document.category)
-                        //console.log(categoryArray)
-                        console.log(categoryName)
-                        if (context.document.category.includes(categoryName)) return "Denne kategorien er allerede valgt"
-                        return true
-                        
-                    }), */
                     options: {
                         filter: ({ parent }) => {
                             let exstingCategories = []

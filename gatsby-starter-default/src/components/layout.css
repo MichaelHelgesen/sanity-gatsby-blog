@@ -623,6 +623,10 @@ pre {
   font-weight: 600;
 }
 
+.ingress {
+  font-weight: 600;
+}
+
 .image-description{
   text-align: center;
   font-family: sans-serif;
