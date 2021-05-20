@@ -25,14 +25,16 @@ export default {
         {
             description: "En kort beskrivelse til blogglisten.",
             name: 'description',
+            rows: 3,
             title: 'Beskrivelse',
-            type: 'string',
+            type: 'text',
             validation: Rule => Rule.required()
         },
         {
             title: 'Ingress',
             name: 'introduction',
-            type: 'string',
+            rows: 5,
+            type: 'text',
         },
         {
             title: 'Dato',
@@ -98,6 +100,13 @@ export default {
                 }
             ]
         }
-    ]
+    ],
+    preview: {
+        select: {
+            title: 'title',
+            subtitle: 'description',
+        },
+
+    },
 }
 
