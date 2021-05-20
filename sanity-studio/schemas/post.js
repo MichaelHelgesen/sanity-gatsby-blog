@@ -50,14 +50,13 @@ export default {
                     to: [{ type: 'categories' }],
                     options: {
                         filter: ({ parent }) => {
-                            let exstingCategories = []
-                            parent.forEach(element => {
-                                exstingCategories.push(element._ref)
-                            });
+                            const existingCategories = parent.map(item => {
+                                return item._ref;
+                            })
                             return {
                                 filter: "_id in $ref == false",
                                 params: {
-                                    ref: exstingCategories
+                                    ref: existingCategories
                                 }
                             }
                         }

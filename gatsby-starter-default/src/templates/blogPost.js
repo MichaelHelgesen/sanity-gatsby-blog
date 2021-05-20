@@ -36,8 +36,8 @@ const blogPost = ({ data }) => {
           <small>{post.date}
         {
           post.category.length ?
-            post.category.map(cat => (
-              <span> {cat.categoryTitle} </span>
+            post.category.map((cat, index) => (
+              <span key={index}> {cat.categoryTitle} </span>
             )) :
             <span> ukategorisert </span>
         }
