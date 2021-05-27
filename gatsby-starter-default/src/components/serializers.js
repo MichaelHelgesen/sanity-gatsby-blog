@@ -4,6 +4,7 @@ import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import Image from "gatsby-plugin-sanity-image"
 import { CgExternal } from "react-icons/cg"
 import BlockContent from '@sanity/block-content-to-react'
+import { tipfield, imageDescription } from '../components/serializers.module.scss'
 
 
     const serializers = {
@@ -29,14 +30,14 @@ import BlockContent from '@sanity/block-content-to-react'
               <Image {...props.node}
               alt={props.node.alt}
               />
-              <p className={"image-description"}>{props.node.description}</p>
+              <p className={imageDescription}>{props.node.description}</p>
             </div>
             )
           },
           tipField: props => {
             const color = props.node.tipColor || "#baffdc";
             return (
-              <div className={"tipField"}style={{ backgroundColor: `${color}`}}>
+              <div className={tipfield} style={{ backgroundColor: `${color}`}}>
                 <h4>
                   {props.node.tipText || props.node.tipTitle || null}
                 </h4>
