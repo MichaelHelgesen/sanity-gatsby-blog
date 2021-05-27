@@ -76,4 +76,11 @@ export default {
             ]
         },
     ],
+    /* preview: {
+        select: {
+            title: 'tipTitle',
+            subtitle: 'tipContent',
+        },
+
+    }, */
 }

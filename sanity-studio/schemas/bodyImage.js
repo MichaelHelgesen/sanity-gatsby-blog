@@ -25,4 +25,12 @@ export default {
   options: {
     hotspot: true,
   },
+  preview: {
+    select: {
+      title: 'alt',
+      description: "description",
+      media: 'asset'
+    },
+
+  },
 }
