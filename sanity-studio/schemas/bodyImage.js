@@ -31,6 +31,5 @@ export default {
       description: "description",
       media: 'asset'
     },
-
   },
 }
