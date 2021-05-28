@@ -10,8 +10,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
   -moz-font-feature-settings: "kern", "liga", "clig", "calt";
@@ -261,7 +261,7 @@ h2 {
   margin-bottom: 1.45rem;
   color: inherit;
   font-family: "Roboto Slab", serif;
-  /* font-weight: 700; */
+  font-weight: 700;
   text-rendering: optimizeLegibility;
   font-size: 1.62671rem;
   line-height: 1.1;
@@ -273,7 +273,7 @@ h3 {
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
-  padding-top: 0;
+  padding-top: 1.45rem;
   margin-bottom: 1.45rem;
   color: inherit;
   font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -293,7 +293,7 @@ h4 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: "Roboto", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-weight: 700;
   text-rendering: optimizeLegibility;
@@ -397,6 +397,7 @@ p {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
+  line-height: 1.6rem;
 }
 
 /* pre {
@@ -594,6 +595,7 @@ pre tt:after {
 .inline-code > span {
   display: inline!important;
   padding: 0 0.2em 0.2em 0.2em!important;
+  background: #ccc!important;
 }
 
 .inline-code :not(pre) > code[class*="language-"] {
@@ -601,9 +603,9 @@ pre tt:after {
 }
 
 code[class*="language-"] {
-  color: unset;
-  font-size: .85em;
-  font-family: "Roboto mono", Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  background: none;
+  /* font-size: .85em; */
+  font-family: "Open Sans", Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
 pre {
@@ -624,7 +626,7 @@ pre {
 }
 
 .ingress {
-  font-weight: 900;
+  font-weight: 700;
   font-size: 1.1rem;
 }
 

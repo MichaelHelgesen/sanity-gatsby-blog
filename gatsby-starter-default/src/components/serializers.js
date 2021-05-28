@@ -1,6 +1,6 @@
 import * as React from "react"
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/hljs'
+import { nightOwl, atelierForestLight } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import Image from "gatsby-plugin-sanity-image"
 import { CgExternal } from "react-icons/cg"
 import BlockContent from '@sanity/block-content-to-react'
@@ -10,7 +10,7 @@ import { tipfield, imageDescription } from '../components/serializers.module.scs
     const serializers = {
         types: {
           exampleUsage: props => (
-            <SyntaxHighlighter language={props.node.language || "text"} style={nightOwl} showLineNumbers wrapLines={true} lineNumberStyle
+            <SyntaxHighlighter language={props.node.language || "text"} style={atelierForestLight} showLineNumbers wrapLines={true} lineNumberStyle
               lineProps={lineNumber => {
                 let style = { display: 'block' };
                 if (props.node.highlightedLines) {
