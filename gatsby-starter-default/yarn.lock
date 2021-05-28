@@ -1118,6 +1118,11 @@
   "resolved" "https://registry.npmjs.org/@fontsource/merriweather/-/merriweather-4.4.0.tgz"
   "version" "4.4.0"
 
+"@fontsource/open-sans@^4.4.0":
+  "integrity" "sha512-BuCgcH70BTPAE0/j/ipM0wtyXQayjmc+AXr2an3KTPg5QDZyENeWHrSRzx4wzsNizcx7uMdsqi0R99u284DQAQ=="
+  "resolved" "https://registry.npmjs.org/@fontsource/open-sans/-/open-sans-4.4.0.tgz"
+  "version" "4.4.0"
+
 "@fontsource/roboto-mono@^4.4.0":
   "integrity" "sha512-ms8hLWD3KHJMViM4g69MZ0qOCuOuYLyYMfcziCLLrRd8LPRf59grKXz3oWr0sCjhqGFkqsldj7SZ2JBxKZVPSA=="
   "resolved" "https://registry.npmjs.org/@fontsource/roboto-mono/-/roboto-mono-4.4.0.tgz"

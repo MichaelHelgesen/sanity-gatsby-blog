@@ -7,6 +7,7 @@
   "dependencies": {
     "@fontsource/merriweather": "^4.4.0",
     "@fontsource/merriweather-sans": "^4.4.0",
+    "@fontsource/open-sans": "^4.4.0",
     "@fontsource/roboto": "^4.4.0",
     "@fontsource/roboto-mono": "^4.4.0",
     "@fontsource/roboto-slab": "^4.4.0",
