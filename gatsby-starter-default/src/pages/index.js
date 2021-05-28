@@ -54,7 +54,7 @@ const IndexPage = ({ data }) => {
             post.node.category.map((cat, index) => (
               <span key={index}> #{cat.categoryTitle} </span>
             )) :
-            <span> #ukategorisert </span>
+            <span> #Ukategorisert </span>
         }
       </small>
       <p>{post.node.description}</p>

@@ -37,9 +37,9 @@ const blogPost = ({ data }) => {
         {
           post.category.length ?
             post.category.map((cat, index) => (
-              <span key={index}> {cat.categoryTitle} </span>
+              <span key={index}> #{cat.categoryTitle} </span>
             )) :
-            <span> ukategorisert </span>
+            <span> #Ukategorisert </span>
         }
       </small>
           <p className={"ingress"}>{
