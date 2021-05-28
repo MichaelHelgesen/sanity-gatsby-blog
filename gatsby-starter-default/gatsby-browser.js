@@ -6,6 +6,7 @@
 
 // You can delete this file if you're not using it
 import "@fontsource/open-sans"
+import "@fontsource/open-sans/700.css"
 import "@fontsource/merriweather-sans"
 import "@fontsource/merriweather"
 import "@fontsource/roboto"
