@@ -31,7 +31,7 @@ const blogPost = ({ data }) => {
               Av den grunn kan designet virke noe simpelt, men endringer og forbedringer vil gjennomføres med jevne mellomrom. 
             </p>
           </div>
-          <div style={{ backgroundColor: '#ddd', padding: '20px', margin: '20px 0' }}>
+          <div style={{  padding: '20px', margin: '20px 0' }}>
           <h2>{post.title}</h2>
           <small>{post.date}
         {
@@ -45,7 +45,7 @@ const blogPost = ({ data }) => {
           <p className={"ingress"}>{
             post.introduction || post.description
           }</p>
-          <div style={{ backgroundColor: '#eee', padding: '20px' }}>
+          <div >
             {post._rawContent ?
             <BlockContent
             blocks={post._rawContent}
