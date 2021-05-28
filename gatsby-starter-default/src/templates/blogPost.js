@@ -31,7 +31,7 @@ const blogPost = ({ data }) => {
               Av den grunn kan designet virke noe simpelt, men endringer og forbedringer vil gjennomføres med jevne mellomrom. 
             </p>
           </div>
-          <div style={{  padding: '20px', margin: '20px 0' }}>
+          <div style={{ margin: '60px 0 40px 0' }}>
           <h2>{post.title}</h2>
           <small>{post.date}
         {
