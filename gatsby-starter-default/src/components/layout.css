@@ -260,7 +260,7 @@ h2 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: "Merriweather", serif;
+  font-family: "Roboto slab", serif;
   /* font-weight: 700; */
   text-rendering: optimizeLegibility;
   font-size: 1.62671rem;
@@ -297,7 +297,7 @@ h4 {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-weight: 700;
   text-rendering: optimizeLegibility;
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.1;
 }
 h5 {
@@ -620,11 +620,12 @@ pre {
 .intro p {
   padding: 1rem;
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .ingress {
   font-weight: 700;
+  font-size: 1.1rem;
 }
 
 
