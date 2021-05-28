@@ -5,4 +5,9 @@
  */
 
 // You can delete this file if you're not using it
+import "@fontsource/merriweather-sans"
+import "@fontsource/merriweather"
+import "@fontsource/roboto"
+import "@fontsource/roboto-slab"
+import "@fontsource/roboto-mono"
 require("prismjs/themes/prism-solarizedlight.css")
