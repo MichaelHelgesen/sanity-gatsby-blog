@@ -4,7 +4,7 @@ import { nightOwl, atelierForestLight } from 'react-syntax-highlighter/dist/esm/
 import Image from "gatsby-plugin-sanity-image"
 import { CgExternal } from "react-icons/cg"
 import BlockContent from '@sanity/block-content-to-react'
-import { tipfield, imageDescription } from '../components/serializers.module.scss'
+import { tipfield, imageDescription, bodyimage, externallink } from '../components/serializers.module.scss'
 
 
     const serializers = {
@@ -15,7 +15,8 @@ import { tipfield, imageDescription } from '../components/serializers.module.scs
                 let style = { display: 'block' };
                 if (props.node.highlightedLines) {
                   if (props.node.highlightedLines.includes(lineNumber)) {
-                    style.backgroundColor = '#063558';
+                    /* style.backgroundColor = '#d2d1d0';  e8dfd5 */
+                    style.backgroundColor = '#e8dfd5';  
                   }
                 }
                 return { style };
@@ -26,7 +27,7 @@ import { tipfield, imageDescription } from '../components/serializers.module.scs
           ),
           bodyImage: props => {
             return (
-              <div>
+              <div className={bodyimage}>
               <Image {...props.node}
               alt={props.node.alt}
               />
@@ -68,7 +69,7 @@ import { tipfield, imageDescription } from '../components/serializers.module.scs
             }>{children}</a>
           },
           link: props => {
-            return <a href={props.mark.href}>{props.children} <CgExternal/></a>
+            return <a className={externallink} href={props.mark.href}>{props.children}<CgExternal/></a>
           },
         },
         

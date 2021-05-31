@@ -1,15 +1,16 @@
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  font: 112.5%/1.45em georgia, serif, sans-serif;
+  font: 120.5%/1.45em georgia, serif, sans-serif;
   box-sizing: border-box;
   overflow-y: scroll;
+  background: hsla(0, 0%, 99%, 0.8);
 }
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: hsla(0, 0%, 0%, 0.8);
+  color: hsla(0, 0%, 13%, 0.8);
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
   word-wrap: break-word;
@@ -53,10 +54,13 @@ template {
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
+  color: black;
+
 }
 a:active,
 a:hover {
   outline-width: 0;
+  color: black;
 }
 abbr[title] {
   border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
@@ -397,7 +401,7 @@ p {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
-  line-height: 1.6rem;
+  line-height: 1.65rem;
 }
 
 /* pre {
@@ -594,18 +598,21 @@ pre tt:after {
 
 .inline-code > span {
   display: inline!important;
-  padding: 0 0.2em 0.2em 0.2em!important;
-  background: #ccc!important;
+  padding: 0 0.1em 0.1em 0.1em!important;
+  border-radius: .1em;
+  background: #f1efee!important;
+  
 }
 
 .inline-code :not(pre) > code[class*="language-"] {
-  background: none;
+  background: none!important;
+  color: #506269!important;
 }
 
 code[class*="language-"] {
   background: none;
   /* font-size: .85em; */
-  font-family: "Open Sans", Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: "Roboto mono", Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
 pre {
@@ -626,7 +633,7 @@ pre {
 }
 
 .ingress {
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.1rem;
 }
 
