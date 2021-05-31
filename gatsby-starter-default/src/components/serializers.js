@@ -4,7 +4,7 @@ import { nightOwl, atelierForestLight } from 'react-syntax-highlighter/dist/esm/
 import Image from "gatsby-plugin-sanity-image"
 import { CgExternal } from "react-icons/cg"
 import BlockContent from '@sanity/block-content-to-react'
-import { tipfield, imageDescription, bodyimage, externallink } from '../components/serializers.module.scss'
+import * as style from '../components/serializers.module.scss'
 
 
     const serializers = {
@@ -27,18 +27,18 @@ import { tipfield, imageDescription, bodyimage, externallink } from '../componen
           ),
           bodyImage: props => {
             return (
-              <div className={bodyimage}>
+              <div className={style.bodyimage}>
               <Image {...props.node}
               alt={props.node.alt}
               />
-              <p className={imageDescription}>{props.node.description}</p>
+              <p className={style.imageDescription}>{props.node.description}</p>
             </div>
             )
           },
           tipField: props => {
             const color = props.node.tipColor || "#baffdc";
             return (
-              <div className={tipfield} style={{ backgroundColor: `${color}`}}>
+              <div className={style.tipfield} style={{ backgroundColor: `${color}`}}>
                 <h4>
                   {props.node.tipText || props.node.tipTitle || null}
                 </h4>
@@ -69,7 +69,7 @@ import { tipfield, imageDescription, bodyimage, externallink } from '../componen
             }>{children}</a>
           },
           link: props => {
-            return <a className={externallink} href={props.mark.href}>{props.children}<CgExternal/></a>
+            return <a className={style.externallink} href={props.mark.href}>{props.children}<CgExternal/></a>
           },
         },
         
