@@ -17,10 +17,20 @@
 }
 
 .externallink {
+    :hover svg {
+        border-color: rgb(194, 28, 28);
+    }
     svg {
         border-bottom: 1px solid black;
         position: relative;
         top: 2px;
+        transition: all .2s ease;
+    }
+}
+
+.externallink:hover {
+    svg {
+        border-color: rgb(194, 28, 28);
     }
 }
 

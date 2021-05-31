@@ -55,12 +55,12 @@ a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
   color: black;
-
+  transition: all .2s ease;
 }
 a:active,
 a:hover {
   outline-width: 0;
-  color: black;
+  color: rgb(194, 28, 28);
 }
 abbr[title] {
   border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
@@ -401,7 +401,7 @@ p {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
-  line-height: 1.65rem;
+  line-height: 1.60rem;
 }
 
 /* pre {
@@ -633,8 +633,8 @@ pre {
 }
 
 .ingress {
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-weight: 700;
+  font-size: 1.05rem;
 }
 
 
