@@ -46,7 +46,7 @@ export const pageQuery = graphql`
 const IndexPage = ({ data }) => {
   
   const posts = data.allSanityPost.edges.map(post => (
-    <div key={post.node.title} style={{ backgroundColor: '#ddd', padding: '20px', margin: '20px 0' }}>
+    <div key={post.node.title} style={{ backgroundColor: 'white', border: "1px solid #dbdbdb", borderRadius: "5px", padding: '20px', margin: '20px 0', boxShadow: "0px 2px 9px -4px grey" }}>
       <h2>{post.node.title}</h2>
       <small>{post.node.date} - 
         {
@@ -57,7 +57,7 @@ const IndexPage = ({ data }) => {
             <span> #Ukategorisert </span>
         }
       </small>
-      <p>{post.node.description}</p>
+      <p style={{fontWeight: "600"}}>{post.node.description}</p>
       <a href={post.node.slug ? post.node.slug.current : post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}>Les mer</a>
     </div>
   ))

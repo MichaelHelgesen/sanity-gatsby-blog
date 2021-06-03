@@ -167,27 +167,27 @@ export default {
             type: "image",
             fields: [
                 {
-                  type: 'string',
-                  name: 'alt',
-                  title: 'Alt-tekst',
-                  description: 'En alt-tekst som beskriver bildet.',
-                  options: {
-                    isHighlighted: true
-                  }
+                    type: 'string',
+                    name: 'alt',
+                    title: 'Alt-tekst',
+                    description: 'En alt-tekst som beskriver bildet.',
+                    options: {
+                        isHighlighted: true
+                    }
                 },
                 {
-                  type: 'string',
-                  name: 'description',
-                  title: 'Bildetekst',
-                  description: `En bildetekst ved behov`,
-                  options: {
-                    isHighlighted: true
-                  }
+                    type: 'string',
+                    name: 'description',
+                    title: 'Bildetekst',
+                    description: `En bildetekst ved behov`,
+                    options: {
+                        isHighlighted: true
+                    }
                 },
-              ],
-              options: {
+            ],
+            options: {
                 hotspot: true,
-              },
+            },
         },
         {
             name: "date",
@@ -195,5 +195,65 @@ export default {
             type: "date",
             validation: Rule => Rule.required()
         },
-    ]
+    ],
+    orderings: [
+        {
+            title: 'Dato, nyeste',
+            name: 'publishDateDesc',
+            by: [
+                { field: 'date', direction: 'desc' }
+            ]
+        },
+        {
+            title: 'Dato, eldste',
+            name: 'publishDateAsc',
+            by: [
+                { field: 'date', direction: 'asc' }
+            ]
+        },
+        {
+            title: 'Tittel, synkende',
+            name: 'titleAsc',
+            by: [
+                { field: 'title', direction: 'asc' }
+            ]
+        },
+        {
+            title: 'Tittel, stigende',
+            name: 'titleDesc',
+            by: [
+                { field: 'title', direction: 'desc' }
+            ]
+        },
+        {
+            title: 'Forfatter, synkende',
+            name: 'authorAsc',
+            by: [
+                { field: 'author', direction: 'asc' }
+            ]
+        },
+        {
+            title: 'Forfatter, stigende',
+            name: 'authorDesc',
+            by: [
+                { field: 'author', direction: 'desc' }
+            ]
+        },
+    ],
+    preview: {
+        select: {
+            title: 'title',
+            date: 'date',
+            author: 'author',
+            image: 'image'
+        },
+        prepare(selection) {
+            const { title, author, date, image } = selection
+            return {
+                title: `${title} - ${author}`,
+                subtitle: `${date.split('-')[2].slice(0, 2)}.${date.split('-')[1]}.${date.split('-')[0]}`,
+                media: image
+            }
+        }
+    }
 }
