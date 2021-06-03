@@ -3,11 +3,14 @@ import createSchema from 'part:@sanity/base/schema-creator'
 
 // Then import schema types from any plugins that might expose them
 import bodyImage from "./bodyImage"
+import book from "./book"
 import categories from "./categories"
 import exampleUsage from "./codeExample"
 import externalLink from "./externalLink"
 import internalLink from "./internalLink"
+import note from "./note"
 import post from './post'
+import quote from "./quote"
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 import tipField from "./tipField"
 
@@ -24,6 +27,9 @@ export default createSchema({
     exampleUsage,
     externalLink,
     internalLink,
+    quote,
+    book,
+    note,
     post,
     tipField
   ]),

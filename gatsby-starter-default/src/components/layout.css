@@ -599,9 +599,16 @@ pre tt:after {
 .inline-code > span {
   display: inline!important;
   padding: 0 0.1em 0.1em 0.1em!important;
-  border-radius: .1em;
+  border-radius: 5px;
   background: #f1efee!important;
-  
+  border: 1px solid #c8cbcc;
+}
+
+.inline-code > span ::selection {
+  background: unset; /* WebKit/Blink Browsers */
+}
+.inline-code > span ::-moz-selection {
+  background: unset; /* Gecko Browsers */
 }
 
 .inline-code :not(pre) > code[class*="language-"] {
