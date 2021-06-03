@@ -101,6 +101,36 @@ export default {
             ]
         }
     ],
+    orderings: [
+        {
+            title: 'Dato, nyeste',
+            name: 'releaseDateDesc',
+            by: [
+                { field: 'date', direction: 'desc' }
+            ]
+        },
+        {
+            title: 'Dato, eldste',
+            name: 'releaseDateAsc',
+            by: [
+                { field: 'date', direction: 'asc' }
+            ]
+        },
+        {
+            title: 'Tittel, synkende',
+            name: 'titleAsc',
+            by: [
+                { field: 'title', direction: 'asc' }
+            ]
+        },
+        {
+            title: 'Tittel, stigende',
+            name: 'titleDesc',
+            by: [
+                { field: 'title', direction: 'desc' }
+            ]
+        },
+    ],
     preview: {
         select: {
             title: 'title',

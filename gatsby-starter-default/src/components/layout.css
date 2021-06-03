@@ -598,28 +598,46 @@ pre tt:after {
 
 .inline-code > span {
   display: inline!important;
+  background: none!important;
+  padding: 0 !important;
+}
+
+.inline-code code > span {
   padding: 0 0.1em 0.1em 0.1em!important;
   border-radius: 5px;
   background: #f1efee!important;
-  border: 1px solid #c8cbcc;
+  border: 1px solid #dde0e0;
 }
 
-.inline-code > span ::selection {
-  background: unset; /* WebKit/Blink Browsers */
+.inline-code::selection {
+  background: rgb(54, 54, 54); /* WebKit/Blink Browsers */
+  color: white;
 }
-.inline-code > span ::-moz-selection {
-  background: unset; /* Gecko Browsers */
+.inline-code::-moz-selection {
+  background: rgb(54, 54, 54); 
+  color: white; /* Gecko Browsers */
 }
 
 .inline-code :not(pre) > code[class*="language-"] {
   background: none!important;
-  color: #506269!important;
+  /* color: #506269!important; */
+  font-size: .9em;
 }
 
 code[class*="language-"] {
   background: none;
-  /* font-size: .85em; */
+   font-size: .9em; 
   font-family: "Roboto mono", Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+code[class*="language-"]  ::selection {
+  background: rgb(54, 54, 54)!important;
+  color: white;
+}
+
+code[class*="language-"]  ::-moz-selection {
+  background: rgb(54, 54, 54)!important;
+  color: white;
 }
 
 pre {
