@@ -48,9 +48,9 @@ const IndexPage = ({ data }) => {
   const posts = data.allSanityPost.edges.map(post => (
     
     <div key={post.node.title} style={{ backgroundColor: 'white', border: "1px solid rgb(236, 236, 236)", borderRadius: "5px", margin: '20px 0', boxShadow: "grey 0px 13px 30px -35px" }}>
-    <a style={{textDecoration: "none", color: "inherit", padding: '25px', display: "block"}}  href={post.node.slug ? post.node.slug.current : post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}>
+    <a style={{textDecoration: "none", color: "inherit", padding: '20px', display: "block"}}  href={post.node.slug ? post.node.slug.current : post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}>
       <h2 style={{ padding: "0 0 10px 0", margin: "0", fontSize: "1.4rem", lineHeight:"1.6rem"}}>{post.node.title}</h2>
-      <small style={{fontSize:".75rem", padding: "0 0 10px 0", display:"block", borderBottom: "1px solid rgb(236, 236, 236"}}>{post.node.date} - 
+      <small style={{fontSize:".75rem", color: "rgb(144 144 144);"}}>{post.node.date} - 
         {
           post.node.category.length ?
             post.node.category.map((cat, index) => (
