@@ -46,8 +46,10 @@ export const pageQuery = graphql`
 const IndexPage = ({ data }) => {
   
   const posts = data.allSanityPost.edges.map(post => (
-    <div key={post.node.title} style={{ backgroundColor: 'white', border: "1px solid #dbdbdb", borderRadius: "5px", padding: '20px', margin: '20px 0', boxShadow: "0px 2px 9px -4px grey" }}>
-      <h2>{post.node.title}</h2>
+    <div key={post.node.title}>
+    <a style={{textDecoration: "none", color: "inherit"}}  href={post.node.slug ? post.node.slug.current : post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}>
+    <div  style={{ backgroundColor: 'white', border: "1px solid rgb(236, 236, 236)", borderRadius: "5px", padding: '20px', margin: '20px 0', boxShadow: "grey 0px 13px 30px -35px" }}>
+      <h2 style={{borderBottom: "1px solid rgb(236, 236, 236)", padding: "0 0 20px 0", margin: "0 0 20px 0"}}>{post.node.title}</h2>
       <small>{post.node.date} - 
         {
           post.node.category.length ?
@@ -57,8 +59,10 @@ const IndexPage = ({ data }) => {
             <span> #Ukategorisert </span>
         }
       </small>
-      <p style={{fontWeight: "600"}}>{post.node.description}</p>
-      <a href={post.node.slug ? post.node.slug.current : post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}>Les mer</a>
+      <p style={{/* fontWeight: "600" */}}>{post.node.description}</p>
+      {/* <a href={post.node.slug ? post.node.slug.current : post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}>Les mer</a> */}
+    </div>
+    </a>
     </div>
   ))
   return (
