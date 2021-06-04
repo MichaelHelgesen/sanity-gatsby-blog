@@ -1,0 +1,28 @@
+.title {
+    font-family: "Open Sans";
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.4rem;
+    line-height: 1.7rem; 
+}
+
+.dateCategory {
+    font-size: .75rem;
+     color: rgb(144 144 144);
+}
+
+.link {
+    text-decoration: none;
+    color: inherit;
+    padding: 30px 0;
+    display: block;
+}
+
+a.link:hover {
+    color: black;
+}
+
+a.link:hover .title {
+    color: black;
+    text-decoration: underline;
+}

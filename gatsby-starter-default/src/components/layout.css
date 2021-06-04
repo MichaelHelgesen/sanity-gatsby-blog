@@ -654,7 +654,9 @@ pre {
 .intro p {
   padding: 1rem;
   font-size: 1.1rem;
-  font-family: "Roboto Slab";
+  font-family: "Open Sans";
+  font-weight: 600;
+  line-height: 1.5rem;
 }
 
 .ingress {
