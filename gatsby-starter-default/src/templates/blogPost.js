@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import BlockContent from '@sanity/block-content-to-react'
 import Layout from "../components/layout"
 import serializers from "../components/serializers"
+import * as style from "../templates/blogPost.module.scss"
 
 export const pageQuery = graphql`
   query ($id: String!){
@@ -32,8 +33,8 @@ const blogPost = ({ data }) => {
             </p>
           </div>
           <div style={{ margin: '60px 0 40px 0' }}>
-          <h2>{post.title}</h2>
-          <small>{post.date}
+          <h2 className={style.title}>{post.title}</h2>
+          <small className={style.dateCategory}>{post.date}
         {
           post.category.length ?
             post.category.map((cat, index) => (
@@ -42,7 +43,7 @@ const blogPost = ({ data }) => {
             <span> #Ukategorisert </span>
         }
       </small>
-          <p className={"ingress"}>{
+          <p className={style.ingress}>{
             post.introduction || post.description
           }</p>
           <div >
