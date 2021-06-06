@@ -1,3 +1,5 @@
+@use "../components/base.module.scss";
+
 .title {
     font-family: "Open Sans";
     font-weight: 700;
@@ -7,14 +9,13 @@
 }
 
 .dateCategory {
-    font-size: .75rem;
-     color: rgb(109, 109, 109);
+    @include base.dateCategory;
 }
 
 .link {
     text-decoration: none;
     color: inherit;
-    padding: 30px 0;
+    padding: 1.45rem 0 0 0;
     display: block;
 }
 

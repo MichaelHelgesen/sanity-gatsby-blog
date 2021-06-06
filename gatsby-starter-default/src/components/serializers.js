@@ -39,9 +39,9 @@ import * as style from '../components/serializers.module.scss'
             const color = props.node.tipColor || "#baffdc";
             return (
               <div className={style.tipfield} style={{ backgroundColor: `${color}`}}>
-                <h4>
+                <h5>
                   {props.node.tipText || props.node.tipTitle || null}
-                </h4>
+                </h5>
                 {props.node.tipContent ?
                   <BlockContent 
                     blocks={props.node.tipContent} 
