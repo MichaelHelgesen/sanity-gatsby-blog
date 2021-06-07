@@ -167,13 +167,13 @@ export default {
             type: "image",
             fields: [
                 {
-                    type: 'string',
-                    name: 'alt',
-                    title: 'Alt-tekst',
                     description: 'En alt-tekst som beskriver bildet.',
+                    name: 'alt',
                     options: {
                         isHighlighted: true
-                    }
+                    },
+                    title: 'Alt-tekst',
+                    type: 'string',                    
                 },
                 {
                     type: 'string',
@@ -242,13 +242,14 @@ export default {
     ],
     preview: {
         select: {
-            title: 'title',
-            date: 'date',
             author: 'author',
-            image: 'image'
+            date: 'date',
+            image: 'image',
+            title: 'title',
         },
         prepare(selection) {
-            const { title, author, date, image } = selection
+            console.log("SELECTION", selection)
+            const { author, date, image, title } = selection
             return {
                 title: `${title} - ${author}`,
                 subtitle: `${date.split('-')[2].slice(0, 2)}.${date.split('-')[1]}.${date.split('-')[0]}`,
