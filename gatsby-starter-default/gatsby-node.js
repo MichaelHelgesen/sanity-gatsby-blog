@@ -14,6 +14,28 @@ exports.createPages = async function ({ actions, graphql }) {
             edges {
                 node {
                     id
+                    internal {
+                        type
+                    }
+                    title
+                    slug {
+                        current
+                    }
+        
+                }
+            }       
+        }
+        allSanityBook (sort: {
+            fields: date,
+            order: DESC
+        }) 
+        {
+            edges {
+                node {
+                    id
+                    internal {
+                        type
+                    }
                     title
                     slug {
                         current
@@ -25,17 +47,44 @@ exports.createPages = async function ({ actions, graphql }) {
     }
 `)
 
-    // Create single blogpost
+    const mergedData = data.allSanityPost.edges.concat(data.allSanityBook.edges);
+
+    mergedData.forEach(({ node }) => {
+        const id = node.id;
+        const title = node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200);
+        const slug = !node.slug ? title : node.slug.current;
+        const type = node.internal.type;
+        console.log(type)
+        createPage({
+            path: type == "SanityPost" ? `/blogg/${slug}` : `/bibliotek/${slug}`,
+            component: type == "SanityPost" ? require.resolve(`./src/templates/blogPost.js`) : require.resolve(`./src/templates/book.js`),
+            context: { id },
+        })
+    })
+
+    /* // Create single blogpost
     data.allSanityPost.edges.forEach(({ node }) => {
         const title = node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200);
         const id = node.id;
         const slug = !node.slug ? title : node.slug.current;
         createPage({
-            path: slug,
+            path: `/blogg/${slug}`,
             component: require.resolve(`./src/templates/blogPost.js`),
             context: { id },
         })
     })
+
+    // Create single bookpage
+    data.allSanityBook.edges.forEach(({ node }) => {
+        const title = node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200);
+        const id = node.id;
+        const slug = !node.slug ? title : node.slug.current;
+        createPage({
+            path: `/bibliotek/${slug}`,
+            component: require.resolve(`./src/templates/blogPost.js`),
+            context: { id },
+        })
+    }) */
 }
 
 

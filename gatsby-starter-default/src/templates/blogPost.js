@@ -46,14 +46,13 @@ const blogPost = ({ data }) => {
           <p className={style.ingress}>{
             post.introduction || post.description
           }</p>
-          <div >
+          <div>
             {post._rawContent ?
             <BlockContent
             blocks={post._rawContent}
             serializers={serializers}
           /> : null
             }
-            
           </div>
         </div>
         </Layout>

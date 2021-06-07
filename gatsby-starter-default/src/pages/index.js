@@ -2,6 +2,7 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import * as style from "../pages/index.module.scss"
+import { solarizedDark } from "react-syntax-highlighter/dist/esm/styles/hljs"
 //import sanityImageUrl from "@sanity/image-url"
 //import sanityClient from "@sanity/client"
 //import imageUrlBuilder from '@sanity/image-url'
@@ -34,6 +35,9 @@ export const pageQuery = graphql`
           }
           date(formatString: "DD.MM.YYYY")
           description
+          internal {
+            type
+          }
           introduction
           category {
             categoryTitle
@@ -42,17 +46,43 @@ export const pageQuery = graphql`
         }
       }
     }
+    allSanityBook(sort: {fields: date, order: DESC}) {
+      edges {
+        node {
+          date(formatString: "DD.MM.YYYY")
+          id
+          title
+          internal {
+            type
+          }
+          slug {
+            _key
+            _type
+            current
+          }
+        }
+      }
+    }
   }
 `
 const IndexPage = ({ data }) => {
 
+  const newArray = data.allSanityPost.edges.concat(
+    data.allSanityBook.edges
+  ).sort(function (a, b) {
+    const aFormated = a.node.date.slice(6).concat(a.node.date.slice(3, 5)).concat(a.node.date.slice(0, 2));
+    const bFormated = b.node.date.slice(6).concat(b.node.date.slice(3, 5)).concat(b.node.date.slice(0, 2));
+    return bFormated - aFormated
+  });
+
+
   const posts = data.allSanityPost.edges.map(post => (
     <div key={post.node.title} style={{}}>
-      <a className={style.link} href={post.node.slug ? post.node.slug.current : post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}>
+      <a className={style.link} href={post.node.slug ? `blogg/${post.node.slug.current}` : `blogg/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}>
         <h2 className={style.title}>{post.node.title}</h2>
         <p style={{ margin: "10px 0 10px 0" }}>{post.node.description}</p>
         <small className={style.dateCategory}>{post.node.date} •
-          {
+            {
             post.node.category.length ?
               post.node.category.map((cat, index) => (
                 (index > 0 ? <span key={index}>, {cat.categoryTitle} </span> : <span key={index}> {cat.categoryTitle}</span>)
@@ -60,23 +90,26 @@ const IndexPage = ({ data }) => {
               <span> #Ukategorisert </span>
           }
         </small>
-        {/* <a href={post.node.slug ? post.node.slug.current : post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}>Les mer</a> */}
-      </a>
+    </a>
     </div>
 
-  ))
+  ));
+
   return (
     <Layout>
       <div className={"intro"}>
         <p>
           Velkommen! Jeg ønsker ikke å vente med å skrive til bloggen er ferdig utviklet.
           Av den grunn kan designet virke noe simpelt, men endringer og forbedringer vil gjennomføres med jevne mellomrom.
-        </p>
+          </p>
       </div>
       {posts}
     </Layout>
   )
 }
+
+
+
 
 export default IndexPage
 

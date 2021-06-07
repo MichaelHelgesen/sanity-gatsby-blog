@@ -10,6 +10,19 @@ export default {
             validation: Rule => Rule.required()
         },
         {
+            name: "slug",
+            title: "Slug",
+            type: "slug",
+            options: {
+                source: "title",
+                maxLength: 200,
+                slugify: input => input
+                    .toLowerCase()
+                    .replace(/\s+/g, '-')
+                    .slice(0, 200)
+            }
+        },
+        {
             name: "author",
             title: "Forfatter",
             type: "string",
@@ -164,30 +177,7 @@ export default {
         {
             name: "image",
             title: "Bilde",
-            type: "image",
-            fields: [
-                {
-                    description: 'En alt-tekst som beskriver bildet.',
-                    name: 'alt',
-                    options: {
-                        isHighlighted: true
-                    },
-                    title: 'Alt-tekst',
-                    type: 'string',                    
-                },
-                {
-                    type: 'string',
-                    name: 'description',
-                    title: 'Bildetekst',
-                    description: `En bildetekst ved behov`,
-                    options: {
-                        isHighlighted: true
-                    }
-                },
-            ],
-            options: {
-                hotspot: true,
-            },
+            type: "bodyImage"
         },
         {
             name: "date",
