@@ -26,15 +26,10 @@ const book = ({ data }) => {
 
   return (
     <Layout>
-      <div className={"intro"}>
-        <p>
-          Hei, og velkommen til Mikkes blogg. Jeg ønsker ikke å vente med å skrive til bloggen er ferdig utviklet.
-          Av den grunn kan designet virke noe simpelt, men endringer og forbedringer vil gjennomføres med jevne mellomrom.
-            </p>
-      </div>
       <div style={{ margin: '60px 0 40px 0' }}>
         <h2 className={style.title}>{post.title}</h2>
         <div >
+          <h3>Boken oppsummert i tre setninger</h3>
           {post._rawSummary ?
             <BlockContent
               blocks={post._rawSummary}
@@ -45,6 +40,7 @@ const book = ({ data }) => {
         </div>
 
         <div >
+        <h3>Hvorfor lese den?</h3>
           {post._rawReasonToRead ?
             <BlockContent
               blocks={post._rawReasonToRead}
@@ -54,6 +50,7 @@ const book = ({ data }) => {
         </div>
 
         <div >
+        <h3>Hvordan påvirket den meg?</h3>
           {post._rawAffect ?
             <BlockContent
               blocks={post._rawAffect}
@@ -62,6 +59,7 @@ const book = ({ data }) => {
           }
         </div>
         <div>
+        <h3>Mine tre favoritt-sitater</h3>
           {post.quotes.map((quote) =>
             (<p>{quote.fav_quote}</p>)
           )}

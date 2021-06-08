@@ -23,6 +23,38 @@ export default {
             }
         },
         {
+            description: "En kort beskrivelse.",
+            name: 'description',
+            rows: 3,
+            title: 'Beskrivelse',
+            type: 'text',
+            validation: Rule => Rule.required()
+        },
+        {
+            name: "category",
+            title: "Kategori",
+            type: "array",
+            of: [
+                {
+                    type: 'reference',
+                    to: [{ type: 'categories' }],
+                    options: {
+                        filter: ({ parent }) => {
+                            const existingCategories = parent.map(item => {
+                                return item._ref;
+                            })
+                            return {
+                                filter: "_id in $ref == false",
+                                params: {
+                                    ref: existingCategories
+                                }
+                            }
+                        }
+                    }
+                },
+            ],
+        },
+        {
             name: "author",
             title: "Forfatter",
             type: "string",
@@ -40,7 +72,7 @@ export default {
             type: "number"
         },
         {
-            name: "category",
+            name: "bookCategory",
             title: "Kategori",
             type: "string"
         },

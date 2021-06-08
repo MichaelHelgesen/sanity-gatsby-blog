@@ -10,7 +10,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: hsla(0, 0%, 0%, 0.8);
+  color: hsla(0, 0%, 0%, 0.85);
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
   word-wrap: break-word;
@@ -264,7 +264,8 @@ h2 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: "Roboto Slab", serif;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-weight: 700;
   text-rendering: optimizeLegibility;
   font-size: 1.82671rem;
@@ -401,7 +402,7 @@ p {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
-  line-height: 1.55rem;
+  line-height: 1.8rem;
 }
 
 /* pre {
@@ -643,20 +644,6 @@ code[class*="language-"]  ::-moz-selection {
 pre {
   border-radius: 5px;
   margin: 0 0 1.45rem 0;
-}
-
-.intro {
-  background: rgb(238, 227, 250);
-  border-radius: 5px;
-  box-shadow: 5px 5px 10px rgba(117, 41, 197, 0.3);
-}
-
-.intro p {
-  padding: 1rem;
-  font-size: 1.1rem;
-  font-family: "Open Sans";
-  font-weight: 600;
-  line-height: 1.5rem;
 }
 
 @media only screen and (max-width: 480px) {

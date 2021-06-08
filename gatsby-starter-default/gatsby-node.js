@@ -54,7 +54,6 @@ exports.createPages = async function ({ actions, graphql }) {
         const title = node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200);
         const slug = !node.slug ? title : node.slug.current;
         const type = node.internal.type;
-        console.log(type)
         createPage({
             path: type == "SanityPost" ? `/blogg/${slug}` : `/bibliotek/${slug}`,
             component: type == "SanityPost" ? require.resolve(`./src/templates/blogPost.js`) : require.resolve(`./src/templates/book.js`),
