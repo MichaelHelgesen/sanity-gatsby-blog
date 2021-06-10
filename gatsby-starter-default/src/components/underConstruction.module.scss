@@ -1,7 +1,11 @@
+@use "../components/base.module.scss";
+
 .intro {
     background: rgb(238, 227, 250);
     border-radius: 5px;
     box-shadow: 5px 5px 10px rgba(117, 41, 197, 0.3);
+    max-width: 780px;
+  margin: 0 auto 80px auto;
   }
   
   .intro p {

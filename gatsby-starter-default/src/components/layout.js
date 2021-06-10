@@ -28,17 +28,15 @@ const Layout = ({ children }) => {
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       
       <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 780,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
+        
       >
         <UnderConstruction />
+
         <main>{children}</main>
+        
         <footer
           style={{
-            marginTop: `2rem`,
+            maxWidth: "780px", margin: "2rem auto", padding: "0 1.0875rem 1.45rem;" 
           }}
         >
           © {new Date().getFullYear()}, Built with

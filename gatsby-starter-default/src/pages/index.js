@@ -4,24 +4,6 @@ import Layout from "../components/layout"
 import * as style from "../pages/index.module.scss"
 
 
-//import sanityImageUrl from "@sanity/image-url"
-//import sanityClient from "@sanity/client"
-//import imageUrlBuilder from '@sanity/image-url'
-//import SanityImage from "gatsby-plugin-sanity-image"
-
-/* const client = sanityClient({
-  dataset: "production",
-  projectId: "esnfvjjt",
-  apiVersion: '2021-04-24',
-  useCdn: true,
-})
-
-const builder = imageUrlBuilder(client)
-
-function urlFor(source) {
-  return builder.image(source)
-} */
-
 export const pageQuery = graphql`
   query {
     book: allSanityBook(sort: {fields: date, order: DESC}) {
@@ -73,31 +55,16 @@ export const pageQuery = graphql`
 `
 const IndexPage = ({ data }) => {
 
-const { post, book} = data;
-
-console.log("BBOK", book)
-
-const mergedQuery2 = [...data.post.edges, ...data.book.edges].sort(function (a, b) {
+const mergedContent = [...data.post.edges, ...data.book.edges].sort(function (a, b) {
   // Format the date to year, month, day to get correct sort order
   const formatDate = (arg) => arg.node.date.slice(6).concat(arg.node.date.slice(3, 5)).concat(arg.node.date.slice(0, 2));
   return formatDate(b) - formatDate(a)
 });;
 
-
-/* console.log("edges", newItem);  */
-  // Merge two content-types together and sort by date
-  const mergedQuery = data.post.edges
-    .concat(data.book.edges)
-    .sort(function (a, b) {
-      // Format the date to year, month, day to get correct sort order
-      const formatDate = (arg) => arg.node.date.slice(6).concat(arg.node.date.slice(3, 5)).concat(arg.node.date.slice(0, 2));
-      return formatDate(b) - formatDate(a)
-    });
-
   // Create list items from content
-  const posts = mergedQuery2.map(post => (
+  const posts = mergedContent.map(post => (
     <div key={post.node.title}>
-      <a className={style.link} href={post.node.slug ? `${post.node.internal.type == "SanityPost" ? "blogg" : "bibliotek"}/${post.node.slug.current}` : `${post.node.internal.type == "SanityPost" ? "blogg" : "bibliotek"}/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}>
+      <a className={style.link} href={post.node.slug ? `${post.node.internal.type === "SanityPost" ? "blogg" : "bibliotek"}/${post.node.slug.current}` : `${post.node.internal.type === "SanityPost" ? "blogg" : "bibliotek"}/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}>
         <h2 className={style.title}>{post.node.title}</h2>
         <p style={{ margin: "10px 0 10px 0" }}>{post.node.description}</p>
         <small className={style.dateCategory}>{post.node.date} •
@@ -116,7 +83,10 @@ const mergedQuery2 = [...data.post.edges, ...data.book.edges].sort(function (a, 
 
   return (
     <Layout>
+      <div className={style.content}>
       {posts}
+      </div>
+      
     </Layout>
   )
 }

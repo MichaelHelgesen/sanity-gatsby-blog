@@ -24,6 +24,7 @@ export default {
   ],
   options: {
     hotspot: true,
+    metadata: ["lqip"]
   },
   preview: {
     select: {

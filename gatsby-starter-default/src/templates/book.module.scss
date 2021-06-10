@@ -1,5 +1,28 @@
 @use "../components/base.module.scss";
 
+.headerwrap {
+    position: relative;
+}
+
+.topcolor {
+    background: rgb(255, 229, 251);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 70%;
+}
+
+.intro {
+    z-index: 1;
+    position: relative;
+    @include base.contentLayout;
+}
+
+.content {
+    @include base.contentLayout;
+}
+
 .title {
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
     font-size: 2.8rem;
@@ -14,6 +37,17 @@
 
   .dateCategory {
     @include base.dateCategory;
+}
+
+.quotes {
+    p {
+        border-left: 5px solid rgb(138, 35, 142);
+        padding-left: 20px;
+        font-family: "Merriweather";
+        font-size: .95em;
+        font-weight: 600;
+        line-height: 1.9em;
+    }
 }
 
 @media only screen and (max-width: 580px) {

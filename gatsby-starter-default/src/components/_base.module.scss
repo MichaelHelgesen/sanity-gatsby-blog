@@ -12,3 +12,9 @@ $font-color: rgb(0, 0, 0);
   font-size: .75rem;
   margin-bottom: 1.45rem;
 }
+
+@mixin contentLayout {
+  max-width: 780px;
+  padding: 0 1.0875rem 1.45rem;
+  margin: 0 auto;
+}

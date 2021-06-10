@@ -1,5 +1,9 @@
 @use "../components/base.module.scss";
 
+.content {
+    @include base.contentLayout;
+}
+
 .title {
     font-family: "Open Sans";
     font-weight: 700;

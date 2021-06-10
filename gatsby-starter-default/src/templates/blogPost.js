@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import BlockContent from '@sanity/block-content-to-react'
 import Layout from "../components/layout"
 import serializers from "../components/serializers"
+import {GatsbyImage} from 'gatsby-plugin-image'
 import * as style from "../templates/blogPost.module.scss"
 
 export const pageQuery = graphql`
@@ -26,7 +27,7 @@ const blogPost = ({ data }) => {
 
   return (
     <Layout>
-      <div style={{ margin: '60px 0 40px 0' }}>
+      <div className={style.content}>
         <h2 className={style.title}>{post.title}</h2>
         <small className={style.dateCategory}>{post.date}
           {
