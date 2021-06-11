@@ -5,7 +5,7 @@
 }
 
 .topcolor {
-    background: rgb(255, 229, 251);
+    background: #f1efee;
     position: absolute;
     top: 0;
     right: 0;
@@ -19,8 +19,15 @@
     @include base.contentLayout;
 }
 
+img {
+    margin: 0;
+        margin: 0;
+        box-shadow: 0px 2px 9px -4px grey;
+}
+
 .content {
     @include base.contentLayout;
+    padding-top: 1.45rem;
 }
 
 .title {
@@ -41,12 +48,13 @@
 
 .quotes {
     p {
-        border-left: 5px solid rgb(138, 35, 142);
-        padding-left: 20px;
+        padding: 50px;
         font-family: "Merriweather";
-        font-size: .95em;
-        font-weight: 600;
+        font-size: .85em;
         line-height: 1.9em;
+        color: rgb(53, 53, 53);
+        background: #f1efee;
+        box-shadow: 0px 2px 9px -4px grey;
     }
 }
 
@@ -54,5 +62,12 @@
     .title {
         font-size: 2rem;
         line-height: 2.6rem;
+    }
+
+    .quotes {
+        p {
+            border-radius: 5px;
+            padding: 30px;
+        }
     }
   }

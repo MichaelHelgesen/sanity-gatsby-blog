@@ -45,7 +45,6 @@ export const pageQuery = graphql`
           id
           image {
             alt
-            
             hotspot {
               _key
               _type
@@ -96,7 +95,7 @@ const book = ({ data }) => {
 
   return (
     <Layout>
-      <div style={{ margin: '60px 0 40px 0', position: "relative" }}>
+      <div style={{ margin: '0 0 40px 0', position: "relative" }}>
         <div className={style.headerwrap}>
           <div className={style.intro}>
             <h2 className={style.title}>{post.title}</h2>

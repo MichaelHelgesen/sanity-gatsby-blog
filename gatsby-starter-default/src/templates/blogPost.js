@@ -27,7 +27,9 @@ const blogPost = ({ data }) => {
 
   return (
     <Layout>
-      <div className={style.content}>
+      
+      <div className={style.headerwrap}>
+          <div className={style.intro}>
         <h2 className={style.title}>{post.title}</h2>
         <small className={style.dateCategory}>{post.date}
           {
@@ -41,6 +43,10 @@ const blogPost = ({ data }) => {
         <p className={style.ingress}>{
           post.introduction || post.description
         }</p>
+        </div>
+        <div className={style.topcolor}></div>
+        </div>
+        <div className={style.content}>
         <div>
           {post._rawContent ?
             <BlockContent

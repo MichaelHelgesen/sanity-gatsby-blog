@@ -1,5 +1,26 @@
 @use "../components/base.module.scss";
 
+.headerwrap {
+    position: relative;
+}
+
+.topcolor {
+    background: #f1efee;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+}
+
+.intro {
+    z-index: 1;
+    position: relative;
+    @include base.contentLayout;
+    padding-bottom: 1.45rem;
+}
+
+
 .content {
     @include base.contentLayout;
 }

@@ -1,0 +1,38 @@
+@use "../components/base.module.scss";
+
+header {
+        background: #f1efee;
+        padding: 1.45rem;
+       
+}
+
+header > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wrapper h1 {
+    margin: 0;
+    font-family: "Open Sans";
+    font-weight: 800;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: -.05em;  
+}
+
+.wrapper h1 a {
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(87, 77, 67);
+    border-bottom: 5px solid rgb(87, 77, 67);
+}
+
+@media only screen and (max-width: 850px) {
+    header > div {
+        flex-direction: column;
+        align-items: unset;
+        justify-content: unset;
+        
+    }
+  }

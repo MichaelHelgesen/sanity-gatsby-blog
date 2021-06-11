@@ -1,20 +1,33 @@
 @use "../components/base.module.scss";
 
-.intro {
-    
-    max-width: 780px;
-  margin: 0 auto 80px auto;
-  padding:0 1.0875rem 0;
-  
+  .intro {
+    width: 66.66%;
+    text-align: right;
+    display: flex;
+    flex-direction: row-reverse;
   }
-  
+
   .intro p {
-    padding: 1rem;
-    background: rgb(238, 227, 250);
-    border-radius: 5px;
-    box-shadow: 5px 5px 10px rgba(117, 41, 197, 0.3);
-    font-size: 1.1rem;
+    /* padding: 1rem; */
+    /* background: rgb(238, 227, 250); */
+    /* border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(117, 41, 197, 0.3); */
+    font-size: .85rem;
     font-family: "Open Sans";
+    line-height: 1.1rem;
     font-weight: 600;
-    line-height: 1.5rem;
+    margin-bottom: 0;
+    max-width: 750px;
+    text-align: left;
+  }
+
+  @media only screen and (max-width: 850px) {
+    .intro {
+      width: 100%;
+      text-align: left;
+      display: unset;
+      flex-direction: unset;
+      margin-top:.45rem;
+
+    }
   }
