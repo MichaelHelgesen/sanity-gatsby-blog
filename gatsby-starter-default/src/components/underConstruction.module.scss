@@ -12,13 +12,15 @@
     /* background: rgb(238, 227, 250); */
     /* border-radius: 5px;
     box-shadow: 5px 5px 10px rgba(117, 41, 197, 0.3); */
-    font-size: .85rem;
+    font-size: .75rem;
     font-family: "Open Sans";
     line-height: 1.1rem;
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: 0;
     max-width: 750px;
     text-align: left;
+    font-style: italic;
+    color:rgb(116, 111, 105);
   }
 
   @media only screen and (max-width: 850px) {
