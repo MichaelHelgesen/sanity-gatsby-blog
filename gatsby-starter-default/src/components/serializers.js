@@ -30,6 +30,23 @@ function urlFor(source) {
   return builder.image(source)
 }
 
+function urlBuilder(image) {
+  const { width, height } = image.asset.metadata.dimensions;
+  return (
+    "w=780" +
+    "&q=75" +
+    // Check if there is a crop
+    `${image.crop ?
+      "&rect=" +
+      `${Math.floor(width * image.crop.left)},` + // Crop from left
+      `${Math.floor(height * image.crop.top)},` + // Crop from top
+      `${Math.floor(width - (width * image.crop.left + width * image.crop.right))},` + // 
+      `${Math.floor(height - (width * image.crop.top + width * image.crop.bottom))}`
+      :
+      ""}`
+  )
+}
+
 const serializers = {
   types: {
     exampleUsage: props => (
@@ -49,9 +66,12 @@ const serializers = {
       </SyntaxHighlighter>
     ),
     bodyImage: props => {
-      { console.log(props) }
+      { console.log("PROPS", props) 
+      console.log("url", urlBuilder(props.node))
+    }
       return (
         <div className={style.bodyimage}>
+          <img src={`${props.node.asset.url}?${urlBuilder(props.node)}`} />
           {/* <GatsbyImage image={getGatsbyImageData(props.node.asset.id, {fit: "FILLMAX", width:"1000", placeholder: "blurred"}, client)} alt={props.node.alt} /> */} 
           {/* <img
             src={urlFor(props.node)
@@ -61,18 +81,15 @@ const serializers = {
               .quality(75)
               .url()}
           /> */}
-          <Image
-    // pass asset, hotspot, and crop fields
-    {...props.node}
-    // tell Sanity how large to make the image (does not set any CSS)
+          {/*<Image
     
-    // style it how you want it
+    {...props.node}
     style={{
       width: "100%",
       height: "100%",
       objectFit: "cover",
     }}
-  />
+  />*/}
          <p className={style.imageDescription}>{props.node.description}</p>
         </div>
       )

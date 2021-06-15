@@ -45,13 +45,14 @@ export const pageQuery = graphql`
           id
           image {
             alt
-            hotspot {
-              _key
-              _type
-              x
-              y
-              height
-              width
+            asset { 
+              url
+              metadata {
+                dimensions {
+                  height
+                  width
+                }
+              }
             }
             crop {
               _key
@@ -60,22 +61,14 @@ export const pageQuery = graphql`
               bottom
               left
               right
-            }
-            asset {
-              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-              id
-              assetId
-            _id
-              metadata {
-                _key
-                _type
-                lqip
-                hasAlpha
-                isOpaque
-                _rawLocation
-                _rawDimensions
-                _rawPalette
-              }
+            } 
+            hotspot {
+              _key
+              _type
+              x
+              y
+              height
+              width
             }
           }
           quotes {
@@ -91,8 +84,29 @@ export const pageQuery = graphql`
 const book = ({ data }) => {
   const post = data.sanityBook;
   //const imageData = getGatsbyImageData(post.image.asset.id, {maxWidth: 1024}, sanityConfig)
-  console.log(post.image)
 
+  console.log(post.image)
+  
+  // Function for image settings and generating URL
+  function urlBuilder(image) {
+    const { width, height } = post.image.asset.metadata.dimensions;
+    return (
+      "w=1000" +
+      "&fit=clip" +
+      "&q=75" +
+      "&bg=000000" +
+      // Check if there is a crop
+      `${image.crop ?
+        "&rect=" +
+        `${Math.floor(width * image.crop.left)},` +
+        `${Math.floor(height * image.crop.top)},` +
+        `${Math.floor(width - (width * image.crop.left + width * image.crop.right))},` +
+        `${Math.floor(height - (width * image.crop.top + width * image.crop.bottom))}`
+        :
+        ""}`
+    )
+  }
+  
   return (
     <Layout>
       <div style={{ margin: '0 0 40px 0', position: "relative" }}>
@@ -100,20 +114,18 @@ const book = ({ data }) => {
           <div className={style.intro}>
             <h2 className={style.title}>{post.title}</h2>
             <p className={style.ingress}>{post.description}</p>
+            <img src={`${post.image.asset.url}?${urlBuilder(post.image)}`} />
 
             {/* <GatsbyImage image={post.image.asset.gatsbyImageData} alt={post.image.alt} />  */}
-            {<Image
-              // pass asset, hotspot, and crop fields
+            {/*<Image
               {...post.image}
-              // tell Sanity how large to make the image (does not set any CSS)
 
-              // style it how you want it
               style={{
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
               }}
-            />}
+            />*/}
             {/* <img
           src={urlFor(post.image)
             .auto('format')
@@ -170,3 +182,34 @@ const book = ({ data }) => {
 }
 
 export default book
+
+
+/* hotspot {
+  _key
+  _type
+  x
+  y
+  height
+  width
+}
+crop {
+  _key
+  _type
+  top
+  bottom
+  left
+  right
+}
+metadata {
+                _key
+                _type
+                lqip
+                hasAlpha
+                isOpaque
+                _rawLocation
+                _rawDimensions
+                _rawPalette
+              }
+              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+              id
+*/
