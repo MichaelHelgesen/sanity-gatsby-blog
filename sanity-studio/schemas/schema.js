@@ -23,10 +23,10 @@ export default createSchema({
   types: schemaTypes.concat([
     /* Your types here! */
     bodyImage,
-    categories,
     exampleUsage,
     externalLink,
     internalLink,
+    categories,
     quote,
     book,
     note,

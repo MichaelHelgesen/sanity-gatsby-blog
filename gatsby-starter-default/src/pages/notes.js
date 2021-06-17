@@ -1,9 +1,11 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import * as style from "../pages/notes.module.scss"
 import BlockContent from '@sanity/block-content-to-react'
 import serializers from "../components/serializers"
+import * as style from "../templates/blogPost.module.scss"
+import * as blogStyle from "../pages/index.module.scss"
+
 
 export const pageQuery = graphql`
   query {
@@ -21,32 +23,35 @@ export const pageQuery = graphql`
 `
 const IndexPage = ({ data }) => {
 
+  const notes = data.allSanityNote.edges;
 
-    const posts = data.allSanityNote.edges.map(post => (
-        <div key={post.node.title} className={style.link}>
-            <h2 className={style.title}>{post.node.title}</h2>
-            <div>
-                {post.node._rawText ?
-                    <BlockContent
-                        blocks={post.node._rawText}
-                        serializers={serializers}
-                    /> : null
-                }
-            </div>
-        </div>
-
-    ));
+  const posts = notes.map(post => (
+    <div key={post.node.title}>
+        <h2 className={blogStyle.title}>{post.node.title}</h2>
+        <p style={{ margin: "10px 0 10px 0" }}>{post.node.description}</p>
+        <small className={blogStyle.dateCategory}>{post.node.date}
+        </small>
+    </div>
+  
+  ));
 
     return (
-        <Layout>
-            <div className={"intro"}>
-                <p>
-                    Velkommen! Jeg ønsker ikke å vente med å skrive til bloggen er ferdig utviklet.
-                    Av den grunn kan designet virke noe simpelt, men endringer og forbedringer vil gjennomføres med jevne mellomrom.
-          </p>
-            </div>
-            {posts}
-        </Layout>
+      <Layout>
+      <div style={{ margin: '0 0 40px 0', position: "relative" }}>
+        <div className={style.headerwrap}>
+          <div className={style.intro}>
+            <h2 className={style.title}>Notater</h2>
+            <p className={style.ingress}>Korte tekster om hva jeg har tenkt og gjort en dag, om jeg i det hele tatt har tenkt eller gjort noe.</p>
+
+          </div>
+
+          <div className={style.topcolor}></div>
+        </div>
+        <div className={style.content}>
+          {posts}
+        </div>
+      </div>
+    </Layout>
     )
 }
 

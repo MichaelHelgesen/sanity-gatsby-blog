@@ -25,6 +25,17 @@ exports.createPages = async function ({ actions, graphql }) {
                 }
             }       
         }
+        categories: allSanityCategories {
+            edges {
+              node {
+                id
+                categoryTitle
+                internal {
+                  type
+                }
+              }
+            }
+        }
         posts: allSanityPost (sort: {
             fields: date,
             order: DESC
@@ -40,7 +51,6 @@ exports.createPages = async function ({ actions, graphql }) {
                     slug {
                         current
                     }
-        
                 }
             }       
         }
@@ -48,28 +58,50 @@ exports.createPages = async function ({ actions, graphql }) {
 `)
 
     const createPages = (node) => {
-        const id = node.id;
-        const title = node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200);
-        const slug = !node.slug ? title : node.slug.current;
-        const type = node.internal.type;
+        let id = node.id
+        const createSlug = (string) => string.toLowerCase().replace(/\s+/g, '-').slice(0, 200);
+        let titleAsSlug
+        let slug
+        let pathUrl
+        let pageComponent
+        let category
+
+        if (node.internal.type === "SanityCategories") {
+            titleAsSlug = createSlug(node.categoryTitle)
+            category = node.categoryTitle;
+            pathUrl = "/kategorier/";
+            pageComponent = require.resolve(`./src/templates/category.js`);
+        } else {
+            titleAsSlug = createSlug(node.title);
+            pathUrl = node.internal.type === "SanityPost" ? "/blogg/" : "/bibliotek/";
+            pageComponent = (node.internal.type === "SanityPost" ? require.resolve(`./src/templates/blogPost.js`) : require.resolve(`./src/templates/book.js`));
+        }
+
+        slug = !node.slug ? titleAsSlug : node.slug.current;
+
         createPage({
-            path: type == "SanityPost" ? `/blogg/${slug}` : `/bibliotek/${slug}`,
-            component: type == "SanityPost" ? require.resolve(`./src/templates/blogPost.js`) : require.resolve(`./src/templates/book.js`),
-            context: { id },
+            path: `${pathUrl}${slug}`,
+            component: pageComponent,
+            context: { id, category },
         })
     }
 
 
 
-        // Create single blogpost
-        data.posts.edges.forEach(({ node }) => {
-            createPages(node)
-        })
-    
-        // Create single bookpage
-        data.books.edges.forEach(({ node }) => {
-            createPages(node)
-        })
+    // Create single blog post
+    data.posts.edges.forEach(({ node }) => {
+        createPages(node)
+    })
+
+    // Create single book page
+    data.books.edges.forEach(({ node }) => {
+        createPages(node)
+    })
+
+    // Create single category page
+    data.categories.edges.forEach(({ node }) => {
+        createPages(node)
+    })
 }
 
 /*     const mergedData = [...data.posts.edges, ...data.books.edges].forEach(({ node }) => {
@@ -78,9 +110,9 @@ exports.createPages = async function ({ actions, graphql }) {
  */
 
 
-    /* mergedData.forEach(({ node }) => {
-        createPages(node);
-    }) */
+/* mergedData.forEach(({ node }) => {
+    createPages(node);
+}) */
 
     // Create paginated pages for posts
 

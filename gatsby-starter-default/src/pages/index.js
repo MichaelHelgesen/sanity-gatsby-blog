@@ -71,7 +71,7 @@ const mergedContent = [...data.post.edges, ...data.book.edges].sort(function (a,
             { // Create a span for each category defined on item
             post.node.category && post.node.category.length ?
               post.node.category.map((cat, index) => (
-                (index > 0 ? <span key={index}>, {cat.categoryTitle} </span> : <span key={index}> {cat.categoryTitle}</span>)
+                (index > 0 ? <span key={index}>, <a href={`/kategorier/${cat.categoryTitle.toLowerCase()}`}>{cat.categoryTitle}</a> </span> : <span key={index}> <a href={`/kategorier/${cat.categoryTitle.toLowerCase()}`}>{cat.categoryTitle}</a></span>)
               )) :
               <span> Ukategorisert </span>
           }

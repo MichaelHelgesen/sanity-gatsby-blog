@@ -4,10 +4,34 @@ export default {
     type: "document",
     fields: [
         {
-            title: 'Kategorinavn',
             name: 'categoryTitle',
+            title: 'Kategorinavn',
             type: 'string',
             validation: Rule => Rule.required()
         },
+        {
+            name: 'categoryDescription',
+            title: 'Beskrivelse', 
+            type: 'array', 
+            of: [
+                    {
+                        type: 'block',
+                        marks: {
+                            annotations: [
+                                {
+                                    name: 'link',
+                                    type: 'externalLink',
+                                },
+                                {
+                                    name: "internalLink",
+                                    type: "internalLink",
+    
+                                }
+                            ]
+                        },
+                    }
+            ]
+          }
+
     ]
 }
