@@ -127,6 +127,40 @@ export default {
             ]
         },
         {
+            name: "impression",
+            title: "Mitt inntrykk",
+            type: "array",
+            of: [
+                {
+                    type: 'block',
+                    marks: {
+                        annotations: [
+                            {
+                                name: 'link',
+                                type: 'externalLink',
+                            },
+                            {
+                                name: "internalLink",
+                                type: "internalLink",
+
+                            }
+                        ]
+                    },
+                },
+                {
+                    type: 'bodyImage',
+                },
+                {
+                    title: 'Kodeeksempel',
+                    type: "exampleUsage"
+                },
+                {
+                    title: "Tipsfelt",
+                    type: "tipField"
+                }
+            ]
+        },
+        {
             name: "reason_to_read",
             title: "Hvorfor lese den",
             type: "array",

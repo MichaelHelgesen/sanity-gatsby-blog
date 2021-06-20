@@ -40,6 +40,7 @@ export const pageQuery = graphql`
           _rawAffect(resolveReferences:{maxDepth:10})
           _rawReasonToRead(resolveReferences:{maxDepth:10})
           _rawSummary(resolveReferences:{maxDepth:10})
+          _rawImpression(resolveReferences:{maxDepth:10})
           date(formatString: "DD.MM.YYYY")
           description
           id
@@ -148,6 +149,18 @@ const book = ({ data }) => {
               {post._rawSummary ?
                 <BlockContent
                   blocks={post._rawSummary}
+                  serializers={serializers}
+                /> : null
+              }
+            </div>
+          : null}
+
+{post._rawImpression ? 
+            <div>
+              <h3>Mitt inntrykk</h3>
+              {post._rawSummary ?
+                <BlockContent
+                  blocks={post._rawImpression}
                   serializers={serializers}
                 /> : null
               }
