@@ -31,13 +31,13 @@ const blogPost = ({ data }) => {
       <div className={style.headerwrap}>
           <div className={style.intro}>
         <h2 className={style.title}>{post.title}</h2>
-        <small className={style.dateCategory}>{post.date}
-          {
-            post.category.length ?
+        <small className={style.dateCategory}>{post.date} •
+            { // Create a span for each category defined on item
+            post.category && post.category.length ?
               post.category.map((cat, index) => (
-                <span key={index}> #{cat.categoryTitle} </span>
+                (index > 0 ? <span key={index}>, <a href={`/kategorier/${cat.categoryTitle.toLowerCase()}`}>{cat.categoryTitle}</a> </span> : <span key={index}> <a href={`/kategorier/${cat.categoryTitle.toLowerCase()}`}>{cat.categoryTitle}</a></span>)
               )) :
-              <span> #Ukategorisert </span>
+              <span> Ukategorisert </span>
           }
         </small>
         <p className={style.ingress}>{

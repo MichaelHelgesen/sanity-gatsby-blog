@@ -113,6 +113,9 @@ const book = ({ data }) => {
         <div className={style.headerwrap}>
           <div className={style.intro}>
             <h2 className={style.title}>{post.title}</h2>
+            <small className={style.dateCategory}>{post.date} • 
+               <span> <a href="/kategorier/bokomtale">Bokomtaler</a></span> 
+        </small>
             <p className={style.ingress}>{post.description}</p>
             <img src={`${post.image.asset.url}?${urlBuilder(post.image)}`} />
 
@@ -139,42 +142,51 @@ const book = ({ data }) => {
           <div className={style.topcolor}></div>
         </div>
         <div className={style.content}>
-          <div>
-            <h3>Boken oppsummert i tre setninger</h3>
-            {post._rawSummary ?
-              <BlockContent
-                blocks={post._rawSummary}
-                serializers={serializers}
-              /> : null
-            }
+          {post._rawSummary ? 
+            <div>
+              <h3>Boken oppsummert i tre setninger</h3>
+              {post._rawSummary ?
+                <BlockContent
+                  blocks={post._rawSummary}
+                  serializers={serializers}
+                /> : null
+              }
+            </div>
+          : null}
+          
+          {post._rawReasonToRead ? 
+            <div >
+              <h3>Hvorfor lese den?</h3>
+              {post._rawReasonToRead ?
+                <BlockContent
+                  blocks={post._rawReasonToRead}
+                  serializers={serializers}
+                /> : null
+              }
+            </div>
+          : null}
 
-          </div>
-
-          <div >
-            <h3>Hvorfor lese den?</h3>
-            {post._rawReasonToRead ?
-              <BlockContent
-                blocks={post._rawReasonToRead}
-                serializers={serializers}
-              /> : null
-            }
-          </div>
-
-          <div >
-            <h3>Hvordan påvirket den meg?</h3>
-            {post._rawAffect ?
-              <BlockContent
-                blocks={post._rawAffect}
-                serializers={serializers}
-              /> : null
-            }
-          </div>
-          <div className={style.quotes}>
-            <h3>Mine tre favoritt-sitater</h3>
-            {post.quotes.map((quote, index) =>
-              (<p key={index}>{quote.fav_quote}</p>)
-            )}
-          </div>
+          {post._rawAffect ? 
+            <div >
+              <h3>Hvordan påvirket den meg?</h3>
+              {post._rawAffect ?
+                <BlockContent
+                  blocks={post._rawAffect}
+                  serializers={serializers}
+                /> : null
+              }
+            </div>
+          : null}
+          
+          {post.quotes.length ? 
+            <div className={style.quotes}>
+              <h3>Mine tre favoritt-sitater</h3>
+              {post.quotes.map((quote, index) =>
+                (<p key={index}>{quote.fav_quote}</p>)
+              )}
+            </div>
+          : null}
+          
         </div>
       </div>
     </Layout>
