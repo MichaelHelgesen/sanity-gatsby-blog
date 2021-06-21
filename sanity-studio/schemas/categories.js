@@ -10,6 +10,12 @@ export default {
             validation: Rule => Rule.required()
         },
         {
+            name: 'color',
+            title: 'Farge',
+            type: 'string',
+            validation: Rule => Rule.required()
+        },
+        {
             name: 'categoryDescription',
             title: 'Beskrivelse', 
             type: 'array', 

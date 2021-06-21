@@ -1,8 +1,8 @@
 import * as React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import * as style from "../pages/index.module.scss"
-
+import BlogList from "../components/blogList"
 
 export const pageQuery = graphql`
   query {
@@ -27,6 +27,18 @@ export const pageQuery = graphql`
         }
       }
     }
+    categories: allSanityCategories {
+      edges {
+        node {
+          
+      categoryTitle
+      color
+      id
+      _rawCategoryDescription
+        }
+      }
+      
+    } 
     post: allSanityPost (sort: {
       fields: date,
       order: DESC
@@ -55,38 +67,41 @@ export const pageQuery = graphql`
 `
 const IndexPage = ({ data }) => {
 
-const mergedContent = [...data.post.edges, ...data.book.edges].sort(function (a, b) {
-  // Format the date to year, month, day to get correct sort order
-  const formatDate = (arg) => arg.node.date.slice(6).concat(arg.node.date.slice(3, 5)).concat(arg.node.date.slice(0, 2));
-  return formatDate(b) - formatDate(a)
-});;
+  const mergedContent = [...data.post.edges, ...data.book.edges].sort(function (a, b) {
+    // Format the date to year, month, day to get correct sort order
+    const formatDate = (arg) => arg.node.date.slice(6).concat(arg.node.date.slice(3, 5)).concat(arg.node.date.slice(0, 2));
+    return formatDate(b) - formatDate(a)
+  });
+  const categories = data.categories.edges;
+  const posts = <BlogList props={mergedContent} />
 
-  // Create list items from content
-  const posts = mergedContent.map(post => (
-    <div key={post.node.title}>
-      <a className={style.link} href={post.node.slug ? `${post.node.internal.type === "SanityPost" ? "blogg" : "bibliotek"}/${post.node.slug.current}` : `${post.node.internal.type === "SanityPost" ? "blogg" : "bibliotek"}/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}>
-        <h2 className={style.title}>{post.node.title}</h2>
-        <p style={{ margin: "10px 0 10px 0" }}>{post.node.description}</p>
-        <small className={style.dateCategory}>{post.node.date} •
-            { // Create a span for each category defined on item
-            post.node.category && post.node.category.length ?
-              post.node.category.map((cat, index) => (
-                (index > 0 ? <span key={index}>, <a href={`/kategorier/${cat.categoryTitle.toLowerCase()}`}>{cat.categoryTitle}</a> </span> : <span key={index}> <a href={`/kategorier/${cat.categoryTitle.toLowerCase()}`}>{cat.categoryTitle}</a></span>)
-              )) :
-              <span> Ukategorisert </span>
-          }
-        </small>
-      </a>
-    </div>
-
-  ));
+  // Filtrert kategori-liste
+  const categoryList = categories.map(cat => (
+    <Link className={style.categories} style={{backgroundColor: `#${cat.node.color}`}} to={`/kategorier/${cat.node.categoryTitle.toLowerCase()}`}>{cat.node.categoryTitle}</Link>
+  )
+  ).sort(function (a, b) {
+    const navnA = a.props.children.toUpperCase(); // Ignorere store og små bokstaver
+    const navnB = b.props.children.toUpperCase();
+    if (navnA < navnB) {
+      return -1;
+    }
+    if (navnA > navnB) {
+      return 1;
+    }
+    return 0;
+  });
 
   return (
     <Layout>
       <div className={style.content}>
-      {posts}
+        <div className={style.introField}>
+          <h2>Velkommen til Mikkes blogg!</h2>
+          <p>Dette er den personlige bloggen for Mikke. Du kan trykke her for å se alle blogginnlegg, eller velge kategori under.</p>
+          {categoryList}
+        </div>
+        {posts}
       </div>
-      
+
     </Layout>
   )
 }

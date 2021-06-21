@@ -9,7 +9,8 @@
     font-weight: 700;
     margin: 0;
     font-size: 1.4rem;
-    line-height: 1.8rem; 
+    line-height: 1.8rem;
+    padding-top: 0; 
 }
 
 .dateCategory {
@@ -30,4 +31,31 @@ a.link:hover {
 a.link:hover .title {
     color: black;
     text-decoration: underline;
+}
+
+.introField {
+    margin-bottom: 1.45rem;
+    padding-bottom: 1.45rem;
+    border-bottom: 1px solid gray;
+    p {
+        font-weight: 600;
+    }
+}
+
+.categories {
+/*     background: base.$main-background-color;
+ */    border-radius: 15px;
+    padding: 0 15px;
+    margin: 0 5px 5px 0;
+    transition: background-color .2s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 75%;
+    color: white;
+    font-weight: 600;
+}
+
+.categories:hover {
+    background-color: #e7e5e5!important;
+    color: base.$font-color;
 }

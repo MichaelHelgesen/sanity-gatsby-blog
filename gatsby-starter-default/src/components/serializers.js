@@ -1,34 +1,10 @@
 import * as React from "react"
+import { Link } from "gatsby"
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { nightOwl, atelierForestLight } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import { CgExternal } from "react-icons/cg"
 import BlockContent from '@sanity/block-content-to-react'
-import imageUrlBuilder from '@sanity/image-url'
-import sanityClient from "@sanity/client"
-import { GatsbyImage } from 'gatsby-plugin-image'
-import Image from "gatsby-plugin-sanity-image"
-import { getGatsbyImageData } from 'gatsby-source-sanity'
-import SanityImage from "gatsby-plugin-sanity-image"
 import * as style from '../components/serializers.module.scss'
-
-const client = sanityClient({
-  dataset: "production",
-  projectId: "esnfvjjt",
-  apiVersion: '2021-04-24',
-  useCdn: true,
-})
-
-//const imageData = getGatsbyImageData(imageAssetId, {maxWidth: 1024}, client)
-
-// Get a pre-configured url-builder from your sanity client
-const builder = imageUrlBuilder(client)
-
-// Then we like to make a simple function like this that gives the
-// builder an image and returns the builder for you to specify additional
-// parameters:
-function urlFor(source) {
-  return builder.image(source)
-}
 
 function urlBuilder(image) {
   const { width, height } = image.asset.metadata.dimensions;
@@ -123,9 +99,9 @@ const serializers = {
       )
     },
     internalLink: ({ mark, children }) => {
-      return <a href={
-        mark.reference.slug ? `/${mark.reference.slug.current}` : `/${mark.reference.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`
-      }>{children}</a>
+      return <Link to={
+        mark.reference.slug ? `/blogg/${mark.reference.slug.current}` : `/blogg/${mark.reference.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`
+      }>{children}</Link>
     },
     link: props => {
       return <a className={style.externallink} href={props.mark.href}>{props.children}<CgExternal /></a>

@@ -3,35 +3,7 @@ import { graphql } from "gatsby"
 import BlockContent from '@sanity/block-content-to-react'
 import Layout from "../components/layout"
 import serializers from "../components/serializers"
-import { GatsbyImage } from 'gatsby-plugin-image'
-import imageUrlBuilder from '@sanity/image-url'
-import sanityClient from "@sanity/client"
-import SanityImage from "gatsby-plugin-sanity-image"
-import Image from "gatsby-plugin-sanity-image"
-import { getGatsbyImageData } from 'gatsby-source-sanity'
 import * as style from "../templates/book.module.scss"
-
-
-const client = sanityClient({
-  dataset: "production",
-  projectId: "esnfvjjt",
-  apiVersion: '2021-04-24',
-  useCdn: true,
-})
-
-//const imageData = getGatsbyImageData(imageAssetId, {maxWidth: 1024}, client)
-
-// Get a pre-configured url-builder from your sanity client
-const builder = imageUrlBuilder(client)
-
-// Then we like to make a simple function like this that gives the
-// builder an image and returns the builder for you to specify additional
-// parameters:
-function urlFor(source) {
-  return builder.image(source)
-}
-
-
 
 
 export const pageQuery = graphql`
