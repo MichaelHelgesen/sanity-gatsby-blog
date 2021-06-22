@@ -12,7 +12,7 @@ header > div {
     justify-content: space-between;
 }
 
-.wrapper h1 {
+.wrapper span {
     margin: 0;
     font-family: "Open Sans";
     font-weight: 800;
@@ -21,7 +21,7 @@ header > div {
     letter-spacing: -.05em;  
 }
 
-.wrapper h1 a {
+.wrapper span a {
     display: inline-block;
     text-decoration: none;
     color: rgb(87, 77, 67);
@@ -32,7 +32,9 @@ header > div {
     header > div {
         flex-direction: column;
         align-items: unset;
-        justify-content: unset;
-        
+        justify-content: unset; 
+    }
+    .wrapper span {
+        margin: 0 0 0.725rem 10px;
     }
   }

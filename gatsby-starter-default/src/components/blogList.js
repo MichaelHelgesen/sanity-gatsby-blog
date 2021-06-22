@@ -7,7 +7,7 @@ const BlogList = ({ props }) => (
     props.map(post => (
         <div key={post.node.title}>
             <a className={style.link} href={post.node.slug ? `${post.node.internal.type === "SanityPost" ? "/blogg" : "/bibliotek"}/${post.node.slug.current}` : `${post.node.internal.type === "SanityPost" ? "blogg" : "bibliotek"}/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}>
-                <h3 className={style.title}>{post.node.title}</h3>
+                <h2 className={style.title}>{post.node.title}</h2>
                 <p style={{ margin: "10px 0 10px 0" }}>{post.node.description}</p>
                 <small className={style.dateCategory}>{post.node.date} •
                     { // Create a span for each category defined on item

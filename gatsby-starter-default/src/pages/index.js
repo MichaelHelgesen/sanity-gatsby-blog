@@ -95,7 +95,7 @@ const IndexPage = ({ data }) => {
     <Layout>
       <div className={style.content}>
         <div className={style.introField}>
-          <h2>Velkommen til Mikkes blogg!</h2>
+          <h1>Velkommen til Mikkes blogg!</h1>
           <p>Dette er den personlige bloggen for Mikke. Du kan trykke her for å se alle blogginnlegg, eller velge kategori under.</p>
           {categoryList}
         </div>

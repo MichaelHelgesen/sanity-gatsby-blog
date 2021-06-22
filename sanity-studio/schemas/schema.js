@@ -9,6 +9,7 @@ import exampleUsage from "./codeExample"
 import externalLink from "./externalLink"
 import internalLink from "./internalLink"
 import note from "./note"
+import page from "./page"
 import post from './post'
 import quote from "./quote"
 import schemaTypes from 'all:part:@sanity/base/schema-type'
@@ -26,11 +27,13 @@ export default createSchema({
     exampleUsage,
     externalLink,
     internalLink,
-    categories,
     quote,
+    tipField,
+    //
     book,
+    categories,
     note,
+    page,
     post,
-    tipField
   ]),
 })

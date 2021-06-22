@@ -36,6 +36,20 @@ exports.createPages = async function ({ actions, graphql }) {
               }
             }
         }
+        pages: allSanityPage {
+            edges {
+              node {
+                id
+                internal {
+                    type
+                  }
+                slug {
+                  current
+                }
+                title
+              }
+            }
+          }
         posts: allSanityPost (sort: {
             fields: date,
             order: DESC
@@ -71,6 +85,10 @@ exports.createPages = async function ({ actions, graphql }) {
             category = node.categoryTitle;
             pathUrl = "/kategorier/";
             pageComponent = require.resolve(`./src/templates/category.js`);
+        } else if (node.internal.type === "SanityPage") {
+            titleAsSlug = createSlug(node.title);
+            pathUrl = "/";
+            pageComponent = require.resolve(`./src/templates/page.js`);
         } else {
             titleAsSlug = createSlug(node.title);
             pathUrl = node.internal.type === "SanityPost" ? "/blogg/" : "/bibliotek/";
@@ -100,6 +118,11 @@ exports.createPages = async function ({ actions, graphql }) {
 
     // Create single category page
     data.categories.edges.forEach(({ node }) => {
+        createPages(node)
+    })
+
+    // Create single pages
+    data.pages.edges.forEach(({ node }) => {
         createPages(node)
     })
 }
