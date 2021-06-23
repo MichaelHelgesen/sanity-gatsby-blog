@@ -1,0 +1,18 @@
+@use "../components/base.module.scss";
+
+.content {
+    @include base.contentLayout;
+}
+
+.noteWrap {
+    margin-bottom: 2.90rem;
+}
+
+.title {
+    font-family: "Open Sans";
+    font-weight: 700;
+    margin: 0;
+    font-size: 1.4rem;
+    line-height: 1.7rem; 
+    margin-top: 1.45rem;
+}

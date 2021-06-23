@@ -5,7 +5,8 @@ import BlockContent from '@sanity/block-content-to-react'
 import serializers from "../components/serializers"
 import * as style from "../templates/blogPost.module.scss"
 import BlogList from "../components/blogList"
-
+import Notes from "../components/notesList"
+import BookList from "../components/bookList"
 
 export const pageQuery = graphql`
 query ($id: String!){
@@ -18,15 +19,45 @@ query ($id: String!){
     book: allSanityBook(sort: {fields: date, order: DESC}) {
         edges {
           node {
+            author
             category {
               categoryTitle
             }
             date(formatString: "DD.MM.YYYY")
             description
             id
+            image {
+                alt
+                asset { 
+                  url
+                  metadata {
+                    dimensions {
+                      height
+                      width
+                    }
+                  }
+                }
+                crop {
+                  _key
+                  _type
+                  top
+                  bottom
+                  left
+                  right
+                } 
+                hotspot {
+                  _key
+                  _type
+                  x
+                  y
+                  height
+                  width
+                }
+              }
             internal {
               type
             }
+            read(formatString: "DD.MM.YYYY")
             slug {
               _key
               _type
@@ -48,6 +79,16 @@ query ($id: String!){
         }
         
       } 
+      notes: allSanityNote (sort: {fields: date, order: DESC}) {
+        edges {
+          node {
+            date(formatString: "DD.MM.YYYY")
+            id
+            title
+            _rawText(resolveReferences:{maxDepth:10})
+          }
+        }
+      }
       post: allSanityPost (sort: {
         fields: date,
         order: DESC
@@ -71,7 +112,6 @@ query ($id: String!){
           }
         }
       }
-  
     }
 `
 const Page = ({ data }) => {
@@ -81,7 +121,16 @@ const Page = ({ data }) => {
         const formatDate = (arg) => arg.node.date.slice(6).concat(arg.node.date.slice(3, 5)).concat(arg.node.date.slice(0, 2));
         return formatDate(b) - formatDate(a)
       });
-      const posts = <BlogList props={mergedContent} />
+    
+    let posts
+
+    if (data.page.title === "Blogg") {
+        posts = <BlogList props={mergedContent} />
+    } else if (data.page.title === "Notater") {
+        posts = <Notes props={data.notes.edges} />
+    } else if (data.page.title === "Bibliotek") {
+        posts = <BookList props={data.book.edges} />
+    }
 
     return (
       <Layout>
@@ -95,10 +144,8 @@ const Page = ({ data }) => {
 
           <div className={style.topcolor}></div>
         </div>
-        <div className={style.content}>
-            {
-                data.page.title === "Blogg" ? posts : null
-            }
+        <div>
+            {posts ? posts : <div className={style.content}><BlockContent blocks={data.page._rawContent} serializers={serializers} /></div>}
         </div>
       </div>
     </Layout>

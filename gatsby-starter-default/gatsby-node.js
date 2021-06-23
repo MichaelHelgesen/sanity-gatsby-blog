@@ -91,7 +91,7 @@ exports.createPages = async function ({ actions, graphql }) {
             pageComponent = require.resolve(`./src/templates/page.js`);
         } else {
             titleAsSlug = createSlug(node.title);
-            pathUrl = node.internal.type === "SanityPost" ? "/blogg/" : "/bibliotek/";
+            pathUrl = "/blogg/";
             pageComponent = (node.internal.type === "SanityPost" ? require.resolve(`./src/templates/blogPost.js`) : require.resolve(`./src/templates/book.js`));
         }
 

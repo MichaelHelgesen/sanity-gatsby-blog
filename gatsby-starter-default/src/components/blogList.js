@@ -3,10 +3,10 @@ import { Link } from "gatsby"
 import * as style from "../pages/index.module.scss"
 
 const BlogList = ({ props }) => (
-    // Create list items from content
-    props.map(post => (
+    <div className={style.content}>
+    {props.map(post => (
         <div key={post.node.title}>
-            <a className={style.link} href={post.node.slug ? `${post.node.internal.type === "SanityPost" ? "/blogg" : "/bibliotek"}/${post.node.slug.current}` : `${post.node.internal.type === "SanityPost" ? "blogg" : "bibliotek"}/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}>
+            <Link className={style.link} to={post.node.slug ? `/blogg/${post.node.slug.current}` : `/blogg/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}>
                 <h2 className={style.title}>{post.node.title}</h2>
                 <p style={{ margin: "10px 0 10px 0" }}>{post.node.description}</p>
                 <small className={style.dateCategory}>{post.node.date} •
@@ -18,9 +18,10 @@ const BlogList = ({ props }) => (
                             <span> Ukategorisert </span>
                     }
                 </small>
-            </a>
+            </Link>
         </div>
-    ))
+    ))}
+    </div>
 )
 
 export default BlogList

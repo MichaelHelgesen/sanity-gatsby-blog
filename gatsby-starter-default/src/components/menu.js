@@ -11,13 +11,10 @@ const Menu = () => (
         <Link to="/blogg">Blogg</Link>
         </li>
         <li>
-        <Link to="/kategorier">Kategorier</Link>
+        <Link to="/notater">Notater</Link>
         </li>
         <li>
         <Link to="/bibliotek">Bibliotek</Link>
-        </li>
-        <li>
-        <Link to="/notater">Notater</Link>
         </li>
         <li>
             <Link to="/om-mikke">Om Mikke</Link>
