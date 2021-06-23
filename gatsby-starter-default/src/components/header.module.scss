@@ -24,17 +24,17 @@ header > div {
 .wrapper span a {
     display: inline-block;
     text-decoration: none;
-    color: rgb(87, 77, 67);
-    border-bottom: 5px solid rgb(87, 77, 67);
+    color: rgb(120, 99, 71);
+    border-bottom: 5px solid rgb(120, 99, 71);
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 750px) {
     header > div {
         flex-direction: column;
         align-items: unset;
         justify-content: unset; 
     }
     .wrapper span {
-        margin: 0 0 0.725rem 10px;
+        margin: 0 0 0.725rem 0;
     }
   }

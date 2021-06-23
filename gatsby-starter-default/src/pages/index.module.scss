@@ -92,8 +92,10 @@ a.link:hover .title {
 }
 
 @media only screen and (max-width: 580px) {
-    h1 {
-        font-size: 2rem;
-        line-height: 2.6rem;
+    .introField {
+        h1 {
+            font-size: 2rem;
+            line-height: 2.4rem;
+        }
     }
   }
