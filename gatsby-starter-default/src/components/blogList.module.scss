@@ -1,20 +1,8 @@
 @use "../components/base.module.scss";
 
-.headerwrap {
-    position: relative;
-}
-
-.topcolor {
-    background: #e7e5e5;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 100%;
-}
-
 .content {
     @include base.contentLayout;
+    padding-top: 1.45rem;
 }
 
 .title {
@@ -45,24 +33,6 @@ a.link:hover {
 a.link:hover .title {
     color: black;
     text-decoration: underline;
-}
-
-.introField {
-    @include base.contentLayout;
-    padding-top: 2.90rem;
-    padding-bottom: 2.90rem;
-    position:relative;
-    z-index:2;
-    
-    h1 {
-        font-weight: 800;
-        font-size: 2rem;
-        line-height: 3.4rem;
-        margin-bottom: 0;
-    }
-    p {
-        font-weight: 400;
-    }
 }
 
 .categories {

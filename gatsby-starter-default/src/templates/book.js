@@ -59,7 +59,7 @@ const book = ({ data }) => {
   //const imageData = getGatsbyImageData(post.image.asset.id, {maxWidth: 1024}, sanityConfig)
 
   console.log(post.image)
-  
+
   // Function for image settings and generating URL
   function urlBuilder(image) {
     const { width, height } = post.image.asset.metadata.dimensions;
@@ -79,43 +79,24 @@ const book = ({ data }) => {
         ""}`
     )
   }
-  
+
   return (
     <Layout>
       <div style={{ margin: '0 0 40px 0', position: "relative" }}>
         <div className={style.headerwrap}>
           <div className={style.intro}>
             <h2 className={style.title}>{post.title}</h2>
-            <small className={style.dateCategory}>{post.date} • 
-               <span> <a href="/kategorier/bokomtale">Bokomtaler</a></span> 
-        </small>
+            <small className={style.dateCategory}>{post.date} •
+              <span> <a href="/kategorier/bokomtale">Bokomtaler</a></span>
+            </small>
             <p className={style.ingress}>{post.description}</p>
             <img src={`${post.image.asset.url}?${urlBuilder(post.image)}`} />
-
-            {/* <GatsbyImage image={post.image.asset.gatsbyImageData} alt={post.image.alt} />  */}
-            {/*<Image
-              {...post.image}
-
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
-            />*/}
-            {/* <img
-          src={urlFor(post.image)
-            .auto('format')
-            .width(1000)
-            .fit('clip')
-            .quality(75)
-            .url()}
-        /> */}
           </div>
 
           <div className={style.topcolor}></div>
         </div>
         <div className={style.content}>
-          {post._rawSummary ? 
+          {post._rawSummary ?
             <div>
               <h3>Boken oppsummert i tre setninger</h3>
               {post._rawSummary ?
@@ -125,9 +106,9 @@ const book = ({ data }) => {
                 /> : null
               }
             </div>
-          : null}
+            : null}
 
-{post._rawImpression ? 
+          {post._rawImpression ?
             <div>
               <h3>Mitt inntrykk</h3>
               {post._rawSummary ?
@@ -137,9 +118,9 @@ const book = ({ data }) => {
                 /> : null
               }
             </div>
-          : null}
-          
-          {post._rawReasonToRead ? 
+            : null}
+
+          {post._rawReasonToRead ?
             <div >
               <h3>Hvorfor lese den?</h3>
               {post._rawReasonToRead ?
@@ -149,9 +130,9 @@ const book = ({ data }) => {
                 /> : null
               }
             </div>
-          : null}
+            : null}
 
-          {post._rawAffect ? 
+          {post._rawAffect ?
             <div >
               <h3>Hvordan påvirket den meg?</h3>
               {post._rawAffect ?
@@ -161,17 +142,17 @@ const book = ({ data }) => {
                 /> : null
               }
             </div>
-          : null}
-          
-          {post.quotes.length ? 
+            : null}
+
+          {post.quotes.length ?
             <div className={style.quotes}>
               <h3>Mine tre favoritt-sitater</h3>
               {post.quotes.map((quote, index) =>
                 (<p key={index}>{quote.fav_quote}</p>)
               )}
             </div>
-          : null}
-          
+            : null}
+
         </div>
       </div>
     </Layout>

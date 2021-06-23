@@ -77,7 +77,7 @@ const IndexPage = ({ data }) => {
 
   // Filtrert kategori-liste
   const categoryList = categories.map(cat => (
-    <Link className={style.categories} style={{backgroundColor: `#${cat.node.color}`}} to={`/kategorier/${cat.node.categoryTitle.toLowerCase()}`}>{cat.node.categoryTitle}</Link>
+    <Link className={style.categories} style={{ backgroundColor: `#${cat.node.color}` }} to={`/kategorier/${cat.node.categoryTitle.toLowerCase()}`}>{cat.node.categoryTitle}</Link>
   )
   ).sort(function (a, b) {
     const navnA = a.props.children.toUpperCase(); // Ignorere store og små bokstaver
@@ -93,15 +93,26 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <div className={style.content}>
-        <div className={style.introField}>
-          <h1>Velkommen til Mikkes blogg!</h1>
-          <p>Dette er den personlige bloggen for Mikke. Du kan trykke her for å se alle blogginnlegg, eller velge kategori under.</p>
-          {categoryList}
+      <div style={{ margin: '0 0 40px 0', position: "relative" }}>
+        <div className={style.headerwrap}>
+          <div className={style.intro}>
+            <div className={style.introField}>
+              <h1>Velkommen til Mikkes blogg!</h1>
+              <p>Dette er den personlige bloggen for Mikke. Du kan trykke her for å se alle blogginnlegg, eller velge kategori under.</p>
+              {categoryList}
+            </div>
+          </div>
+          <div className={style.topcolor}></div>
+
         </div>
+      
+
+
+      <div>
+
         {posts}
       </div>
-
+      </div>
     </Layout>
   )
 }

@@ -19,7 +19,7 @@
     }
 
     a:hover {
-        transform: scale(1.05);
+        transform: scale(1.03);
     }
 
     h2 {
@@ -81,7 +81,7 @@ a.link:hover .title {
     text-decoration: underline;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1300px) {
     .content a {
         width: 31.33%;
     }

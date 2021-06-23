@@ -2,66 +2,75 @@
 
 
 .noteWrap {
-    background: rgb(194, 152, 97);
+    background: rgba(189, 161, 125, 0.4);
     margin:0;
+
+    
 
     P {
         margin:0!important;
-        color: white;
         padding-bottom: 1.45rem;
         font-family: "Merriweather";
         font-size: 90%;
         line-height: 1.4em;
+        max-width: 500px;
     }
 }
 
 .noteWrap:nth-child(9n+2) {
-    background: #8c704c;
+    background: rgba(194, 152, 97, 0.4);
 }
 
 .noteWrap:nth-child(9n+3) {
-    background: #786347;
+    background: rgba(140, 112, 76, 0.4);
 }
 
 .noteWrap:nth-child(9n+4) {
-    background: #a65f03;
+    background: rgba(120, 99, 71, 0.4);
 }
 
 .noteWrap:nth-child(9n+5) {
-    background: #69471c;
+    background: rgba(166, 95, 3, 0.4);
 }
 
 .noteWrap:nth-child(9n+6) {
-    background: #523510;
+    background: rgba(105, 71, 28, 0.4);
 }
 
 .noteWrap:nth-child(9n+7) {
-    background: #613802;
+    background: rgba(82, 53, 16, 0.4);
 }
 
 .noteWrap:nth-child(9n+8) {
-    background: #523004;
+    background: rgba(97, 56, 2, 0.4);
 }
 
 .noteWrap:nth-child(9n+9) {
-    background: #36240c;
+    background: rgba(82, 48, 4, 0.4);
 }
 
+.noteWrap:nth-child(9n+9) {
+    background: rgba(82, 48, 4, 0.4);
+}
 
 .contentWrap {
     @include base.contentLayout;
-    max-width: 600px;
 
-    img {
+    div div {
+        padding: 0;
+        border: 0;
         max-width: 300px;
+
+        p {
+            font-family: "Open Sans";
+        }
     }
 }
 
 .title {
     font-family: "Open Sans";
     font-weight: 700;
-    margin: 0;
+    margin: 0 0 .75em;
     font-size: 1.4rem;
     line-height: 1.7rem; 
-    color: white;
 }

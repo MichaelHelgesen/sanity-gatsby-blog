@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
-import * as style from "../pages/index.module.scss"
+import * as style from "../components/blogList.module.scss"
 
 const BlogList = ({ props }) => (
     <div className={style.content}>
