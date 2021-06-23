@@ -4,7 +4,6 @@ import BlockContent from '@sanity/block-content-to-react'
 import Layout from "../components/layout"
 import serializers from "../components/serializers"
 import * as style from "../templates/blogPost.module.scss"
-import * as blogStyle from "../pages/index.module.scss"
 import BlogList from "../components/blogList"
 
 export const pageQuery = graphql`
@@ -87,7 +86,7 @@ const category = ({ data }) => {
 
           <div className={style.topcolor}></div>
         </div>
-        <div className={style.content}>
+        <div>
           {posts}
         </div>
       </div>
