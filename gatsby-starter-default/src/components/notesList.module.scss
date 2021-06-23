@@ -1,11 +1,60 @@
 @use "../components/base.module.scss";
 
-.content {
-    @include base.contentLayout;
-}
 
 .noteWrap {
-    margin-bottom: 2.90rem;
+    background: rgb(194, 152, 97);
+    margin:0;
+
+    P {
+        margin:0!important;
+        color: white;
+        padding-bottom: 1.45rem;
+        font-family: "Merriweather";
+        font-size: 90%;
+        line-height: 1.4em;
+    }
+}
+
+.noteWrap:nth-child(9n+2) {
+    background: #8c704c;
+}
+
+.noteWrap:nth-child(9n+3) {
+    background: #786347;
+}
+
+.noteWrap:nth-child(9n+4) {
+    background: #a65f03;
+}
+
+.noteWrap:nth-child(9n+5) {
+    background: #69471c;
+}
+
+.noteWrap:nth-child(9n+6) {
+    background: #523510;
+}
+
+.noteWrap:nth-child(9n+7) {
+    background: #613802;
+}
+
+.noteWrap:nth-child(9n+8) {
+    background: #523004;
+}
+
+.noteWrap:nth-child(9n+9) {
+    background: #36240c;
+}
+
+
+.contentWrap {
+    @include base.contentLayout;
+    max-width: 600px;
+
+    img {
+        max-width: 300px;
+    }
 }
 
 .title {
@@ -14,5 +63,5 @@
     margin: 0;
     font-size: 1.4rem;
     line-height: 1.7rem; 
-    margin-top: 1.45rem;
+    color: white;
 }
