@@ -157,7 +157,7 @@ const Page = ({ data }) => {
                 <div className={style.headerwrap}>
                     <div className={style.intro}>
                         <small className={style.breadcrumb}>
-                            <Link to={`/`}>hjem</Link>{data.page.title === "Kategorier" ? <span> / <Link to={`/blogg/`}>blogg</Link>:</span> : <span>:</span> }
+                            <Link to={`/`}>hjem</Link>{data.page.title === "Kategorier" ? <span> / <Link to={`/blogg/`}>blogg</Link> /</span> : <span> /</span> }
                         </small>
                         <h1 className={style.title}>{data.page.title}</h1>
                         <p className={style.ingress}>{data.page.introduction}</p>

@@ -23,6 +23,10 @@
         padding: 5px 15px;
     }
 
+    .activeLink {
+        color: rgb(166, 95, 3);
+    }
+
     a:hover {
         background-color: rgb(166, 95, 3);
         color: white;
@@ -34,6 +38,8 @@
         font-size: 85%;
     }
 }
+
+
 
 @media only screen and (min-width: 100px) {
     .menu {

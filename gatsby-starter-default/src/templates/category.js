@@ -75,7 +75,7 @@ const category = ({ data }) => {
         <div className={style.headerwrap}>
           <div className={style.intro}>
           <small className={style.breadcrumb}>
-              <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg</Link> / <Link to={`/blogg/kategorier`}>kategorier</Link>:
+              <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg</Link> / <Link to={`/blogg/kategorier`}>kategorier</Link> /
             </small>
             <h2 className={style.title}>{categories.categoryTitle}</h2>
             <p className={style.ingress}>{

@@ -31,7 +31,7 @@ const blogPost = ({ data }) => {
       <div className={style.headerwrap}>
           <div className={style.intro}>
             <small className={style.breadcrumb}>
-              <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg:</Link>
+              <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg</Link> /
             </small>
         <h1 className={style.title}>{post.title}</h1>
         <small className={style.dateCategory}>{post.date} •

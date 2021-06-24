@@ -86,11 +86,11 @@ const book = ({ data }) => {
         <div className={style.headerwrap}>
           <div className={style.intro}>
           <small className={style.breadcrumb}>
-              <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg</Link> <Link to={`/bibliotek/`}>(bibliotek)</Link>:
+              <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg</Link> /
             </small>
             <h1 className={style.title}>{post.title}</h1>
             <small className={style.dateCategory}>{post.date} •
-              <span> <a href="/blogg/kategorier/bokomtale">Bokomtaler</a></span>
+              <span> <Link to="/blogg/kategorier/bokomtale">Bokomtaler</Link> • <Link to={`/bibliotek/`}>Bibliotek</Link></span>
             </small>
             <p className={style.ingress}>{post.description}</p>
             <img src={`${post.image.asset.url}?${urlBuilder(post.image)}`} />
