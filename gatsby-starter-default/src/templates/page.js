@@ -7,6 +7,7 @@ import * as style from "../templates/page.module.scss"
 import BlogList from "../components/blogList"
 import Notes from "../components/notesList"
 import BookList from "../components/bookList"
+import CategoryList from "../components/categoryList"
 
 export const pageQuery = graphql`
 query ($id: String!){
@@ -146,6 +147,8 @@ const Page = ({ data }) => {
         posts = <Notes props={data.notes.edges} />
     } else if (data.page.title === "Bibliotek") {
         posts = <BookList props={data.book.edges} />
+    } else if (data.page.title === "Kategorier") {
+        posts = <CategoryList props={data.categories.edges} />
     }
 
     return (
@@ -153,12 +156,12 @@ const Page = ({ data }) => {
             <div style={{ margin: '0 0 40px 0', position: "relative" }}>
                 <div className={style.headerwrap}>
                     <div className={style.intro}>
-                        <small>
+                        <small className={style.breadcrumb}>
                             <Link to={`/`}>hjem</Link>{data.page.title === "Kategorier" ? <span> / <Link to={`/blogg/`}>blogg</Link>:</span> : <span>:</span> }
                         </small>
-                        <h2 className={style.title}>{data.page.title}</h2>
+                        <h1 className={style.title}>{data.page.title}</h1>
                         <p className={style.ingress}>{data.page.introduction}</p>
-                        {categoryList}
+                        {data.page.title === "Blogg" ? categoryList : null}
                     </div>
 
                     <div className={style.topcolor}></div>

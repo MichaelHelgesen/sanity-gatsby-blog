@@ -85,10 +85,10 @@ const book = ({ data }) => {
       <div style={{ margin: '0 0 40px 0', position: "relative" }}>
         <div className={style.headerwrap}>
           <div className={style.intro}>
-          <small>
+          <small className={style.breadcrumb}>
               <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg</Link> <Link to={`/bibliotek/`}>(bibliotek)</Link>:
             </small>
-            <h2 className={style.title}>{post.title}</h2>
+            <h1 className={style.title}>{post.title}</h1>
             <small className={style.dateCategory}>{post.date} •
               <span> <a href="/blogg/kategorier/bokomtale">Bokomtaler</a></span>
             </small>

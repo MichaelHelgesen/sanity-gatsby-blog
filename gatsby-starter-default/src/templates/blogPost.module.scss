@@ -20,9 +20,14 @@
     padding-bottom: 1.45rem;
 }
 
-
 .content {
     @include base.contentLayout;
+}
+
+.breadcrumb {
+    margin-bottom: .3rem;
+    display: block;
+    opacity: .6;
 }
 
 .title {

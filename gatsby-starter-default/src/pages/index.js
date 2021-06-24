@@ -1,6 +1,8 @@
 import * as React from "react"
 import { graphql, Link } from "gatsby"
+import BlockContent from '@sanity/block-content-to-react'
 import Layout from "../components/layout"
+import serializers from "../components/serializers"
 import * as style from "../pages/index.module.scss"
 import BlogList from "../components/blogList"
 
@@ -37,8 +39,13 @@ export const pageQuery = graphql`
       _rawCategoryDescription
         }
       }
-      
-    } 
+    }
+    pages: sanityPage(title: {eq: "Hjem"}) {
+      id
+      title
+      _rawContent
+      introduction
+    }
     post: allSanityPost (sort: {
       fields: date,
       order: DESC
@@ -73,6 +80,7 @@ const IndexPage = ({ data }) => {
     return formatDate(b) - formatDate(a)
   });
   const categories = data.categories.edges;
+  const page = data.pages;
   const posts = <BlogList props={mergedContent} />
 
   // Filtrert kategori-liste
@@ -97,21 +105,19 @@ const IndexPage = ({ data }) => {
         <div className={style.headerwrap}>
           <div className={style.intro}>
             <div className={style.introField}>
-              <h1>Velkommen til Mikkes blogg!</h1>
-              <p>Dette er den personlige bloggen for Mikke. Du kan trykke her for å se alle blogginnlegg, eller velge kategori under.</p>
+              <h1>{page.introduction}</h1>
+              <p><BlockContent
+                blocks={page._rawContent}
+                serializers={serializers} />
+              </p>
               {categoryList}
             </div>
           </div>
           <div className={style.topcolor}></div>
-
         </div>
-      
-
-
-      <div>
-
-        {posts}
-      </div>
+        <div>
+          {posts}
+        </div>
       </div>
     </Layout>
   )

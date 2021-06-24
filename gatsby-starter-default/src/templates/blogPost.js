@@ -30,10 +30,10 @@ const blogPost = ({ data }) => {
       
       <div className={style.headerwrap}>
           <div className={style.intro}>
-            <small>
+            <small className={style.breadcrumb}>
               <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg:</Link>
             </small>
-        <h2 className={style.title}>{post.title}</h2>
+        <h1 className={style.title}>{post.title}</h1>
         <small className={style.dateCategory}>{post.date} •
             { // Create a span for each category defined on item
             post.category && post.category.length ?

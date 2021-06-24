@@ -8,6 +8,7 @@
    padding: 0 1.45rem;
    max-width: 1600px;
    margin: 2.90rem auto 0 auto;
+   
 
    a {
     width: 23%;
@@ -20,30 +21,17 @@
 
     a:hover {
         transform: scale(1.03);
+        box-shadow: 0px 2px 15px -4px grey;
     }
 
     h2 {
-        text-decoration: none!important;
+        color: white;
+        border-radius: 5px 5px 0 0;
     }
+}
 
-    small.author {
-        margin-top: .5rem;
-        display: inline-block;
-        border-bottom: 1px solid rgb(189, 189, 189);
-        font-style: italic;
-        font-family: "Merriweather";
-    }
-
-    small.date {
-        border-bottom: 0;
-        font-style: normal;
-        margin-bottom: 0;
-        padding-bottom: 0;
-        margin-top: 1.3rem;
-        color: gray;
-        font-family: "Open Sans";
-        display: block!important;
-    }
+.clear {
+    width: 23%;
 }
 
 .title {
@@ -58,56 +46,54 @@
     letter-spacing: -0.01em;
 }
 
-.dateCategory {
-    @include base.dateCategory;
-}
-
 .link {
     text-decoration: none;
     color: inherit;
-    padding: 0 0 1rem 0;
+    padding: 0;
     display: block;
 
-    img {
-        box-shadow: none;
-        border-radius: 5px 5px 0 0;
+    p {
+        padding: 1.45rem 1.45rem 0 1.45rem;
+        text-align: left;
+        font-size: 90%;
+        line-height: 1.6em;
     }
 }
 
 a.link:hover {
-    color: black;
+    color: base.$font-color;
 }
 
 a.link:hover .title {
-    color: black;
     text-decoration: underline;
 }
 
 @media only screen and (max-width: 1300px) {
-    .content {
-        max-width: 1000px;
-    }
-
     .content a {
+        width: 31.33%;
+    }
+    .clear {
         width: 31.33%;
     }
   }
 
   @media only screen and (max-width: 950px) {
-    .content {
-        max-width: 750px;
-    }
     .content a {
         width: 48%;
         margin-bottom: 4%;
+    }
+    .clear {
+        width: 48%;
     }
   }
 
   @media only screen and (max-width: 650px) {
     .content a {
         width: 100%;
-        margin-bottom: 30px;
-        max-width: 350px;
+        /* max-width: 400px; */
         margin: 0 auto 30px auto;
+    }
+    .clear {
+        width: 100%;
     }
   }

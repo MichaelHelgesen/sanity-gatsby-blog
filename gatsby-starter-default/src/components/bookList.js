@@ -6,7 +6,7 @@ import * as style from "../components/bookList.module.scss"
 function urlBuilder(image) {
     return (
       "w=500" +
-      "&h=600" +
+      "&h=520" +
       "&crop=center" +
       "&fit=crop" +
       "&q=75" +
@@ -24,9 +24,9 @@ const BookList = ({ props }) => (
             
                 <Link className={style.link} to={post.node.slug ? `/blogg/${post.node.slug.current}` : `/blogg/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}>
                     <img src={`${post.node.image.asset.url}?${urlBuilder(post.node.image)}`} />
-                    <small>{post.node.author}</small>
-                    <h2 className={style.title}>{post.node.title}</h2>
                     <small className={style.date}>{post.node.read}</small>
+                    <small className={style.author}>{post.node.author}</small>
+                    <h2 className={style.title}>{post.node.title}</h2>
                 </Link>
 
         ))}

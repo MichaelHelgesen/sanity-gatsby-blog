@@ -24,13 +24,13 @@ header > div {
 .wrapper span a {
     display: inline-block;
     text-decoration: none;
-    color: rgb(120, 99, 71);
-    border-bottom: 5px solid rgb(120, 99, 71);
+    color: rgb(166, 95, 3);
+    border-bottom: 5px solid rgb(166, 95, 3);
 }
 
 .wrapper span a:hover {
-    color: rgb(166, 95, 3);
-    border-bottom: 5px solid rgb(166, 95, 3);
+    color: base.$font-color;
+    border-bottom: 5px solid base.$font-color;
 }
 
 @media only screen and (max-width: 750px) {

@@ -123,7 +123,9 @@ exports.createPages = async function ({ actions, graphql }) {
 
     // Create single pages
     data.pages.edges.forEach(({ node }) => {
+        if (node.title != "Hjem") {
         createPages(node)
+        }
     })
 }
 
