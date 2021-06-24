@@ -28,6 +28,11 @@ header > div {
     border-bottom: 5px solid rgb(120, 99, 71);
 }
 
+.wrapper span a:hover {
+    color: rgb(166, 95, 3);
+    border-bottom: 5px solid rgb(166, 95, 3);
+}
+
 @media only screen and (max-width: 750px) {
     header > div {
         flex-direction: column;

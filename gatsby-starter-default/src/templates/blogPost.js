@@ -1,5 +1,5 @@
 import * as React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import BlockContent from '@sanity/block-content-to-react'
 import Layout from "../components/layout"
 import serializers from "../components/serializers"
@@ -30,12 +30,15 @@ const blogPost = ({ data }) => {
       
       <div className={style.headerwrap}>
           <div className={style.intro}>
+            <small>
+              <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg:</Link>
+            </small>
         <h2 className={style.title}>{post.title}</h2>
         <small className={style.dateCategory}>{post.date} •
             { // Create a span for each category defined on item
             post.category && post.category.length ?
               post.category.map((cat, index) => (
-                (index > 0 ? <span key={index}>, <a href={`/kategorier/${cat.categoryTitle.toLowerCase()}`}>{cat.categoryTitle}</a> </span> : <span key={index}> <a href={`/kategorier/${cat.categoryTitle.toLowerCase()}`}>{cat.categoryTitle}</a></span>)
+                (index > 0 ? <span key={index}>, <a href={`/blogg/kategorier/${cat.categoryTitle.toLowerCase()}`}>{cat.categoryTitle}</a> </span> : <span key={index}> <a href={`/blogg/kategorier/${cat.categoryTitle.toLowerCase()}`}>{cat.categoryTitle}</a></span>)
               )) :
               <span> Ukategorisert </span>
           }

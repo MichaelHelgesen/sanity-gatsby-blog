@@ -83,7 +83,7 @@ exports.createPages = async function ({ actions, graphql }) {
         if (node.internal.type === "SanityCategories") {
             titleAsSlug = createSlug(node.categoryTitle)
             category = node.categoryTitle;
-            pathUrl = "/kategorier/";
+            pathUrl = "/blogg/kategorier/";
             pageComponent = require.resolve(`./src/templates/category.js`);
         } else if (node.internal.type === "SanityPage") {
             titleAsSlug = createSlug(node.title);

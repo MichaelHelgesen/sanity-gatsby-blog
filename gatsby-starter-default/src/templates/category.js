@@ -74,6 +74,9 @@ const category = ({ data }) => {
       <div style={{ margin: '0 0 40px 0', position: "relative" }}>
         <div className={style.headerwrap}>
           <div className={style.intro}>
+          <small>
+              <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg</Link> / <Link to={`/blogg/kategorier`}>kategorier</Link>:
+            </small>
             <h2 className={style.title}>{categories.categoryTitle}</h2>
             <p className={style.ingress}>{
               <BlockContent

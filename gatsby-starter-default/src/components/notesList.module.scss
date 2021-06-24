@@ -4,14 +4,11 @@
 .noteWrap {
     background: rgba(189, 161, 125, 0.4);
     margin:0;
-
-    
-
+    font-size: 90%;
     P {
         margin:0!important;
-        padding-bottom: 1.45rem;
+        padding-bottom: 1rem;
         font-family: "Merriweather";
-        font-size: 90%;
         line-height: 1.4em;
         max-width: 500px;
     }
@@ -55,22 +52,27 @@
 
 .contentWrap {
     @include base.contentLayout;
-
+    padding-bottom: 1.45rem;
     div div {
         padding: 0;
         border: 0;
-        max-width: 300px;
-
+        
         p {
             font-family: "Open Sans";
+            padding-top: 10px;
         }
     }
+    
 }
 
+
+
 .title {
-    font-family: "Open Sans";
+    font-family: "Merriweather";
     font-weight: 700;
     margin: 0 0 .75em;
     font-size: 1.4rem;
     line-height: 1.7rem; 
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(189, 189, 189);
 }

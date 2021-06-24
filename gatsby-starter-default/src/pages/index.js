@@ -77,7 +77,7 @@ const IndexPage = ({ data }) => {
 
   // Filtrert kategori-liste
   const categoryList = categories.map(cat => (
-    <Link className={style.categories} style={{ backgroundColor: `#${cat.node.color}` }} to={`/kategorier/${cat.node.categoryTitle.toLowerCase()}`}>{cat.node.categoryTitle}</Link>
+    <Link className={style.categories} style={{ backgroundColor: `#${cat.node.color}` }} to={`/blogg/kategorier/${cat.node.categoryTitle.toLowerCase()}`}>{cat.node.categoryTitle}</Link>
   )
   ).sort(function (a, b) {
     const navnA = a.props.children.toUpperCase(); // Ignorere store og små bokstaver

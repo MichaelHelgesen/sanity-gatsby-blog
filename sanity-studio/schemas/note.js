@@ -52,5 +52,32 @@ export default {
             title: "Bilde",
             type: "bodyImage",
         },
-    ]
+    ],
+    orderings: [
+        {
+            title: 'Dato, nyeste',
+            name: 'publishDateDesc',
+            by: [
+                { field: 'date', direction: 'desc' }
+            ]
+        },
+        {
+            title: 'Dato, eldste',
+            name: 'publishDateAsc',
+            by: [
+                { field: 'date', direction: 'asc' }
+            ]
+        },
+    ],
+    preview: {
+        select: {
+            date: 'date',
+        },
+        prepare(selection) {
+            const { date } = selection
+            return {
+                title: `${date}`
+            }
+        }
+    }
 }

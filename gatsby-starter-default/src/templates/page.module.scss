@@ -1,0 +1,71 @@
+@use "../components/base.module.scss";
+
+.headerwrap {
+    position: relative;
+}
+
+.topcolor {
+    background: #e7e5e5;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+}
+
+.intro {
+    z-index: 1;
+    position: relative;
+    @include base.contentLayout;
+    padding-bottom: 1.45rem;
+}
+
+
+.content {
+    @include base.contentLayout;
+}
+
+.title {
+    /* font-family: "Open Sans", Arial, Helvetica, sans-serif; */
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 3.4rem;
+}
+
+.ingress {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+
+
+  .dateCategory {
+    @include base.dateCategory;
+}
+
+.categories {
+    border-radius: 15px;
+    padding: 0 15px;
+    margin: 0 5px 5px 0;
+    transition: all .2s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 75%;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0px 2px 9px -4px grey;
+}
+
+.categories:hover {
+    background-color: #727171!important;
+    color: white;
+    text-decoration: underline;
+}
+
+
+@media only screen and (max-width: 580px) {
+    .title {
+        font-size: 2rem;
+        line-height: 2.4rem;
+    }
+  }

@@ -1,5 +1,5 @@
 import * as React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 import BlockContent from '@sanity/block-content-to-react'
 import Layout from "../components/layout"
 import serializers from "../components/serializers"
@@ -85,9 +85,12 @@ const book = ({ data }) => {
       <div style={{ margin: '0 0 40px 0', position: "relative" }}>
         <div className={style.headerwrap}>
           <div className={style.intro}>
+          <small>
+              <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg</Link> <Link to={`/bibliotek/`}>(bibliotek)</Link>:
+            </small>
             <h2 className={style.title}>{post.title}</h2>
             <small className={style.dateCategory}>{post.date} •
-              <span> <a href="/kategorier/bokomtale">Bokomtaler</a></span>
+              <span> <a href="/blogg/kategorier/bokomtale">Bokomtaler</a></span>
             </small>
             <p className={style.ingress}>{post.description}</p>
             <img src={`${post.image.asset.url}?${urlBuilder(post.image)}`} />
