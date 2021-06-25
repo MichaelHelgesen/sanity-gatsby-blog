@@ -29,7 +29,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    categories: allSanityCategories {
+    categories: allSanityCategories(sort: {fields: categoryTitle, order: ASC}) {
       edges {
         node {
           

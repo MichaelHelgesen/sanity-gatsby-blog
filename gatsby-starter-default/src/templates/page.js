@@ -68,7 +68,7 @@ query ($id: String!){
           }
         }
       }
-      categories: allSanityCategories {
+      categories: allSanityCategories(sort: {fields: categoryTitle, order: ASC}) {
         edges {
           node {
             categoryTitle

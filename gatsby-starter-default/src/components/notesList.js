@@ -4,7 +4,7 @@ import serializers from "../components/serializers"
 import * as style from "../components/notesList.module.scss"
 
 const Notes = ({ props }) => {
-    
+
     const dateToNorwegian = (date) => {
         const day = date.slice(0, date.indexOf("."));
         const year = date.slice(-4);
@@ -14,53 +14,63 @@ const Notes = ({ props }) => {
         switch (englishMonth) {
             case "January":
                 norwegianMonth = "januar";
-            break;
+                break;
             case "February":
                 norwegianMonth = "februar";
-            break;
+                break;
             case "March":
                 norwegianMonth = "mars";
-            break;
+                break;
             case "April":
                 norwegianMonth = "april";
-            break;
+                break;
             case "May":
                 norwegianMonth = "mai";
-            break;
+                break;
             case "June":
                 norwegianMonth = "juni";
-            break;
+                break;
             case "July":
                 norwegianMonth = "juli";
-            break;
+                break;
             case "August":
                 norwegianMonth = "august";
-            break;
+                break;
             case "September":
                 norwegianMonth = "september";
-            break;
+                break;
             case "October":
                 norwegianMonth = "oktober";
-            break;
+                break;
             case "November":
                 norwegianMonth = "november";
-            break;
+                break;
             case "December":
                 norwegianMonth = "desember";
-            break;
+                break;
         }
-        
         return (
-            `${day}. ${norwegianMonth} ${year}`
+            {
+                day: day,
+                month: norwegianMonth,
+                year: year
+            }
+            /* `${day}. ${norwegianMonth} ${year}` */
         )
     }
-    
+
     return (
         <div className={style.content}>
             {props.map(post => (
                 <div key={post.node.title} className={style.noteWrap}>
                     <div className={style.contentWrap}>
-                        <h2 className={style.title}>{dateToNorwegian(post.node.date)}</h2>
+                        
+                            <h2 className={style.title}>
+                                <span className={style.day}>{dateToNorwegian(post.node.date).day}</span>
+                                <span className={style.month}>{dateToNorwegian(post.node.date).month}</span>
+                                <span className={style.year}>{dateToNorwegian(post.node.date).year}</span>
+                            </h2>
+                        
                         <p className={style.mainText}><BlockContent blocks={post.node._rawText} serializers={serializers} /></p>
                     </div>
                 </div>

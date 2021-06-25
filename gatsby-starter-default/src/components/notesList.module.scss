@@ -4,13 +4,14 @@
 .noteWrap {
     background: rgba(189, 161, 125, 0.4);
     margin:0;
-    font-size: 90%;
-    P {
-        margin:0!important;
+    font-size: 85%;
+    .mainText {
+        margin:0 auto!important;
         padding-bottom: 1rem;
         font-family: "Merriweather";
-        line-height: 1.4em;
-        max-width: 500px;
+        line-height: 1.6em;
+        width: calc(100% - (120px + 2rem));
+        /* max-width: 500px; */
     }
 }
 
@@ -53,6 +54,8 @@
 .contentWrap {
     @include base.contentLayout;
     padding-bottom: 1.45rem;
+    display: flex;
+    justify-content: space-between;
     div div {
         padding: 0;
         border: 0;
@@ -60,6 +63,28 @@
         p {
             font-family: "Open Sans";
             padding-top: 10px;
+            margin-top: 0;
+        }
+    }
+
+    h2 {
+        span {
+            display: block;
+            text-align: center;
+        }
+        .day {
+            /* font-style: italic; */
+            font-weight: 600;
+            font-size: 1.4rem;
+            margin-bottom: .2rem;
+        }
+        .month, .year {
+            font-weight: 400;
+            font-size: .8rem;
+            line-height: 1rem;
+        }
+        .year {
+            opacity: .6;
         }
     }
     
@@ -70,9 +95,50 @@
 .title {
     font-family: "Merriweather";
     font-weight: 700;
-    margin: 0 0 .75em;
-    font-size: 1.4rem;
-    line-height: 1.7rem; 
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgb(189, 189, 189);
+    margin: 0 2rem 0 0;
+    width: 120px;
+    border-right:1px solid rgb(197, 194, 194);
+}
+
+@media only screen and (max-width: 650px) {
+    .contentWrap {
+        display: block;
+    justify-content: unset;
+        h2 {
+            width: 100%;
+            padding-bottom: 10px;
+            margin-bottom: 1.45rem;
+
+            span {
+                display: inline;
+                width: 100%;
+                   
+            }
+            .day, .month, .year {
+                font-size: 1.4rem;
+                color: base.$font-color;
+                opacity: 1;
+                font-weight: 700;
+            }
+            .day::after {
+                content:". "
+            }
+            .month::after {
+                content: " "
+            }
+        }
+    }
+
+    .noteWrap {
+        .mainText {
+            width: 100%;
+
+        }
+    }
+
+    .title {
+        border-bottom: 1px solid rgb(197, 194, 194);
+        border-right: 0;
+        margin: 0;
+    }
 }
