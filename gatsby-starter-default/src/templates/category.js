@@ -13,7 +13,7 @@ query ($id: String!, $category: String!) {
         categoryTitle
         _rawCategoryDescription
   }
-  posts: allSanityPost(filter: {category: {elemMatch: {categoryTitle: {eq: $category}}}}) {
+  posts: allSanityPost(filter: {category: {elemMatch: {categoryTitle: {eq: $category}}}}, sort: {fields: date, order: DESC}) {
       edges {
         node {
           _rawContent
@@ -77,7 +77,7 @@ const category = ({ data }) => {
           <small className={style.breadcrumb}>
               <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg</Link> / <Link to={`/blogg/kategorier`}>kategorier</Link> /
             </small>
-            <h2 className={style.title}>{categories.categoryTitle}</h2>
+            <h1 style={{display: "flex"}} className={style.title}>{categories.categoryTitle}&nbsp;<span style={{opacity: .5, fontWeight: 400, fontSize: ".5em", lineHeight: 1.65}}>({blogPosts.length})</span></h1>
             <p className={style.ingress}>{
               <BlockContent
                 blocks={categories._rawCategoryDescription}

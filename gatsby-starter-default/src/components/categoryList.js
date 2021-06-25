@@ -30,7 +30,7 @@ const CategoryList = ({ categories, posts }) => {
       {categories.map(post => (
         <Link className={style.link} to={`/blogg/kategorier/${post.node.categoryTitle.toLowerCase()}`}>
           <h2 style={{ background: `#${post.node.color}` }} className={style.title}>
-            {post.node.categoryTitle} ({findNumberOfCategoriesInArray(posts, post.node.categoryTitle)})
+            {post.node.categoryTitle}&nbsp;<span style={{opacity: .5}}>({findNumberOfCategoriesInArray(posts, post.node.categoryTitle)})</span>
           </h2>
           <div>
             <BlockContent blocks={post.node._rawCategoryDescription} serializers={serializers} />

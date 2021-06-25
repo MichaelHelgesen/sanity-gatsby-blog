@@ -101,7 +101,7 @@ const IndexPage = ({ data }) => {
       className={style.categories}
       style={{ backgroundColor: `#${cat.node.color}` }}
       to={`/blogg/kategorier/${cat.node.categoryTitle.toLowerCase()}`}>
-        {cat.node.categoryTitle} ({findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle)})
+        {cat.node.categoryTitle}&nbsp;<span style={{opacity: .6, fontWeight: 400}}>({findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle)})</span>
     </Link>
   )
   ).sort(function (a, b) {
@@ -127,7 +127,7 @@ const IndexPage = ({ data }) => {
                 blocks={page._rawContent}
                 serializers={serializers} />
               </p>
-              {categoryList}
+              {categoryList} {/* <Link to={"/blogg/kategorier"}>Se alle kategoriene</Link> */}
             </div>
           </div>
           <div className={style.topcolor}></div>

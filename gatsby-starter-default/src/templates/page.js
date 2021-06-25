@@ -136,7 +136,12 @@ const Page = ({ data }) => {
 
     // Filtrert kategori-liste
     const categoryList = categories.map(cat => (
-        <Link className={style.categories} style={{ backgroundColor: `#${cat.node.color}` }} to={`/blogg/kategorier/${cat.node.categoryTitle.toLowerCase()}`}>{cat.node.categoryTitle} ({findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle)})</Link>
+        <Link
+            className={style.categories}
+            style={{ backgroundColor: `#${cat.node.color}` }}
+            to={`/blogg/kategorier/${cat.node.categoryTitle.toLowerCase()}`}>
+            {cat.node.categoryTitle}&nbsp;<span style={{opacity: .6}}>({findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle)})</span>
+        </Link>
     )
     ).sort(function (a, b) {
         console.log(a, b)
