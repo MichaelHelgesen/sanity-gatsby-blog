@@ -114,6 +114,17 @@ query ($id: String!){
       }
     }
 `
+
+const findNumberOfCategoriesInArray = (array, category) => (
+    array.map(function (item) {
+        return item.node.category.filter(function (cat) {
+            return cat.categoryTitle === category
+        })
+    }).filter(function (el) {
+        return el.length > 0
+    }).length
+)
+
 const Page = ({ data }) => {
 
     const mergedContent = [...data.post.edges, ...data.book.edges].sort(function (a, b) {
@@ -125,20 +136,21 @@ const Page = ({ data }) => {
 
     // Filtrert kategori-liste
     const categoryList = categories.map(cat => (
-      <Link className={style.categories} style={{ backgroundColor: `#${cat.node.color}` }} to={`/blogg/kategorier/${cat.node.categoryTitle.toLowerCase()}`}>{cat.node.categoryTitle}</Link>
+        <Link className={style.categories} style={{ backgroundColor: `#${cat.node.color}` }} to={`/blogg/kategorier/${cat.node.categoryTitle.toLowerCase()}`}>{cat.node.categoryTitle} ({findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle)})</Link>
     )
     ).sort(function (a, b) {
-      const catA = a.props.children.toUpperCase(); // Ignorere store og små bokstaver
-      const catB = b.props.children.toUpperCase();
-      if (catA < catB) {
-        return -1;
-      }
-      if (catA > catB) {
-        return 1;
-      }
-      return 0;
+        console.log(a, b)
+        const catA = a.props.children[0].toUpperCase(); // Ignorere store og små bokstaver
+        const catB = b.props.children[0].toUpperCase();
+        if (catA < catB) {
+            return -1;
+        }
+        if (catA > catB) {
+            return 1;
+        }
+        return 0;
     });
-    
+
     let posts
 
     if (data.page.title === "Blogg") {
@@ -148,7 +160,7 @@ const Page = ({ data }) => {
     } else if (data.page.title === "Bibliotek") {
         posts = <BookList props={data.book.edges} />
     } else if (data.page.title === "Kategorier") {
-        posts = <CategoryList props={data.categories.edges} />
+        posts = <CategoryList categories={data.categories.edges} posts={mergedContent} />
     }
 
     return (
@@ -157,7 +169,7 @@ const Page = ({ data }) => {
                 <div className={style.headerwrap}>
                     <div className={style.intro}>
                         <small className={style.breadcrumb}>
-                            <Link to={`/`}>hjem</Link>{data.page.title === "Kategorier" ? <span> / <Link to={`/blogg/`}>blogg</Link> /</span> : <span> /</span> }
+                            <Link to={`/`}>hjem</Link>{data.page.title === "Kategorier" ? <span> / <Link to={`/blogg/`}>blogg</Link> /</span> : <span> /</span>}
                         </small>
                         <h1 className={style.title}>{data.page.title}</h1>
                         <p className={style.ingress}>{data.page.introduction}</p>
