@@ -101,7 +101,7 @@ const IndexPage = ({ data }) => {
       className={style.categories}
       style={{ backgroundColor: `#${cat.node.color}` }}
       to={`/blogg/kategorier/${cat.node.categoryTitle.toLowerCase()}`}>
-        {cat.node.categoryTitle}&nbsp;<span style={{opacity: .6, fontWeight: 400}}>({findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle)})</span>
+        {cat.node.categoryTitle}&nbsp;<span style={{fontWeight: 400}}>({findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle)})</span>
     </Link>
   )
   ).sort(function (a, b) {

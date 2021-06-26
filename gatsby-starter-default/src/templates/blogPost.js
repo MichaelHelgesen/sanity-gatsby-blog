@@ -38,7 +38,7 @@ const blogPost = ({ data }) => {
             { // Create a span for each category defined on item
             post.category && post.category.length ?
               post.category.map((cat, index) => (
-                (index > 0 ? <span key={index}>, <a href={`/blogg/kategorier/${cat.categoryTitle.toLowerCase()}`}>{cat.categoryTitle}</a> </span> : <span key={index}> <a href={`/blogg/kategorier/${cat.categoryTitle.toLowerCase()}`}>{cat.categoryTitle}</a></span>)
+                (index > 0 ? <span key={index}>, <Link to={`/blogg/kategorier/${cat.categoryTitle.toLowerCase()}`}>{cat.categoryTitle}</Link></span> : <span key={index}> <Link to={`/blogg/kategorier/${cat.categoryTitle.toLowerCase()}`}>{cat.categoryTitle}</Link></span>)
               )) :
               <span> Ukategorisert </span>
           }

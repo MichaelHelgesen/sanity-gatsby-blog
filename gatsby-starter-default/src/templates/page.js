@@ -140,7 +140,7 @@ const Page = ({ data }) => {
             className={style.categories}
             style={{ backgroundColor: `#${cat.node.color}` }}
             to={`/blogg/kategorier/${cat.node.categoryTitle.toLowerCase()}`}>
-            {cat.node.categoryTitle}&nbsp;<span style={{opacity: .6}}>({findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle)})</span>
+            {cat.node.categoryTitle}&nbsp;<span>({findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle)})</span>
         </Link>
     )
     ).sort(function (a, b) {
@@ -178,7 +178,7 @@ const Page = ({ data }) => {
                         </small>
                         <h1 className={style.title}>{data.page.title}</h1>
                         <p className={style.ingress}>{data.page.introduction}</p>
-                        {data.page.title === "Blogg" ? categoryList : null}
+                        {data.page.title === "Blogg" ? <div className={style.categoryWrapper}>{categoryList}</div> : null}
                     </div>
 
                     <div className={style.topcolor}></div>
