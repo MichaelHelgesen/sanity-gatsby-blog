@@ -1,3 +1,4 @@
+
 export default {
     title: 'Blogginnlegg',
     name: 'post',
@@ -9,6 +10,13 @@ export default {
             type: 'string',
             validation: Rule => Rule.required()
         },
+/*         {
+            name: "youtube",
+            title: "YouTube Embed",
+            type: "string",
+            inputComponent: YoutubeEmbed
+        }, */
+        
         {
             title: "Slug",
             name: "slug",
@@ -22,6 +30,7 @@ export default {
                     .slice(0, 200)
             }
         },
+
         {
             description: "En kort beskrivelse til blogglisten.",
             name: 'description',
@@ -93,6 +102,11 @@ export default {
                 {
                     title: 'Kodeeksempel',
                     type: "exampleUsage"
+                },
+                {
+                    name: "youTubelink",
+                    title: "Youtube-link",
+                    type: "youtubeLink" 
                 },
                 {
                     title: "Tipsfelt",

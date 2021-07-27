@@ -14,6 +14,7 @@ import post from './post'
 import quote from "./quote"
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 import tipField from "./tipField"
+import youtubeLink from './youtubeLink'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -29,6 +30,7 @@ export default createSchema({
     internalLink,
     quote,
     tipField,
+    youtubeLink,
     //
     book,
     categories,

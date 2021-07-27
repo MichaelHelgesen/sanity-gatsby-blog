@@ -123,7 +123,12 @@ export default {
                 {
                     title: "Tipsfelt",
                     type: "tipField"
-                }
+                },
+                {
+                    name: "youTubelink",
+                    title: "Youtube-link",
+                    type: "youtubeLink" 
+                },
             ]
         },
         {
@@ -157,7 +162,12 @@ export default {
                 {
                     title: "Tipsfelt",
                     type: "tipField"
-                }
+                },
+                {
+                    name: "youTubelink",
+                    title: "Youtube-link",
+                    type: "youtubeLink" 
+                },
             ]
         },
         {
@@ -191,7 +201,12 @@ export default {
                 {
                     title: "Tipsfelt",
                     type: "tipField"
-                }
+                },
+                {
+                    name: "youTubelink",
+                    title: "Youtube-link",
+                    type: "youtubeLink" 
+                },
             ]
         },
         {
@@ -225,7 +240,12 @@ export default {
                 {
                     title: "Tipsfelt",
                     type: "tipField"
-                }
+                },
+                {
+                    name: "youTubelink",
+                    title: "Youtube-link",
+                    type: "youtubeLink" 
+                },
             ]
         },
         {

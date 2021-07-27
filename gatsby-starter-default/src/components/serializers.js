@@ -86,6 +86,13 @@ const serializers = {
           }
         </div>
       )
+    },
+    youTubelink: props => {
+      return (
+        <div>
+          <iframe width="100%" height="315" src={`${props.node.embedLink}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      )
     }
   },
   marks: {
