@@ -27,16 +27,21 @@ const CategoryList = ({ categories, posts }) => {
 
   return (
     <div className={style.content}>
-      {categories.map(post => (
-        <Link className={style.link} to={`/blogg/kategorier/${post.node.categoryTitle.toLowerCase()}`}>
-          <h2 style={{ background: `#${post.node.color}` }} className={style.title}>
-            {post.node.categoryTitle}&nbsp;<span style={{opacity: .5}}>({findNumberOfCategoriesInArray(posts, post.node.categoryTitle)})</span>
-          </h2>
-          <div>
-            <BlockContent blocks={post.node._rawCategoryDescription} serializers={serializers} />
-          </div>
-        </Link>
-      ))}
+      {categories.map(post => {
+        if (findNumberOfCategoriesInArray(posts, post.node.categoryTitle) != 0) {
+          return (
+            <Link className={style.link} to={`/blogg/kategorier/${post.node.categoryTitle.toLowerCase()}`}>
+              <h2 style={{ background: `#${post.node.color}` }} className={style.title}>
+                {post.node.categoryTitle}&nbsp;<span style={{ opacity: .5 }}>({findNumberOfCategoriesInArray(posts, post.node.categoryTitle)})</span>
+              </h2>
+              <div>
+                <BlockContent blocks={post.node._rawCategoryDescription} serializers={serializers} />
+              </div>
+            </Link>
+          )
+        }
+
+      })}
       <div className={style.clear}></div>
       <div className={style.clear}></div>
       <div className={style.clear}></div>

@@ -30,6 +30,7 @@
     "gatsby-source-sanity": "^7.0.4",
     "gatsby-transformer-remark": "^4.0.0",
     "gatsby-transformer-sharp": "^3.2.0",
+    "get-youtube-id": "^1.0.1",
     "prismjs": "^1.23.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",

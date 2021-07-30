@@ -125,8 +125,6 @@ export default {
                     type: "tipField"
                 },
                 {
-                    name: "youTubelink",
-                    title: "Youtube-link",
                     type: "youtubeLink" 
                 },
             ]
@@ -164,8 +162,6 @@ export default {
                     type: "tipField"
                 },
                 {
-                    name: "youTubelink",
-                    title: "Youtube-link",
                     type: "youtubeLink" 
                 },
             ]
@@ -203,8 +199,6 @@ export default {
                     type: "tipField"
                 },
                 {
-                    name: "youTubelink",
-                    title: "Youtube-link",
                     type: "youtubeLink" 
                 },
             ]
@@ -242,8 +236,6 @@ export default {
                     type: "tipField"
                 },
                 {
-                    name: "youTubelink",
-                    title: "Youtube-link",
                     type: "youtubeLink" 
                 },
             ]
@@ -324,11 +316,10 @@ export default {
             title: 'title',
         },
         prepare(selection) {
-            console.log("SELECTION", selection)
             const { author, date, image, title } = selection
             return {
-                title: `${title} - ${author}`,
-                subtitle: `${date.split('-')[2].slice(0, 2)}.${date.split('-')[1]}.${date.split('-')[0]}`,
+                title: `${title}`,
+                subtitle: `${date.split('-')[2].slice(0, 2)}.${date.split('-')[1]}.${date.split('-')[0]} - ${author}`,
                 media: image
             }
         }

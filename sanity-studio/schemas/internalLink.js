@@ -14,6 +14,9 @@ export default {
                 {  
                     type: "post",
                 },
+                {
+                    type: "book",
+                }
             ]
         }
     ]

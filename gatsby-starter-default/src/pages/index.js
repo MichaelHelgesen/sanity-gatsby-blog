@@ -93,17 +93,20 @@ const IndexPage = ({ data }) => {
   });
   const categories = data.categories.edges;
   const page = data.pages;
-  const posts = <BlogList props={mergedContent} />
-
+  const posts = <BlogList props={mergedContent.slice(0, 10)} />
   // Filtrert kategori-liste
-  const categoryList = categories.map(cat => (
-    <Link
-      className={style.categories}
-      style={{ backgroundColor: `#${cat.node.color}` }}
-      to={`/blogg/kategorier/${cat.node.categoryTitle.toLowerCase()}`}>
-        {cat.node.categoryTitle}&nbsp;<span style={{fontWeight: 400}}>({findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle)})</span>
-    </Link>
-  )
+  const categoryList = categories.map(cat => {
+    if (findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle) != 0) {
+      return (
+        <Link
+          className={style.categories}
+          style={{ backgroundColor: `#${cat.node.color}` }}
+          to={`/blogg/kategorier/${cat.node.categoryTitle.toLowerCase()}`}>
+          {cat.node.categoryTitle}&nbsp;<span style={{ fontWeight: 400 }}>({findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle)})</span>
+        </Link>
+      )
+    }
+  }
   ).sort(function (a, b) {
     const navnA = a.props.children[0].toUpperCase(); // Ignorere store og små bokstaver
     const navnB = b.props.children[0].toUpperCase();
@@ -132,8 +135,18 @@ const IndexPage = ({ data }) => {
           </div>
           <div className={style.topcolor}></div>
         </div>
+        <div className={style.content}>
+          <span style={{ textTransform: "uppercase", opacity: ".5", fontWeight: "700", fontSize: ".8em" }}>Siste ti blogginnlegg</span>
+        </div>
         <div>
           {posts}
+        </div>
+        <div className={style.content} style={{ paddingTop: "1.45rem" }}>
+          <Link
+            to="/blogg" className={style.categories}
+            style={{ backgroundColor: "rgb(166, 95, 3)", fontSize: "1rem", padding:"5px 30px" }}>
+            Se alle
+          </Link>
         </div>
       </div>
     </Layout>

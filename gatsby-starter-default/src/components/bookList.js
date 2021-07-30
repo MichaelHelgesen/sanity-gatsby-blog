@@ -38,6 +38,7 @@ const BookList = ({ props }) => (
             </Link>
 
         ))}
+        <div className={style.clear}></div>
     </div>
 )
 

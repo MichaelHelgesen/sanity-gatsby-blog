@@ -135,14 +135,18 @@ const Page = ({ data }) => {
     const categories = data.categories.edges;
 
     // Filtrert kategori-liste
-    const categoryList = categories.map(cat => (
-        <Link
-            className={style.categories}
-            style={{ backgroundColor: `#${cat.node.color}` }}
-            to={`/blogg/kategorier/${cat.node.categoryTitle.toLowerCase()}`}>
-            {cat.node.categoryTitle}&nbsp;<span>({findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle)})</span>
-        </Link>
-    )
+    const categoryList = categories.map(cat => {
+        if (findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle) != 0) {
+            return (
+                <Link
+                    className={style.categories}
+                    style={{ backgroundColor: `#${cat.node.color}` }}
+                    to={`/blogg/kategorier/${cat.node.categoryTitle.toLowerCase()}`}>
+                    {cat.node.categoryTitle}&nbsp;<span style={{ fontWeight: 400 }}>({findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle)})</span>
+                </Link>
+            )
+        }
+    }
     ).sort(function (a, b) {
         console.log(a, b)
         const catA = a.props.children[0].toUpperCase(); // Ignorere store og små bokstaver

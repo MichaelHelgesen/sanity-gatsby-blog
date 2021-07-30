@@ -10,13 +10,6 @@ export default {
             type: 'string',
             validation: Rule => Rule.required()
         },
-/*         {
-            name: "youtube",
-            title: "YouTube Embed",
-            type: "string",
-            inputComponent: YoutubeEmbed
-        }, */
-        
         {
             title: "Slug",
             name: "slug",
@@ -104,8 +97,6 @@ export default {
                     type: "exampleUsage"
                 },
                 {
-                    name: "youTubelink",
-                    title: "Youtube-link",
                     type: "youtubeLink" 
                 },
                 {

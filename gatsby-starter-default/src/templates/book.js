@@ -85,7 +85,7 @@ const book = ({ data }) => {
       <div style={{ margin: '0 0 40px 0', position: "relative" }}>
         <div className={style.headerwrap}>
           <div className={style.intro}>
-          <small className={style.breadcrumb}>
+            <small className={style.breadcrumb}>
               <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg</Link> /
             </small>
             <h1 className={style.title}>{post.title}</h1>
@@ -111,24 +111,24 @@ const book = ({ data }) => {
             </div>
             : null}
 
-          {post._rawImpression ?
-            <div>
-              <h3>Mitt inntrykk</h3>
-              {post._rawSummary ?
-                <BlockContent
-                  blocks={post._rawImpression}
-                  serializers={serializers}
-                /> : null
-              }
-            </div>
-            : null}
-
           {post._rawReasonToRead ?
             <div >
               <h3>Hvorfor lese den?</h3>
               {post._rawReasonToRead ?
                 <BlockContent
                   blocks={post._rawReasonToRead}
+                  serializers={serializers}
+                /> : null
+              }
+            </div>
+            : null}
+
+          {post._rawImpression ?
+            <div>
+              <h3>Mitt inntrykk</h3>
+              {post._rawSummary ?
+                <BlockContent
+                  blocks={post._rawImpression}
                   serializers={serializers}
                 /> : null
               }

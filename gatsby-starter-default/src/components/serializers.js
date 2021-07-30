@@ -4,6 +4,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { nightOwl, atelierForestLight } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import { CgExternal } from "react-icons/cg"
 import BlockContent from '@sanity/block-content-to-react'
+import getYouTubeId from "get-youtube-id"
 import * as style from '../components/serializers.module.scss'
 
 function urlBuilder(image) {
@@ -42,13 +43,14 @@ const serializers = {
       </SyntaxHighlighter>
     ),
     bodyImage: props => {
-      { console.log("PROPS", props) 
-      console.log("url", urlBuilder(props.node))
-    }
+      {
+        console.log("PROPS", props)
+        console.log("url", urlBuilder(props.node))
+      }
       return (
         <div className={style.bodyimage}>
           <img src={`${props.node.asset.url}?${urlBuilder(props.node)}`} />
-          {/* <GatsbyImage image={getGatsbyImageData(props.node.asset.id, {fit: "FILLMAX", width:"1000", placeholder: "blurred"}, client)} alt={props.node.alt} /> */} 
+          {/* <GatsbyImage image={getGatsbyImageData(props.node.asset.id, {fit: "FILLMAX", width:"1000", placeholder: "blurred"}, client)} alt={props.node.alt} /> */}
           {/* <img
             src={urlFor(props.node)
               .auto('format')
@@ -66,7 +68,7 @@ const serializers = {
       objectFit: "cover",
     }}
   />*/}
-         <p className={style.imageDescription}>{props.node.description}</p>
+          <p className={style.imageDescription}>{props.node.description}</p>
         </div>
       )
     },
@@ -87,10 +89,21 @@ const serializers = {
         </div>
       )
     },
-    youTubelink: props => {
+    youtubeLink: props => {
+      const id = getYouTubeId(props.node.youTubeEmbed)
+      const url = `https://youtube.com/embed/${id}`
       return (
         <div>
-          <iframe width="100%" height="315" src={`${props.node.embedLink}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe
+            width="100%"
+            height="400"
+            src={`${url}`}
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          >
+          </iframe>
         </div>
       )
     }

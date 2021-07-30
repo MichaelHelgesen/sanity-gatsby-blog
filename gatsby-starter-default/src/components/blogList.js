@@ -2,7 +2,7 @@ import * as React from "react"
 import { Link } from "gatsby"
 import * as style from "../components/blogList.module.scss"
 
-const BlogList = ({ props }) => (
+const BlogList = ({ props, limit }) => (
     <div className={style.content}>
         {props.map(post => (
             <div key={post.node.title}>

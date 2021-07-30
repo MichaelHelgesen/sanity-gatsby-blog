@@ -33,7 +33,7 @@ query ($id: String!, $category: String!) {
         }
       }
     }
-    books: allSanityBook {
+    books: allSanityBook(sort: {fields: date, order: DESC}) {
       edges {
         node {
           category {
