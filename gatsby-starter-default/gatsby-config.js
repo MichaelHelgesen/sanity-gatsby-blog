@@ -1,6 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `Mikkes blogg`,
+    titleTemplate: " · Mikkes blogg",
+    url: "https://www.mikkesblogg.no", // No trailing slash allowed!
     description: `Omprogrammerer selvet ved å lese, skrive og lære`,
     author: `Mikke`,
   },

@@ -8,13 +8,19 @@ const Menu = () => (
             <Link to="/" activeClassName={style.activeLink}>Hjem</Link>
         </li>
         <li>
-        <Link to="/blogg" activeClassName={style.activeLink} partiallyActive={true}>Blogg</Link>
+            <Link to="/blogg" activeClassName={style.activeLink} partiallyActive={true}>Blogg</Link>
         </li>
         <li>
-        <Link to="/notater" activeClassName={style.activeLink} partiallyActive={true}>Notater</Link>
+            <Link to="/notater" activeClassName={style.activeLink} partiallyActive={true}>Notater</Link>
         </li>
         <li>
-        <Link to="/bibliotek" activeClassName={style.activeLink} partiallyActive={true}>Bibliotek</Link>
+            <Link to="/bibliotek" activeClassName={style.activeLink} partiallyActive={true}>Bibliotek</Link>
+        </li>
+        <li>
+            <Link to="/galleri" activeClassName={style.activeLink} partiallyActive={true}>Galleri</Link>
+        </li>
+        <li>
+            <Link to="/dataordliste" activeClassName={style.activeLink} partiallyActive={true}>Dataordliste</Link>
         </li>
         <li>
             <Link to="/om-mikke" activeClassName={style.activeLink} partiallyActive={true}>Om Mikke</Link>

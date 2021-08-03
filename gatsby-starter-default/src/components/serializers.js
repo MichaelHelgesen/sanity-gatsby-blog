@@ -106,6 +106,15 @@ const serializers = {
           </iframe>
         </div>
       )
+    },
+    codePen: props => {
+      return (
+        <div
+          className="codepen_embed"
+          dangerouslySetInnerHTML={{ __html: props.node.codePenEmbed }}
+        >
+        </div>
+      )
     }
   },
   marks: {

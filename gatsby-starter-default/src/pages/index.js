@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import serializers from "../components/serializers"
 import * as style from "../pages/index.module.scss"
 import BlogList from "../components/blogList"
+import { Helmet } from "react-helmet"
 
 export const pageQuery = graphql`
   query {
@@ -69,6 +70,15 @@ export const pageQuery = graphql`
         }
       }
     }
+    site {
+      siteMetadata {
+        author
+        description
+        title
+        titleTemplate
+        url
+      }
+    }
 
   }
 `
@@ -121,6 +131,11 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{data.site.siteMetadata.title}</title>
+        <link rel="canonical" href={data.site.siteMetadata.url} />
+      </Helmet>
       <div style={{ margin: '0 0 40px 0', position: "relative" }}>
         <div className={style.headerwrap}>
           <div className={style.intro}>
@@ -144,7 +159,7 @@ const IndexPage = ({ data }) => {
         <div className={style.content} style={{ paddingTop: "1.45rem" }}>
           <Link
             to="/blogg" className={style.categories}
-            style={{ backgroundColor: "rgb(166, 95, 3)", fontSize: "1rem", padding:"5px 30px" }}>
+            style={{ backgroundColor: "rgb(166, 95, 3)", fontSize: "1rem", padding: "5px 30px" }}>
             Se alle
           </Link>
         </div>

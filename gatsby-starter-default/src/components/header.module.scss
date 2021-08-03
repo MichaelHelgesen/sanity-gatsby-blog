@@ -8,6 +8,7 @@ header {
 
 header > div {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
 }
@@ -33,7 +34,7 @@ header > div {
     border-bottom: 5px solid base.$font-color;
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 890px) {
     header > div {
         flex-direction: column;
         align-items: unset;

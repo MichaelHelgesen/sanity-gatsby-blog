@@ -5,8 +5,10 @@ import createSchema from 'part:@sanity/base/schema-creator'
 import bodyImage from "./bodyImage"
 import book from "./book"
 import categories from "./categories"
+import codePen from './codePenEmbed'
 import exampleUsage from "./codeExample"
 import externalLink from "./externalLink"
+import gallery from './galleyImages'
 import internalLink from "./internalLink"
 import note from "./note"
 import page from "./page"
@@ -25,6 +27,7 @@ export default createSchema({
   types: schemaTypes.concat([
     /* Your types here! */
     bodyImage,
+    codePen,
     exampleUsage,
     externalLink,
     internalLink,
@@ -34,6 +37,7 @@ export default createSchema({
     //
     book,
     categories,
+    gallery,
     note,
     page,
     post,

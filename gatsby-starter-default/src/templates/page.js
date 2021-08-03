@@ -8,6 +8,7 @@ import BlogList from "../components/blogList"
 import Notes from "../components/notesList"
 import BookList from "../components/bookList"
 import CategoryList from "../components/categoryList"
+import { Helmet } from "react-helmet"
 
 export const pageQuery = graphql`
 query ($id: String!){
@@ -112,6 +113,15 @@ query ($id: String!){
           }
         }
       }
+      site {
+        siteMetadata {
+          title
+          titleTemplate
+          description
+          author
+          url
+        }
+      }
     }
 `
 
@@ -174,6 +184,11 @@ const Page = ({ data }) => {
 
     return (
         <Layout>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>{data.page.title}{data.site.siteMetadata.titleTemplate}</title>
+                <link rel="canonical" href={`${data.site.siteMetadata.url}/${data.page.title.toLowerCase()}`} />
+            </Helmet>
             <div style={{ margin: '0 0 40px 0', position: "relative" }}>
                 <div className={style.headerwrap}>
                     <div className={style.intro}>
