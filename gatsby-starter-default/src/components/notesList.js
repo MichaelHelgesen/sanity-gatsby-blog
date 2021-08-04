@@ -48,6 +48,8 @@ const Notes = ({ props }) => {
             case "December":
                 norwegianMonth = "desember";
                 break;
+            default:
+                norwegianMonth = "";
         }
         return (
             {
@@ -60,7 +62,7 @@ const Notes = ({ props }) => {
     }
 
     return (
-        <div className={style.content}>
+        <div>
             {props.map(post => (
                 <div key={post.node.title} className={style.noteWrap}>
                     <div className={style.contentWrap}>

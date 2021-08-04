@@ -31,7 +31,7 @@ const BookList = ({ props }) => (
         {props.map(post => (
 
             <Link className={style.link} to={post.node.slug ? `/blogg/${post.node.slug.current}` : `/blogg/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}>
-                <img src={`${post.node.image.asset.url}?${urlBuilder(post.node.image, 500, 520, 75)}`} />
+                <img src={`${post.node.image.asset.url}?${urlBuilder(post.node.image, 500, 520, 75)}`} alt={post.node.image.alt ? post.node.image.alt : ""} />
                 <small className={style.date}>{post.node.read}</small>
                 <small className={style.author}>{post.node.author}</small>
                 <h2 className={style.title}>{post.node.title}</h2>

@@ -58,8 +58,6 @@ const book = ({ data }) => {
   const post = data.sanityBook;
   //const imageData = getGatsbyImageData(post.image.asset.id, {maxWidth: 1024}, sanityConfig)
 
-  console.log(post.image)
-
   // Function for image settings and generating URL
   function urlBuilder(image) {
     const { width, height } = post.image.asset.metadata.dimensions;
@@ -93,7 +91,7 @@ const book = ({ data }) => {
               <span> <Link to="/blogg/kategorier/bokomtale">Bokomtaler</Link> • <Link to={`/bibliotek/`}>Bibliotek</Link></span>
             </small>
             <p className={style.ingress}>{post.description}</p>
-            <img src={`${post.image.asset.url}?${urlBuilder(post.image)}`} />
+            <img src={`${post.image.asset.url}?${urlBuilder(post.image)}`} alt={post.image.alt ? post.image.alt : ""}/>
           </div>
 
           <div className={style.topcolor}></div>

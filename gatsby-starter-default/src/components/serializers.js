@@ -43,13 +43,9 @@ const serializers = {
       </SyntaxHighlighter>
     ),
     bodyImage: props => {
-      {
-        console.log("PROPS", props)
-        console.log("url", urlBuilder(props.node))
-      }
       return (
         <div className={style.bodyimage}>
-          <img src={`${props.node.asset.url}?${urlBuilder(props.node)}`} />
+          <img src={`${props.node.asset.url}?${urlBuilder(props.node)}`} alt={props.node.alt}/>
           {/* <GatsbyImage image={getGatsbyImageData(props.node.asset.id, {fit: "FILLMAX", width:"1000", placeholder: "blurred"}, client)} alt={props.node.alt} /> */}
           {/* <img
             src={urlFor(props.node)

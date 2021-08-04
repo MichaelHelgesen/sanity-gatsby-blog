@@ -176,7 +176,7 @@ const Page = ({ data }) => {
 
     // Filtrert kategori-liste
     const categoryList = categories.map(cat => {
-        if (findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle) != 0) {
+        if (findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle) !== 0) {
             return (
                 <Link
                     className={style.categories}
@@ -186,6 +186,7 @@ const Page = ({ data }) => {
                 </Link>
             )
         }
+        return null
     }
     ).sort(function (a, b) {
         console.log(a, b)

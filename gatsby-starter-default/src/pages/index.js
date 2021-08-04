@@ -105,10 +105,11 @@ const IndexPage = ({ data }) => {
   const page = data.pages;
   const posts = <BlogList props={mergedContent.slice(0, 10)} />
   // Filtrert kategori-liste
-  const categoryList = categories.map(cat => {
-    if (findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle) != 0) {
+  const categoryList = categories.map((cat, index) => {
+    if (findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle) !== 0) {
       return (
         <Link
+          key={index}
           className={style.categories}
           style={{ backgroundColor: `#${cat.node.color}` }}
           to={`/blogg/kategorier/${cat.node.categoryTitle.toLowerCase()}`}>
@@ -116,6 +117,7 @@ const IndexPage = ({ data }) => {
         </Link>
       )
     }
+    return null
   }
   ).sort(function (a, b) {
     const navnA = a.props.children[0].toUpperCase(); // Ignorere store og små bokstaver
@@ -138,7 +140,7 @@ const IndexPage = ({ data }) => {
       </Helmet>
       <div style={{ margin: '0 0 40px 0', position: "relative" }}>
         <div className={style.headerwrap}>
-          <div className={style.intro}>
+          <div>
             <div className={style.introField}>
               <h1>{page.introduction}</h1>
               <p><BlockContent

@@ -28,7 +28,7 @@ const CategoryList = ({ categories, posts }) => {
   return (
     <div className={style.content}>
       {categories.map(post => {
-        if (findNumberOfCategoriesInArray(posts, post.node.categoryTitle) != 0) {
+        if (findNumberOfCategoriesInArray(posts, post.node.categoryTitle) !== 0) {
           return (
             <Link className={style.link} to={`/blogg/kategorier/${post.node.categoryTitle.toLowerCase()}`}>
               <h2 style={{ background: `#${post.node.color}` }} className={style.title}>
@@ -40,7 +40,7 @@ const CategoryList = ({ categories, posts }) => {
             </Link>
           )
         }
-
+        return null
       })}
       <div className={style.clear}></div>
       <div className={style.clear}></div>

@@ -23,18 +23,13 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
+    <div>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      
-      <div
-        
-      >
-
+      <div>
         <main>{children}</main>
-        
         <footer
           style={{
-            maxWidth: "780px", margin: "2rem auto", padding: "0 1.0875rem 1.45rem" 
+            maxWidth: "780px", margin: "2rem auto", padding: "0 1.0875rem 1.45rem"
           }}
         >
           © {new Date().getFullYear()}, Built with
@@ -42,7 +37,7 @@ const Layout = ({ children }) => {
           <a href="https://www.gatsbyjs.com">Gatsby</a>
         </footer>
       </div>
-    </>
+    </div>
   )
 }
 

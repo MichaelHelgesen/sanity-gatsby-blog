@@ -3,7 +3,6 @@ import { graphql, Link } from "gatsby"
 import BlockContent from '@sanity/block-content-to-react'
 import Layout from "../components/layout"
 import serializers from "../components/serializers"
-import {GatsbyImage} from 'gatsby-plugin-image'
 import * as style from "../templates/blogPost.module.scss"
 
 export const pageQuery = graphql`
