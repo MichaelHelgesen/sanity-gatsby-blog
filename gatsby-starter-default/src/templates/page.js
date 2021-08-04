@@ -9,6 +9,7 @@ import Notes from "../components/notesList"
 import BookList from "../components/bookList"
 import CategoryList from "../components/categoryList"
 import { Helmet } from "react-helmet"
+import ImageGallery from "../components/imageGallery"
 
 export const pageQuery = graphql`
 query ($id: String!){
@@ -77,8 +78,37 @@ query ($id: String!){
             id
             _rawCategoryDescription
           }
+        } 
+      }
+      gallery: allSanityGallery {
+        edges {
+          node {
+            image {
+              alt
+              _type
+              asset {
+                url
+                metadata {
+                  dimensions {
+                    height
+                    width
+                  }
+                }
+              }
+              crop {
+                bottom
+                left
+                right
+                top
+              }
+              hotspot {
+                height
+                width
+              }
+            
+            }
+          }
         }
-        
       } 
       notes: allSanityNote (sort: {fields: date, order: DESC}) {
         edges {
@@ -180,6 +210,8 @@ const Page = ({ data }) => {
         posts = <BookList props={data.book.edges} />
     } else if (data.page.title === "Kategorier") {
         posts = <CategoryList categories={data.categories.edges} posts={mergedContent} />
+    } else if (data.page.title === "Galleri") {
+        posts = <ImageGallery props={data.gallery.edges} />
     }
 
     return (
