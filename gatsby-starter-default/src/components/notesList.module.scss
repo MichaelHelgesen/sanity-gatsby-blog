@@ -61,7 +61,7 @@
         border: 0;
 /*         max-width: 300px; */
         
-        p {
+        .mainText {
             font-family: "Open Sans";
             padding-top: 10px;
             margin-top: 0;
@@ -102,6 +102,9 @@
 }
 
 p *:last-child {
+    margin-bottom: 0;
+}
+div *:last-child {
     margin-bottom: 0;
 }
 

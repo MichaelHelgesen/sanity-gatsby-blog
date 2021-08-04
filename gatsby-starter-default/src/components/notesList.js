@@ -63,8 +63,8 @@ const Notes = ({ props }) => {
 
     return (
         <div>
-            {props.map(post => (
-                <div key={post.node.title} className={style.noteWrap}>
+            {props.map((post, index) => (
+                <div key={index} className={style.noteWrap}>
                     <div className={style.contentWrap}>
                         
                             <h2 className={style.title}>
@@ -73,7 +73,7 @@ const Notes = ({ props }) => {
                                 <span className={style.year}>{dateToNorwegian(post.node.date).year}</span>
                             </h2>
                         
-                        <p className={style.mainText}><BlockContent blocks={post.node._rawText} serializers={serializers} /></p>
+                        <div className={style.mainText}><BlockContent blocks={post.node._rawText} serializers={serializers} /></div>
                     </div>
                 </div>
 
