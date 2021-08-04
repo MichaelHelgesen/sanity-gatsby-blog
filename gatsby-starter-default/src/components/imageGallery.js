@@ -11,6 +11,7 @@ const breakpointColumnsObj = {
     650: 1
 };
 
+
 const ImageGallery = ({ props }) => (
     <div className={style.content}>
 
