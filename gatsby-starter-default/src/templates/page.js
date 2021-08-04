@@ -165,6 +165,7 @@ const findNumberOfCategoriesInArray = (array, category) => (
   }).length
 )
 
+
 const Page = ({ data }) => {
 
   const mergedContent = [...data.post.edges, ...data.book.edges].sort(function (a, b) {

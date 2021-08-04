@@ -171,3 +171,4 @@ const IndexPage = ({ data }) => {
 }
 
 export default IndexPage
+

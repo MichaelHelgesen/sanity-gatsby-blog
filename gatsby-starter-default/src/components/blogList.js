@@ -16,6 +16,7 @@ const BlogList = ({ props, limit }) => (
                                     (index > 0 ? <span key={index}>, <Link to={`/blogg/kategorier/${cat.categoryTitle.toLowerCase()}`}>{cat.categoryTitle}</Link> </span> : <span key={index}> <Link to={`/blogg/kategorier/${cat.categoryTitle.toLowerCase()}`}>{cat.categoryTitle}</Link></span>)
                                 )) :
                                 <span> Ukategorisert </span>
+                                
                         }
                     </small>
                 </Link>

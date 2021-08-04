@@ -40,6 +40,7 @@ const CategoryList = ({ categories, posts }) => {
             </Link>
           )
         }
+        
         return null
       })}
       <div className={style.clear}></div>
