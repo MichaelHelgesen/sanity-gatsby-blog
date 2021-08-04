@@ -1,3 +1,21 @@
+@use "../components/base.module.scss";
+
+.content {
+   padding: 0 1.45rem;
+   max-width: 1600px;
+   margin: 2.90rem auto 0 auto;
+
+   img {
+    box-shadow: 0px 2px 9px -4px grey;
+    transition: all .2s ease;
+    }
+
+    img:hover {
+        transform: scale(1.03);
+        cursor: pointer;
+    }
+}
+
 /*.container {
     column-count: 3;
     column-gap: 10px;
@@ -16,7 +34,6 @@
       grid-column: 1;*/
       margin: 0;
       width: 100%;
-      margin-bottom: -7px;
   }
   
   @keyframes comeIn {
@@ -62,6 +79,6 @@
     }
      
     /* Style your items */
-    .my_masonry_grid_column > div { /* change div to reference your elements you put in <Masonry> */ 
-      margin-bottom: 20px;
+    .my_masonry_grid_column > img { /* change div to reference your elements you put in <Masonry> */ 
+      margin-bottom: 10px;
     }

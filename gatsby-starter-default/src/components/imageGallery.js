@@ -16,9 +16,9 @@ function urlBuilder(image) {
 
 const breakpointColumnsObj = {
     default: 4,
-    1200: 3,
-    700: 2,
-    500: 1
+    1300: 3,
+    950: 2,
+    650: 1
 };
 
 const ImageGallery = ({ props }) => (
