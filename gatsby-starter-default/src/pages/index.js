@@ -135,7 +135,7 @@ const IndexPage = ({ data }) => {
     <Layout>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>{data.site.siteMetadata.title}</title>
+        <title>Velkommen til Mikkes blogg!</title>
         <link rel="canonical" href={data.site.siteMetadata.url} />
       </Helmet>
       <div style={{ margin: '0 0 40px 0', position: "relative" }}>

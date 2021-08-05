@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 import BlockContent from '@sanity/block-content-to-react'
 import Layout from "../components/layout"
 import serializers from "../components/serializers"
+import { Helmet } from "react-helmet"
 import * as style from "../templates/book.module.scss"
 
 
@@ -16,6 +17,9 @@ export const pageQuery = graphql`
           date(formatString: "DD.MM.YYYY")
           description
           id
+          slug {
+            current
+          }
           image {
             alt
             asset { 
@@ -49,6 +53,15 @@ export const pageQuery = graphql`
           }
           title    
       }
+      site {
+        siteMetadata {
+          title
+          titleTemplate
+          description
+          author
+          url
+        }
+      }
   }
 `
 
@@ -80,6 +93,11 @@ const book = ({ data }) => {
 
   return (
     <Layout>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{post.title}{data.site.siteMetadata.titleTemplate}</title>
+        <link rel="canonical" href={`${data.site.siteMetadata.url}/blogg/${post.slug.current}`} />
+      </Helmet>
       <div style={{ margin: '0 0 40px 0', position: "relative" }}>
         <div className={style.headerwrap}>
           <div className={style.intro}>
