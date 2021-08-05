@@ -31,7 +31,7 @@
     break-inside: avoid;
 }
 */
-.container img {
+.container div {
     /*  grid-row: 1 / -1;
       grid-column: 1;*/
       margin: 0;
@@ -81,6 +81,6 @@
     }
      
     /* Style your items */
-    .my_masonry_grid_column > img { /* change div to reference your elements you put in <Masonry> */ 
-      margin-bottom: 10px;
+    .my_masonry_grid_column > div { /* change div to reference your elements you put in <Masonry> */ 
+      margin-bottom: 12px;
     }

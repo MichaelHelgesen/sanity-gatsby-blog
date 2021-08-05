@@ -10,6 +10,7 @@ import BookList from "../components/bookList"
 import CategoryList from "../components/categoryList"
 import { Helmet } from "react-helmet"
 import ImageGallery from "../components/imageGallery"
+import Dictionary from "../components/dictionary"
 
 export const pageQuery = graphql`
 query ($id: String!){
@@ -143,6 +144,15 @@ query ($id: String!){
           }
         }
       }
+      dictionary: allSanityProgrammingDictionary {
+        edges {
+          node {
+            englishWord
+            norwegianWord
+            _rawContent(resolveReferences:{maxDepth:10})
+          }
+        }
+      }
       site {
         siteMetadata {
           title
@@ -215,6 +225,8 @@ const Page = ({ data }) => {
     posts = <CategoryList categories={data.categories.edges} posts={mergedContent} />
   } else if (data.page.title === "Galleri") {
     posts = <ImageGallery props={data.gallery.edges} />
+  } else if (data.page.title === "Dataordliste") {
+    posts = <Dictionary props={data.dictionary.edges} />
   }
 
   return (

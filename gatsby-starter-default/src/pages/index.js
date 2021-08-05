@@ -143,10 +143,9 @@ const IndexPage = ({ data }) => {
           <div>
             <div className={style.introField}>
               <h1>{page.introduction}</h1>
-              <p><BlockContent
+              <BlockContent
                 blocks={page._rawContent}
                 serializers={serializers} />
-              </p>
               {categoryList} {/* <Link to={"/blogg/kategorier"}>Se alle kategoriene</Link> */}
             </div>
           </div>

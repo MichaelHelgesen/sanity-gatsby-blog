@@ -12,6 +12,7 @@ import gallery from './galleyImages'
 import internalLink from "./internalLink"
 import note from "./note"
 import page from "./page"
+import programmingDictionary from './programmingDictionary'
 import post from './post'
 import quote from "./quote"
 import schemaTypes from 'all:part:@sanity/base/schema-type'
@@ -40,6 +41,7 @@ export default createSchema({
     gallery,
     note,
     page,
+    programmingDictionary,
     post,
   ]),
 })

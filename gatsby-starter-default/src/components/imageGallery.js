@@ -15,20 +15,20 @@ const breakpointColumnsObj = {
 const ImageGallery = ({ props }) => (
     <div className={style.content}>
 
-<SimpleReactLightbox>
-    <SRLWrapper>
-        <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className={style.my_masonry_grid}
-        columnClassName={style.my_masonry_grid_column}>
+        <SimpleReactLightbox>
+            <SRLWrapper>
+                <Masonry
+                    breakpointCols={breakpointColumnsObj}
+                    className={style.my_masonry_grid}
+                    columnClassName={style.my_masonry_grid_column}>
                     {props.map((post, index) => (
                         <div key={index}>
                             <img src={`${post.node.image.asset.url}?w=1000&q=75`} alt={post.node.image.alt ? post.node.image.alt : ""} />
-                            </div>
+                        </div>
                     ))}
-                    </Masonry>
-                    </SRLWrapper>
-</SimpleReactLightbox>
+                </Masonry>
+            </SRLWrapper>
+        </SimpleReactLightbox>
 
     </div>
 )

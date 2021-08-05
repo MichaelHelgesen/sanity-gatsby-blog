@@ -1,0 +1,45 @@
+@use "../components/base.module.scss";
+
+.content {
+    @include base.contentLayout;
+    padding-top: 1.45rem;
+}
+
+.title {
+    font-family: base.$title-stack;
+    letter-spacing: -.02rem;
+    margin: 0;
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+    padding-top: 1.45rem;
+    padding-bottom: .75rem; 
+}
+
+.english_word {
+    font-weight: 700;
+}
+
+.norwegian_word {
+    font-weight: 400;
+    font-style: italic;
+}
+
+.explanation {
+    padding: 0 0 0 .75rem;
+}
+
+.link {
+    text-decoration: none;
+    color: inherit;
+    padding: 1.45rem 0 0 0;
+    display: block;
+}
+
+a.link:hover {
+    color: black;
+}
+
+a.link:hover .title {
+    color: black;
+    text-decoration: underline;
+}

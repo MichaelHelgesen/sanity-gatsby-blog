@@ -78,12 +78,12 @@ const category = ({ data }) => {
               <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg</Link> / <Link to={`/blogg/kategorier`}>kategorier</Link> /
             </small>
             <h1 style={{display: "flex"}} className={style.title}>{categories.categoryTitle}&nbsp;<span style={{opacity: .5, fontWeight: 400, fontSize: ".5em", lineHeight: 1.65}}>({blogPosts.length})</span></h1>
-            <p className={style.ingress}>{
+            <div className={style.ingress}>{
               <BlockContent
                 blocks={categories._rawCategoryDescription}
                 serializers={serializers}
               />
-            }</p>
+            }</div>
 
           </div>
 

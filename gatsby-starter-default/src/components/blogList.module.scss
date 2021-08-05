@@ -6,7 +6,7 @@
 }
 
 .title {
-    font-family: "Open Sans";
+    font-family: base.$title-stack;
     font-weight: 700;
     letter-spacing: -.02rem;
     margin: 0;
@@ -36,7 +36,6 @@ a.link:hover .title {
 }
 
 .categories {
-
     border-radius: 15px;
     padding: 0 15px;
     margin: 0 5px 5px 0;

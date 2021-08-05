@@ -8,7 +8,7 @@
     .mainText {
         margin:0 auto!important;
         /* padding-bottom: 1rem; */
-        font-family: "Merriweather";
+        font-family: base.$serif-stack;
         line-height: 1.6em;
         width: calc(100% - (120px + 2rem));
         /* max-width: 500px; */
@@ -62,9 +62,16 @@
 /*         max-width: 300px; */
         
         .mainText {
-            font-family: "Open Sans";
+            font-family: base.$text-stack;
             padding-top: 10px;
             margin-top: 0;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+        *:last-child {
+            margin-bottom: 0;
         }
     }
 
@@ -94,19 +101,15 @@
 
 
 .title {
-    font-family: "Merriweather";
+    font-family: base.$serif-stack;
     font-weight: 700;
     margin: 0 2rem 0 0;
     width: 120px;
     border-right:1px solid rgb(160, 157, 157);
 }
 
-p *:last-child {
-    margin-bottom: 0;
-}
-div *:last-child {
-    margin-bottom: 0;
-}
+
+
 
 @media only screen and (max-width: 650px) {
     .contentWrap {
