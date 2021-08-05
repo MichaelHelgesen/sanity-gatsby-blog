@@ -5,10 +5,12 @@ import * as style from "../components/blogList.module.scss"
 const BlogList = ({ props, limit }) => (
     <div className={style.content}>
         {props.map((post, index) => (
-            <div key={index} key={post.node.title}>
-                <Link className={style.link} to={post.node.slug ? `/blogg/${post.node.slug.current}` : `/blogg/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}>
-                    <h2 className={style.title}>{post.node.title}</h2>
-                    <p style={{ margin: "10px 0 10px 0" }}>{post.node.description}</p>
+            <div key={index}>
+                <div>
+                    <Link className={style.link} to={post.node.slug ? `/blogg/${post.node.slug.current}` : `/blogg/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}>
+                        <h2 className={style.title}>{post.node.title}</h2>
+                        <p style={{ margin: "10px 0 10px 0" }}>{post.node.description}</p>
+                    </Link>
                     <small className={style.dateCategory}>{post.node.date} •
                         { // Create a span for each category defined on item
                             post.node.category && post.node.category.length ?
@@ -16,10 +18,9 @@ const BlogList = ({ props, limit }) => (
                                     (index > 0 ? <span key={index}>, <Link to={`/blogg/kategorier/${cat.categoryTitle.toLowerCase()}`}>{cat.categoryTitle}</Link> </span> : <span key={index}> <Link to={`/blogg/kategorier/${cat.categoryTitle.toLowerCase()}`}>{cat.categoryTitle}</Link></span>)
                                 )) :
                                 <span> Ukategorisert </span>
-                                
                         }
                     </small>
-                </Link>
+                </div>
             </div>
         ))}
     </div>
