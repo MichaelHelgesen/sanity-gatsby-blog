@@ -201,7 +201,6 @@ const Page = ({ data }) => {
     return null
   }
   ).sort(function (a, b) {
-    console.log(a, b)
     const catA = a.props.children[0].toUpperCase(); // Ignorere store og små bokstaver
     const catB = b.props.children[0].toUpperCase();
     if (catA < catB) {

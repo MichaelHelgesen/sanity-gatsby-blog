@@ -11,6 +11,8 @@ $code-stack: "Roboto mono", Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', mono
 $font-color: rgb(0, 0, 0);
 
 $main-background-color: rgb(241, 239, 238);
+$main-color: rgb(166, 95, 3);
+$main-color-hover: #727171;
 
 @mixin dateCategory {
   color: rgb(94, 94, 94);

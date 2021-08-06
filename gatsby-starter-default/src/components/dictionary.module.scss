@@ -5,6 +5,30 @@
     padding-top: 1.45rem;
 }
 
+.index {
+    font-size: .8em;
+    margin-top: .75rem;
+    span {
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+    a {
+        margin-right: 7px;
+        background-color: base.$main-background-color;
+        color: base.$font-color;
+        display: inline-block;
+        padding: 0 7px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: all .2s ease;
+    }
+    a:hover {
+        background: base.$main-color;
+        color: white;
+        text-decoration: underline;
+    }
+}
+
 .title {
     font-family: base.$title-stack;
     letter-spacing: -.02rem;
