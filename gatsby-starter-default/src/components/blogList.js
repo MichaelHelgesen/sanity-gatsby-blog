@@ -25,6 +25,7 @@ function urlBuilder(image,) {
     )
 }
 
+
 const BlogList = ({ props }) => (
     <div className={style.content}>
         {props.map((post, index) => (
