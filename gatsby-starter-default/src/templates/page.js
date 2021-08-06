@@ -106,7 +106,6 @@ query ($id: String!){
                 height
                 width
               }
-            
             }
           }
         }
@@ -133,6 +132,29 @@ query ($id: String!){
             }
             date(formatString: "DD.MM.YYYY")
             description
+            image {
+              alt
+              _type
+              asset {
+                url
+                metadata {
+                  dimensions {
+                    height
+                    width
+                  }
+                }
+              }
+              crop {
+                bottom
+                left
+                right
+                top
+              }
+              hotspot {
+                height
+                width
+              }
+            }
             internal {
               type
             }
@@ -183,6 +205,7 @@ const Page = ({ data }) => {
     const formatDate = (arg) => arg.node.date.slice(6).concat(arg.node.date.slice(3, 5)).concat(arg.node.date.slice(0, 2));
     return formatDate(b) - formatDate(a)
   });
+  
   const categories = data.categories.edges;
 
   // Filtrert kategori-liste

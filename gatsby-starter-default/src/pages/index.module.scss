@@ -90,6 +90,18 @@ a.link:hover .title {
     text-decoration: underline;
 }
 
+.knapper {
+    a {
+       background-color: rgb(166, 95, 3);
+       font-size: .8rem;
+       padding: 5px 30px;
+       margin-right: 10px;
+    }
+    a:hover {
+        text-decoration:none;
+    }
+}
+
 @media only screen and (max-width: 580px) {
     .introField {
         h1 {

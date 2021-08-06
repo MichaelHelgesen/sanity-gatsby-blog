@@ -158,11 +158,16 @@ const IndexPage = ({ data }) => {
           {posts}
         </div>
         <div className={style.content} style={{ paddingTop: "1.45rem" }}>
-          <Link
-            to="/blogg" className={style.categories}
-            style={{ backgroundColor: "rgb(166, 95, 3)", fontSize: "1rem", padding: "5px 30px" }}>
-            Se alle
-          </Link>
+          <div className={style.knapper}>
+            <Link
+              to="/blogg" className={style.categories}>
+              Se alle blogginnlegg
+            </Link>
+            <Link
+              to="/blogg/kategorier" className={style.categories}>
+              Se alle kategorier
+            </Link>
+          </div>
         </div>
       </div>
     </Layout>

@@ -1,0 +1,81 @@
+@use "../components/base.module.scss";
+
+.content {
+    @include base.contentLayout;
+    padding-top: 1.45rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.gradient {
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,0.6516981792717087) 0%, rgba(255,255,255,0) 78%);
+    height: 100%;
+    border-radius: 8px;
+}
+
+.title {
+    font-family: base.$title-stack;
+    font-weight: 900;
+    letter-spacing: -.02rem;
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    padding-top: 0; 
+    color: white;
+}
+
+.dateCategory {
+    @include base.dateCategory;
+    color: base.$font-color;
+    padding-bottom: 0;
+    margin-bottom: .3rem;
+    color: white;
+}
+
+.blog_item {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 25px;
+    height: 100%;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    
+    p {
+        font-size: .9rem;
+        line-height: 1.3rem;
+        color: white;
+        padding-bottom: 2.9rem;
+    }
+}
+
+
+
+.link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 49%;
+    margin-bottom: 2%;
+    border-radius: 8px;
+    background-size: cover!important;
+    min-height: 350px;
+    transition: all .2s ease;
+}
+
+a.link:hover {
+    color: black;
+}
+
+a.link:hover .blog_item {
+    background: rgba(166, 95, 3, 0.9);
+}
+a.link:hover .gradient {
+    background: none;
+}
+
+@media only screen and (max-width: 650px) {
+    .link {
+        width: 100%;
+    }
+  }

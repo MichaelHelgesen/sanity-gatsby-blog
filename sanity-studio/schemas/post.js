@@ -23,7 +23,6 @@ export default {
                     .slice(0, 200)
             }
         },
-
         {
             description: "En kort beskrivelse til blogglisten.",
             name: 'description',
@@ -37,6 +36,10 @@ export default {
             name: 'introduction',
             rows: 5,
             type: 'text',
+        },
+        {
+            type: 'bodyImage',
+            name: "image"
         },
         {
             title: 'Dato',
@@ -97,7 +100,7 @@ export default {
                     type: "exampleUsage"
                 },
                 {
-                    type: "youtubeLink" 
+                    type: "youtubeLink"
                 },
                 {
                     title: "Tipsfelt",
