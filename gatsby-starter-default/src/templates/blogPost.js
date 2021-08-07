@@ -37,12 +37,14 @@ export const pageQuery = graphql`
 const blogPost = ({ data }) => {
   const post = data.sanityPost;
 
+  const createSlug = (string) => string.toLowerCase().replace(/\s+/g, '-').slice(0, 200);
+
   return (
     <Layout>
       <Helmet>
         <meta charSet="utf-8" />
         <title>{post.title}{data.site.siteMetadata.titleTemplate}</title>
-        <link rel="canonical" href={`${data.site.siteMetadata.url}/blogg/${post.slug.current}`} />
+        <link rel="canonical" href={`${data.site.siteMetadata.url}/blogg/${post.slug.current? post.slug.current : createSlug(post.title)}`} />
       </Helmet>
       <div className={style.headerwrap}>
         <div className={style.intro}>
