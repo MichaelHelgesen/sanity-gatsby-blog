@@ -44,7 +44,7 @@ const blogPost = ({ data }) => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>{post.title}{data.site.siteMetadata.titleTemplate}</title>
-        <link rel="canonical" href={`${data.site.siteMetadata.url}/blogg/${post.slug.current? post.slug.current : createSlug(post.title)}`} />
+        <link rel="canonical" href={`${data.site.siteMetadata.url}/blogg/${post.slug ? post.slug.current : createSlug(post.title)}`} />
       </Helmet>
       <div className={style.headerwrap}>
         <div className={style.intro}>
