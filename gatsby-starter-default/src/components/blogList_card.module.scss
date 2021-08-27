@@ -6,11 +6,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    max-width: 1300px;
 }
 
 .gradient {
     background: rgb(0,0,0);
-    background: linear-gradient(180deg, rgba(0,0,0,0.6516981792717087) 0%, rgba(255,255,255,0) 78%);
+    background: linear-gradient(180deg, rgba(0,0,0,0.8516981792717087) 0%, rgba(255,255,255,0) 78%);
     height: 100%;
     border-radius: 8px;
 }
@@ -20,10 +21,11 @@
     font-weight: 900;
     letter-spacing: -.02rem;
     margin: 0;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.5rem;
     padding-top: 0; 
     color: white;
+    text-shadow: 1px 1px 1px black;
 }
 
 .dateCategory {
@@ -32,11 +34,12 @@
     padding-bottom: 0;
     margin-bottom: .3rem;
     color: white;
+    line-height: 1.1rem;
 }
 
 .blog_item {
-    background: rgba(0, 0, 0, 0.6);
-    padding: 25px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 30px;
     height: 100%;
     border-radius: 8px;
     transition: background-color 0.2s ease;
@@ -46,17 +49,17 @@
         line-height: 1.3rem;
         color: white;
         padding-bottom: 2.9rem;
+        font-weight: 600;
+        text-shadow: 1px 1px 1px black;
     }
 }
-
-
 
 .link {
     text-decoration: none;
     color: inherit;
     display: block;
-    width: 49%;
-    margin-bottom: 2%;
+    width: 31.99%;
+    margin-bottom: 1.9%;
     border-radius: 8px;
     background-size: cover!important;
     min-height: 350px;
@@ -74,10 +77,17 @@ a.link:hover .gradient {
     background: none;
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 900px) {
+    .link {
+        width: 48.99%;
+    }
+  }
+
+  @media only screen and (max-width: 750px) {
+    .content {
+        max-width: 500px;
+    }
     .link {
         width: 100%;
     }
   }
-
-  

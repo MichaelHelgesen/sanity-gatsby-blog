@@ -103,7 +103,7 @@ const IndexPage = ({ data }) => {
   });
   const categories = data.categories.edges;
   const page = data.pages;
-  const posts = <BlogList props={mergedContent.slice(0, 10)} />
+  const posts = <BlogList props={mergedContent.slice(0, 9)} />
   // Filtrert kategori-liste
   const categoryList = categories.map((cat, index) => {
     if (findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle) !== 0) {
@@ -151,8 +151,8 @@ const IndexPage = ({ data }) => {
           </div>
           <div className={style.topcolor}></div>
         </div>
-        <div className={style.content}>
-          <span style={{ textTransform: "uppercase", opacity: ".5", fontWeight: "700", fontSize: ".8em" }}>Siste ti blogginnlegg</span>
+        <div className={style.content} style={{ textAlign: "center" }}>
+          <span style={{ textTransform: "uppercase", opacity: ".5", fontWeight: "700", fontSize: ".8em" }}>Siste blogginnlegg</span>
         </div>
         <div>
           {posts}

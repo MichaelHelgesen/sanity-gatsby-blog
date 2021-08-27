@@ -91,14 +91,21 @@ a.link:hover .title {
 }
 
 .knapper {
+    text-align: center;
+
     a {
        background-color: rgb(166, 95, 3);
        font-size: .8rem;
        padding: 5px 30px;
-       margin-right: 10px;
+       margin-right: 5px;
+       margin-bottom: 10px;
     }
     a:hover {
         text-decoration:none;
+    }
+    a:last-of-type {
+        margin: 0;
+        margin-left: 5px;
     }
 }
 
