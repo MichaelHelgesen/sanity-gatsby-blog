@@ -3,10 +3,6 @@
 .content {
     @include base.contentLayout;
     padding-top: 1.45rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 1300px;
 }
 
 .gradient {
@@ -42,6 +38,7 @@
     padding: 30px;
     height: 100%;
     border-radius: 8px;
+    width: 50%;
     transition: background-color 0.2s ease;
     
     p {
@@ -58,7 +55,6 @@
     text-decoration: none;
     color: inherit;
     display: block;
-    width: 31.99%;
     margin-bottom: 1.9%;
     border-radius: 8px;
     background-size: cover!important;
