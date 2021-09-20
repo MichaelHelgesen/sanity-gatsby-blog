@@ -2,14 +2,11 @@
 
 .content {
     @include base.contentLayout;
-    padding-top: 1.45rem;
+    padding-top: 2.9rem;
 }
 
 .gradient {
-    background: rgb(0,0,0);
-    background: linear-gradient(180deg, rgba(0,0,0,0.8516981792717087) 0%, rgba(255,255,255,0) 78%);
-    height: 100%;
-    border-radius: 8px;
+    display: flex;
 }
 
 .title {
@@ -20,8 +17,6 @@
     font-size: 1.2rem;
     line-height: 1.5rem;
     padding-top: 0; 
-    color: white;
-    text-shadow: 1px 1px 1px black;
 }
 
 .dateCategory {
@@ -29,61 +24,78 @@
     color: base.$font-color;
     padding-bottom: 0;
     margin-bottom: .3rem;
-    color: white;
     line-height: 1.1rem;
 }
 
 .blog_item {
-    background: rgba(0, 0, 0, 0.4);
+    background: base.$main-background-color;
     padding: 30px;
     height: 100%;
-    border-radius: 8px;
     width: 50%;
+    min-height:300px;
     transition: background-color 0.2s ease;
+    border-radius:8px 0 0 8px;
     
     p {
         font-size: .9rem;
         line-height: 1.3rem;
-        color: white;
-        padding-bottom: 2.9rem;
-        font-weight: 600;
-        text-shadow: 1px 1px 1px black;
+        /* padding-bottom: 1.875rem; */
     }
+}
+
+.blog_image {
+    width: 50%;
+    background-size: cover!important;
+    background-position: center center!important;
+    border-radius:0 8px 8px 0;
+    box-shadow: 0px 2px 9px -4px grey;
 }
 
 .link {
     text-decoration: none;
     color: inherit;
     display: block;
-    margin-bottom: 1.9%;
-    border-radius: 8px;
-    background-size: cover!important;
-    min-height: 350px;
+    margin-bottom: 1.45rem;
+    min-height: 300px;
     transition: all .2s ease;
+    box-shadow: 0px 2px 9px -4px grey;
+    border-radius: 8px;
 }
 
 a.link:hover {
-    color: black;
+    transform: scale(1.03);
+    box-shadow: 0px 2px 15px -4px grey;
 }
 
 a.link:hover .blog_item {
-    background: rgba(166, 95, 3, 0.9);
-}
-a.link:hover .gradient {
-    background: none;
+    color: base.$font-color;
 }
 
-@media only screen and (max-width: 1080px) {
+a:hover {
+    color: base.$font-color;
+}
+
+/* @media only screen and (max-width: 1080px) {
     .link {
         width: 48.99%;
     }
-  }
+  } */
 
   @media only screen and (max-width: 750px) {
     .content {
         max-width: 600px;
     }
-    .link {
+    .gradient {
+        flex-direction: column-reverse;
+    }
+    .blog_item {
         width: 100%;
+        min-height: unset;
+        border-radius: 0 0 8px 8px;
+    }
+    .blog_image {
+        width: 100%;
+        min-height: 60vw;
+        border-radius: 8px 8px 0 0;
     }
   }

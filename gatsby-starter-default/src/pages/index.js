@@ -59,6 +59,29 @@ export const pageQuery = graphql`
           }
           date(formatString: "DD.MM.YYYY")
           description
+          image {
+            alt
+            _type
+            asset {
+              url
+              metadata {
+                dimensions {
+                  height
+                  width
+                }
+              }
+            }
+            crop {
+              bottom
+              left
+              right
+              top
+            }
+            hotspot {
+              height
+              width
+            }
+          }
           internal {
             type
           }
@@ -104,6 +127,7 @@ const IndexPage = ({ data }) => {
   const categories = data.categories.edges;
   const page = data.pages;
   const posts = <BlogList props={mergedContent.slice(0, 9)} />
+
   // Filtrert kategori-liste
   const categoryList = categories.map((cat, index) => {
     if (findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle) !== 0) {
@@ -130,6 +154,7 @@ const IndexPage = ({ data }) => {
     }
     return 0;
   });
+// ---
 
   return (
     <Layout>
