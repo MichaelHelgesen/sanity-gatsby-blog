@@ -5,12 +5,13 @@
    justify-content: space-between;
    flex-wrap: wrap;
    margin-top: 2.90rem;
-   padding: 0 1.45rem;
-   max-width: 1600px;
-   margin: 2.90rem auto 0 auto;
+   padding: 0 1.45rem; 
+   /* max-width: 1600px; */
+   /* margin: 2.90rem auto 0 auto; */
+   @include base.contentLayout;
 
    .link {
-    width: 23%;
+    width: 48%;
     text-align: center;
     background-color: base.$main-background-color;
     margin-bottom: 3%;
@@ -69,10 +70,10 @@ a.link:hover .title {
 
 @media only screen and (max-width: 1300px) {
     .content .link {
-        width: 31.33%;
+        width: 48%;
     }
     .clear {
-        width: 31.33%;
+        width: 48%;
     }
   }
 
