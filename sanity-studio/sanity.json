@@ -13,13 +13,9 @@
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/desk-tool",
-<<<<<<< HEAD
     "@sanity/code-input",
     "autocomplete-tags",
     "asset-source-unsplash"
-=======
-    "@sanity/code-input"
->>>>>>> 8269b86a1017ee8a59f4a3520452c25428bdcfa6
   ],
   "env": {
     "development": {
