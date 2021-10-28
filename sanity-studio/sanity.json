@@ -14,7 +14,8 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "@sanity/code-input",
-    "autocomplete-tags"
+    "autocomplete-tags",
+    "asset-source-unsplash"
   ],
   "env": {
     "development": {

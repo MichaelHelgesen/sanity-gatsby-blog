@@ -31,9 +31,9 @@ export default {
             type: "string",
             options: {
                 list: [
-                    { title: 'Grønn', value: '#baffdc' },
-                    { title: 'Gul', value: '#ffffde' },
-                    { title: 'Rød', value: '#ffbaba' }
+                    { title: 'Grønn', value: '186, 255, 220' },
+                    { title: 'Gul', value: '237, 237, 156' },
+                    { title: 'Rød', value: '255, 186, 186' }
                 ]
             }
         },

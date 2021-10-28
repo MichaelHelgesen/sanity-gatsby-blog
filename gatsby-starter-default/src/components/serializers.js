@@ -69,9 +69,17 @@ const serializers = {
       )
     },
     tipField: props => {
-      const color = props.node.tipColor || "#baffdc";
+      let color = props.node.tipColor || "186, 255, 220";
+      switch (props.node.tipColor) {
+        case "#baffdc": color = "186, 255, 220";
+        break;
+        case "#ffbaba": color = "255, 186, 186";
+        break;
+        case "#ffffde": color = "237, 237, 156";
+        break;
+      };
       return (
-        <div className={style.tipfield} style={{ backgroundColor: `${color}` }}>
+        <div className={style.tipfield} style={{ backgroundColor: `rgba(${color}, .7)`, border: `3px solid rgb(${color})` }}>
           <h5>
             {props.node.tipText || props.node.tipTitle || null}
           </h5>
