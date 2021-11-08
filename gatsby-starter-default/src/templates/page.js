@@ -105,6 +105,7 @@ query ($id: String!){
               hotspot {
                 height
                 width
+
               }
             }
           }
@@ -135,6 +136,7 @@ query ($id: String!){
             image {
               alt
               _type
+              _rawAsset(resolveReferences:{maxDepth:10})
               asset {
                 url
                 metadata {
@@ -151,6 +153,10 @@ query ($id: String!){
                 top
               }
               hotspot {
+                _key
+                _type
+                x
+                y
                 height
                 width
               }
@@ -257,7 +263,7 @@ const Page = ({ data }) => {
         <title>{data.page.title}{data.site.siteMetadata.titleTemplate}</title>
         <link rel="canonical" href={`${data.site.siteMetadata.url}/${data.page.title.toLowerCase()}`} />
       </Helmet>
-      <div style={{ margin: '0 0 40px 0', position: "relative" }}>
+      <div style={{ margin: '0', position: "relative" }}>
         <div className={style.headerwrap}>
           <div className={style.intro}>
             <small className={style.breadcrumb}>

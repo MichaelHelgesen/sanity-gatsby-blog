@@ -10,7 +10,7 @@ import * as style from '../components/serializers.module.scss'
 function urlBuilder(image) {
   const { width, height } = image.asset.metadata.dimensions;
   return (
-    "w=780" +
+    //"w=780" +
     "&q=75" +
     // Check if there is a crop
     `${image.crop ?
@@ -114,7 +114,7 @@ const serializers = {
     codePen: props => {
       return (
         <div
-          className="codepen_embed"
+          className={style.codepen_embed}
           dangerouslySetInnerHTML={{ __html: props.node.codePenEmbed }}
         >
         </div>
@@ -124,7 +124,7 @@ const serializers = {
   marks: {
     code: props => {
       return (
-        <span className={"inline-code"}>
+        <span className="inline-code">
           <SyntaxHighlighter language={"text"} style={nightOwl} PreTag={"span"} >
             {props.children}
           </SyntaxHighlighter>

@@ -61,10 +61,21 @@
         border: 0;
 /*         max-width: 300px; */
         
+        
+
         .mainText {
             font-family: base.$text-stack;
             padding-top: 10px;
             margin-top: 0;
+        }
+
+        div {
+                width: unset;
+                position: relative;
+                left: unset;
+                right: unset;
+                margin-left: unset;
+                margin-right: unset;
         }
 
         p:last-child {
@@ -106,6 +117,7 @@
     margin: 0 2rem 0 0;
     width: 120px;
     border-right:1px solid rgb(160, 157, 157);
+    border-left:1px solid rgb(160, 157, 157);
 }
 
 
@@ -150,6 +162,7 @@
     .title {
         border-bottom: 1px solid rgb(197, 194, 194);
         border-right: 0;
+        border-left: 0;
         margin: 0;
     }
 }

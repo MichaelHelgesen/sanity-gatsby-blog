@@ -15,7 +15,8 @@
     "@sanity/desk-tool",
     "@sanity/code-input",
     "autocomplete-tags",
-    "asset-source-unsplash"
+    "asset-source-unsplash",
+    "asset-source-cloudinary"
   ],
   "env": {
     "development": {
@@ -28,6 +29,10 @@
     {
       "name": "part:@sanity/base/schema",
       "path": "./schemas/schema"
+    },
+    {
+      "implements": "part:@sanity/form-builder/input/image/asset-sources",
+      "path": "./parts/assetSources.js"
     }
   ]
 }

@@ -3,6 +3,7 @@
 .content {
     @include base.contentLayout;
     padding-top: 1.45rem;
+    margin-bottom: 2.9rem;
 }
 
 .index {
@@ -51,6 +52,15 @@
 
 .explanation {
     padding: 0 0 0 .75rem;
+
+    div {
+        width: unset;
+        position: relative;
+        left: unset;
+        right: unset;
+        margin-left: unset;
+        margin-right: unset;
+}
 }
 
 .link {

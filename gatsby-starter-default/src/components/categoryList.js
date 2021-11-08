@@ -43,9 +43,8 @@ const CategoryList = ({ categories, posts }) => {
 
         return null
       })}
-      <div className={style.clear}></div>
-      <div className={style.clear}></div>
-      <div className={style.clear}></div>
+      <div className={style.link}></div>
+      <div className={style.link}></div>
     </div>
   )
 }

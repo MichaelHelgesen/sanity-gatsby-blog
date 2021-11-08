@@ -101,6 +101,7 @@ const book = ({ data }) => {
       <div style={{ margin: '0 0 40px 0', position: "relative" }}>
         <div className={style.headerwrap}>
           <div className={style.intro}>
+            <div className={style.introWrapper}>
             <small className={style.breadcrumb}>
               <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg</Link> /
             </small>
@@ -109,9 +110,9 @@ const book = ({ data }) => {
               <span> <Link to="/blogg/kategorier/bokomtale">Bokomtaler</Link> • <Link to={`/bibliotek/`}>Bibliotek</Link></span>
             </small>
             <p className={style.ingress}>{post.description}</p>
-            <img src={`${post.image.asset.url}?${urlBuilder(post.image)}`} alt={post.image.alt ? post.image.alt : ""}/>
+            <img className={style.bookIntroImage} src={`${post.image.asset.url}?${urlBuilder(post.image)}`} alt={post.image.alt ? post.image.alt : ""}/>
           </div>
-
+</div>
           <div className={style.topcolor}></div>
         </div>
         <div className={style.content}>

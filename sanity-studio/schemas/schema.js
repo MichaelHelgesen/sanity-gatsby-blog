@@ -2,6 +2,7 @@
 import createSchema from 'part:@sanity/base/schema-creator'
 
 // Then import schema types from any plugins that might expose them
+import blogPostImage from './blogPostImage'
 import bodyImage from "./bodyImage"
 import book from "./book"
 import categories from "./categories"
@@ -27,6 +28,7 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     /* Your types here! */
+    blogPostImage,
     bodyImage,
     codePen,
     exampleUsage,
@@ -36,13 +38,13 @@ export default createSchema({
     tipField,
     youtubeLink,
     //
+    post,
+    note,
+    programmingDictionary,
     book,
     categories,
     gallery,
-    note,
     page,
-    programmingDictionary,
-    post,
   ]),
 })
 

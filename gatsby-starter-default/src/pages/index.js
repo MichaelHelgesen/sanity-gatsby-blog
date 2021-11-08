@@ -18,6 +18,35 @@ export const pageQuery = graphql`
           date(formatString: "DD.MM.YYYY")
           description
           id
+          image {
+            alt
+            _type
+            asset {
+              url
+              metadata {
+                dimensions {
+                  height
+                  width
+                }
+              }
+            }
+            crop {
+              _key
+              _type
+              top
+              bottom
+              left
+              right
+            } 
+            hotspot {
+              _key
+              _type
+              x
+              y
+              height
+              width
+            }
+          }
           internal {
             type
           }
@@ -72,12 +101,18 @@ export const pageQuery = graphql`
               }
             }
             crop {
+              _key
+              _type
+              top
               bottom
               left
               right
-              top
-            }
+            } 
             hotspot {
+              _key
+              _type
+              x
+              y
               height
               width
             }
@@ -176,7 +211,7 @@ const IndexPage = ({ data }) => {
           </div>
           <div className={style.topcolor}></div>
         </div>
-        <div className={style.content} style={{ textAlign: "center" }}>
+        <div className={style.content} style={{ textAlign: "center", marginBottom: "0" }}>
           <span style={{ textTransform: "uppercase", opacity: ".5", fontWeight: "700", fontSize: ".8em" }}>Siste blogginnlegg</span>
         </div>
         <div>

@@ -38,7 +38,7 @@ export default {
             type: 'text',
         },
         {
-            type: 'bodyImage',
+            type: 'blogPostImage',
             name: "image"
         },
         {

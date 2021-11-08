@@ -5,15 +5,16 @@
    justify-content: space-between;
    flex-wrap: wrap;
    margin-top: 2.90rem;
-   padding: 0 1.45rem;
+   padding: 0 1.0875rem;
    margin: 2.90rem auto 0 auto;
    max-width: 1300px;
+   margin-bottom: 2.9rem;
 
    a {
-    width: 32.33%;
+    width: 32%;
     text-align: center;
     background-color: base.$main-background-color;
-    margin-bottom: 1.5%;
+    margin-bottom: 2%;
     box-shadow: 0px 2px 9px -4px grey;
     border-radius: 5px;
     }
@@ -23,7 +24,7 @@
     }
 
     .clear {
-        width: 32.33%;
+        width: 32%;
     }
 
     h2 {
@@ -58,7 +59,7 @@
     margin: 0;
     font-size: 1.2rem;
     line-height: 1.4rem;
-    padding: 1rem 1.45rem;
+    padding: .5rem 1.45rem 1rem 1.45rem;
     letter-spacing: -0.01em;
 }
 
@@ -72,9 +73,20 @@
     padding: 0 0 1rem 0;
     display: block;
 
+    .blog_image {
+        background-size: cover!important;
+        background-position: center center!important;
+        border-radius:8px 8px 0 0;
+        box-shadow: 0px 2px 9px -4px grey;
+        height: 25vw;
+        max-height: 350px;
+    }
+
     img {
         box-shadow: none;
         border-radius: 5px 5px 0 0;
+        border-bottom: 5px solid #a65f03;
+        margin-bottom: 0;
     }
 }
 
@@ -87,39 +99,27 @@ a.link:hover .title {
     text-decoration: underline;
 }
 
-@media only screen and (max-width: 1300px) {
-    .content {
+@media only screen and (max-width: 1080px) {
+    /* .content {
         max-width: 1000px;
-    }
+    } */
 
     .content a {
-        width: 31.33%;
+        width: 48.8%;
         margin-bottom: 2%;
     }
 
     .content .clear {
-        width: 31.33%;
+        width: 48.8%;
     }
   }
 
-  @media only screen and (max-width: 950px) {
-    .content {
-        max-width: 750px;
-    }
-    .content a {
-        width: 48%;
-        margin-bottom: 4%;
-    }
-    .content .clear {
-        width: 48%;
-    }
-  }
 
-  @media only screen and (max-width: 650px) {
+
+  @media only screen and (max-width: 750px) {
     .content a {
         width: 100%;
-        margin-bottom: 30px;
-        max-width: 350px;
-        margin: 0 auto 30px auto;
+        max-width: 600px;
+        margin: 0 auto 1.45rem auto;
     }
   }

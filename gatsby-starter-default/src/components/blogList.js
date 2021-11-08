@@ -1,8 +1,9 @@
 import * as React from "react"
 import { Link } from "gatsby"
-import * as style from "../components/blogList_card_v2.module.scss"
+import * as style from "../components/blogList_card_v3.module.scss"
 
-function urlBuilder(image,) {
+function urlBuilder(image) {
+    console.log(image.hotspot)
     const { width, height } = image.asset.metadata.dimensions;
     return (
         `w=1000` +
@@ -26,6 +27,7 @@ function urlBuilder(image,) {
 }
 
 const BlogList = ({ props }) => (
+
     <div className={style.content}>
         {props.map((post, index) => (
             <Link className={style.link}
@@ -47,16 +49,19 @@ const BlogList = ({ props }) => (
                         <p style={{ margin: "10px 0 10px 0" }}>{post.node.description}</p>
                     </div>
                     <div 
-                    className={style.blog_image}
-                    style={{ background: `${post.node.image ? `url(${post.node.image.asset.url}?${urlBuilder(post.node.image)}) no-repeat 50% center` : "gray"}` }}
-                >
+                        className={style.blog_image}
+                        style={{ background: `${post.node.image ? `url(${post.node.image.asset.url}?${urlBuilder(post.node.image)}) no-repeat 50% center` : "gray"}` }}
+                    >
+                    {post.node.image && post.node.image._rawAsset ? <span className={style.credit_line}>{post.node.image._rawAsset.creditLine}</span>: null}
                 </div>
                 
 
                 </div>
             </Link>
         ))}
+        <div className={style.link}></div>
     </div>
+    
 ) 
 
 export default BlogList
