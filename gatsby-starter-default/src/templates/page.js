@@ -81,6 +81,15 @@ query ($id: String!){
           }
         } 
       }
+      cloudinary: allCloudinaryImages {
+        edges {
+          node {
+            resources {
+              url
+            }
+          }
+        }
+      }
       gallery: allSanityGallery {
         edges {
           node {
@@ -251,7 +260,7 @@ const Page = ({ data }) => {
   } else if (data.page.title === "Kategorier") {
     posts = <CategoryList categories={data.categories.edges} posts={mergedContent} />
   } else if (data.page.title === "Galleri") {
-    posts = <ImageGallery props={data.gallery.edges} />
+    posts = <ImageGallery props={data.cloudinary.edges} />
   } else if (data.page.title === "Dataordliste") {
     posts = <Dictionary props={data.dictionary.edges} />
   }

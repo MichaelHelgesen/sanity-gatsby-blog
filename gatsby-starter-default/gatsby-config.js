@@ -11,6 +11,7 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
+    `cloudinary`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

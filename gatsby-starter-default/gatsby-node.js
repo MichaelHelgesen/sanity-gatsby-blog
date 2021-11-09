@@ -1,6 +1,48 @@
-exports.onCreateNode = ({ node }) => {
+/* exports.onCreateNode = ({ node }) => {
     console.log(`Node created of type "${node.internal.type}"`)
-}
+} */
+
+
+/* let cloudinary = require("cloudinary")
+
+cloudinary.config({
+    cloud_name: "mikkesblogg",
+    api_key: "689568281515846",
+    api_secret: "RAb_aIzf7cFfjQxZWn4SUBcOUYI",
+    secure: true
+})
+
+
+exports.sourceNodes = async function ({ actions, createNodeId, createContentDigest }) {
+    const { createNode } = actions
+
+    await cloudinary.v2.search.expression("folder:mikkesblogg/*")
+        .sort_by("created_at", "asc")
+        .max_results(200)
+        .execute()
+        .then((result) => {
+            
+            const myResults = { ...result }
+            
+            const nodeContent = JSON.stringify(myResults)
+
+            const nodeMeta = {
+                id: createNodeId(`my-data-${myResults.asset_id}`),
+                parent: null,
+                children: [],
+                internal: {
+                    type: `cloudinaryImages`,
+                    mediaType: `text/html`,
+                    content: nodeContent,
+                    contentDigest: createContentDigest(myResults)
+                }
+            }
+            
+            const node = Object.assign({}, myResults, nodeMeta)
+            createNode(node)
+        }
+    )
+} */
 
 exports.createPages = async function ({ actions, graphql }) {
     const { createPage } = actions;
@@ -124,10 +166,20 @@ exports.createPages = async function ({ actions, graphql }) {
     // Create single pages
     data.pages.edges.forEach(({ node }) => {
         if (node.title != "Hjem") {
-        createPages(node)
+            createPages(node)
         }
     })
 }
+
+
+
+
+
+
+
+
+
+
 
 /*     const mergedData = [...data.posts.edges, ...data.books.edges].forEach(({ node }) => {
         createPages(node);

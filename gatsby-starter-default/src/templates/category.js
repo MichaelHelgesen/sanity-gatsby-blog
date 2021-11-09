@@ -51,7 +51,6 @@ query ($id: String!, $category: String!) {
               height
               width
             }
-            toggleImage
           }
           internal {
             type
@@ -102,7 +101,6 @@ query ($id: String!, $category: String!) {
               height
               width
             }
-            toggleImage
           }
           internal {
             type
