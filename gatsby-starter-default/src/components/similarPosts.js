@@ -139,7 +139,7 @@ const SimilarPosts = (props) => {
 
                     return (
                         <div className={style.content}>
-        {filteredPosts.map((post, index) => (
+        {newArr.map((post, index) => (
             <Link className={style.link}
                 to={post.node.slug ? `/blogg/${post.node.slug.current}` : `/blogg/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}
                 key={index}
