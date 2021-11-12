@@ -102,11 +102,16 @@ const SimilarPosts = (props) => {
                     }
 
 
-                    if (filteredPosts.length > 1) {
+                    if (filteredPosts.length > 3) {
                         
                         for (let i = 3; i > 0; i--) {
                             randomNumber(Math.floor((Math.random() * filteredPosts.length)))
                         }
+                    } else {
+                        for (let j = filteredPosts.length; j >= 0; j--) {
+                            randomPosts.push(j);
+                        }
+                        
                     }
 
                     let newArr = filteredPosts.filter((post, index) => randomPosts.includes(index));
