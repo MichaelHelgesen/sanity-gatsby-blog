@@ -4,7 +4,7 @@
    display: flex;
    justify-content: space-between;
    flex-wrap: wrap;
-   padding: 2.9rem 1.0875rem 0 1.0875rem;
+   padding: 2.9rem 1.0875rem 1.9rem 1.0875rem;
    max-width:1300px;
    margin: 0 auto;
    /* margin: 2.90rem auto 0 auto; */
@@ -87,5 +87,8 @@ a.link:hover .title {
             width: 100%;
             margin: 0 auto 1.45rem auto!important;
         }
+    }
+    .content {
+        padding: 2.9rem 1.0875rem 0 1.0875rem;
     }
   }

@@ -10,6 +10,7 @@ import codePen from './codePenEmbed'
 import exampleUsage from "./codeExample"
 import externalLink from "./externalLink"
 import gallery from './galleyImages'
+import globalMessage from './globalMessage'
 import internalLink from "./internalLink"
 import note from "./note"
 import page from "./page"
@@ -45,6 +46,7 @@ export default createSchema({
     categories,
     gallery,
     page,
+    globalMessage
   ]),
 })
 

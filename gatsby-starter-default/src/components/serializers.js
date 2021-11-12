@@ -10,7 +10,7 @@ import * as style from '../components/serializers.module.scss'
 function urlBuilder(image) {
   const { width, height } = image.asset.metadata.dimensions;
   return (
-    //"w=780" +
+  "w=1000" +
     "&q=75" +
     // Check if there is a crop
     `${image.crop ?

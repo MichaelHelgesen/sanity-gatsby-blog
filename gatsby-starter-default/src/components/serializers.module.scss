@@ -2,12 +2,13 @@
     border: 1px solid gray;
     margin-bottom: 1.45rem;
     padding: 30px 30px 0 30px;
-    width: 84vw;
+/*     width: 84vw;
     position: relative;
     left: 50%;
     right: 50%;
     margin-left: -42vw;
-    margin-right: -42vw;
+    margin-right: -42vw; */
+    width: 100%;
 
     img {
         border: 1px solid gray;
@@ -101,12 +102,12 @@
         margin-left: -35vw;
         margin-right: -35vw;
     }
-    .bodyimage {
-        width: 60vw;
+/*     .bodyimage {
+        width: 1000px;
         position: relative;
         left: 50%;
         right: 50%;
-        margin-left: -30vw;
-        margin-right: -30vw;
-    }
+        margin-left: -500px;
+        margin-right: -500px;
+    } */
 }

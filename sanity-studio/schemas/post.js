@@ -72,6 +72,30 @@ export default {
             ],
         },
         {
+            name: "globalMessage",
+            title: "Globale beskjeder",
+            type: "array",
+            of: [
+                {
+                    type: 'reference',
+                    to: [{ type: 'globalMessage' }],
+                    options: {
+                        filter: ({ parent }) => {
+                            const existingMessages = parent.map(item => {
+                                return item._ref;
+                            })
+                            return {
+                                filter: "_id in $ref == false",
+                                params: {
+                                    ref: existingMessages
+                                }
+                            }
+                        }
+                    }
+                },
+            ],
+        },
+        {
             title: 'Brødtekst',
             name: 'content',
             type: 'array',

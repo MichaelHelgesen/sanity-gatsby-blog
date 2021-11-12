@@ -1,7 +1,7 @@
 export default {
-    name: "tipField",
-    title: "Tipsfelt",
-    type: "object",
+    name: "globalMessage",
+    title: "Global beskjed",
+    type: "document",
     fields: [
         {
             description: "Velg passende tittel",
@@ -83,4 +83,6 @@ export default {
         },
 
     }
+    
 }
+
