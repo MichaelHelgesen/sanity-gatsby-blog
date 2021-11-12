@@ -24,7 +24,6 @@ const ImageGallery = ({ props }) => (
                     columnClassName={style.my_masonry_grid_column}>
                     {props[0].node.resources.map((post, index) => (
                         <div key={index}>
-                            {console.log(post)}
                             <img src={`${post.url}?w=1000&q=75`} alt={post.alt ? post.alt : ""} />
                         </div>
                     ))}
