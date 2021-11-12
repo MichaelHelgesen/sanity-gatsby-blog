@@ -3,12 +3,12 @@
 } */
 
 
-let cloudinary = require("cloudinary")
+/* let cloudinary = require("cloudinary")
 
 cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
+    cloud_name: "mikkesblogg",
+    api_key: "689568281515846",
+    api_secret: "RAb_aIzf7cFfjQxZWn4SUBcOUYI",
     secure: true
 })
 
@@ -42,7 +42,7 @@ exports.sourceNodes = async function ({ actions, createNodeId, createContentDige
             createNode(node)
         }
     )
-}
+} */
 
 exports.createPages = async function ({ actions, graphql }) {
     const { createPage } = actions;
