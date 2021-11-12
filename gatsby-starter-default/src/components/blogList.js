@@ -3,7 +3,6 @@ import { Link } from "gatsby"
 import * as style from "../components/blogList_card_v3.module.scss"
 
 function urlBuilder(image) {
-    console.log(image.hotspot)
     const { width, height } = image.asset.metadata.dimensions;
     return (
         `w=1000` +

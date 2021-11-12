@@ -4,7 +4,7 @@ import * as style from "../components/blogList_card_v3.module.scss"
 import { Link } from "gatsby"
 
 const SimilarPosts = (props) => {
-    let numberOfPosts = props.numberOfPosts;
+    //let numberOfPosts = props.numberOfPosts;
     return (
         <div>
             <StaticQuery
@@ -83,36 +83,54 @@ const SimilarPosts = (props) => {
                                 return null
                             }
                         })
-                          if (sameCategory && (props.slug !== post.node.slug.current)) {
+                        if (sameCategory && (props.slug !== post.node.slug.current)) {
                             return post
                         } else {
                             return null
                         }
                     })
 
-                    
+
                     let randomPosts = []
 
-                    function randomNumber(num){
+                    function randomNumber(num) {
                         if (!randomPosts.includes(num)) {
                             randomPosts.push(num)
                         } else {
-                            randomNumber(Math.floor((Math.random() * filteredPosts.length)))    
+                            randomNumber(Math.floor((Math.random() * filteredPosts.length)))
                         }
                     }
 
-                    if (filteredPosts.length > 3) {
+
+                    if (filteredPosts.length > 1) {
+                        
                         for (let i = 3; i > 0; i--) {
                             randomNumber(Math.floor((Math.random() * filteredPosts.length)))
                         }
                     }
 
                     let newArr = filteredPosts.filter((post, index) => randomPosts.includes(index));
-                    console.log("newArr", newArr);
                     
+                    let message = "Lignende blogginnlegg"
+
+                    if (newArr.length < 1) {
+                        let i = 0
+                        let index = 3;
+                        do {
+                            if (props.slug !== posts[i].node.slug.current) {
+                                newArr.push(posts[i]);
+                            } else {
+                                index++
+                            }
+                            i++
+                            
+                          } while (i < index);
+
+                        
+                        message = "Siste blogginnlegg"
+                    }
 
                     function urlBuilder(image) {
-                        console.log(image.hotspot)
                         const { width, height } = image.asset.metadata.dimensions;
                         return (
                             `w=1000` +
@@ -137,55 +155,60 @@ const SimilarPosts = (props) => {
 
 
 
-                    return (
-                        <div className={style.content}>
-        {newArr.map((post, index) => (
-            <Link className={style.link}
-                to={post.node.slug ? `/blogg/${post.node.slug.current}` : `/blogg/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}
-                key={index}
-            >
-                <div className={style.gradient}>
-                    <div className={style.blog_item}>
-                    <small className={style.dateCategory}>{post.node.date} • 
-                            { // Create a span for each category defined on item
-                                post.node.category && post.node.category.length ?
-                                    post.node.category.map((cat, index) => (
-                                        (index > 0 ? <span key={index}>, <span>{cat.categoryTitle}</span></span>: <span key={index}> {cat.categoryTitle}</span>)
-                                    )) :
-                                    <span> Ukategorisert </span>
-                            }
-                        </small>
-                        <h2 className={style.title}>{post.node.title}</h2>
-                        <p style={{ margin: "10px 0 10px 0" }}>{post.node.description}</p>
-                    </div>
-                    <div 
-                        className={style.blog_image}
-                        style={{ background: `${post.node.image ? `url(${post.node.image.asset.url}?${urlBuilder(post.node.image)}) no-repeat 50% center` : "gray"}` }}
-                    >
-                    {post.node.image && post.node.image._rawAsset ? <span className={style.credit_line}>{post.node.image._rawAsset.creditLine}</span>: null}
-                </div>
-                
+                    return (<div>
+                        <div className={style.content} style={{ textAlign: "center", marginBottom: "0" }}>
+                            <span style={{ textTransform: "uppercase", opacity: ".5", fontWeight: "700", fontSize: ".8em", width:"100%" }}>{message}</span>
+                        </div>
+                        <div className={style.content} style={{marginBottom:"2.9rem"}}>
+                            
+                            {newArr.map((post, index) => (
+                                <Link className={style.link}
+                                    to={post.node.slug ? `/blogg/${post.node.slug.current}` : `/blogg/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}
+                                    key={index}
+                                >
+                                    <div className={style.gradient}>
+                                        <div className={style.blog_item}>
+                                            <small className={style.dateCategory}>{post.node.date} •
+                                                { // Create a span for each category defined on item
+                                                    post.node.category && post.node.category.length ?
+                                                        post.node.category.map((cat, index) => (
+                                                            (index > 0 ? <span key={index}>, <span>{cat.categoryTitle}</span></span> : <span key={index}> {cat.categoryTitle}</span>)
+                                                        )) :
+                                                        <span> Ukategorisert </span>
+                                                }
+                                            </small>
+                                            <h2 className={style.title}>{post.node.title}</h2>
+                                            <p style={{ margin: "10px 0 10px 0" }}>{post.node.description}</p>
+                                        </div>
+                                        <div
+                                            className={style.blog_image}
+                                            style={{ background: `${post.node.image ? `url(${post.node.image.asset.url}?${urlBuilder(post.node.image)}) no-repeat 50% center` : "gray"}` }}
+                                        >
+                                            {post.node.image && post.node.image._rawAsset ? <span className={style.credit_line}>{post.node.image._rawAsset.creditLine}</span> : null}
+                                        </div>
 
-                </div>
-            </Link>
-        ))}
-        <div className={style.link}></div>
-    </div>
-                        
-                        
-                        
-                        
-                        
-/*                         <div>
-                            {newArr.map((element, index) => {
-                                    return <p key={index}>{element.node.title}</p>
-                                })
-                            }
-                        </div> */
+
+                                    </div>
+                                </Link>
+                            ))}
+                            <div className={style.link}></div>
+                        </div>
+
+                    </div>
+
+
+
+                        /*                         <div>
+                                                    {newArr.map((element, index) => {
+                                                            return <p key={index}>{element.node.title}</p>
+                                                        })
+                                                    }
+                                                </div> */
                     )
                 }}
             />
         </div>
+
     )
 }
 export default SimilarPosts

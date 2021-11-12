@@ -77,6 +77,7 @@ const serializers = {
         break;
         case "#ffffde": color = "237, 237, 156";
         break;
+        default: color = "186, 255, 220";
       };
       return (
         <div className={style.tipfield} style={{ backgroundColor: `rgba(${color}, .7)`, border: `3px solid rgb(${color})` }}>

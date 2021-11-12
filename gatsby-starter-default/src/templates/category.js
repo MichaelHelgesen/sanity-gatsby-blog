@@ -117,7 +117,7 @@ query ($id: String!, $category: String!) {
 }
 `
 
-function urlBuilder(image) {
+/* function urlBuilder(image) {
   console.log(image.hotspot)
   const { width, height } = image.asset.metadata.dimensions;
   return (
@@ -139,7 +139,7 @@ function urlBuilder(image) {
           ""}` +
       `&q=50`
   )
-}
+} */
 
 
 const category = ({ data }) => {
