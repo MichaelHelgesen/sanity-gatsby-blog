@@ -92,15 +92,15 @@
        background-color: rgb(166, 95, 3);
        font-size: .8rem;
        padding: 5px 30px;
-       margin-right: 5px;
+       margin: 0 5px;
        margin-bottom: 10px;
     }
     a:hover {
         text-decoration:none;
     }
     a:last-of-type {
-        margin: 0;
-        margin-left: 5px;
+        /* margin: 0;
+        margin-left: 5px; */
     }
     margin-bottom: 2.9rem;
 }
@@ -200,9 +200,7 @@
         z-index: 1;
         max-width: 780px;
         margin: 0 auto;
-        padding: 2rem 1.0875rem 1.45rem 1.0875rem;
+        padding: 2rem 1.0875rem 0 1.0875rem;
     }
-    .content {
-        padding-top: 0;
-    }
+    
 }

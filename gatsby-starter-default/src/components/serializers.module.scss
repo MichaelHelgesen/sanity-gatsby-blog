@@ -1,5 +1,5 @@
 .bodyimage {
-    border: 1px solid gray;
+    border: 1px solid rgb(196, 196, 196);
     margin-bottom: 1.45rem;
     padding: 30px 30px 0 30px;
 /*     width: 84vw;
@@ -9,11 +9,12 @@
     margin-left: -42vw;
     margin-right: -42vw; */
     width: 100%;
+    background-color: #f1efee;
 
     img {
         border: 1px solid gray;
         margin: 0;
-        box-shadow: 0px 2px 9px -4px grey;
+        box-shadow: 0px 4px 12px -4px grey;
     }
 
     p {

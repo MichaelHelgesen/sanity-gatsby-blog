@@ -224,8 +224,7 @@ console.log("FILTERED POSTS", filteredPosts)
                         <div className={style.content} style={{ textAlign: "center", marginBottom: "0" }}>
                             <span style={{ textTransform: "uppercase", opacity: ".5", fontWeight: "700", fontSize: ".8em", width: "100%" }}>{message}</span>
                         </div>
-                        <div className={style.content} style={{ marginBottom: "calc(2.9rem - 2%)" }}>
-
+                        <div className={style.content} >
                             {newArr.map((post, index) => (
                                 <Link className={style.link}
                                     to={post.node.slug ? `/blogg/${post.node.slug.current}` : `/blogg/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}
@@ -256,7 +255,7 @@ console.log("FILTERED POSTS", filteredPosts)
                                     </div>
                                 </Link>
                             ))}
-                            <div className={style.link}></div>
+                            <div className={`${style.link} clear`}></div>
                         </div>
 
                     </div>

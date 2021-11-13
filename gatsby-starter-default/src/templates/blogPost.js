@@ -165,7 +165,7 @@ const blogPost = ({ data }) => {
         </div>
       </div>
         <SimilarPosts category={post.category} slug={post.slug.current} numberOfPosts={3} />
-        <div className={style.content} style={{ paddingTop: "1.45rem" }}>
+        <div className={style.content} style={{paddingTop: "1.45rem"}} >
           <div className={style.knapper}>
             <Link
               to="/blogg" className={style.categories}>

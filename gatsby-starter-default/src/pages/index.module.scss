@@ -98,7 +98,7 @@ a.link:hover .title {
        background-color: rgb(166, 95, 3);
        font-size: .8rem;
        padding: 5px 30px;
-       margin-right: 5px;
+       margin: 0 5px;
        margin-bottom: 10px;
     }
     a:hover {
@@ -106,7 +106,6 @@ a.link:hover .title {
     }
     a:last-of-type {
         margin: 0;
-        margin-left: 5px;
     }
 }
 

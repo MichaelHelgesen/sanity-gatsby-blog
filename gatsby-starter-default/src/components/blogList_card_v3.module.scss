@@ -96,6 +96,9 @@ transform: scale(1.03);
     .link {
         width: 48.8%;
     }
+    .blog_image {
+        height: 50vw;
+    } 
     .title {
         font-size: 1.2rem;
         line-height: 1.5rem;
@@ -104,7 +107,7 @@ transform: scale(1.03);
 
   @media only screen and (max-width: 750px) {
     .content {
-        max-width: 600px;
+        max-width: 500px;
     }
     /* .gradient {
         flex-direction: column-reverse;
@@ -114,12 +117,16 @@ transform: scale(1.03);
         min-height: unset;
         border-radius: 0 0 8px 8px;
     }*/
+
     .blog_image {
-        height: 40vw;
+        height: 50vw;
     } 
     .link {
         width: 100%;
-        margin-bottom: 1.45rem!important;
+        a {margin-bottom: 1.45rem;}
+    }
+    a.link {
+        margin-bottom: 1.45rem;
     }
 
   }
