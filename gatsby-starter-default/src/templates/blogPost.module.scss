@@ -42,8 +42,8 @@
 
 .content {
     @include base.contentLayout;
-    margin-bottom: 2.9rem;
-}
+/*     margin-bottom: 2.9rem;
+ */}
 
 .breadcrumb {
     margin-bottom: .3rem;
@@ -104,16 +104,28 @@
 }
 
 .globalMessage {
-    border-radius: 5px;
+    border-radius: 0;
     margin-bottom: 1.45rem;
-    padding: 20px;
-    font-size: .85rem;
+    padding: 0;
+    padding: 2rem;
+    border-top: 1px solid #a65f03!important;
+    border-bottom: 1px solid #a65f03!important;
+    border-left:none!important;
+    border-right: none!important;
+    margin-bottom: 1.45rem;
+    font-family: merriweather, serif;
+    background-color:#ffb55630!important;
+/*     font-size: .5rem;
+ */   
+
     p {
-        line-height: 1.4em;
+        line-height: 1.6em;
+        font-size: .9em;
     }
     h5 {
         margin-bottom: 10px;
-        font-size:.9rem;
+        font-size:1rem;
+        font-family: merriweather, serif;
     }
 
     p:last-of-type {
@@ -122,12 +134,30 @@
 }
 
 .byline {
-    margin-top: 2.9rem;
+    margin-top: 4.9rem;
+    padding-bottom: 2.9rem;
     padding-top: 2.9rem;
-    border-top: 1px solid orange;
+    border-top: 1px solid #a65f03;
+    border-bottom: 1px solid #a65f03;
     margin-bottom: 1.45rem;
     font-family: merriweather, serif;
     font-size: .95rem;
+    position: relative;
+    span {
+        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+        font-weight: 900;
+        position: absolute;
+        top: -15px;
+        width: 100%;
+        max-width: 170px;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        text-align: center;
+        color: #a65f03;
+        background-color: hsla(0, 0%, 98%, 1);
+        letter-spacing: .03em;
+    }
     p {
         line-height: 1.6em;
     }
@@ -142,6 +172,44 @@
     }
 }
 
+.knapper {
+    text-align: center;
+
+    a {
+       background-color: rgb(166, 95, 3);
+       font-size: .8rem;
+       padding: 5px 30px;
+       margin-right: 5px;
+       margin-bottom: 10px;
+    }
+    a:hover {
+        text-decoration:none;
+    }
+    a:last-of-type {
+        margin: 0;
+        margin-left: 5px;
+    }
+    margin-bottom: 2.9rem;
+}
+
+.categories {
+    border-radius: 15px;
+    padding: 0 15px;
+    margin: 0 5px 5px 0;
+    transition: all .2s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 75%;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0px 2px 9px -4px grey;
+}
+
+.categories:hover {
+    background-color: #727171!important;
+    color: white;
+    text-decoration: underline;
+}
 
 @media only screen and (max-width: 580px) {
     .title {

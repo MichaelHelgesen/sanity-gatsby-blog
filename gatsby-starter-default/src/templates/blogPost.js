@@ -159,11 +159,24 @@ const blogPost = ({ data }) => {
           }
         </div>
         <div className={style.byline}>
+          <span>MIKKES BLOGG</span>
           <h5>Takk for interessen</h5>
-          <p>Har du en kommentar, et spørsmål, ris, ros, eller vil påpeke feil eller mangler kan du sende meg en mail. Jeg setter stor pris på en tilbakemelding.</p>
+          <p>Har du en kommentar, et spørsmål, ris, ros, eller ønsker å påpeke feil eller mangler, kan du sende meg en mail. Jeg setter stor pris på en tilbakemelding.</p>
         </div>
       </div>
         <SimilarPosts category={post.category} slug={post.slug.current} numberOfPosts={3} />
+        <div className={style.content} style={{ paddingTop: "1.45rem" }}>
+          <div className={style.knapper}>
+            <Link
+              to="/blogg" className={style.categories}>
+              Se alle blogginnlegg
+            </Link>
+            <Link
+              to="/blogg/kategorier" className={style.categories}>
+              Se alle kategorier
+            </Link>
+          </div>
+        </div>
     </Layout>
   )
 }

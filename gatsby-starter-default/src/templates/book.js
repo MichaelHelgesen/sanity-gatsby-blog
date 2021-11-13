@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 import BlockContent from '@sanity/block-content-to-react'
 import Layout from "../components/layout"
 import serializers from "../components/serializers"
+import SimilarPosts from "../components/similarPosts"
 import { Helmet } from "react-helmet"
 import * as style from "../templates/book.module.scss"
 
@@ -19,6 +20,9 @@ export const pageQuery = graphql`
           id
           slug {
             current
+          }
+          category {
+            categoryTitle
           }
           image {
             alt
@@ -69,6 +73,7 @@ export const pageQuery = graphql`
 
 const book = ({ data }) => {
   const post = data.sanityBook;
+  console.log(post.category)
   //const imageData = getGatsbyImageData(post.image.asset.id, {maxWidth: 1024}, sanityConfig)
 
   // Function for image settings and generating URL
@@ -98,7 +103,7 @@ const book = ({ data }) => {
         <title>{post.title}{data.site.siteMetadata.titleTemplate}</title>
         <link rel="canonical" href={`${data.site.siteMetadata.url}/blogg/${post.slug.current}`} />
       </Helmet>
-      <div style={{ margin: '0 0 40px 0', position: "relative" }}>
+      <div style={{ margin: '0 0 20px 0', position: "relative" }}>
         <div className={style.headerwrap}>
           <div className={style.intro}>
             <div className={style.introWrapper}>
@@ -172,9 +177,27 @@ const book = ({ data }) => {
               )}
             </div>
             : null}
-
+<div className={style.byline}>
+          <span>MIKKES BLOGG</span>
+          <h5>Takk for interessen</h5>
+          <p>Har du en kommentar, et spørsmål, ris, ros, eller ønsker å påpeke feil eller mangler, kan du sende meg en mail. Jeg setter stor pris på en tilbakemelding.</p>
         </div>
+        </div>
+        
       </div>
+        <SimilarPosts category={post.category} slug={post.slug.current} numberOfPosts={3} />
+        <div className={style.content} style={{ paddingTop: "1.45rem" }}>
+          <div className={style.knapper}>
+            <Link
+              to="/blogg" className={style.categories}>
+              Se alle blogginnlegg
+            </Link>
+            <Link
+              to="/blogg/kategorier" className={style.categories}>
+              Se alle kategorier
+            </Link>
+          </div>
+        </div>
     </Layout>
   )
 }

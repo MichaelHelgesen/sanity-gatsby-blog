@@ -62,10 +62,65 @@ const SimilarPosts = (props) => {
             }
           }
         }
+        book: allSanityBook(sort: {fields: date, order: DESC}) {
+            edges {
+              node {
+                category {
+                  categoryTitle
+                }
+                date(formatString: "DD.MM.YYYY")
+                description
+                id
+                image {
+                  alt
+                  _type
+                  asset {
+                    url
+                    metadata {
+                      dimensions {
+                        height
+                        width
+                      }
+                    }
+                  }
+                  crop {
+                    _key
+                    _type
+                    top
+                    bottom
+                    left
+                    right
+                  } 
+                  hotspot {
+                    _key
+                    _type
+                    x
+                    y
+                    height
+                    width
+                  }
+                }
+                internal {
+                  type
+                }
+                slug {
+                  _key
+                  _type
+                  current
+                }
+                title
+              }
+            }
+          }
       }
     `} render={data => {
 
-                    const posts = data.post.edges
+        const posts = [...data.post.edges, ...data.book.edges].sort(function (a, b) {
+            // Format the date to year, month, day to get correct sort order
+            const formatDate = (arg) => arg.node.date.slice(6).concat(arg.node.date.slice(3, 5)).concat(arg.node.date.slice(0, 2));
+            return formatDate(b) - formatDate(a)
+          });
+                    //const posts = data.post.edges
 
                     let categoryArray = [];
 
@@ -73,26 +128,29 @@ const SimilarPosts = (props) => {
                         categoryArray.push(element.categoryTitle);
                     });
 
-                    const filteredPosts = data.post.edges.filter((post) => {
+                    // Filtrere blogginnlegg etter kategori
+                    const filteredPosts = posts.filter((post) => {
+                        
+                        // Ut i funksjon
                         let sameCategory = false;
-                        post.node.category.map(function (cat) {
+
+                        post.node.category.forEach((cat) => {
                             if (categoryArray.includes(cat.categoryTitle)) {
                                 return sameCategory = true;
                             }
-                            else {
-                                return null
-                            }
                         })
+                        
                         if (sameCategory && (props.slug !== post.node.slug.current)) {
                             return post
                         } else {
                             return null
                         }
                     })
-
+console.log("FILTERED POSTS", filteredPosts)
 
                     let randomPosts = []
-
+                    
+                    // Generere tilfeldig nummer
                     function randomNumber(num) {
                         if (!randomPosts.includes(num)) {
                             randomPosts.push(num)
@@ -101,9 +159,9 @@ const SimilarPosts = (props) => {
                         }
                     }
 
-
+                    // Hvis blogginnlegg i samme kategori teller mer eller mindre enn tre, men mer enn null.
                     if (filteredPosts.length > 3) {
-                        
+
                         for (let i = 3; i > 0; i--) {
                             randomNumber(Math.floor((Math.random() * filteredPosts.length)))
                         }
@@ -111,13 +169,14 @@ const SimilarPosts = (props) => {
                         for (let j = filteredPosts.length; j >= 0; j--) {
                             randomPosts.push(j);
                         }
-                        
+
                     }
 
                     let newArr = filteredPosts.filter((post, index) => randomPosts.includes(index));
-                    
+
                     let message = "Lignende blogginnlegg"
 
+                    // Hvis ingen blogginnlegg i samme kategori,
                     if (newArr.length < 1) {
                         let i = 0
                         let index = 3;
@@ -128,13 +187,14 @@ const SimilarPosts = (props) => {
                                 index++
                             }
                             i++
-                            
-                          } while (i < index);
 
-                        
+                        } while (i < index);
+
+
                         message = "Siste blogginnlegg"
                     }
 
+                    // Bildehåndtering
                     function urlBuilder(image) {
                         const { width, height } = image.asset.metadata.dimensions;
                         return (
@@ -162,10 +222,10 @@ const SimilarPosts = (props) => {
 
                     return (<div>
                         <div className={style.content} style={{ textAlign: "center", marginBottom: "0" }}>
-                            <span style={{ textTransform: "uppercase", opacity: ".5", fontWeight: "700", fontSize: ".8em", width:"100%" }}>{message}</span>
+                            <span style={{ textTransform: "uppercase", opacity: ".5", fontWeight: "700", fontSize: ".8em", width: "100%" }}>{message}</span>
                         </div>
-                        <div className={style.content} style={{marginBottom:"2.9rem"}}>
-                            
+                        <div className={style.content} style={{ marginBottom: "calc(2.9rem - 2%)" }}>
+
                             {newArr.map((post, index) => (
                                 <Link className={style.link}
                                     to={post.node.slug ? `/blogg/${post.node.slug.current}` : `/blogg/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}
