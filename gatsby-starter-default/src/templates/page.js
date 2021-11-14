@@ -288,6 +288,7 @@ const Page = ({ data }) => {
         <div>
           {posts ? posts : <div className={style.content}><BlockContent blocks={data.page._rawContent} serializers={serializers} /></div>}
         </div>
+        
       </div>
     </Layout>
   )
