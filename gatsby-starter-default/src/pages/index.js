@@ -73,7 +73,7 @@ export const pageQuery = graphql`
     pages: sanityPage(title: {eq: "Hjem"}) {
       id
       title
-      _rawContent
+      _rawContent(resolveReferences:{maxDepth:10})
       introduction
     }
     post: allSanityPost (sort: {

@@ -171,12 +171,14 @@ export default {
             title: 'title',
             description: 'description',
             date: 'date',
+            image: 'image'
         },
         prepare(selection) {
-            const { title, description, date } = selection
+            const { title, description, date, image } = selection
             return {
                 title: title,
                 subtitle: `${date.split('-')[2].slice(0, 2)}.${date.split('-')[1]}.${date.split('-')[0]} - ${description}`,
+                image: image
             }
         }
     }

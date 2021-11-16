@@ -133,8 +133,9 @@ const serializers = {
       )
     },
     internalLink: ({ mark, children }) => {
+      const link = mark.reference.slug ? mark.reference._type === "post" ? `/blogg/${mark.reference.slug.current}` : `/${mark.reference.slug.current}` : mark.reference._type === "post" ? `/blogg/${mark.reference.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}` : `/${mark.reference.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`
       return <Link to={
-        mark.reference.slug ? `/blogg/${mark.reference.slug.current}` : `/blogg/${mark.reference.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`
+        link
       }>{children}</Link>
     },
     link: props => {

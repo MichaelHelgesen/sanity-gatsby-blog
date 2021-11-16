@@ -16,6 +16,9 @@ export default {
                 },
                 {
                     type: "book",
+                },
+                {
+                    type: "page"
                 }
             ]
         }
