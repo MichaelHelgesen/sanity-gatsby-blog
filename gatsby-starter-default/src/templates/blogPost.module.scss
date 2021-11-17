@@ -43,7 +43,14 @@
 .content {
     @include base.contentLayout;
 /*     margin-bottom: 2.9rem;
- */}
+ */
+    a {
+        color: rgb(223, 83, 32);
+    }
+    a:hover {
+        color: rgb(62, 158, 62);
+    }
+}
 
 .breadcrumb {
     margin-bottom: .3rem;
