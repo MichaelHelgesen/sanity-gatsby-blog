@@ -57,10 +57,11 @@ a.link:hover .title {
     div {
         margin-bottom: 2.9rem;
     }
+    
     .welcome {
         font-weight: 800;
         display: inline-block;
-        margin-bottom: 1.45rem;
+        margin-bottom: 2.9rem;
         border-bottom: 5px solid #BDA17D;
     }
     h1 {
@@ -94,6 +95,9 @@ margin-right: 5px;
         font-weight: 700;
         font-size: 1.2rem;
         line-height: 1.4em;
+        a:hover {
+            color: #06863e
+        }
     }
 }
 

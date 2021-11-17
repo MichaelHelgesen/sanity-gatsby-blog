@@ -42,6 +42,12 @@
     }
 }
 
+.externallink:visited {
+    svg {
+        border-color: rgb(62, 158, 62);
+    }
+}
+
 .imageDescription{
     font-size: .8em;
     font-weight: 600;
