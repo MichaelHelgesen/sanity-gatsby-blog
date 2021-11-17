@@ -202,7 +202,8 @@ const IndexPage = ({ data }) => {
         <div className={style.headerwrap}>
           <div>
             <div className={style.introField}>
-              <h1>{page.introduction}</h1>
+              <span className={style.welcome}>VELKOMMEN TIL MIKKES BLOGG</span>
+              <h1><span className={style.laer}>lær</span>ing <span className={style.via}>via</span><br/> <span className={style.del}>del</span>ing</h1>
               <BlockContent
                 blocks={page._rawContent}
                 serializers={serializers} />
