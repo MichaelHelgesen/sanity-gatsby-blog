@@ -29,9 +29,9 @@
     display: inline-block;
     
     svg {
-        border-bottom: 1px solid rgb(223, 83, 32);
+        /* border-bottom: 1px solid #cc4717; */
         position: relative;
-        top: 2.2px;
+        top: 2.3px;
         transition: all .2s ease;
     }
 }
@@ -42,11 +42,11 @@
     }
 }
 
-.externallink:visited {
+/* .externallink:visited {
     svg {
         border-color: rgb(62, 158, 62);
     }
-}
+} */
 
 .imageDescription{
     font-size: .8em;
