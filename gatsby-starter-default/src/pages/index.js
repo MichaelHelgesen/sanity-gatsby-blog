@@ -200,17 +200,21 @@ const IndexPage = ({ data }) => {
       </Helmet>
       <div style={{ margin: '0 0 40px 0', position: "relative" }}>
         <div className={style.headerwrap}>
-          <div>
+          <div className={style.headerBg}>
             <div className={style.introField}>
               <span className={style.welcome}>VELKOMMEN TIL MIKKES BLOGG</span>
               <h1><span className={style.laer}>lær</span>ing <span className={style.via}>via</span><br/> <span className={style.del}>del</span>ing</h1>
               <BlockContent
                 blocks={page._rawContent}
                 serializers={serializers} />
+                <div className={style.categoryList}>
               {categoryList} {/* <Link to={"/blogg/kategorier"}>Se alle kategoriene</Link> */}
+              </div>
             </div>
           </div>
+          <div className={style.topBg}></div>
           <div className={style.topcolor}></div>
+          
         </div>
         <div className={style.content} style={{ textAlign: "center", marginBottom: "0" }}>
           <span style={{ textTransform: "uppercase", opacity: ".5", fontWeight: "700", fontSize: ".8em" }}>Siste blogginnlegg</span>

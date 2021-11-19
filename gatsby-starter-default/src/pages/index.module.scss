@@ -2,7 +2,11 @@
 
 .headerwrap {
     position: relative;
+    background-color: rgb(212, 205, 190);
 }
+
+
+
 
 .topcolor {
 /*     background: #e7e5e5; */
@@ -11,11 +15,21 @@
     right: 0;
     left: 0;
     height: 100%;
-    background: url("https://i.ibb.co/1Zx44C2/Idea-light-bulb-doodle-on-black-chalkboard-with-blank-copy-space-for-educational-success-and-creativ.jpg") center center no-repeat;
-    background-size: cover;
-    opacity: 0.1;
-    background-color: gray;
+    background: url("https://i.ibb.co/j5p4ZLw/programmer2.png") center center no-repeat;
+background-size: 75%;
+background-position: 101% 101%;
 }
+
+.topBg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 100%;
+        opacity: .3;
+        background-size: cover;
+        background: url("https://i.ibb.co/cY8nSkn/dots.png") center center;   
+     }
 
 .content {
     @include base.contentLayout;
@@ -58,8 +72,13 @@ a.link:hover .title {
     padding-bottom: 2.90rem;
     position:relative;
     z-index:2;
+    max-width: 1300px;
     div {
         margin-bottom: 2.9rem;
+    }
+    .categoryList {
+        margin-bottom: 0;
+        max-width: 600px;
     }
     
     .welcome {
@@ -80,7 +99,7 @@ a.link:hover .title {
         span {
             color: #523004;
         }
-        .laer {
+/*         .laer {
 letter-spacing: -0.06em;
 margin-right: 5px;
         }
@@ -92,7 +111,7 @@ margin-right: 5px;
         .del {
             letter-spacing: -0.009em;
             margin-left: 3px;
-                    }
+                    } */
     }
 
     p {
@@ -104,6 +123,8 @@ margin-right: 5px;
         }
     }
 }
+
+
 
 .categories {
     border-radius: 15px;
@@ -142,10 +163,46 @@ margin-right: 5px;
     }
 }
 
+@media only screen and (min-width: 1400px)  {
+    .topcolor {
+        background-size: 1100px;
+        background-position: 100% 100%;
+        }
+}
+
+@media only screen and (max-width: 1200px)  {
+    .topcolor {
+        background-size: 70%;
+        background-position: 120% 100%;
+     }
+}
+
+@media only screen and (max-width: 1000px)  {
+    .topcolor {
+        background-size: 60%;
+        background-position: 120% 100%;
+     }
+}
+
+@media only screen and (max-width: 900px)  {
+    .topcolor {
+        background-size: 50%;
+        background-position: 110% 105%;
+     }
+     .introField {
+        .categoryList {
+            margin-bottom: 1rem;
+           
+        }
+     }
+     
+}
+
 @media only screen and (max-width: 800px)  {
     .introField h1 {
         font-size: 16.5vw;
     }
+    
 }
 
 @media only screen and (max-width: 580px) {
