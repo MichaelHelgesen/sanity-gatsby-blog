@@ -7,6 +7,7 @@ import * as style from "../pages/index.module.scss"
 import BlogList from "../components/blogList"
 import { Helmet } from "react-helmet"
 
+
 export const pageQuery = graphql`
   query {
     book: allSanityBook(sort: {fields: date, order: DESC}) {
@@ -22,6 +23,7 @@ export const pageQuery = graphql`
             alt
             _type
             asset {
+              gatsbyImageData(width: 200, placeholder: BLURRED)
               url
               metadata {
                 dimensions {
@@ -92,6 +94,7 @@ export const pageQuery = graphql`
             alt
             _type
             asset {
+              gatsbyImageData(width: 200, placeholder: BLURRED)
               url
               metadata {
                 dimensions {
@@ -190,6 +193,9 @@ const IndexPage = ({ data }) => {
     return 0;
   });
 // ---
+
+
+
 
   return (
     <Layout>

@@ -33,6 +33,7 @@ query ($id: String!){
             image {
                 alt
                 asset { 
+                  gatsbyImageData(width: 600, height: 520, placeholder: BLURRED, layout: CONSTRAINED)
                   url
                   metadata {
                     dimensions {

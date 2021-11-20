@@ -1,6 +1,8 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import * as style from "../components/bookList.module.scss"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+
 
 // Function for image settings and generating URL
 function urlBuilder(image, w, h, q) {
@@ -32,6 +34,8 @@ const BookList = ({ props }) => (
 
             <Link key={index} className={style.link} to={post.node.slug ? `/blogg/${post.node.slug.current}` : `/blogg/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}>
                 <img src={`${post.node.image.asset.url}?${urlBuilder(post.node.image, 600, 520, 75)}`} alt={post.node.image.alt ? post.node.image.alt : ""} />
+                <GatsbyImage image={getImage(post.node.image.asset)} alt="hello"/> 
+
                 <small className={style.date}>{post.node.read}</small>
                 <small className={style.author}>{post.node.author}</small>
                 <h2 className={style.title}>{post.node.title}</h2>

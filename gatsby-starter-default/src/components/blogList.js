@@ -1,6 +1,8 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import * as style from "../components/blogList_card_v3.module.scss"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import LazyLoad from 'react-lazyload';
 
 function urlBuilder(image) {
     const { width, height } = image.asset.metadata.dimensions;
@@ -29,10 +31,12 @@ const BlogList = ({ props }) => (
 
     <div className={style.content}>
         {props.map((post, index) => (
+            
             <Link className={style.link}
                 to={post.node.slug ? `/blogg/${post.node.slug.current}` : `/blogg/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}
                 key={index}
             >
+                <LazyLoad>
                 <div className={style.gradient}>
                     <div className={style.blog_item}>
                     <small className={style.dateCategory}>{post.node.date} • 
@@ -45,7 +49,9 @@ const BlogList = ({ props }) => (
                             }
                         </small>
                         <h2 className={style.title}>{post.node.title}</h2>
-                        <p style={{ margin: "10px 0 10px 0" }}>{post.node.description}</p>
+                        
+{/*                         <GatsbyImage image={getImage(post.node.image.asset)} alt="hello"/> 
+ */}                        <p style={{ margin: "10px 0 10px 0" }}>{post.node.description}</p>
                     </div>
                     <div 
                         className={style.blog_image}
@@ -56,7 +62,9 @@ const BlogList = ({ props }) => (
                 
 
                 </div>
+                </LazyLoad>
             </Link>
+            
         ))}
         <div className={style.link}></div>
     </div>
