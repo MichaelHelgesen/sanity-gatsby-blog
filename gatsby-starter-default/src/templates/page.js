@@ -89,7 +89,7 @@ query ($id: String!){
         edges {
           node {
             resources {
-              url
+              secure_url
             }
           }
         }
@@ -101,12 +101,14 @@ query ($id: String!){
               alt
               _type
               asset {
+                _id
                 url
                 metadata {
                   dimensions {
                     height
                     width
                   }
+                  lqip
                 }
               }
               crop {

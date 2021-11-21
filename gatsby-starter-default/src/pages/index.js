@@ -74,6 +74,68 @@ export const pageQuery = graphql`
       }
     }
     pages: sanityPage(title: {eq: "Hjem"}) {
+      bilde1 {
+        alt
+        _type
+        asset {
+          url
+          _id
+          metadata {
+            dimensions {
+              height
+              width
+            }
+            lqip
+          }
+        }
+        crop {
+          _key
+          _type
+          top
+          bottom
+          left
+          right
+        } 
+        hotspot {
+          _key
+          _type
+          x
+          y
+          height
+          width
+        }
+      }
+      bilde2 {
+        alt
+        _type
+        asset {
+          url
+          _id
+          metadata {
+            dimensions {
+              height
+              width
+            }
+            lqip
+          }
+        }
+        crop {
+          _key
+          _type
+          top
+          bottom
+          left
+          right
+        } 
+        hotspot {
+          _key
+          _type
+          x
+          y
+          height
+          width
+        }
+      }
       id
       title
       _rawContent(resolveReferences:{maxDepth:10})
@@ -223,8 +285,12 @@ const IndexPage = ({ data }) => {
               </div>
             </div>
           </div>
-          <div className={style.topBg}></div>
-          <div className={style.topcolor}></div>
+          <div className={style.topBg}
+          style={{background:`url(${page.bilde2.asset.url}) center center no-repeat`}}
+          ></div>
+          <div className={style.topcolor}
+            style={{background:`url(${page.bilde1.asset.url}) no-repeat`}}
+          ></div>
           
         </div>
         <div className={style.content} style={{ textAlign: "center", marginBottom: "0" }}>

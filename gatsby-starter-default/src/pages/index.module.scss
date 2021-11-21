@@ -9,15 +9,14 @@
 
 
 .topcolor {
-/*     background: #e7e5e5; */
+    background: #e7e5e5;
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
     height: 100%;
-    background: url("https://i.ibb.co/j5p4ZLw/programmer2.png") center center no-repeat;
-background-size: 75%;
-background-position: 101% 101%;
+background-size: 75%!important;
+background-position: 101% 101%!important; 
 }
 
 .topBg {
@@ -27,8 +26,9 @@ background-position: 101% 101%;
         right: 0;
         left: 0;
         height: 100%;
-        background: url("https://i.ibb.co/cY8nSkn/dots.png") center center;   
-     }
+        background-size: cover!important;
+        background-size:200%!important;
+   }
 
 .content {
     @include base.contentLayout;
@@ -164,29 +164,29 @@ margin-right: 5px;
 
 @media only screen and (min-width: 1400px)  {
     .topcolor {
-        background-size: 1100px;
-        background-position: 100% 100%;
+        background-size: 1100px!important;
+        background-position: 100% 100%!important;
         }
 }
 
 @media only screen and (max-width: 1200px)  {
     .topcolor {
-        background-size: 70%;
-        background-position: 120% 100%;
+        background-size: 70%!important;
+        background-position: 120% 100%!important;
      }
 }
 
 @media only screen and (max-width: 1000px)  {
     .topcolor {
-        background-size: 60%;
-        background-position: 120% 100%;
+        background-size: 60%!important;
+        background-position: 120% 100%!important;
      }
 }
 
 @media only screen and (max-width: 900px)  {
     .topcolor {
-        background-size: 50%;
-        background-position: 110% 105%;
+        background-size: 50%!important;
+        background-position: 110% 105%!important;
      }
      .introField {
         .categoryList {

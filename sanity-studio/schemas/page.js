@@ -29,6 +29,14 @@ export default {
             type: 'text',
         },
         {
+            type: 'blogPostImage',
+            name: "bilde1"
+        },
+        {
+            type: 'blogPostImage',
+            name: "bilde2"
+        },
+        {
             title: 'Brødtekst',
             name: 'content',
             type: 'array',
