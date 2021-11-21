@@ -6,6 +6,7 @@ import serializers from "../components/serializers"
 import SimilarPosts from "../components/similarPosts"
 import { Helmet } from "react-helmet"
 import * as style from "../templates/blogPost.module.scss"
+import Image from "gatsby-plugin-sanity-image"
 
 export const pageQuery = graphql`
   query ($id: String!){
@@ -20,12 +21,14 @@ export const pageQuery = graphql`
               _type
               _rawAsset(resolveReferences:{maxDepth:10})
               asset { 
+                _id
                 url
                 metadata {
                   dimensions {
                     height
                     width
                   }
+                  lqip
                 }
               }
               crop {
@@ -112,8 +115,23 @@ const blogPost = ({ data }) => {
         <link rel="canonical" href={`${data.site.siteMetadata.url}/blogg/${post.slug ? post.slug.current : createSlug(post.title)}`} />
       </Helmet>
       <div className={style.headerwrap} style={!post.image || !post.image.toggleImage ? { paddingTop: "2.9rem" } : null}>
-        {post.image && post.image.toggleImage ? <div className={style.blogPostImage} style={{ background: `url(${post.image.asset.url}?${urlBuilder(post.image)}) no-repeat center center`, backgroundSize: "cover" }}> {post.image._rawAsset.creditLine ? <span className={style.creditLine}>{post.image._rawAsset.creditLine}</span> : null}</div> : null}
-
+        {/*         {post.image && post.image.toggleImage ? <div className={style.blogPostImage} style={{ background: `url(${post.image.asset.url}?${urlBuilder(post.image)}) no-repeat center center`, backgroundSize: "cover" }}> {post.image._rawAsset.creditLine ? <span className={style.creditLine}>{post.image._rawAsset.creditLine}</span> : null}</div> : null}
+ */}        {post.image.asset._id ? <div className={style.blogPostImage} ><Image
+          // pass asset, hotspot, and crop fields
+          {...post.image}
+          // tell Sanity how large to make the image (does not set any CSS)
+          width={1000}
+          height={600}
+          alt={"g"}
+          //config={{blur:50}}
+          // style it how you want it
+          style={{
+            width: "100%",
+            height: "40vw",
+            maxHeight: "50vh",
+            objectFit: "cover"
+          }}
+        /> </div>: <p>xc</p>}
         <div className={post.image && post.image.toggleImage ? style.introWithImage : style.intro}>
           <div className={style.introWrapper}>
             <small className={style.breadcrumb}>
@@ -145,10 +163,10 @@ const blogPost = ({ data }) => {
               <h5>
                 {post.globalMessage[0].tipText || post.globalMessage[0].tipTitle || null}
               </h5>
-                <BlockContent
-                  blocks={post.globalMessage[0]._rawTipContent}
-                  serializers={serializers}
-                />
+              <BlockContent
+                blocks={post.globalMessage[0]._rawTipContent}
+                serializers={serializers}
+              />
             </div> : null
           }
           {post._rawContent ?
@@ -164,19 +182,19 @@ const blogPost = ({ data }) => {
           <p>Har du en kommentar, et spørsmål, ris, ros, eller ønsker å påpeke feil eller mangler, kan du sende meg en mail. Jeg setter stor pris på en tilbakemelding.</p>
         </div>
       </div>
-        <SimilarPosts category={post.category} slug={post.slug.current} numberOfPosts={3} />
-        <div className={style.content} style={{paddingTop: "1.45rem"}} >
-          <div className={style.knapper}>
-            <Link
-              to="/blogg" className={style.categories}>
-              Se alle blogginnlegg
-            </Link>
-            <Link
-              to="/blogg/kategorier" className={style.categories}>
-              Se alle kategorier
-            </Link>
-          </div>
+      <SimilarPosts category={post.category} slug={post.slug.current} numberOfPosts={3} />
+      <div className={style.content} style={{ paddingTop: "1.45rem" }} >
+        <div className={style.knapper}>
+          <Link
+            to="/blogg" className={style.categories}>
+            Se alle blogginnlegg
+          </Link>
+          <Link
+            to="/blogg/kategorier" className={style.categories}>
+            Se alle kategorier
+          </Link>
         </div>
+      </div>
     </Layout>
   )
 }

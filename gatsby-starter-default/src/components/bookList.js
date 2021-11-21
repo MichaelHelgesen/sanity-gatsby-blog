@@ -2,6 +2,8 @@ import * as React from "react"
 import { Link } from "gatsby"
 import * as style from "../components/bookList.module.scss"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import Image from "gatsby-plugin-sanity-image"
+
 
 
 // Function for image settings and generating URL
@@ -33,8 +35,22 @@ const BookList = ({ props }) => (
         {props.map((post, index) => (
 
             <Link key={index} className={style.link} to={post.node.slug ? `/blogg/${post.node.slug.current}` : `/blogg/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}>
-                <img src={`${post.node.image.asset.url}?${urlBuilder(post.node.image, 600, 520, 75)}`} alt={post.node.image.alt ? post.node.image.alt : ""} />
-                <GatsbyImage image={getImage(post.node.image.asset)} alt="hello"/> 
+                {/* <img src={`${post.node.image.asset.url}?${urlBuilder(post.node.image, 600, 520, 75)}`} alt={post.node.image.alt ? post.node.image.alt : ""} /> */}
+                {/* <GatsbyImage image={getImage(post.node.image.asset)} alt="hello"/> */} 
+                {post.node.image.asset._id ? <Image
+                        // pass asset, hotspot, and crop fields
+                        {...post.node.image}
+                        // tell Sanity how large to make the image (does not set any CSS)
+                        width={1000}
+                        height={600}
+                        alt={"g"}
+                        //config={{blur:50}}
+                        // style it how you want it
+                        style={{
+                            width: "100vw",
+                            height: "auto",
+                        }}
+                    /> : null}
 
                 <small className={style.date}>{post.node.read}</small>
                 <small className={style.author}>{post.node.author}</small>

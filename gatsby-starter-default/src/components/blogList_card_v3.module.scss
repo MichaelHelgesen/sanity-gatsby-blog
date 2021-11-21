@@ -14,6 +14,12 @@
     display: flex;
     flex-direction: column-reverse;
     flex-wrap: wrap;
+    img {
+        margin: 0;
+        padding: 0;
+        border-radius:8px 8px 0 0;
+        
+    }
 }
 
 .title {
@@ -37,6 +43,7 @@
 .blog_item {
     border-radius: 0 0 8px 8px;
     height: 100%;
+    position: relative;
     padding: 30px;
     transition: background-color .2s ease;
     border-top: 5px solid #a65f03;
@@ -46,6 +53,7 @@
         /* font-size: .9rem;
         font-weight: 600; */
     }
+
 }
 
 .blog_image {
@@ -57,12 +65,17 @@
     max-height: 350px;
 }
 
+
+
+
+
 .credit_line {
     color: white;
-    display: flex;
-    height: 100%;
-    justify-content: flex-end;
-    align-items: flex-end;
+    position: absolute;
+top: -30px;
+left: 0;
+right: 0;
+text-align: right;
     font-size: .5rem;
     margin-right: 10px;
     text-shadow: 1px 1px black;
@@ -90,7 +103,6 @@ a.link:hover {
 -webkit-transform: scale(1.03);
 transform: scale(1.03);
 }
-
 
 
  @media only screen and (max-width: 1080px) {

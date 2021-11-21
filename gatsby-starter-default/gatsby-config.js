@@ -55,11 +55,11 @@ module.exports = {
         // Additional params to include with every image.
     // This is optional and the default is shown
     // below—if you like what you see, don’t set it.
-    defaultImageConfig: {
+/*     defaultImageConfig: {
       quality: 75,
       fit: "max",
       auto: "format",
-    },
+    }, */
 
     // If you prefer a different fragment name, such
     // as `MagicImage`, enter it here. This needs to

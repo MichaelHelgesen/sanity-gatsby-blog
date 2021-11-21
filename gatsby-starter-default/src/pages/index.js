@@ -23,13 +23,14 @@ export const pageQuery = graphql`
             alt
             _type
             asset {
-              gatsbyImageData(width: 200, placeholder: BLURRED)
               url
+              _id
               metadata {
                 dimensions {
                   height
                   width
                 }
+                lqip
               }
             }
             crop {
@@ -93,14 +94,16 @@ export const pageQuery = graphql`
           image {
             alt
             _type
+            _rawAsset(resolveReferences:{maxDepth:10})
             asset {
-              gatsbyImageData(width: 200, placeholder: BLURRED)
               url
+              _id
               metadata {
                 dimensions {
                   height
                   width
                 }
+                lqip
               }
             }
             crop {
@@ -153,6 +156,8 @@ const findNumberOfCategoriesInArray = (array, category) => (
     return el.length > 0
   }).length
 )
+
+
 
 
 const IndexPage = ({ data }) => {

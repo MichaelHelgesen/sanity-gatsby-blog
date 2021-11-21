@@ -27,12 +27,14 @@ query ($id: String!, $category: String!) {
             _type
             _rawAsset(resolveReferences:{maxDepth:10})
             asset { 
+              _id
               url
               metadata {
                 dimensions {
                   height
                   width
                 }
+                lqip
               }
             }
             crop {
@@ -77,12 +79,14 @@ query ($id: String!, $category: String!) {
             _type
             _rawAsset(resolveReferences:{maxDepth:10})
             asset { 
+              _id
               url
               metadata {
                 dimensions {
                   height
                   width
                 }
+                lqip
               }
             }
             crop {

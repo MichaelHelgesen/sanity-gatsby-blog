@@ -2,6 +2,7 @@ import * as React from "react"
 import { graphql, StaticQuery } from "gatsby"
 import * as style from "../components/blogList_card_v3.module.scss"
 import { Link } from "gatsby"
+import Image from "gatsby-plugin-sanity-image"
 
 const SimilarPosts = (props) => {
     //let numberOfPosts = props.numberOfPosts;
@@ -26,12 +27,14 @@ const SimilarPosts = (props) => {
                 alt
                 _type
                 asset {
+                    _id
                   url
                   metadata {
                     dimensions {
                       height
                       width
                     }
+                    lqip
                   }
                 }
                 crop {
@@ -75,12 +78,14 @@ const SimilarPosts = (props) => {
                   alt
                   _type
                   asset {
+                      _id
                     url
                     metadata {
                       dimensions {
                         height
                         width
                       }
+                      lqip
                     }
                   }
                   crop {
@@ -146,7 +151,6 @@ const SimilarPosts = (props) => {
                             return null
                         }
                     })
-console.log("FILTERED POSTS", filteredPosts)
 
                     let randomPosts = []
                     
@@ -244,20 +248,35 @@ console.log("FILTERED POSTS", filteredPosts)
                                             <h2 className={style.title}>{post.node.title}</h2>
                                             <p style={{ margin: "10px 0 10px 0" }}>{post.node.description}</p>
                                         </div>
-                                        <div
+                                        {/* <div
                                             className={style.blog_image}
                                             style={{ background: `${post.node.image ? `url(${post.node.image.asset.url}?${urlBuilder(post.node.image)}) no-repeat 50% center` : "gray"}` }}
                                         >
                                             {post.node.image && post.node.image._rawAsset ? <span className={style.credit_line}>{post.node.image._rawAsset.creditLine}</span> : null}
-                                        </div>
+                                        </div> */}
+                                        
+                                        {post.node.image.asset._id ? <Image
+                        // pass asset, hotspot, and crop fields
+                        {...post.node.image}
+                        // tell Sanity how large to make the image (does not set any CSS)
+                        width={500}
+                        height={300}
+                        alt={"g"}
+                        //config={{blur:50}}
+                        // style it how you want it
+                        style={{
+                            width: "100vw",
+                            height: "auto",
+                        }}
+                    /> : null}
 
 
                                     </div>
+                                    {post.node.image && post.node.image._rawAsset ? <span className={style.credit_line}>{post.node.image._rawAsset.creditLine}</span> : null}
                                 </Link>
                             ))}
                             <div className={`${style.link} clear`}></div>
                         </div>
-
                     </div>
 
 

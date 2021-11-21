@@ -2,6 +2,7 @@
 
 .headerwrap {
     position: relative;
+
 }
 
 .topcolor {
@@ -84,6 +85,7 @@
     z-index: 1;
     position: relative;
     height: 40vw;
+    min-height: 15vw;
     max-height: 50vh;
 }
 
@@ -260,7 +262,7 @@
 }
 
     .blogPostImage {
-        border-bottom: 5px solid rgb(166, 95, 3);
+        img {border-bottom: 5px solid rgb(166, 95, 3)};
     }
 }
 

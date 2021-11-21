@@ -33,6 +33,7 @@ query ($id: String!){
             image {
                 alt
                 asset { 
+                  _id
                   gatsbyImageData(width: 600, height: 520, placeholder: BLURRED, layout: CONSTRAINED)
                   url
                   metadata {
@@ -40,7 +41,9 @@ query ($id: String!){
                       height
                       width
                     }
+                    lqip
                   }
+                  
                 }
                 crop {
                   _key
@@ -149,11 +152,13 @@ query ($id: String!){
               _rawAsset(resolveReferences:{maxDepth:10})
               asset {
                 url
+                _id
                 metadata {
                   dimensions {
                     height
                     width
                   }
+                  lqip
                 }
               }
               crop {

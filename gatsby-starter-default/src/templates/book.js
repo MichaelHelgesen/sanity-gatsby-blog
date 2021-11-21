@@ -6,6 +6,7 @@ import serializers from "../components/serializers"
 import SimilarPosts from "../components/similarPosts"
 import { Helmet } from "react-helmet"
 import * as style from "../templates/book.module.scss"
+import Image from "gatsby-plugin-sanity-image"
 
 
 export const pageQuery = graphql`
@@ -27,12 +28,14 @@ export const pageQuery = graphql`
           image {
             alt
             asset { 
+              _id
               url
               metadata {
                 dimensions {
                   height
                   width
                 }
+                lqip
               }
             }
             crop {
@@ -115,7 +118,22 @@ const book = ({ data }) => {
               <span> <Link to="/blogg/kategorier/bokomtale">Bokomtaler</Link> • <Link to={`/bibliotek/`}>Bibliotek</Link></span>
             </small>
             <p className={style.ingress}>{post.description}</p>
-            <img className={style.bookIntroImage} src={`${post.image.asset.url}?${urlBuilder(post.image)}`} alt={post.image.alt ? post.image.alt : ""}/>
+{/*             <img className={style.bookIntroImage} src={`${post.image.asset.url}?${urlBuilder(post.image)}`} alt={post.image.alt ? post.image.alt : ""}/>
+ */}            {post.image.asset._id ? <Image
+                        // pass asset, hotspot, and crop fields
+                        {...post.image}
+                        className={style.bookIntroImage}
+                        // tell Sanity how large to make the image (does not set any CSS)
+                        width={850}
+                        height={500}
+                        alt={"g"}
+                        //config={{blur:50}}
+                        // style it how you want it
+                        style={{
+                           
+                            height: "auto",
+                        }}
+                    /> : null}
           </div>
 </div>
           <div className={style.topcolor}></div>
