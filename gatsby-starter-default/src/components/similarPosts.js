@@ -226,7 +226,7 @@ const SimilarPosts = (props) => {
 
                     return (<div>
                         <div className={style.content} style={{ textAlign: "center", marginBottom: "0" }}>
-                            <span style={{ textTransform: "uppercase", opacity: ".5", fontWeight: "700", fontSize: ".8em", width: "100%" }}>{message}</span>
+                            <span style={{ textTransform: "uppercase", fontWeight: "700", fontSize: ".8em", width: "100%" }}>{message}</span>
                         </div>
                         <div className={style.content} >
                             {newArr.map((post, index) => (

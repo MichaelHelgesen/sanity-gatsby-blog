@@ -286,7 +286,7 @@ const IndexPage = ({ data }) => {
             </div>
           </div>
           <div className={style.topBg}
-          style={{background:`url(${page.bilde2.asset.url}) center center no-repeat`}}
+          style={{background:`url(${page.bilde2.asset.url}) no-repeat center center fixed`, backgroundSize:"200%", opacity:".3"}}
           ></div>
           <div className={style.topcolor}
             style={{background:`url(${page.bilde1.asset.url}) no-repeat`}}
@@ -294,7 +294,7 @@ const IndexPage = ({ data }) => {
           
         </div>
         <div className={style.content} style={{ textAlign: "center", marginBottom: "0" }}>
-          <span style={{ textTransform: "uppercase", opacity: ".5", fontWeight: "700", fontSize: ".8em" }}>Siste blogginnlegg</span>
+          <span style={{ textTransform: "uppercase", fontWeight: "700", fontSize: ".8em" }}>Siste blogginnlegg</span>
         </div>
         <div>
           {posts}

@@ -91,7 +91,7 @@ const BlogList = ({ props }) => (
                         // style it how you want it
                         style={{
                             width: "100vw",
-                            height: "auto",
+                            height: "100%",
                         }}
                     /> : null}
                 </div>
