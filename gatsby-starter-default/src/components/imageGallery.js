@@ -4,6 +4,11 @@ import { SRLWrapper } from "simple-react-lightbox";
 import Masonry from "react-masonry-css"
 import * as style from "../components/imageGallery.module.scss"
 import Image from "gatsby-plugin-sanity-image"
+import { StaticImage } from "gatsby-plugin-image";
+import { AdvancedImage, lazyload, accessibility, responsive, placeholder } from '@cloudinary/react';
+import { Cloudinary } from "@cloudinary/url-gen";
+import { fill } from "@cloudinary/url-gen/actions/resize";
+
 
 const breakpointColumnsObj = {
     default: 4,
@@ -12,9 +17,15 @@ const breakpointColumnsObj = {
     650: 1
 };
 
+const cld = new Cloudinary({
+    cloud: {
+        cloudName: 'mikkesblogg'
+    }
+});
+
 
 const ImageGallery = ({ props }) => (
-    
+
     <div className={style.content}>
         <SimpleReactLightbox>
             <SRLWrapper>
@@ -22,12 +33,18 @@ const ImageGallery = ({ props }) => (
                     breakpointCols={breakpointColumnsObj}
                     className={style.my_masonry_grid}
                     columnClassName={style.my_masonry_grid_column}>
-                    {props[0].node.resources.map((post, index) => (
-                        <div key={index}>
-                           
-                            <img src={`${post.secure_url}?w=1000&q=75`} alt={post.alt ? post.alt : ""} />
-                        </div>
-                    ))}
+                    {props[0].node.resources.map((post, index) => {
+
+                        const myImage = cld.image(`${post.public_id}`);
+                        myImage.resize(fill().width(600));
+
+                        return (
+                            <div key={index}>
+                                <a href={`https://res.cloudinary.com/${post.folder}/${post.resource_type}/${post.type}/c_scale,w_1000/v1636405719/${post.folder}/${post.filename}.jpg`}>
+                                    <AdvancedImage cldImg={myImage} plugins={[lazyload('10px 20px 10px 30px', 0.25), placeholder("blur")]} />
+                                </a>
+                            </div>)
+                    })}
                 </Masonry>
             </SRLWrapper>
         </SimpleReactLightbox>

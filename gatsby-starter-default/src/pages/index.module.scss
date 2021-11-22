@@ -3,6 +3,7 @@
 .headerwrap {
     position: relative;
     background-color: #5230042e;
+    overflow: hidden;
 }
 
 
@@ -12,11 +13,14 @@
     background: #e7e5e5;
     position: absolute;
     top: 0;
-    right: 0;
+    right: -30%;
     left: 0;
     height: 100%;
 background-size: 75%!important;
 background-position: 101% 101%!important; 
+animation: synlighet 1s;
+animation-fill-mode: forwards;
+
 }
 
 .topBg {
@@ -27,7 +31,8 @@ background-position: 101% 101%!important;
         left: 0;
         height: 100%;
         background-size:cover!important;
-
+        animation: synlighet2 3s;
+animation-fill-mode: forwards;
    }
 
 .content {
@@ -215,3 +220,23 @@ margin-right: 5px;
         }
     }
   }
+
+  @keyframes synlighet {
+    0% {
+        opacity: 0;
+        right: -20%
+    }
+    100% {
+        opacity: 1;
+        right: 0;
+    }
+}
+
+@keyframes synlighet2 {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: .3;
+    }
+}

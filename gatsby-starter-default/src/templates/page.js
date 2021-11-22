@@ -88,9 +88,20 @@ query ($id: String!){
       cloudinary: allCloudinaryImages {
         edges {
           node {
-            resources {
-              secure_url
-            }
+            id
+        resources {
+          secure_url
+          filename
+          folder
+          resource_type
+          type
+          asset_id
+          display_name
+          format
+          height
+          public_id
+          width
+        }
           }
         }
       }

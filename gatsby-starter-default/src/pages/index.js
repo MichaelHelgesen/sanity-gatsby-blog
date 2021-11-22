@@ -7,7 +7,6 @@ import * as style from "../pages/index.module.scss"
 import BlogList from "../components/blogList"
 import { Helmet } from "react-helmet"
 
-
 export const pageQuery = graphql`
   query {
     book: allSanityBook(sort: {fields: date, order: DESC}) {
@@ -286,7 +285,7 @@ const IndexPage = ({ data }) => {
             </div>
           </div>
           <div className={style.topBg}
-          style={{background:`url(${page.bilde2.asset.url}) no-repeat center center fixed`, backgroundSize:"200%", opacity:".3"}}
+          style={{background:`url(${page.bilde2.asset.url}) no-repeat center center fixed`, opacity:".3"}}
           ></div>
           <div className={style.topcolor}
             style={{background:`url(${page.bilde1.asset.url}) no-repeat`}}

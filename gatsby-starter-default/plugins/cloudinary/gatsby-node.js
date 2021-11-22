@@ -7,25 +7,18 @@ cloudinary.config({
     secure: true
 })
 
-/* cloudinary.config({
-    cloud_name: "mikkesblogg",
-    api_key: "689568281515846",
-    api_secret: "RAb_aIzf7cFfjQxZWn4SUBcOUYI",
-    secure: true
-}) */
-
 
 exports.sourceNodes = async function ({ actions, createNodeId, createContentDigest }) {
     const { createNode } = actions
 
     await cloudinary.search.expression("folder:mikkesblogg/*")
         .sort_by("created_at", "asc")
-        .max_results(200)
+        .max_results(50)
         .execute()
         .then((result) => {
             
             const myResults = { ...result }
-            
+            console.log(myResults)
             const nodeContent = JSON.stringify(myResults)
 
             const nodeMeta = {
