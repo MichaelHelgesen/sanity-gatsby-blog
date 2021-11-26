@@ -2,8 +2,8 @@
 
 .headerwrap {
     position: relative;
-
 }
+span.highlightedLines{background:red!important}
 
 .topcolor {
     background: #e7e5e5;
@@ -11,8 +11,7 @@
     top: 0;
     right: 0;
     left: 0;
-    height: 100%;
-    
+    height: 100%; 
 }
 
 .intro {
@@ -305,3 +304,103 @@
       
     }
 }
+
+@media print {
+    .title {
+        font-size: 2rem;
+        font-weight: 900;
+        line-height: 1.2em;
+        widows: 4;
+        orphans: 4;
+    }
+    .topcolor {
+background-color:unset;
+    }
+    table {
+        page-break-inside: avoid;
+      }
+      .blogPostImage {
+        height:1px;
+        background-color: unset;
+    }
+    .blogPostImage img {
+        display: none;
+    }
+    .intro {
+        z-index: 1;
+        position: relative;
+        @include base.contentLayout;
+        padding:2rem;
+        max-width:780px;
+        padding-bottom: 0;
+        background-color: unset;
+        border-top: none;
+        box-shadow: none;
+    }
+    
+    .introWithImage {
+        z-index: 1;
+        position: relative;
+        @include base.contentLayout;
+        padding:1rem;
+        max-width:780px;
+        padding-bottom: 0;
+        margin-top: 0;
+        background-color: unset;
+        border-top: none;
+        box-shadow: none;
+    }
+    pre {
+        border-top:1px solid gray;
+        border-bottom: 1px solid gray;
+        widows: 4;
+        orphans: 4;
+        font-size:.8em;
+        background-color: unset!important;
+    }
+    .globalMessage, .byline, .knapper {
+        display:none;
+    } 
+    p a[href]:after, ul a[href]:after {
+        content: " (" attr(href) ")";
+        color: black;
+      }
+    a {
+        color: black;
+    }
+    p a {
+        color: black;
+    }
+      p {
+          widows: 4;
+          color: black;          
+        }
+        em {
+            color: black;
+        }
+        
+      .content {
+          padding-top: 0;
+      }
+      .content a {
+        color: black;
+    }
+      h1,h2,h3,h4,h5,h6 {
+        widows: 4;
+        orphans: 4;
+      }
+      html {
+          font-size: 14px;
+          background-color: unset;
+      }
+      code span {
+          color: black!important;
+      }
+      code .comment  {
+        color: gray!important;
+    }
+      @page {
+        margin: 2cm;
+        
+      }
+  }

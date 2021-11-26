@@ -105,3 +105,9 @@
         display: unset;
     }
 } */
+
+@media print {
+    .menu {
+        display: none;
+    }
+  }

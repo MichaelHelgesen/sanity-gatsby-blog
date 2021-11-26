@@ -14,23 +14,23 @@ header > div {
 
 .wrapper span {
     margin: 0;
-    font-family: base.$text-stack;
+    font-family: "Merriweather", georgia, times, serif;
     font-weight: 800;
     font-size: 1.1em;
     text-transform: uppercase;
-    letter-spacing: -.05em;  
+    letter-spacing: .05em;  
 }
 
 .wrapper span a {
     display: inline-block;
     text-decoration: none;
     color: rgb(166, 95, 3);
-    border-bottom: 5px solid rgb(166, 95, 3);
+    //border-bottom: 5px solid rgb(166, 95, 3);
 }
 
 .wrapper span a:hover {
     color: base.$font-color;
-    border-bottom: 5px solid base.$font-color;
+    //border-bottom: 5px solid base.$font-color;
 }
 
 @media only screen and (max-width: 890px) {
@@ -41,5 +41,14 @@ header > div {
     }
     .wrapper span {
         margin: 0 0 0.725rem 0;
+    }
+  }
+
+  @media print {
+    header {
+        background-color: unset;
+    }
+    .wrapper span a {
+        color: black;
     }
   }

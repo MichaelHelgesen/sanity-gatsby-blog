@@ -17,6 +17,7 @@
     z-index: 1;
     position: relative;
     @include base.contentLayout;
+    //padding-top: 2.9rem;
     padding-bottom: 1.45rem;
 }
 
@@ -129,7 +130,7 @@
         z-index: 1;
         max-width: 780px;
         margin: 0 auto;
-        padding: 2rem 1.0875rem 1.45rem 1.0875rem;
+        padding: 2.9rem 1.0875rem 1.45rem 1.0875rem;
 }
 
     .blogPostImage {

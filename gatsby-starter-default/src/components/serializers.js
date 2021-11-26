@@ -27,22 +27,25 @@ function urlBuilder(image) {
 
 const serializers = {
   types: {
-    exampleUsage: props => (
-      <SyntaxHighlighter language={props.node.language || "text"} style={atelierForestLight} showLineNumbers wrapLines={true} lineNumberStyle
+    exampleUsage: props => {
+      return (<SyntaxHighlighter language={props.node.language || "text"} style={atelierForestLight} showLineNumbers wrapLines={true} lineNumberStyle
         lineProps={lineNumber => {
           let style = { display: 'block' };
+          let setClassName = {}
           if (props.node.highlightedLines) {
             if (props.node.highlightedLines.includes(lineNumber)) {
               /* style.backgroundColor = '#d2d1d0';  e8dfd5 */
               style.backgroundColor = '#e8dfd5';
+              setClassName.class = "highlightedLines"
             }
           }
-          return { style };
+          return { style, ...setClassName };
         }}
       >
         {props.node.code}
-      </SyntaxHighlighter>
-    ),
+
+      </SyntaxHighlighter>)
+    },
     bodyImage: props => {
       return (
         <div className={style.bodyimage}>

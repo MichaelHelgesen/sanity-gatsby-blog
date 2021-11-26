@@ -230,7 +230,7 @@ const IndexPage = ({ data }) => {
   });
   const categories = data.categories.edges;
   const page = data.pages;
-  const posts = <BlogList props={mergedContent.slice(0, 9)} />
+  const posts = <BlogList props={mergedContent.slice(0, 12)} />
 
   // Filtrert kategori-liste
   const categoryList = categories.map((cat, index) => {
@@ -293,7 +293,7 @@ const IndexPage = ({ data }) => {
           
         </div>
         <div className={style.content} style={{ textAlign: "center", marginBottom: "0" }}>
-          <span style={{ textTransform: "uppercase", fontWeight: "700", fontSize: ".8em" }}>Siste blogginnlegg</span>
+          <span style={{ textTransform: "uppercase", fontWeight: "700", fontSize: ".8em" }}>Siste 12 blogginnlegg</span>
         </div>
         <div>
           {posts}

@@ -648,3 +648,12 @@ pre {
     font-size: 105%;
   }
 }
+
+
+
+@media print {
+  .highlightedLines {
+    border-left:5px solid gray;
+    background: unset!important;
+  }
+}

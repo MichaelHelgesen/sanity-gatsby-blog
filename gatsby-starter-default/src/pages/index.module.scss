@@ -18,7 +18,7 @@
     height: 100%;
 background-size: 75%!important;
 background-position: 101% 101%!important; 
-animation: synlighet 1s;
+animation: synlighet .5s;
 animation-fill-mode: forwards;
 
 }
@@ -31,7 +31,7 @@ animation-fill-mode: forwards;
         left: 0;
         height: 100%;
         background-size:cover!important;
-        animation: synlighet2 3s;
+        animation: synlighet2 2s;
 animation-fill-mode: forwards;
    }
 
@@ -224,7 +224,11 @@ margin-right: 5px;
   @keyframes synlighet {
     0% {
         opacity: 0;
-        right: -20%
+        right: -30%
+    }
+    50% {
+        opacity: 0;
+        right: -30%;
     }
     100% {
         opacity: 1;

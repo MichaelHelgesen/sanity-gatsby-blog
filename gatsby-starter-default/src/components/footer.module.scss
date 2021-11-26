@@ -14,3 +14,9 @@ footer a {
 footer a:hover {
     color: #e4860b;;
 }
+
+@media print {
+    .footerStyle {
+        display: none;
+    }
+}
