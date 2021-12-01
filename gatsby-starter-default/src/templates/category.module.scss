@@ -97,6 +97,47 @@
   margin-right: -50vw;
 }
 
+.knapper {
+    text-align: center;
+
+    a {
+       background-color: rgb(166, 95, 3);
+       font-size: .8rem;
+       padding: 5px 30px;
+       margin:0 5px;
+       margin-bottom: 10px;
+       color: white;
+    }
+    a:hover {
+        text-decoration:none;
+        color: white;
+    }
+    a:last-of-type {
+        margin: 0;
+
+    }
+    margin-bottom: 2.9rem;
+}
+
+.categories {
+    border-radius: 15px;
+    padding: 0 15px;
+    margin: 0 5px 5px 0;
+    transition: all .2s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 75%;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0px 2px 9px -4px grey;
+}
+
+.categories:hover {
+    background-color: #06863e!important;
+    color: white;
+    text-decoration: underline;
+}
+
 @media only screen and (max-width: 580px) {
     .title {
         font-size: 2rem;

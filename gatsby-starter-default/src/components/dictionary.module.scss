@@ -80,3 +80,9 @@ a.link:hover .title {
     color: black;
     text-decoration: underline;
 }
+
+@media print {
+    .index {
+        display: none;
+    }
+}

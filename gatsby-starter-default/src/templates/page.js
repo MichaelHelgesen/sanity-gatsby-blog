@@ -105,38 +105,6 @@ query ($id: String!){
           }
         }
       }
-      gallery: allSanityGallery {
-        edges {
-          node {
-            image {
-              alt
-              _type
-              asset {
-                _id
-                url
-                metadata {
-                  dimensions {
-                    height
-                    width
-                  }
-                  lqip
-                }
-              }
-              crop {
-                bottom
-                left
-                right
-                top
-              }
-              hotspot {
-                height
-                width
-
-              }
-            }
-          }
-        }
-      } 
       notes: allSanityNote (sort: {fields: date, order: DESC}) {
         edges {
           node {
@@ -307,7 +275,7 @@ const Page = ({ data }) => {
         <div>
           {posts ? posts : <div className={style.content}><BlockContent blocks={data.page._rawContent} serializers={serializers} /></div>}
         </div>
-        
+        {data.page.title === "Blogg" ? <div style={{height:"2.9rem"}}></div> : null}
       </div>
     </Layout>
   )

@@ -15,6 +15,12 @@
         border: 1px solid gray;
         margin: 0;
         box-shadow: 0px 4px 12px -4px grey;
+        
+    }
+    img:hover {
+      
+            cursor: pointer!important;
+
     }
 
     p {
@@ -23,11 +29,6 @@
         padding: 0 20px;
         max-width: 480px;
     }
-}
-
-.highlightedLines {
-    background: red!important;
-    opacity: 0!important;
 }
 
 .externallink {
@@ -71,6 +72,9 @@
     }
     h5 {
         margin-bottom: 10px;
+    }
+    a:hover {
+        color: black!important;
     }
 
     p:last-of-type {
@@ -127,16 +131,13 @@ table {
         background: unset!important;
       }
       .bodyimage {
-        width: 50%;
-        
+        width: 50%!important;
         page-break-inside: avoid;
         background-color: unset;
         img {
             box-shadow: none;
             width: 50%;
             opacity: 50%;
-            margin-left: auto;
-        margin-right: auto;
         }
     }
     a {
@@ -147,4 +148,14 @@ table {
         .highlightedLines {
             border: 1px solid black;
         }
+    .topcolor {
+        background: unset!important;
+    }
+    .imageDescription{
+        margin: 0!important;
+        text-align: left;
+            max-width: unset!important;
+            padding:0!important;
+            margin-bottom: 1.45rem!important;
+    }
   }

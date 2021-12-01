@@ -54,11 +54,9 @@ export const pageQuery = graphql`
             category {
                 categoryTitle
             }
-            globalMessage {
-              tipColor
-              tipText
-              tipTitle
-              _rawTipContent(resolveReferences: {maxDepth: 10})
+            showMessages {
+              bottomText
+              topText
             }
             introduction
             _rawContent(resolveReferences:{maxDepth:10})
@@ -75,9 +73,11 @@ export const pageQuery = graphql`
   }
 `
 
+
+
 const blogPost = ({ data }) => {
   const post = data.sanityPost;
-
+  const showMessages = { ...post.showMessages }
   // Function for image settings and generating URL
   function urlBuilder(image) {
     const { width, height } = post.image.asset.metadata.dimensions;
@@ -131,8 +131,9 @@ const blogPost = ({ data }) => {
             maxHeight: "50vh",
             objectFit: "cover"
           }}
-        /> </div>: <p>xc</p>}
+        /> </div> : null}
         <div className={post.image && post.image.toggleImage ? style.introWithImage : style.intro}>
+        {post.image._rawAsset.creditLine ? <span className={style.creditLine}>{post.image._rawAsset.creditLine}</span> : null}
           <div className={style.introWrapper}>
             <small className={style.breadcrumb}>
               <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg</Link> /
@@ -158,16 +159,12 @@ const blogPost = ({ data }) => {
 
       <div className={style.content}>
         <div>
-          {post.globalMessage.length ?
-            <div className={style.globalMessage} style={{ backgroundColor: `rgba(${post.globalMessage[0].tipColor || "186, 255, 220"}, .7)`, border: `3px solid rgb(${post.globalMessage[0].tipColor || "186, 255, 220"})` }}>
-              <h5>
-                {post.globalMessage[0].tipText || post.globalMessage[0].tipTitle || null}
-              </h5>
-              <BlockContent
-                blocks={post.globalMessage[0]._rawTipContent}
-                serializers={serializers}
-              />
-            </div> : null
+          {showMessages.topText !== false ?
+            <div className={style.disclaimer}>
+              <h5>Før du leser</h5>
+              <p><Link to={"/om-mikke"}>Jeg er i en læringsprosess.</Link> <b>Teksten reflekterer dermed min forståelse av emnet, basert på tilgjengelig informasjon ved publiseringsdato.</b> Feil og utdatert data kan forekomme. <a href={`mailto:post@mikkesblogg.no?subject=Henvendelse angående ${post.title} på Mikkesblogg.no`}>Send meg gjerne en e-post</a> dersom du kommer over noe som bør rettes.</p>
+            </div>
+            : null
           }
           {post._rawContent ?
             <BlockContent
@@ -176,13 +173,15 @@ const blogPost = ({ data }) => {
             /> : null
           }
         </div>
-        <div className={style.byline}>
-          <span>MIKKES BLOGG</span>
-          <h5>Takk for interessen</h5>
-          <p>Har du en kommentar, et spørsmål, ris, ros, eller ønsker å påpeke feil eller mangler, kan du sende meg en mail. Jeg setter stor pris på en tilbakemelding.</p>
-        </div>
+        {showMessages.bottomText !== false ?
+          <div className={style.byline}>
+            <span>MIKKES BLOGG</span>
+            <h5>Takk for interessen</h5>
+            <p>Har du en kommentar, et spørsmål, ris, ros, eller ønsker å påpeke feil eller mangler, kan du <a href={`mailto:post@mikkesblogg.no?subject=Henvendelse angående ${post.title} på Mikkesblogg.no`}>sende meg en mail</a>. Jeg setter stor pris på en tilbakemelding.</p>
+          </div>
+          : null}
       </div>
-      <SimilarPosts category={post.category} slug={post.slug.current} numberOfPosts={3} />
+      <SimilarPosts category={post.category} slug={post.slug.current} numberOfPosts={6} />
       <div className={style.content} style={{ paddingTop: "1.45rem" }} >
         <div className={style.knapper}>
           <Link

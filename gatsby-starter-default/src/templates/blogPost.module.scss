@@ -75,6 +75,23 @@ span.highlightedLines{background:red!important}
     @include base.dateCategory;
 }
 
+.disclaimer{
+    border: 1px solid base.$main-color;
+    padding: 2rem;
+    margin-bottom: 1.45rem;
+    font-size: .9rem;
+    border-left: 5px solid base.$main-color;
+    h5 {
+        margin-bottom: 0;
+        margin-bottom:10px;
+        font-size:1.1rem;
+    }
+    p {
+        margin-bottom: 0;
+        line-height: 1.4em;
+    }
+}
+
 .blogPostImage {
     width: 100%;
     left: unset;
@@ -99,8 +116,9 @@ span.highlightedLines{background:red!important}
     text-shadow: 1px 1px black;
     position: absolute;
     left: 0;
-    right: 10px;
-    top: 10px;
+    right: -10px;
+    z-index: -1;
+    top: -35px;
 }
 
 .codepen_embed {
@@ -122,8 +140,8 @@ span.highlightedLines{background:red!important}
     border-left:none!important;
     border-right: none!important;
     margin-bottom: 1.45rem;
-    font-family: merriweather, serif;
-    background-color:#ffb55630!important;
+/*     font-family: merriweather, serif;
+ */    background-color:#ffc67c30!important;
 /*     font-size: .5rem;
  */   
 
@@ -134,8 +152,8 @@ span.highlightedLines{background:red!important}
     h5 {
         margin-bottom: 10px;
         font-size:1rem;
-        font-family: merriweather, serif;
-    }
+/*         font-family: merriweather, serif;
+ */    }
 
     p:last-of-type {
         margin-bottom: 0;
@@ -149,7 +167,6 @@ span.highlightedLines{background:red!important}
     border-top: 1px solid #a65f03;
     border-bottom: 1px solid #a65f03;
     margin-bottom: 1.45rem;
-    font-family: merriweather, serif;
     font-size: .95rem;
     position: relative;
     span {
@@ -172,7 +189,6 @@ span.highlightedLines{background:red!important}
     }
     h5 {
         margin-bottom: 10px;
-        font-family: merriweather, serif;
         font-weight: 700;
     }
 
@@ -219,7 +235,7 @@ span.highlightedLines{background:red!important}
 }
 
 .categories:hover {
-    background-color: #727171!important;
+    background-color: #06863e!important;
     color: white;
     text-decoration: underline;
 }
@@ -262,6 +278,10 @@ span.highlightedLines{background:red!important}
 
     .blogPostImage {
         img {border-bottom: 5px solid rgb(166, 95, 3)};
+    }
+    .creditLine{
+        right: 0;
+        top:-30px;
     }
 }
 
@@ -398,6 +418,15 @@ background-color:unset;
       }
       code .comment  {
         color: gray!important;
+    }
+    .disclaimer {
+        display:none;
+    }
+    iframe {
+        display: none;
+    }
+    .creditLine{
+        display: none;    
     }
       @page {
         margin: 2cm;

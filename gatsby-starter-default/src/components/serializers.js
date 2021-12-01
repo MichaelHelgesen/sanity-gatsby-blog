@@ -7,6 +7,8 @@ import BlockContent from '@sanity/block-content-to-react'
 import getYouTubeId from "get-youtube-id"
 import * as style from '../components/serializers.module.scss'
 import Image from "gatsby-plugin-sanity-image"
+import SimpleReactLightbox from "simple-react-lightbox"
+import { SRLWrapper } from "simple-react-lightbox";
 
 function urlBuilder(image) {
   const { width, height } = image.asset.metadata.dimensions;
@@ -23,6 +25,15 @@ function urlBuilder(image) {
       :
       ""}`
   )
+}
+
+const options = {
+  caption:{
+    showCaption:false
+  },
+  settings:{
+    lightboxTransitionSpeed: 0.05
+  }
 }
 
 const serializers = {
@@ -48,14 +59,17 @@ const serializers = {
     },
     bodyImage: props => {
       return (
+        
         <div className={style.bodyimage}>
+          <SimpleReactLightbox>
+            <SRLWrapper options={options}>
           {/* <img src={`${props.node.asset.url}?${urlBuilder(props.node)}`} alt={props.node.alt}/> */}
           <Image
                         // pass asset, hotspot, and crop fields
                         {...props.node}
                         // tell Sanity how large to make the image (does not set any CSS)
-                        width={800}
-                        alt={"g"}
+                        width={1000}
+                        alt={props.node.alt}
                         //config={{blur:50}}
                         // style it how you want it
                         style={{
@@ -63,6 +77,8 @@ const serializers = {
                             height: "auto",
                         }}
                     />
+                    </SRLWrapper>
+                    </SimpleReactLightbox>
           {/* <GatsbyImage image={getGatsbyImageData(props.node.asset.id, {fit: "FILLMAX", width:"1000", placeholder: "blurred"}, client)} alt={props.node.alt} /> */}
           {/* <img
             src={urlFor(props.node)
@@ -156,7 +172,11 @@ const serializers = {
       }>{children}</Link>
     },
     link: props => {
-      return <a className={style.externallink} href={props.mark.href}>{props.children}<CgExternal /></a>
+      console.log(props)
+      return <a className={style.externallink} href={props.mark.href} rel="external">{props.children}<CgExternal /></a>
+    },
+    epost: props => {
+      return <a className={style.mail} href={props.mark.epost}>{props.children}</a>
     },
   },
 

@@ -7,10 +7,9 @@ import bodyImage from "./bodyImage"
 import book from "./book"
 import categories from "./categories"
 import codePen from './codePenEmbed'
+import emailLink from './emailLink'
 import exampleUsage from "./codeExample"
 import externalLink from "./externalLink"
-import gallery from './galleyImages'
-import globalMessage from './globalMessage'
 import internalLink from "./internalLink"
 import note from "./note"
 import page from "./page"
@@ -18,6 +17,7 @@ import programmingDictionary from './programmingDictionary'
 import post from './post'
 import quote from "./quote"
 import schemaTypes from 'all:part:@sanity/base/schema-type'
+import showHideGlobalMessages from './showHideGlobalMessages'
 import tipField from "./tipField"
 import youtubeLink from './youtubeLink'
 
@@ -32,10 +32,12 @@ export default createSchema({
     blogPostImage,
     bodyImage,
     codePen,
+    emailLink,
     exampleUsage,
     externalLink,
     internalLink,
     quote,
+    showHideGlobalMessages,
     tipField,
     youtubeLink,
     //
@@ -44,9 +46,7 @@ export default createSchema({
     programmingDictionary,
     book,
     categories,
-    gallery,
     page,
-    globalMessage
   ]),
 })
 

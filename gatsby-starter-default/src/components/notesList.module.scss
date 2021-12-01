@@ -16,6 +16,10 @@
     }
 }
 
+h2 {
+    padding-top: 0;
+}
+
 .noteWrap:nth-child(2n+2) {
     background: rgba(236, 236, 236, 0.4);
 }
@@ -168,3 +172,91 @@
         margin: 0;
     }
 }
+
+@media print {
+
+    .noteWrap {
+        background: unset;
+        .mainText {
+            margin:0 auto!important;
+            /* padding-bottom: 1rem; */
+            font-family: base.$serif-stack;
+            line-height: 1.6em;
+            width: 100%;
+            padding-left: 1.45rem;
+            font-size: 12px;
+            /* max-width: 500px; */
+        }
+    }
+    .contentWrap {
+        padding-bottom: 1rem;
+    }
+    .noteWrap:nth-child(2n+2) {
+        background: unset;
+    }
+
+    .title {
+        font-size: 2rem;
+        font-weight: 900;
+        line-height: 1.2em;
+        widows: 4;
+        orphans: 4;
+    }
+    .intro {
+        background-color: unset;
+        border-top: none;
+        box-shadow: none;
+    }
+    pre {
+        border-top:1px solid gray;
+        border-bottom: 1px solid gray;
+        widows: 4;
+        orphans: 4;
+        font-size:.8em;
+        background-color: unset!important;
+    }
+    .globalMessage, .byline, .knapper {
+        display:none;
+    } 
+    p a[href]:after, ul a[href]:after {
+        content: " (" attr(href) ")";
+        color: black;
+      }
+    a {
+        color: black;
+    }
+    p a {
+        color: black;
+    }
+      p {
+          widows: 2;
+          color: black;          
+        }
+        em {
+            color: black;
+        }
+        
+      .content {
+          padding-top: 0;
+      }
+      .content a {
+        color: black;
+    }
+      h1,h2,h3,h4,h5,h6 {
+        widows: 4;
+        orphans: 4;
+      }
+      html {
+          font-size: 14px;
+          background-color: unset;
+      }
+      code span {
+          color: black!important;
+      }
+      code .comment  {
+        color: gray!important;
+    }
+    .bodyimage {
+        width: 50%!important;
+    }
+    }

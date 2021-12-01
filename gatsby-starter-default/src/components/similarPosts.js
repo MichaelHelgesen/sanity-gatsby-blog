@@ -164,9 +164,9 @@ const SimilarPosts = (props) => {
                     }
 
                     // Hvis blogginnlegg i samme kategori teller mer eller mindre enn tre, men mer enn null.
-                    if (filteredPosts.length > 3) {
+                    if (filteredPosts.length > props.numberOfPosts) {
 
-                        for (let i = 3; i > 0; i--) {
+                        for (let i = props.numberOfPosts; i > 0; i--) {
                             randomNumber(Math.floor((Math.random() * filteredPosts.length)))
                         }
                     } else {
@@ -178,12 +178,12 @@ const SimilarPosts = (props) => {
 
                     let newArr = filteredPosts.filter((post, index) => randomPosts.includes(index));
 
-                    let message = "Lignende blogginnlegg"
+                    let message = "Relevante blogginnlegg"
 
                     // Hvis ingen blogginnlegg i samme kategori,
                     if (newArr.length < 1) {
                         let i = 0
-                        let index = 3;
+                        let index = props.numberOfPosts;
                         do {
                             if (props.slug !== posts[i].node.slug.current) {
                                 newArr.push(posts[i]);

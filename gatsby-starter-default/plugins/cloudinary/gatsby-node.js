@@ -13,7 +13,7 @@ exports.sourceNodes = async function ({ actions, createNodeId, createContentDige
 
     await cloudinary.search.expression("folder:mikkesblogg/*")
         .sort_by("created_at", "asc")
-        .max_results(50)
+        .max_results(200)
         .execute()
         .then((result) => {
             

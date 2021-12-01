@@ -72,28 +72,8 @@ export default {
             ],
         },
         {
-            name: "globalMessage",
-            title: "Globale beskjeder",
-            type: "array",
-            of: [
-                {
-                    type: 'reference',
-                    to: [{ type: 'globalMessage' }],
-                    options: {
-                        filter: ({ parent }) => {
-                            const existingMessages = parent.map(item => {
-                                return item._ref;
-                            })
-                            return {
-                                filter: "_id in $ref == false",
-                                params: {
-                                    ref: existingMessages
-                                }
-                            }
-                        }
-                    }
-                },
-            ],
+            name: "showMessages",
+            type: "showHideGlobalMessages" 
         },
         {
             title: 'Brødtekst',
@@ -178,7 +158,7 @@ export default {
             return {
                 title: title,
                 subtitle: `${date.split('-')[2].slice(0, 2)}.${date.split('-')[1]}.${date.split('-')[0]} - ${description}`,
-                image: image
+                media: image
             }
         }
     }

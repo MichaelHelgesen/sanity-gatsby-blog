@@ -6,6 +6,8 @@ import serializers from "../components/serializers"
 import * as style from "../pages/index.module.scss"
 import BlogList from "../components/blogList"
 import { Helmet } from "react-helmet"
+import { useState } from "react"
+
 
 export const pageQuery = graphql`
   query {
@@ -218,9 +220,6 @@ const findNumberOfCategoriesInArray = (array, category) => (
   }).length
 )
 
-
-
-
 const IndexPage = ({ data }) => {
 
   const mergedContent = [...data.post.edges, ...data.book.edges].sort(function (a, b) {
@@ -230,7 +229,7 @@ const IndexPage = ({ data }) => {
   });
   const categories = data.categories.edges;
   const page = data.pages;
-  const posts = <BlogList props={mergedContent.slice(0, 12)} />
+  const posts = <BlogList props={mergedContent.slice(0, 6)} />
 
   // Filtrert kategori-liste
   const categoryList = categories.map((cat, index) => {
@@ -292,8 +291,9 @@ const IndexPage = ({ data }) => {
           ></div>
           
         </div>
+        
         <div className={style.content} style={{ textAlign: "center", marginBottom: "0" }}>
-          <span style={{ textTransform: "uppercase", fontWeight: "700", fontSize: ".8em" }}>Siste 12 blogginnlegg</span>
+          <span style={{ textTransform: "uppercase", fontWeight: "700", fontSize: ".8em" }}>Siste seks blogginnlegg</span>
         </div>
         <div>
           {posts}

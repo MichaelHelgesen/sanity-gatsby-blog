@@ -2,7 +2,7 @@
 
 header {
         background: #e7e5e5;
-        padding: 1.45rem;    
+        padding: 1.0875rem;    
 }
 
 header > div {
@@ -14,11 +14,11 @@ header > div {
 
 .wrapper span {
     margin: 0;
-    font-family: "Merriweather", georgia, times, serif;
+    font-family: base.$title-stack;
     font-weight: 800;
     font-size: 1.1em;
     text-transform: uppercase;
-    letter-spacing: .05em;  
+    letter-spacing: -.05em;  
 }
 
 .wrapper span a {

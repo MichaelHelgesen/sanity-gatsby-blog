@@ -1,3 +1,4 @@
+
 export default {
     name: "globalMessage",
     title: "Global beskjed",
@@ -57,8 +58,11 @@ export default {
                             {
                                 name: "internalLink",
                                 type: "internalLink",
-
-                            }
+                            },
+                            {
+                                name: "epost",
+                                type: "emailLink"
+                            },
                         ],
                         decorators: [
                             { title: 'Strong', value: 'strong' },

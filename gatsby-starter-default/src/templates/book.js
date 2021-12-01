@@ -203,7 +203,7 @@ const book = ({ data }) => {
         </div>
         
       </div>
-        <SimilarPosts category={post.category} slug={post.slug.current} numberOfPosts={3} />
+        <SimilarPosts category={post.category} slug={post.slug.current} numberOfPosts={6} />
         <div className={style.content}>
           <div className={style.knapper}>
             <Link
