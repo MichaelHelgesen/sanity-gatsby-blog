@@ -13,7 +13,7 @@ import { SRLWrapper } from "simple-react-lightbox";
 function urlBuilder(image) {
   const { width, height } = image.asset.metadata.dimensions;
   return (
-  "w=1000" +
+    "w=1000" +
     "&q=75" +
     // Check if there is a crop
     `${image.crop ?
@@ -28,16 +28,75 @@ function urlBuilder(image) {
 }
 
 const options = {
-  caption:{
-    showCaption:false
+  caption: {
+    showCaption: false
   },
-  settings:{
+  settings: {
     lightboxTransitionSpeed: 0.05
   }
 }
 
+
+
 const serializers = {
   types: {
+    block: props => {
+      const style = props.node.style || "normal";
+      if (style == "h1") {
+        return (
+          <h1 id={props.node._key}>
+            <a href={`#${props.node._key}`}></a>
+            {props.children}
+          </h1>
+        );
+      }
+      if (style == "h2") {
+        return (
+          <h2 id={props.node._key}>
+            <a href={`#${props.node._key}`}></a>
+            {props.children}
+          </h2 >
+        );
+      }
+      if (style == "h3") {
+        return (
+          <h3 id={props.node._key}>
+            <a href={`#${props.node._key}`}></a>
+            {props.children}
+          </h3>
+        );
+      }
+      if (style == "h4") {
+        return (
+          <h4 id={props.node._key}>
+            <a href={`#${props.node._key}`}></a>
+            {props.children}
+          </h4>
+        );
+      }
+      if (style == "h5") {
+        return (
+          <h5 id={props.node._key}>
+            <a href={`#${props.node._key}`}></a>
+            {props.children}
+          </h5>
+        );
+      }
+      if (style == "h6") {
+        return (
+          <h6 id={props.node._key}>
+            <a href={`#${props.node._key}`}></a>
+            {props.children}
+          </h6>
+        );
+      }
+  
+      return style === "blockquote" ? (
+        <blockquote>– {props.children}</blockquote>
+      ) : (
+        <p>{props.children}</p>
+      );
+    },
     exampleUsage: props => {
       return (<SyntaxHighlighter language={props.node.language || "text"} style={atelierForestLight} showLineNumbers wrapLines={true} lineNumberStyle
         lineProps={lineNumber => {
@@ -59,26 +118,26 @@ const serializers = {
     },
     bodyImage: props => {
       return (
-        
+
         <div className={style.bodyimage}>
           <SimpleReactLightbox>
             <SRLWrapper options={options}>
-          {/* <img src={`${props.node.asset.url}?${urlBuilder(props.node)}`} alt={props.node.alt}/> */}
-          <Image
-                        // pass asset, hotspot, and crop fields
-                        {...props.node}
-                        // tell Sanity how large to make the image (does not set any CSS)
-                        width={1000}
-                        alt={props.node.alt}
-                        //config={{blur:50}}
-                        // style it how you want it
-                        style={{
-                            width: "100vw",
-                            height: "auto",
-                        }}
-                    />
-                    </SRLWrapper>
-                    </SimpleReactLightbox>
+              {/* <img src={`${props.node.asset.url}?${urlBuilder(props.node)}`} alt={props.node.alt}/> */}
+              <Image
+                // pass asset, hotspot, and crop fields
+                {...props.node}
+                // tell Sanity how large to make the image (does not set any CSS)
+                width={1000}
+                alt={props.node.alt}
+                //config={{blur:50}}
+                // style it how you want it
+                style={{
+                  width: "100vw",
+                  height: "auto",
+                }}
+              />
+            </SRLWrapper>
+          </SimpleReactLightbox>
           {/* <GatsbyImage image={getGatsbyImageData(props.node.asset.id, {fit: "FILLMAX", width:"1000", placeholder: "blurred"}, client)} alt={props.node.alt} /> */}
           {/* <img
             src={urlFor(props.node)
@@ -105,11 +164,11 @@ const serializers = {
       let color = props.node.tipColor || "186, 255, 220";
       switch (props.node.tipColor) {
         case "#baffdc": color = "186, 255, 220";
-        break;
+          break;
         case "#ffbaba": color = "255, 186, 186";
-        break;
+          break;
         case "#ffffde": color = "237, 237, 156";
-        break;
+          break;
         default: color = "186, 255, 220";
       };
       return (
@@ -153,7 +212,7 @@ const serializers = {
         >
         </div>
       )
-    }
+    },
   },
   marks: {
     code: props => {
@@ -172,13 +231,13 @@ const serializers = {
       }>{children}</Link>
     },
     link: props => {
-      console.log(props)
       return <a className={style.externallink} href={props.mark.href} rel="external">{props.children}<CgExternal /></a>
     },
     epost: props => {
       return <a className={style.mail} href={props.mark.epost}>{props.children}</a>
     },
   },
+  
 
 }
 

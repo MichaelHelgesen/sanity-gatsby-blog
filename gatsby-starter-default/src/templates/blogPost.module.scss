@@ -196,6 +196,21 @@ span.highlightedLines{background:red!important}
         margin-bottom: 0;
     }
 }
+.indexList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+        list-style: none;
+        margin:0;
+        padding: 0;
+        a{
+            font-weight:600;
+            font-size: .9rem;
+        }
+    }
+
+}
 
 
 

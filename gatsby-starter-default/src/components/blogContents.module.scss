@@ -1,0 +1,26 @@
+@use "../components/base.module.scss";
+
+.tableOfContent{
+    margin-bottom: 1.45rem;
+}
+
+.indexTitle span {
+    border: 2px solid gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: .7rem;
+    padding: 10px;
+    border-radius: 3px;
+    letter-spacing: 0.03em;
+    font-weight: 700;
+    svg {
+        font-size:1.2rem;
+    }
+}
+
+.indexTitle span:hover {
+    cursor: pointer;
+    background: orange;    
+}

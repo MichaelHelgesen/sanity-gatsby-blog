@@ -3,10 +3,12 @@ import { graphql, Link } from "gatsby"
 import BlockContent from '@sanity/block-content-to-react'
 import Layout from "../components/layout"
 import serializers from "../components/serializers"
+import serializers2 from "../components/serializers2"
 import SimilarPosts from "../components/similarPosts"
 import { Helmet } from "react-helmet"
 import * as style from "../templates/blogPost.module.scss"
 import Image from "gatsby-plugin-sanity-image"
+import TableOfContents from "../components/blogContents"
 
 export const pageQuery = graphql`
   query ($id: String!){
@@ -73,8 +75,6 @@ export const pageQuery = graphql`
   }
 `
 
-
-
 const blogPost = ({ data }) => {
   const post = data.sanityPost;
   const showMessages = { ...post.showMessages }
@@ -106,6 +106,7 @@ const blogPost = ({ data }) => {
   }
 
   const createSlug = (string) => string.toLowerCase().replace(/\s+/g, '-').slice(0, 200);
+
 
   return (
     <Layout>
@@ -165,6 +166,17 @@ const blogPost = ({ data }) => {
               <p><Link to={"/om-mikke"}>Jeg er i en læringsprosess.</Link> <b>Teksten reflekterer dermed min forståelse av emnet, basert på tilgjengelig informasjon ved publiseringsdato.</b> Feil og utdatert data kan forekomme. <a href={`mailto:post@mikkesblogg.no?subject=Henvendelse angående ${post.title} på Mikkesblogg.no`}>Send meg gjerne en e-post</a> dersom du kommer over noe som bør rettes.</p>
             </div>
             : null
+          }
+         
+          {post._rawContent ?
+          <div classList={style.tableOfContent}>
+             <TableOfContents
+              rawContent={post._rawContent}
+              serialiser={serializers2}
+              title={post.title}
+            />
+            </div>
+             : null
           }
           {post._rawContent ?
             <BlockContent

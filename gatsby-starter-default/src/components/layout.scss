@@ -643,6 +643,72 @@ pre {
   margin: 0 0 1.45rem 0;
 }
 
+.tableOfContent {
+  margin-bottom: 1.45rem!important;
+}
+
+.indexLinks {
+  list-style: none;
+  margin: 0 0 0 8px;
+  padding: 0;
+  li {
+      list-style: none;
+      margin:0;
+      padding: 0;
+      a {
+          font-weight:500;
+      }
+  }
+}
+
+.h3 {
+margin-left: 8px!important;  
+}
+
+.h4 {
+  margin-left: 16px!important;  
+  }
+
+  .h5 {
+    margin-left: 24px!important;  
+    }
+
+    .h6 {
+      margin-left: 32px!important;  
+      }
+
+.indexList {
+  list-style: none;
+  margin: 0 3px 1.45rem 3px;
+  padding:0;
+  border: 1px solid gray;
+  padding: 20px 20px 10px 20px;
+  border-top: none;
+  font-size: .85rem;
+
+  li {
+    list-style: none;
+    margin: 0;
+    padding:0;
+    line-height: 1.3em!important;
+    margin-bottom: 10px;
+
+    a {
+      text-decoration: none;
+      font-weight: 600;
+      display: block;
+      
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.hidden {
+display:none;  
+}
+
 @media only screen and (max-width: 480px) {
   html {
     font-size: 105%;
