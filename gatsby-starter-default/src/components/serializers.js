@@ -44,7 +44,8 @@ const serializers = {
       const style = props.node.style || "normal";
       if (style == "h1") {
         return (
-          <h1 id={props.node._key}>
+          <h1 id={`title-${props.node._key}`}>
+            <span id={`${props.node._key}`} className={"anchor"}></span>
             <a href={`#${props.node._key}`}></a>
             {props.children}
           </h1>
@@ -52,15 +53,17 @@ const serializers = {
       }
       if (style == "h2") {
         return (
-          <h2 id={props.node._key}>
+          <h2 id={`title-${props.node._key}`}>
+            <span id={`${props.node._key}`} className={"anchor"}></span>
             <a href={`#${props.node._key}`}></a>
             {props.children}
-          </h2 >
+          </h2>
         );
       }
       if (style == "h3") {
         return (
-          <h3 id={props.node._key}>
+          <h3 id={`title-${props.node._key}`}>
+            <span id={`${props.node._key}`} className={"anchor"}></span>
             <a href={`#${props.node._key}`}></a>
             {props.children}
           </h3>
@@ -68,7 +71,8 @@ const serializers = {
       }
       if (style == "h4") {
         return (
-          <h4 id={props.node._key}>
+          <h4 id={`title-${props.node._key}`}>
+            <span id={`${props.node._key}`} className={"anchor"}></span>
             <a href={`#${props.node._key}`}></a>
             {props.children}
           </h4>
@@ -76,7 +80,8 @@ const serializers = {
       }
       if (style == "h5") {
         return (
-          <h5 id={props.node._key}>
+          <h5 id={`title-${props.node._key}`}>
+            <span id={`${props.node._key}`} className={"anchor"}></span>
             <a href={`#${props.node._key}`}></a>
             {props.children}
           </h5>
@@ -84,7 +89,8 @@ const serializers = {
       }
       if (style == "h6") {
         return (
-          <h6 id={props.node._key}>
+          <h6 id={`title-${props.node._key}`}>
+            <span id={`${props.node._key}`} className={"anchor"}></span>
             <a href={`#${props.node._key}`}></a>
             {props.children}
           </h6>
