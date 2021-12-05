@@ -17,7 +17,6 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-netlify`,
     `cloudinary`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -25,6 +24,12 @@ module.exports = {
         name: `images`,
         path: `${__dirname}/src/images`,
       },
+    },
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        mergeSecurityHeaders: false
+      }
     },
     {
       resolve: `gatsby-plugin-manifest`,
