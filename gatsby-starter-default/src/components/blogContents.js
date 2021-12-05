@@ -83,7 +83,7 @@ class TableOfContents extends React.Component {
 
     render() {
         return (
-            <div className={`indexWrap`} style={{position:"relative", height:"80px", zIndex: "999", maxWidth: "calc(780px - 2.175rem)"}}>
+            <div className={`indexWrap`} style={{position:"relative", minHeight:"80px", zIndex: "999", maxWidth: "calc(780px - 2.175rem)"}}>
                 
                 <div className={`${style.tableOfContent} test`} style={{ position: this.state.scrolling ? 'fixed' : 'relative', top: "1px", maxWidth: "calc(780px - 2.175rem)" }}>
                     
