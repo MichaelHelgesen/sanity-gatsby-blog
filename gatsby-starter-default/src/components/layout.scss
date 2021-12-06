@@ -724,10 +724,32 @@ display:none;
   overflow: auto!important;
 }
 
+.titleLink {
+  text-decoration: none;
+  color: base.$font-color!important;
+}
+
+.linkIcon {
+  opacity: .2;
+  position: relative;
+  top: 5px;
+  display: inline-block;
+}
+
+.titleLink {
+  text-decoration: none;
+  color: base.$font-color!important;
+}
+
+.titleLink:hover .linkIcon{
+  opacity: 1;
+}
 
 .test2 {
   margin-right: 1.075rem!important;
 }
+
+
 
 @media only screen and (max-width: 480px) {
   html {

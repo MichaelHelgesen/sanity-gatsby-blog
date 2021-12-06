@@ -58,7 +58,7 @@ const serializers2 = {
           return null
 
         default:
-          return <p>x</p>
+          return null
       }
     }
   }

@@ -2,7 +2,7 @@ import * as React from "react"
 import { Link } from "gatsby"
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { nightOwl, atelierForestLight } from 'react-syntax-highlighter/dist/esm/styles/hljs'
-import { CgExternal } from "react-icons/cg"
+import { CgExternal, CgLink } from "react-icons/cg"
 import BlockContent from '@sanity/block-content-to-react'
 import getYouTubeId from "get-youtube-id"
 import * as style from '../components/serializers.module.scss'
@@ -55,8 +55,8 @@ const serializers = {
         return (
           <h2 id={`title-${props.node._key}`}>
             <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`}></a>
-            {props.children}
+            <a href={`#${props.node._key}`} className={"titleLink"}>{props.children}</a>
+            
           </h2>
         );
       }
@@ -64,8 +64,8 @@ const serializers = {
         return (
           <h3 id={`title-${props.node._key}`}>
             <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`}></a>
-            {props.children}
+            <a href={`#${props.node._key}`} className={"titleLink"}>{props.children}<CgLink className={"linkIcon"} /></a>
+            
           </h3>
         );
       }
@@ -73,8 +73,8 @@ const serializers = {
         return (
           <h4 id={`title-${props.node._key}`}>
             <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`}></a>
-            {props.children}
+            <a href={`#${props.node._key}`} className={"titleLink"}>{props.children}</a>
+            
           </h4>
         );
       }
@@ -82,8 +82,8 @@ const serializers = {
         return (
           <h5 id={`title-${props.node._key}`}>
             <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`}></a>
-            {props.children}
+            <a href={`#${props.node._key}`} className={"titleLink"}>{props.children}</a>
+            
           </h5>
         );
       }
@@ -91,8 +91,7 @@ const serializers = {
         return (
           <h6 id={`title-${props.node._key}`}>
             <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`}></a>
-            {props.children}
+            <a href={`#${props.node._key}`} className={"titleLink"}>{props.children}</a>
           </h6>
         );
       }
