@@ -2,9 +2,11 @@
 
 .tableOfContent{
     margin-bottom: 1.45rem;
-    margin-right: 1.075rem;
+   
     max-width: calc(780px - 2.175rem); 
 }
+
+
 
 .indexTitle span {
     border: 2px solid gray;
@@ -17,12 +19,13 @@
     border-radius: 3px;
     letter-spacing: 0.03em;
     font-weight: 700;
-    background-color: white;
+    background: antiquewhite;
     opacity: .9;
     
     svg {
         font-size:1.2rem;
         margin-left:10px;
+        pointer-events: none;
     }
 }
 
@@ -31,9 +34,4 @@
     background: orange;    
 }
 
-.indexList {
-    background-color: white;
-    height: 400px;
-    overflow-y: scroll;
-}
 

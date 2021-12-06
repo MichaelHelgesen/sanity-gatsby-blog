@@ -712,9 +712,21 @@ display:none;
 .anchor{
   position: relative;
   top: -80px;
-  height: 1px;
-  background-color: red;
   display: block;
+}
+
+.indexList {
+  background-color: white;
+}
+
+.test4 .indexList {
+  max-height: 400px!important;
+  overflow: auto!important;
+}
+
+
+.test2 {
+  margin-right: 1.075rem!important;
 }
 
 @media only screen and (max-width: 480px) {

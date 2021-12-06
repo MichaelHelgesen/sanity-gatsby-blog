@@ -19,36 +19,39 @@ class TableOfContents extends React.Component {
         this.title = title
         this.rawContent = rawContent
 
+        this.handleClick = this.handleClick.bind(this)
+        this.handleScroll = this.handleScroll.bind(this)
+        this.closeClick = this.closeClick.bind(this)
+
         this.state = {
             class: "hidden",
-            icon: <CgMenu />,
+            icon: <CgMenu onClick={this.handleClick} />,
             title: "Se innholdsfortegnelse",
             scrolling: false
         }
 
-        this.handleClick = this.handleClick.bind(this)
-        this.handleScroll = this.handleScroll.bind(this)
-        this.closeClick = this.closeClick.bind(this)
+
     }
 
     handleClick(e) {
-        let test = "ok"
+        //let test = "ok"
         let setSome = () => {
             this.setState({ class: "hidden" })
-            this.setState({ icon: <CgMenu /> })
+            this.setState({ icon: <CgMenu onClick={this.handleClick} /> })
             this.setState({ title: "Se innholdsfortegnelse" })
         }
-        document.documentElement.onclick = function(e) {
+
+        document.documentElement.onclick = function (e) {
+            console.log(e.target.parentNode)
             if (e.target != document.getElementById('title-span')) {
                 setSome()
             }
-          }
-          this.setState({ class: test})
-        console.log(this.state.class)
+        }
         if (this.state.class === "hidden") {
             this.setState({ class: "ok" })
             this.setState({ icon: <CgClose /> })
             this.setState({ title: "Lukk innholdsfortegnelse" })
+
         }
         else {
             this.setState({ class: "hidden" })
@@ -83,17 +86,17 @@ class TableOfContents extends React.Component {
 
     render() {
         return (
-            <div className={`indexWrap`} style={{position:"relative", minHeight:"80px", zIndex: "999", maxWidth: "calc(780px - 2.175rem)"}}>
-                
-                <div className={`${style.tableOfContent} test`} style={{ position: this.state.scrolling ? 'fixed' : 'relative', top: "1px", maxWidth: "calc(780px - 2.175rem)" }}>
-                    
-                    <div className={style.indexTitle} style={{borderRadius: "5px", boxShadow: this.state.scrolling ? '3px 3px 3px gray' : 'none'}}>
-                        
+            <div className={`indexWrap`} style={{ position: "relative", minHeight: "80px", zIndex: "999", maxWidth: "calc(780px - 2.175rem)" }}>
+
+                <div className={`${style.tableOfContent} test ${this.state.scrolling ? 'test2' : 'test3'}`} style={{ position: this.state.scrolling ? 'fixed' : 'relative', top: "1px", maxWidth: "calc(780px - 2.175rem)" }}>
+
+                    <div className={style.indexTitle} style={{ borderRadius: "5px", boxShadow: this.state.scrolling ? '3px 3px 3px gray' : 'none' }}>
+
                         <span id="title-span" onClick={this.handleClick}>{this.state.title}{this.state.icon}</span></div>
-                    
-                    <div className={`${this.state.class} ll`}>
-                        
-                        <ul className={"indexList"} style={{background:"white"}} onClick={this.handleClick}>
+
+                    <div className={`${this.state.class} ll ${this.state.scrolling ? 'test4' : "test5"}`}>
+
+                        <ul className={"indexList"} style={{ background: "white" }} onClick={this.handleClick}>
                             <li><a href="#top">{this.title}</a></li>
                             <BlockContent
                                 blocks={this.rawContent}
