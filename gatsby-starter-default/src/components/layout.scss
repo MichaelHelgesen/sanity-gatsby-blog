@@ -727,12 +727,14 @@ display:none;
 .titleLink {
   text-decoration: none;
   color: base.$font-color!important;
+  position: relative;
 }
 
 .linkIcon {
-  opacity: .2;
-  position: relative;
+  opacity: 0;
+  position: absolute;
   top: 5px;
+  left: -35px;
   display: inline-block;
 }
 
@@ -749,12 +751,22 @@ display:none;
   margin-right: 1.075rem!important;
 }
 
-
+@media only screen and (max-width: 830px) {
+  .linkIcon {
+    position: relative;
+    left: unset;
+    opacity: .2;
+  }
+}
 
 
 @media only screen and (max-width: 480px) {
   html {
     font-size: 105%;
+  }
+  .linkIcon {
+    position: relative;
+    left: unset;
   }
 }
 
