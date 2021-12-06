@@ -9,6 +9,8 @@ import { Helmet } from "react-helmet"
 import * as style from "../templates/blogPost.module.scss"
 import Image from "gatsby-plugin-sanity-image"
 import TableOfContents from "../components/blogContents"
+import SimpleReactLightbox from "simple-react-lightbox"
+import { SRLWrapper } from "simple-react-lightbox";
 
 export const pageQuery = graphql`
   query ($id: String!){
@@ -180,10 +182,14 @@ const blogPost = ({ data }) => {
              : null
           }
           {post._rawContent ?
+          <SimpleReactLightbox>
+            <SRLWrapper>
             <BlockContent
               blocks={post._rawContent}
               serializers={serializers}
-            /> : null
+            /> 
+            </SRLWrapper>
+            </SimpleReactLightbox>: null
           }
         </div>
         {showMessages.bottomText !== false ?

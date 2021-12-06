@@ -55,8 +55,8 @@ const serializers = {
         return (
           <h2 id={`title-${props.node._key}`}>
             <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`} className={"titleLink"}>{props.children}<CgLink className={"linkIcon"} /></a>
-            
+            <a href={`#${props.node._key}`} className={"titleLink"}><CgLink className={"linkIcon"} /></a>
+            {props.children}
           </h2>
         );
       }
@@ -64,8 +64,8 @@ const serializers = {
         return (
           <h3 id={`title-${props.node._key}`}>
             <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`} className={"titleLink"}>{props.children}<CgLink className={"linkIcon"} /></a>
-            
+            <a href={`#${props.node._key}`} className={"titleLink"}><CgLink className={"linkIcon"} /></a>
+            {props.children}
           </h3>
         );
       }
@@ -73,8 +73,8 @@ const serializers = {
         return (
           <h4 id={`title-${props.node._key}`}>
             <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`} className={"titleLink"}>{props.children}<CgLink className={"linkIcon"} /></a>
-            
+            <a href={`#${props.node._key}`} className={"titleLink"}><CgLink className={"linkIcon"} /></a>
+            {props.children}
           </h4>
         );
       }
@@ -82,8 +82,8 @@ const serializers = {
         return (
           <h5 id={`title-${props.node._key}`}>
             <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`} className={"titleLink"}>{props.children}<CgLink className={"linkIcon"} /></a>
-            
+            <a href={`#${props.node._key}`} className={"titleLink"}><CgLink className={"linkIcon"} /></a>
+            {props.children}
           </h5>
         );
       }
@@ -91,7 +91,8 @@ const serializers = {
         return (
           <h6 id={`title-${props.node._key}`}>
             <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`} className={"titleLink"}>{props.children}<CgLink className={"linkIcon"} /></a>
+            <a href={`#${props.node._key}`} className={"titleLink"}><CgLink className={"linkIcon"} /></a>
+            {props.children}
           </h6>
         );
       }
@@ -125,8 +126,7 @@ const serializers = {
       return (
 
         <div className={style.bodyimage}>
-          <SimpleReactLightbox>
-            <SRLWrapper options={options}>
+            
               {/* <img src={`${props.node.asset.url}?${urlBuilder(props.node)}`} alt={props.node.alt}/> */}
               <Image
                 // pass asset, hotspot, and crop fields
@@ -141,8 +141,8 @@ const serializers = {
                   height: "auto",
                 }}
               />
-            </SRLWrapper>
-          </SimpleReactLightbox>
+           
+
           {/* <GatsbyImage image={getGatsbyImageData(props.node.asset.id, {fit: "FILLMAX", width:"1000", placeholder: "blurred"}, client)} alt={props.node.alt} /> */}
           {/* <img
             src={urlFor(props.node)
