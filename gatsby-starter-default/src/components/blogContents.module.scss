@@ -3,8 +3,8 @@
 .tableOfContent{
     margin-bottom: 1.45rem;
     opacity: .9;
-    width:100%;
-    max-width: calc(780px - 2.175rem);
+    margin-right: 1.075rem;
+    max-width: calc(780px - 2.175rem); 
 }
 
 .indexTitle span {
@@ -33,7 +33,7 @@
 
 .indexList {
     background-color: white;
-    max-height: 400px;
-    overflow: scroll;
+    height: 400px;
+    overflow-y: scroll;
 }
 
