@@ -721,7 +721,7 @@ display:none;
 
 .test4 .indexList {
   max-height: 400px!important;
-  overflow: auto!important;
+  overflow-y: scroll!important;
 }
 
 .titleLink {
