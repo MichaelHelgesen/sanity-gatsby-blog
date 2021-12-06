@@ -55,7 +55,7 @@ const serializers = {
         return (
           <h2 id={`title-${props.node._key}`}>
             <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`} className={"titleLink"}>{props.children}</a>
+            <a href={`#${props.node._key}`} className={"titleLink"}>{props.children}<CgLink className={"linkIcon"} /></a>
             
           </h2>
         );
@@ -73,7 +73,7 @@ const serializers = {
         return (
           <h4 id={`title-${props.node._key}`}>
             <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`} className={"titleLink"}>{props.children}</a>
+            <a href={`#${props.node._key}`} className={"titleLink"}>{props.children}<CgLink className={"linkIcon"} /></a>
             
           </h4>
         );
@@ -82,7 +82,7 @@ const serializers = {
         return (
           <h5 id={`title-${props.node._key}`}>
             <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`} className={"titleLink"}>{props.children}</a>
+            <a href={`#${props.node._key}`} className={"titleLink"}>{props.children}<CgLink className={"linkIcon"} /></a>
             
           </h5>
         );
@@ -91,7 +91,7 @@ const serializers = {
         return (
           <h6 id={`title-${props.node._key}`}>
             <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`} className={"titleLink"}>{props.children}</a>
+            <a href={`#${props.node._key}`} className={"titleLink"}>{props.children}<CgLink className={"linkIcon"} /></a>
           </h6>
         );
       }
