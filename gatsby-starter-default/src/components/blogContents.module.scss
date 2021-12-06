@@ -2,7 +2,6 @@
 
 .tableOfContent{
     margin-bottom: 1.45rem;
-    opacity: .9;
     margin-right: 1.075rem;
     max-width: calc(780px - 2.175rem); 
 }
@@ -19,6 +18,7 @@
     letter-spacing: 0.03em;
     font-weight: 700;
     background-color: white;
+    opacity: .9;
     
     svg {
         font-size:1.2rem;
