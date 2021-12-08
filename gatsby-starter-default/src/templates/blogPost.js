@@ -61,6 +61,7 @@ export const pageQuery = graphql`
             showMessages {
               bottomText
               topText
+              index
             }
             introduction
             _rawContent(resolveReferences:{maxDepth:10})
@@ -171,7 +172,7 @@ const blogPost = ({ data }) => {
             </div>
             : null
           }
-          {post._rawContent ?
+          {showMessages.index !== true ? 
           <div classList={style.tableOfContent}>
              <TableOfContents
               rawContent={post._rawContent}

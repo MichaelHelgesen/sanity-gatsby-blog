@@ -732,15 +732,14 @@ display:none;
 
 .linkIcon {
   opacity: 0;
-  position: absolute;
-  top: 5px;
-  left: -35px;
-  display: inline-block;
+  float:left;
+  padding-top: 3px;
 }
 
 .titleLink {
   text-decoration: none;
   color: base.$font-color!important;
+  margin-left: -1em;
 }
 
 .titleLink:hover .linkIcon{
@@ -756,6 +755,10 @@ display:none;
     position: relative;
     left: unset;
     opacity: .2;
+    float: right;
+  }
+  .titleLink {
+    margin-left: unset;
   }
 }
 

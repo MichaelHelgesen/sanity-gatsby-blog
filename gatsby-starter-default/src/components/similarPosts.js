@@ -5,11 +5,11 @@ import { Link } from "gatsby"
 import Image from "gatsby-plugin-sanity-image"
 
 const SimilarPosts = (props) => {
-    //let numberOfPosts = props.numberOfPosts;
-    return (
-        <div>
-            <StaticQuery
-                query={graphql`
+  //let numberOfPosts = props.numberOfPosts;
+  return (
+    <div>
+      <StaticQuery
+        query={graphql`
       query {
         post: allSanityPost (sort: {
           fields: date,
@@ -120,178 +120,178 @@ const SimilarPosts = (props) => {
       }
     `} render={data => {
 
-        const posts = [...data.post.edges, ...data.book.edges].sort(function (a, b) {
+          const posts = [...data.post.edges, ...data.book.edges].sort(function (a, b) {
             // Format the date to year, month, day to get correct sort order
             const formatDate = (arg) => arg.node.date.slice(6).concat(arg.node.date.slice(3, 5)).concat(arg.node.date.slice(0, 2));
             return formatDate(b) - formatDate(a)
           });
-                    //const posts = data.post.edges
+          //const posts = data.post.edges
 
-                    let categoryArray = [];
+          let categoryArray = [];
 
-                    props.category.forEach(element => {
-                        categoryArray.push(element.categoryTitle);
-                    });
+          props.category.forEach(element => {
+            categoryArray.push(element.categoryTitle);
+          });
 
-                    // Filtrere blogginnlegg etter kategori
-                    const filteredPosts = posts.filter((post) => {
-                        
-                        // Ut i funksjon
-                        let sameCategory = false;
+          // Filtrere blogginnlegg etter kategori
+          const filteredPosts = posts.filter((post) => {
 
-                        post.node.category.forEach((cat) => {
-                            if (categoryArray.includes(cat.categoryTitle)) {
-                                return sameCategory = true;
-                            }
-                        })
-                        
-                        if (sameCategory && (props.slug !== post.node.slug.current)) {
-                            return post
-                        } else {
-                            return null
+            // Ut i funksjon
+            let sameCategory = false;
+
+            post.node.category.forEach((cat) => {
+              if (categoryArray.includes(cat.categoryTitle)) {
+                return sameCategory = true;
+              }
+            })
+
+            if (sameCategory && (props.slug !== post.node.slug.current)) {
+              return post
+            } else {
+              return null
+            }
+          })
+
+          let randomPosts = []
+
+          // Generere tilfeldig nummer
+          function randomNumber(num) {
+            if (!randomPosts.includes(num)) {
+              randomPosts.push(num)
+            } else {
+              randomNumber(Math.floor((Math.random() * filteredPosts.length)))
+            }
+          }
+
+          // Hvis blogginnlegg i samme kategori teller mer eller mindre enn tre, men mer enn null.
+          if (filteredPosts.length > props.numberOfPosts) {
+
+            for (let i = props.numberOfPosts; i > 0; i--) {
+              randomNumber(Math.floor((Math.random() * filteredPosts.length)))
+            }
+          } else {
+            for (let j = filteredPosts.length; j >= 0; j--) {
+              randomPosts.push(j);
+            }
+
+          }
+
+          let newArr = filteredPosts.filter((post, index) => randomPosts.includes(index));
+
+          let message = "Relevante blogginnlegg"
+
+          // Hvis ingen blogginnlegg i samme kategori,
+          if (newArr.length < 1) {
+            let i = 0
+            let index = props.numberOfPosts;
+            do {
+              if (props.slug !== posts[i].node.slug.current) {
+                newArr.push(posts[i]);
+              } else {
+                index++
+              }
+              i++
+
+            } while (i < index);
+
+
+            message = "Siste blogginnlegg"
+          }
+
+          // Bildehåndtering
+          function urlBuilder(image) {
+            const { width, height } = image.asset.metadata.dimensions;
+            return (
+              `w=1000` +
+              `&h=1000` +
+              "&fit=crop" +
+              `${image.hotspot ?
+                "&crop=focalpoint" +
+                `&fp-x=${image.hotspot.x}` +
+                `&fp-y=${image.hotspot.y}`
+                : "&crop=center"}` +
+              `${image.crop ?
+                "&rect=" +
+                `${Math.floor(width * image.crop.left)},` + // Crop from left
+                `${Math.floor(height * image.crop.top)},` + // Crop from top
+                `${Math.floor(width - (width * image.crop.left + width * image.crop.right))},` +
+                `${Math.floor(height - (width * image.crop.top + width * image.crop.bottom))}`
+                :
+                ""}` +
+              `&q=50`
+            )
+          }
+
+
+
+          return (<div>
+            <div className={style.content} style={{ textAlign: "center", marginBottom: "0" }}>
+              <span style={{ textTransform: "uppercase", fontWeight: "700", fontSize: ".8em", width: "100%" }}>{message}</span>
+            </div>
+            <div className={style.content} >
+              {newArr.map((post, index) => (
+                <Link className={style.link}
+                  to={post.node.slug ? `/blogg/${post.node.slug.current}` : `/blogg/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}
+                  key={index}
+                >
+                  <div className={style.gradient}>
+                    <div className={style.blog_item}>
+                      <small className={style.dateCategory}>{post.node.date} •
+                        { // Create a span for each category defined on item
+                          post.node.category && post.node.category.length ?
+                            post.node.category.map((cat, index) => (
+                              (index > 0 ? <span key={index}>, <span>{cat.categoryTitle}</span></span> : <span key={index}> {cat.categoryTitle}</span>)
+                            )) :
+                            <span> Ukategorisert </span>
                         }
-                    })
-
-                    let randomPosts = []
-                    
-                    // Generere tilfeldig nummer
-                    function randomNumber(num) {
-                        if (!randomPosts.includes(num)) {
-                            randomPosts.push(num)
-                        } else {
-                            randomNumber(Math.floor((Math.random() * filteredPosts.length)))
-                        }
-                    }
-
-                    // Hvis blogginnlegg i samme kategori teller mer eller mindre enn tre, men mer enn null.
-                    if (filteredPosts.length > props.numberOfPosts) {
-
-                        for (let i = props.numberOfPosts; i > 0; i--) {
-                            randomNumber(Math.floor((Math.random() * filteredPosts.length)))
-                        }
-                    } else {
-                        for (let j = filteredPosts.length; j >= 0; j--) {
-                            randomPosts.push(j);
-                        }
-
-                    }
-
-                    let newArr = filteredPosts.filter((post, index) => randomPosts.includes(index));
-
-                    let message = "Relevante blogginnlegg"
-
-                    // Hvis ingen blogginnlegg i samme kategori,
-                    if (newArr.length < 1) {
-                        let i = 0
-                        let index = props.numberOfPosts;
-                        do {
-                            if (props.slug !== posts[i].node.slug.current) {
-                                newArr.push(posts[i]);
-                            } else {
-                                index++
-                            }
-                            i++
-
-                        } while (i < index);
-
-
-                        message = "Siste blogginnlegg"
-                    }
-
-                    // Bildehåndtering
-                    function urlBuilder(image) {
-                        const { width, height } = image.asset.metadata.dimensions;
-                        return (
-                            `w=1000` +
-                            `&h=1000` +
-                            "&fit=crop" +
-                            `${image.hotspot ?
-                                "&crop=focalpoint" +
-                                `&fp-x=${image.hotspot.x}` +
-                                `&fp-y=${image.hotspot.y}`
-                                : "&crop=center"}` +
-                            `${image.crop ?
-                                "&rect=" +
-                                `${Math.floor(width * image.crop.left)},` + // Crop from left
-                                `${Math.floor(height * image.crop.top)},` + // Crop from top
-                                `${Math.floor(width - (width * image.crop.left + width * image.crop.right))},` +
-                                `${Math.floor(height - (width * image.crop.top + width * image.crop.bottom))}`
-                                :
-                                ""}` +
-                            `&q=50`
-                        )
-                    }
-
-
-
-                    return (<div>
-                        <div className={style.content} style={{ textAlign: "center", marginBottom: "0" }}>
-                            <span style={{ textTransform: "uppercase", fontWeight: "700", fontSize: ".8em", width: "100%" }}>{message}</span>
-                        </div>
-                        <div className={style.content} >
-                            {newArr.map((post, index) => (
-                                <Link className={style.link}
-                                    to={post.node.slug ? `/blogg/${post.node.slug.current}` : `/blogg/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}
-                                    key={index}
-                                >
-                                    <div className={style.gradient}>
-                                        <div className={style.blog_item}>
-                                            <small className={style.dateCategory}>{post.node.date} •
-                                                { // Create a span for each category defined on item
-                                                    post.node.category && post.node.category.length ?
-                                                        post.node.category.map((cat, index) => (
-                                                            (index > 0 ? <span key={index}>, <span>{cat.categoryTitle}</span></span> : <span key={index}> {cat.categoryTitle}</span>)
-                                                        )) :
-                                                        <span> Ukategorisert </span>
-                                                }
-                                            </small>
-                                            <h2 className={style.title}>{post.node.title}</h2>
-                                            <p style={{ margin: "10px 0 10px 0" }}>{post.node.description}</p>
-                                        </div>
-                                        {/* <div
+                      </small>
+                      <h2 className={style.title}>{post.node.title}</h2>
+                      <p style={{ margin: "10px 0 10px 0" }}>{post.node.description}</p>
+                    </div>
+                    {/* <div
                                             className={style.blog_image}
                                             style={{ background: `${post.node.image ? `url(${post.node.image.asset.url}?${urlBuilder(post.node.image)}) no-repeat 50% center` : "gray"}` }}
                                         >
                                             {post.node.image && post.node.image._rawAsset ? <span className={style.credit_line}>{post.node.image._rawAsset.creditLine}</span> : null}
                                         </div> */}
-                                        
-                                        {post.node.image.asset._id ? <Image
-                        // pass asset, hotspot, and crop fields
-                        {...post.node.image}
-                        // tell Sanity how large to make the image (does not set any CSS)
-                        width={500}
-                        height={300}
-                        alt={"g"}
-                        //config={{blur:50}}
-                        // style it how you want it
-                        style={{
-                            width: "100vw",
-                            height: "auto",
-                        }}
+
+                    {post.node.image.asset._id ? <Image
+                      // pass asset, hotspot, and crop fields
+                      {...post.node.image}
+                      // tell Sanity how large to make the image (does not set any CSS)
+                      width={500}
+                      height={300}
+                      alt={"g"}
+                      //config={{blur:50}}
+                      // style it how you want it
+                      style={{
+                        width: "100vw",
+                        height: "auto",
+                      }}
                     /> : null}
 
 
-                                    </div>
-                                    {post.node.image && post.node.image._rawAsset ? <span className={style.credit_line}>{post.node.image._rawAsset.creditLine}</span> : null}
-                                </Link>
-                            ))}
-                            <div className={`${style.link} clear`}></div>
-                        </div>
-                    </div>
+                  </div>
+                  {post.node.image && post.node.image._rawAsset ? <span className={style.credit_line}>{post.node.image._rawAsset.creditLine}</span> : null}
+                </Link>
+              ))}
+              <div className={`${style.link} clear`}></div>
+            </div>
+          </div>
 
 
 
-                        /*                         <div>
-                                                    {newArr.map((element, index) => {
-                                                            return <p key={index}>{element.node.title}</p>
-                                                        })
-                                                    }
-                                                </div> */
-                    )
-                }}
-            />
-        </div>
+            /*                         <div>
+                                        {newArr.map((element, index) => {
+                                                return <p key={index}>{element.node.title}</p>
+                                            })
+                                        }
+                                    </div> */
+          )
+        }}
+      />
+    </div>
 
-    )
+  )
 }
 export default SimilarPosts

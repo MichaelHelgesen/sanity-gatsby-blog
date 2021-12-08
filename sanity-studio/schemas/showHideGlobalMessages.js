@@ -13,5 +13,10 @@ export default {
                         title: "Vis bunntekst",
                         type: "boolean",
                     },
+                    {
+                        name: "index",
+                        title: "Skjul innholdsfortegnelse",
+                        type: "boolean",
+                    },
     ]
 }

@@ -53,45 +53,45 @@ const serializers = {
       }
       if (style == "h2") {
         return (
-          <h2 id={`title-${props.node._key}`}>
+          <h2 id={`title-${props.node._key}`} className={"titleLink"}>
             <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`} className={"titleLink"}><CgLink className={"linkIcon"} /></a>
+            <a href={`#${props.node._key}`}><CgLink className={"linkIcon"} /></a>
             {props.children}
           </h2>
         );
       }
       if (style == "h3") {
         return (
-          <h3 id={`title-${props.node._key}`}>
+          <h3 id={`title-${props.node._key}`} className={"titleLink"}>
             <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`} className={"titleLink"}><CgLink className={"linkIcon"} /></a>
+            <a href={`#${props.node._key}`}><CgLink className={"linkIcon"} /></a>
             {props.children}
           </h3>
         );
       }
       if (style == "h4") {
         return (
-          <h4 id={`title-${props.node._key}`}>
+          <h4 id={`title-${props.node._key}`} className={"titleLink"}>
             <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`} className={"titleLink"}><CgLink className={"linkIcon"} /></a>
+            <a href={`#${props.node._key}`}><CgLink className={"linkIcon"} /></a>
             {props.children}
           </h4>
         );
       }
       if (style == "h5") {
         return (
-          <h5 id={`title-${props.node._key}`}>
+          <h5 id={`title-${props.node._key}`} className={"titleLink"}>
             <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`} className={"titleLink"}><CgLink className={"linkIcon"} /></a>
+            <a href={`#${props.node._key}`}><CgLink className={"linkIcon"} /></a>
             {props.children}
           </h5>
         );
       }
       if (style == "h6") {
         return (
-          <h6 id={`title-${props.node._key}`}>
+          <h6 id={`title-${props.node._key}`} className={"titleLink"}>
             <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`} className={"titleLink"}><CgLink className={"linkIcon"} /></a>
+            <a href={`#${props.node._key}`}><CgLink className={"linkIcon"} /></a>
             {props.children}
           </h6>
         );
@@ -236,7 +236,7 @@ const serializers = {
       }>{children}</Link>
     },
     link: props => {
-      return <a className={style.externallink} href={props.mark.href} rel="external">{props.children}<CgExternal /></a>
+      return <a className={style.externallink} href={props.mark.href} rel="external">{props.children}<span><CgExternal /></span></a>
     },
     epost: props => {
       return <a className={style.mail} href={props.mark.epost}>{props.children}</a>

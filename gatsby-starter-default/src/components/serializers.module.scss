@@ -32,13 +32,16 @@
 }
 
 .externallink {
-  
-    
+  span {
+      position: relative;
+  }
     svg {
         /* border-bottom: 1px solid #cc4717; */
-        position: relative;
-        top: 2.3px;
+        position: absolute;
+        right: -15px;
+        top: -3px;
         transition: all .2s ease;
+
     }
 }
 
