@@ -728,11 +728,14 @@ display:none;
   text-decoration: none;
   color: base.$font-color!important;
   position: relative;
+  a {
+    float: left;
+  }
 }
 
 .linkIcon {
   opacity: 0;
-  float:left;
+  /* float:left; */
   padding-top: 3px;
 }
 
@@ -755,10 +758,13 @@ display:none;
     position: relative;
     left: unset;
     opacity: .2;
-    float: right;
+    /* float: right; */
   }
   .titleLink {
     margin-left: unset;
+    a {
+      float: right;
+    }
   }
 }
 

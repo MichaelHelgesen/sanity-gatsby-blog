@@ -34,14 +34,16 @@
 .externallink {
   span {
       position: relative;
+      margin-right: 10px;
   }
     svg {
         /* border-bottom: 1px solid #cc4717; */
         position: absolute;
-        right: -15px;
+        right: -16px;
         top: -3px;
         transition: all .2s ease;
-
+        font-size: .9em;
+        opacity: .7;
     }
 }
 
