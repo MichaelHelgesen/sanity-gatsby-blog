@@ -25,6 +25,12 @@
 .content {
     @include base.contentLayout;
     margin-bottom: 2.9rem;
+    a {
+        color: #cc4717;
+    }
+    a:hover {
+        color: #06863e;
+    }
 }
 
 .title {
@@ -113,6 +119,7 @@ background:unset!important;
     p a[href]:after, ul a[href]:after {
         content: " (" attr(href) ")";
         color: black;
+
       }
     a {
         color: black;
@@ -131,9 +138,7 @@ background:unset!important;
       .content {
           padding-top: 0;
       }
-      .content a {
-        color: black;
-    }
+
       h1,h2,h3,h4,h5,h6 {
         widows: 4;
         orphans: 4;

@@ -275,9 +275,11 @@ const IndexPage = ({ data }) => {
             <div className={style.introField}>
               <span className={style.welcome}>VELKOMMEN TIL MIKKES BLOGG</span>
               <h1><span className={style.laer}>lær</span>ing <span className={style.via}>via</span><br/> <span className={style.del}>del</span>ing</h1>
+              <div style={{maxWidth: "650px"}}>
               <BlockContent
                 blocks={page._rawContent}
                 serializers={serializers} />
+                </div>
                 <div className={style.categoryList}>
               {categoryList} {/* <Link to={"/blogg/kategorier"}>Se alle kategoriene</Link> */}
               </div>
