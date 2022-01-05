@@ -1,4 +1,4 @@
-let cloudinary = require("cloudinary").v2
+const cloudinary = require("cloudinary").v2
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -11,14 +11,13 @@ cloudinary.config({
 exports.sourceNodes = async function ({ actions, createNodeId, createContentDigest }) {
     const { createNode } = actions
 
-    await cloudinary.search.expression("folder:mikkesblogg/*")
+    await cloudinary.search
+        .expression("folder:mikkesblogg/*")
         .sort_by("created_at", "asc")
         .max_results(200)
         .execute()
         .then((result) => {
-            
             const myResults = { ...result }
-            console.log(myResults)
             const nodeContent = JSON.stringify(myResults)
 
             const nodeMeta = {
@@ -27,14 +26,13 @@ exports.sourceNodes = async function ({ actions, createNodeId, createContentDige
                 children: [],
                 internal: {
                     type: `cloudinaryImages`,
-                    mediaType: `text/html`,
                     content: nodeContent,
                     contentDigest: createContentDigest(myResults)
                 }
             }
-            
+
             const node = Object.assign({}, myResults, nodeMeta)
             createNode(node)
         }
-    )
+        )
 }

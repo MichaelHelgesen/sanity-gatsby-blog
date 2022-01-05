@@ -133,6 +133,7 @@ const blogPost = ({ data }) => {
           // style it how you want it
           style={{
             width: "100%",
+            minHeight: "300px",
             height: "40vw",
             maxHeight: "50vh",
             objectFit: "cover"

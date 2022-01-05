@@ -3,8 +3,6 @@ import SimpleReactLightbox from "simple-react-lightbox"
 import { SRLWrapper } from "simple-react-lightbox";
 import Masonry from "react-masonry-css"
 import * as style from "../components/imageGallery.module.scss"
-import Image from "gatsby-plugin-sanity-image"
-import { StaticImage } from "gatsby-plugin-image";
 import { AdvancedImage, lazyload, accessibility, responsive, placeholder } from '@cloudinary/react';
 import { Cloudinary } from "@cloudinary/url-gen";
 import { fill } from "@cloudinary/url-gen/actions/resize";
@@ -23,7 +21,6 @@ const cld = new Cloudinary({
     }
 });
 
-
 const ImageGallery = ({ props }) => (
 
     <div className={style.content}>
@@ -41,7 +38,7 @@ const ImageGallery = ({ props }) => (
                         return (
                             <div key={index}>
                                 <a href={`https://res.cloudinary.com/${post.folder}/${post.resource_type}/${post.type}/c_scale,w_1000/v1636405719/${post.folder}/${post.filename}.jpg`}>
-                                    <AdvancedImage cldImg={myImage} plugins={[lazyload('10px 20px 10px 30px', 0.25), placeholder("blur")]} />
+                                    <AdvancedImage cldImg={myImage} plugins={[lazyload('10px 20px 10px 30px', 0.25), placeholder("blur"), accessibility()]} />
                                 </a>
                             </div>)
                     })}
