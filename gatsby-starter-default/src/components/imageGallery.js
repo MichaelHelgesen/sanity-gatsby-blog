@@ -38,7 +38,7 @@ const ImageGallery = ({ props }) => (
                         return (
                             <div key={index}>
                                 <a href={`https://res.cloudinary.com/${post.folder}/${post.resource_type}/${post.type}/c_scale,w_1000/v1636405719/${post.folder}/${post.filename}.jpg`}>
-                                    <AdvancedImage cldImg={myImage} plugins={[lazyload('10px 20px 10px 30px', 0.25), placeholder("blur"), accessibility()]} />
+                                    <AdvancedImage cldImg={myImage} plugins={[lazyload('10px 20px 10px 30px', 0.25), placeholder("blur")]} />
                                 </a>
                             </div>)
                     })}
