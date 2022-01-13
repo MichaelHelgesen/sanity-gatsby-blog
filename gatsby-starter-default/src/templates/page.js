@@ -93,6 +93,7 @@ query ($id: String!){
           secure_url
           filename
           folder
+          aspect_ratio
           resource_type
           type
           asset_id

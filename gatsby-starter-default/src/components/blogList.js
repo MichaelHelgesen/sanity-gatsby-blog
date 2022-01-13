@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import * as style from "../components/blogList_card_v3.module.scss"
 import Image from "gatsby-plugin-sanity-image"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import SanityImage from "gatsby-plugin-sanity-image"
 
 function urlBuilder(image) {
     const { width, height } = image.asset.metadata.dimensions;
@@ -82,13 +83,13 @@ const BlogList = ({ props }) => (
 
 
                     {post.node.image.asset._id ? 
-                        
-                        <Image
+                    
+                        <SanityImage
                         // pass asset, hotspot, and crop fields
                         {...post.node.image}
                         // tell Sanity how large to make the image (does not set any CSS)
-                        width={500}
-                        height={300}
+                        width={300}
+                        height={225}
                         alt={"g"}
                         //config={{blur:50}}
                         // style it how you want it
@@ -99,7 +100,6 @@ const BlogList = ({ props }) => (
                         }
                     }
                     />
-                    
                     
                     
                      : null}

@@ -12,6 +12,7 @@ import TableOfContents from "../components/blogContents"
 import SimpleReactLightbox from "simple-react-lightbox"
 import { SRLWrapper } from "simple-react-lightbox";
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import SanityImage from "gatsby-plugin-sanity-image"
 
 export const pageQuery = graphql`
   query ($id: String!){
@@ -38,7 +39,7 @@ export const pageQuery = graphql`
                     height
                     width
                   }
-                  
+                  lqip
                 }
               }
               crop {
@@ -130,13 +131,13 @@ const blogPost = ({ data }) => {
       <div className={style.headerwrap} style={!post.image || !post.image.toggleImage ? { paddingTop: "2.9rem" } : null}>
         {/*         {post.image && post.image.toggleImage ? <div className={style.blogPostImage} style={{ background: `url(${post.image.asset.url}?${urlBuilder(post.image)}) no-repeat center center`, backgroundSize: "cover" }}> {post.image._rawAsset.creditLine ? <span className={style.creditLine}>{post.image._rawAsset.creditLine}</span> : null}</div> : null}
  */}        {post.image.asset._id ? <div className={style.blogPostImage} >
-          <Image
+          <SanityImage
           // pass asset, hotspot, and crop fields
           {...post.image}
           // tell Sanity how large to make the image (does not set any CSS)
           width={1000}
           height={600}
-          alt={"g"}
+          alt={post.image.alt}
           //config={{blur:50}}
           // style it how you want it
           style={{

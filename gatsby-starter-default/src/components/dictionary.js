@@ -15,7 +15,16 @@ const findUniqueLettersInWords = (arr) => {
             arrayOfLetters.push({ letter: node.englishWord.slice(0, 1), anchorName: removeSpacesInString(node.englishWord) });
         }
     })
-    return arrayOfLetters
+    return arrayOfLetters.sort(function (a, b) {
+
+        if (a.letter < b.letter) {
+            return -1;
+        }
+        if (a.letter > b.letter) {
+            return 1;
+        }
+        return 0;
+    })
 }
 
 
@@ -24,7 +33,6 @@ const Dictionary = ({ props }) => (
 
     <div className={style.content}>
         <div className={style.index}>
-
             {/* Create index of letters */}
             <span>Indeks: </span>
             {
@@ -33,9 +41,18 @@ const Dictionary = ({ props }) => (
                 ))
             }
         </div>
-        
 
-        {props.map((post, index) => (
+
+        {props.sort(function (a, b) {
+
+if (a.node.englishWord.toLowerCase() < b.node.englishWord.toLowerCase()) {
+    return -1;
+}
+if (a.node.englishWord.toLowerCase() > b.node.englishWord.toLowerCase()) {
+    return 1;
+}
+return 0;
+}).map((post, index) => (
             <div key={index}>
                 <div>
                     <h2 className={style.title}>
