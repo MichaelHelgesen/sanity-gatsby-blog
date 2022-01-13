@@ -9,12 +9,11 @@ import * as style from '../components/serializers.module.scss'
 import Image from "gatsby-plugin-sanity-image"
 import SimpleReactLightbox from "simple-react-lightbox"
 import { SRLWrapper } from "simple-react-lightbox";
-import SanityImage from "gatsby-plugin-sanity-image"
 
 function urlBuilder(image) {
   const { width, height } = image.asset.metadata.dimensions;
   return (
-    "w=700" +
+    "w=1000" +
     "&q=75" +
     // Check if there is a crop
     `${image.crop ?
@@ -136,7 +135,7 @@ const serializers = {
 
         <div className={style.bodyimage}>
             
-              { <img src={`${props.node.asset.url}?${urlBuilder(props.node)}`} alt={props.node.alt} /> }
+              {/* <img src={`${props.node.asset.url}?${urlBuilder(props.node)}`} alt={props.node.alt}/> */}
               <Image
                 // pass asset, hotspot, and crop fields
                 {...props.node}
@@ -146,11 +145,10 @@ const serializers = {
                 //config={{blur:50}}
                 // style it how you want it
                 style={{
-                  width: "700px",
+                  width: "100vw",
                   height: "auto",
                 }}
               />
-              <SanityImage {...props.node} width={300} alt="Alt-text" />
            
 
           {/* <GatsbyImage image={getGatsbyImageData(props.node.asset.id, {fit: "FILLMAX", width:"1000", placeholder: "blurred"}, client)} alt={props.node.alt} /> */}
