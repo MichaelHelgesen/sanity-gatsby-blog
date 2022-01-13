@@ -11,6 +11,7 @@ import Image from "gatsby-plugin-sanity-image"
 import TableOfContents from "../components/blogContents"
 import SimpleReactLightbox from "simple-react-lightbox"
 import { SRLWrapper } from "simple-react-lightbox";
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 export const pageQuery = graphql`
   query ($id: String!){
@@ -26,13 +27,18 @@ export const pageQuery = graphql`
               _rawAsset(resolveReferences:{maxDepth:10})
               asset { 
                 _id
+                gatsbyImageData (
+                  width: 200
+                  placeholder: BLURRED
+                  formats: [AUTO, WEBP, AVIF]
+                )
                 url
                 metadata {
                   dimensions {
                     height
                     width
                   }
-                  lqip
+                  
                 }
               }
               crop {
@@ -186,14 +192,12 @@ const blogPost = ({ data }) => {
              : null
           }
           {post._rawContent ?
-          <SimpleReactLightbox>
-            <SRLWrapper>
+       
             <BlockContent
               blocks={post._rawContent}
               serializers={serializers}
             /> 
-            </SRLWrapper>
-            </SimpleReactLightbox>: null
+           : null
           }
         </div>
         {showMessages.bottomText !== false ?

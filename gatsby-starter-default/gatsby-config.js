@@ -11,12 +11,12 @@ module.exports = {
     author: `Mikke`,
   },
   plugins: [
-    `gatsby-plugin-preload-fonts`,
+    /* `gatsby-plugin-preload-fonts`, */
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
-    `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     `cloudinary`,
     {
       resolve: `gatsby-source-filesystem`,

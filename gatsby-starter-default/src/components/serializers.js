@@ -9,6 +9,7 @@ import * as style from '../components/serializers.module.scss'
 import Image from "gatsby-plugin-sanity-image"
 import SimpleReactLightbox from "simple-react-lightbox"
 import { SRLWrapper } from "simple-react-lightbox";
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 function urlBuilder(image) {
   const { width, height } = image.asset.metadata.dimensions;
@@ -140,14 +141,17 @@ const serializers = {
                 // pass asset, hotspot, and crop fields
                 {...props.node}
                 // tell Sanity how large to make the image (does not set any CSS)
-                width={1000}
+                width={675}
+                height={Math.round(675 / props.node.asset.metadata.dimensions.aspectRatio)}
+                options={{__experimentalAspectRatio:true}}
                 alt={props.node.alt}
                 //config={{blur:50}}
                 // style it how you want it
                 style={{
-                  width: "100vw",
-                  height: "auto",
-                }}
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover"
+              }}
               />
            
 

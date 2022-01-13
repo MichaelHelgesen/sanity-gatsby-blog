@@ -159,6 +159,11 @@ export const pageQuery = graphql`
             _type
             _rawAsset(resolveReferences:{maxDepth:10})
             asset {
+              gatsbyImageData (
+                width: 500
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+              )
               url
               _id
               metadata {
