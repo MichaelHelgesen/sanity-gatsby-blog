@@ -83,6 +83,7 @@ export const pageQuery = graphql`
 const blogPost = ({ data }) => {
   const post = data.sanityPost;
   const showMessages = { ...post.showMessages }
+
   // Function for image settings and generating URL
   function urlBuilder(image) {
     const { width, height } = post.image.asset.metadata.dimensions;
@@ -122,7 +123,8 @@ const blogPost = ({ data }) => {
       </Helmet>
       <div className={style.headerwrap} style={!post.image || !post.image.toggleImage ? { paddingTop: "2.9rem" } : null}>
         {/*         {post.image && post.image.toggleImage ? <div className={style.blogPostImage} style={{ background: `url(${post.image.asset.url}?${urlBuilder(post.image)}) no-repeat center center`, backgroundSize: "cover" }}> {post.image._rawAsset.creditLine ? <span className={style.creditLine}>{post.image._rawAsset.creditLine}</span> : null}</div> : null}
- */}        {post.image.asset._id ? <div className={style.blogPostImage} ><Image
+ */}        {post.image.asset._id ? <div className={style.blogPostImage} >
+          <Image
           // pass asset, hotspot, and crop fields
           {...post.image}
           // tell Sanity how large to make the image (does not set any CSS)

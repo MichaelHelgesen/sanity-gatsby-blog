@@ -9,11 +9,12 @@ import * as style from '../components/serializers.module.scss'
 import Image from "gatsby-plugin-sanity-image"
 import SimpleReactLightbox from "simple-react-lightbox"
 import { SRLWrapper } from "simple-react-lightbox";
+import SanityImage from "gatsby-plugin-sanity-image"
 
 function urlBuilder(image) {
   const { width, height } = image.asset.metadata.dimensions;
   return (
-    "w=1000" +
+    "w=700" +
     "&q=75" +
     // Check if there is a crop
     `${image.crop ?
@@ -36,6 +37,14 @@ const options = {
   }
 }
 
+const convertTitle = (title => {
+  if (title[0].props) {
+    return title[0].props.node.children[0].replace(/\s/g, '-').toLowerCase()
+  }
+  else {
+    return title[0].replace(/\s/g, '-').toLowerCase()
+  }
+})
 
 
 const serializers = {
@@ -44,54 +53,54 @@ const serializers = {
       const style = props.node.style || "normal";
       if (style == "h1") {
         return (
-          <h1 id={`title-${props.node._key}`}>
-            <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`}></a>
+          <h1 id={`title-${convertTitle(props.children)}`}>
+            <span id={`${convertTitle(props.children)}`} className={"anchor"}></span>
+            <a href={`#${convertTitle(props.children)}`}></a>
             {props.children}
           </h1>
         );
       }
       if (style == "h2") {
         return (
-          <h2 id={`title-${props.node._key}`} className={"titleLink"}>
-            <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`}><CgLink className={"linkIcon"} /></a>
+          <h2 id={`title-${convertTitle(props.children)}`} className={"titleLink"}>
+            <span id={`${convertTitle(props.children)}`} className={"anchor"}></span>
+            <a href={`#${convertTitle(props.children)}`}><CgLink className={"linkIcon"} /></a>
             {props.children}
           </h2>
         );
       }
       if (style == "h3") {
         return (
-          <h3 id={`title-${props.node._key}`} className={"titleLink"}>
-            <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`}><CgLink className={"linkIcon"} /></a>
+          <h3 id={`title-${convertTitle(props.children)}`} className={"titleLink"}>
+            <span id={`${convertTitle(props.children)}`} className={"anchor"}></span>
+            <a href={`#${convertTitle(props.children)}`}><CgLink className={"linkIcon"} /></a>
             {props.children}
           </h3>
         );
       }
       if (style == "h4") {
         return (
-          <h4 id={`title-${props.node._key}`} className={"titleLink"}>
-            <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`}><CgLink className={"linkIcon"} /></a>
+          <h4 id={`title-${convertTitle(props.children)}`} className={"titleLink"}>
+            <span id={`${convertTitle(props.children)}`} className={"anchor"}></span>
+            <a href={`#${convertTitle(props.children)}`}><CgLink className={"linkIcon"} /></a>
             {props.children}
           </h4>
         );
       }
       if (style == "h5") {
         return (
-          <h5 id={`title-${props.node._key}`} className={"titleLink"}>
-            <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`}><CgLink className={"linkIcon"} /></a>
+          <h5 id={`title-${convertTitle(props.children)}`} className={"titleLink"}>
+            <span id={`${convertTitle(props.children)}`} className={"anchor"}></span>
+            <a href={`#${convertTitle(props.children)}`}><CgLink className={"linkIcon"} /></a>
             {props.children}
           </h5>
         );
       }
       if (style == "h6") {
         return (
-          <h6 id={`title-${props.node._key}`} className={"titleLink"}>
-            <span id={`${props.node._key}`} className={"anchor"}></span>
-            <a href={`#${props.node._key}`}><CgLink className={"linkIcon"} /></a>
+          <h6 id={`title-${convertTitle(props.children)}`} className={"titleLink"}>
+            <span id={`${convertTitle(props.children)}`} className={"anchor"}></span>
+            <a href={`#${convertTitle(props.children)}`}><CgLink className={"linkIcon"} /></a>
             {props.children}
           </h6>
         );
@@ -127,7 +136,7 @@ const serializers = {
 
         <div className={style.bodyimage}>
             
-              {/* <img src={`${props.node.asset.url}?${urlBuilder(props.node)}`} alt={props.node.alt}/> */}
+              { <img src={`${props.node.asset.url}?${urlBuilder(props.node)}`} alt={props.node.alt} /> }
               <Image
                 // pass asset, hotspot, and crop fields
                 {...props.node}
@@ -137,10 +146,11 @@ const serializers = {
                 //config={{blur:50}}
                 // style it how you want it
                 style={{
-                  width: "100vw",
+                  width: "700px",
                   height: "auto",
                 }}
               />
+              <SanityImage {...props.node} width={300} alt="Alt-text" />
            
 
           {/* <GatsbyImage image={getGatsbyImageData(props.node.asset.id, {fit: "FILLMAX", width:"1000", placeholder: "blurred"}, client)} alt={props.node.alt} /> */}

@@ -34,3 +34,8 @@
 }
 
 
+@media print {
+    .tableOfContentWrap {
+        display: none;
+      }
+  }

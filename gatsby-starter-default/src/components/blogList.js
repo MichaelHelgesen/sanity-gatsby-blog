@@ -39,7 +39,7 @@ const BlogList = ({ props }) => (
                 <div className={style.gradient}>
 
                     <div className={style.blog_item}>
-                    {post.node.image && post.node.image._rawAsset ? <span className={style.credit_line}>{post.node.image._rawAsset.creditLine}</span> : null}
+                        {post.node.image && post.node.image._rawAsset ? <span className={style.credit_line}>{post.node.image._rawAsset.creditLine}</span> : null}
 
                         <small className={style.dateCategory}>{post.node.date} •
                             { // Create a span for each category defined on item
@@ -79,7 +79,7 @@ const BlogList = ({ props }) => (
                             {post.node.image && post.node.image._rawAsset ? <span className={style.credit_line}>{post.node.image._rawAsset.creditLine}</span> : null}
                         </div> */}
 
-                       
+
                     {post.node.image.asset._id ? <Image
                         // pass asset, hotspot, and crop fields
                         {...post.node.image}
@@ -94,7 +94,7 @@ const BlogList = ({ props }) => (
                             height: "100%",
                         }}
                     /> : null}
-                    </div>
+                </div>
 
             </Link>
 

@@ -209,7 +209,6 @@ export const pageQuery = graphql`
 
   }
 `
-
 const findNumberOfCategoriesInArray = (array, category) => (
   array.map(function (item) {
     return item.node.category.filter(function (cat) {
