@@ -6,8 +6,6 @@ import serializers from "../components/serializers"
 import * as style from "../pages/index.module.scss"
 import BlogList from "../components/blogList"
 import { Helmet } from "react-helmet"
-import { useState } from "react"
-
 
 export const pageQuery = graphql`
   query {
@@ -157,7 +155,6 @@ export const pageQuery = graphql`
           image {
             alt
             _type
-            _rawAsset(resolveReferences:{maxDepth:10})
             asset {
               gatsbyImageData (
                 width: 500
@@ -190,6 +187,7 @@ export const pageQuery = graphql`
               height
               width
             }
+            _rawAsset(resolveReferences:{maxDepth:10})
           }
           internal {
             type
@@ -214,28 +212,33 @@ export const pageQuery = graphql`
 
   }
 `
+
 const findNumberOfCategoriesInArray = (array, category) => (
   array.map(function (item) {
     return item.node.category.filter(function (cat) {
       return cat.categoryTitle === category
     })
-  }).filter(function (el) {
-    return el.length > 0
+  }).filter(function (arr) {
+    return arr.length > 0
   }).length
 )
 
 const IndexPage = ({ data }) => {
 
+  const categories = data.categories.edges;
+  const page = data.pages;
+
+  // Merge blogposts and book reviews
   const mergedContent = [...data.post.edges, ...data.book.edges].sort(function (a, b) {
     // Format the date to year, month, day to get correct sort order
     const formatDate = (arg) => arg.node.date.slice(6).concat(arg.node.date.slice(3, 5)).concat(arg.node.date.slice(0, 2));
     return formatDate(b) - formatDate(a)
   });
-  const categories = data.categories.edges;
-  const page = data.pages;
+
+  // Last six blog posts
   const posts = <BlogList props={mergedContent.slice(0, 6)} />
 
-  // Filtrert kategori-liste
+  // Filtered category list
   const categoryList = categories.map((cat, index) => {
     if (findNumberOfCategoriesInArray(mergedContent, cat.node.categoryTitle) !== 0) {
       return (
@@ -251,7 +254,7 @@ const IndexPage = ({ data }) => {
     return null
   }
   ).sort(function (a, b) {
-    const navnA = a.props.children[0].toUpperCase(); // Ignorere store og små bokstaver
+    const navnA = a.props.children[0].toUpperCase(); // Convert to smal letters
     const navnB = b.props.children[0].toUpperCase();
     if (navnA < navnB) {
       return -1;
@@ -261,10 +264,6 @@ const IndexPage = ({ data }) => {
     }
     return 0;
   });
-// ---
-
-
-
 
   return (
     <Layout>
@@ -278,26 +277,26 @@ const IndexPage = ({ data }) => {
           <div className={style.headerBg}>
             <div className={style.introField}>
               <span className={style.welcome}>VELKOMMEN TIL MIKKES BLOGG</span>
-              <h1><span className={style.laer}>lær</span>ing <span className={style.via}>via</span><br/> <span className={style.del}>del</span>ing</h1>
-              <div style={{maxWidth: "650px"}}>
-              <BlockContent
-                blocks={page._rawContent}
-                serializers={serializers} />
-                </div>
-                <div className={style.categoryList}>
-              {categoryList} {/* <Link to={"/blogg/kategorier"}>Se alle kategoriene</Link> */}
+              <h1><span className={style.laer}>lær</span>ing <span className={style.via}>via</span><br /> <span className={style.del}>del</span>ing</h1>
+              <div style={{ maxWidth: "650px" }}>
+                <BlockContent
+                  blocks={page._rawContent}
+                  serializers={serializers} />
+              </div>
+              <div className={style.categoryList}>
+                {categoryList}
               </div>
             </div>
           </div>
           <div className={style.topBg}
-          style={{background:`url(${page.bilde2.asset.url}) no-repeat center center fixed`, opacity:".3"}}
+            style={{ background: `url(${page.bilde2.asset.url}) no-repeat center center fixed`, opacity: ".3" }}
           ></div>
           <div className={style.topcolor}
-            style={{background:`url(${page.bilde1.asset.url}) no-repeat`}}
+            style={{ background: `url(${page.bilde1.asset.url}) no-repeat` }}
           ></div>
-          
+
         </div>
-        
+
         <div className={style.content} style={{ textAlign: "center", marginBottom: "0" }}>
           <span style={{ textTransform: "uppercase", fontWeight: "700", fontSize: ".8em" }}>Siste seks blogginnlegg</span>
         </div>

@@ -1,62 +1,31 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import * as style from "../components/bookList.module.scss"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import Image from "gatsby-plugin-sanity-image"
-
-
-
-// Function for image settings and generating URL
-function urlBuilder(image, w, h, q) {
-    const { width, height } = image.asset.metadata.dimensions;
-    return (
-        `w=${w}` +
-        `&h=${h}` +
-        `${image.hotspot ?
-            "&crop=focalpoint" +
-            `&fp-x=${image.hotspot.x}` +
-            `&fp-y=${image.hotspot.y}`
-            : "&crop=center"}` +
-        `${image.crop ?
-            "&rect=" +
-            `${Math.floor(width * image.crop.left)},` + // Crop from left
-            `${Math.floor(height * image.crop.top)},` + // Crop from top
-            `${Math.floor(width - (width * image.crop.left + width * image.crop.right))},` +  
-            `${Math.floor(height - (width * image.crop.top + width * image.crop.bottom))}`
-            :
-            ""}` +
-        "&fit=crop" +
-        `&q=${q}`
-    )
-}
+import SanityImage from "gatsby-plugin-sanity-image"
 
 const BookList = ({ props }) => (
     <div className={style.content}>
         {props.map((post, index) => (
 
             <Link key={index} className={style.link} to={post.node.slug ? `/blogg/${post.node.slug.current}` : `/blogg/${post.node.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`}>
-                {/* <img src={`${post.node.image.asset.url}?${urlBuilder(post.node.image, 600, 520, 75)}`} alt={post.node.image.alt ? post.node.image.alt : ""} /> */}
-                {/* <GatsbyImage image={getImage(post.node.image.asset)} alt="hello"/> */} 
-                {post.node.image.asset._id ? <Image
-                        // pass asset, hotspot, and crop fields
-                        {...post.node.image}
-                        // tell Sanity how large to make the image (does not set any CSS)
-                        width={1000}
-                        height={600}
-                        alt={"g"}
-                        //config={{blur:50}}
-                        // style it how you want it
-                        style={{
-                            width: "100vw",
-                            height: "auto",
-                        }}
-                    /> : null}
-
+                {post.node.image.asset._id ? <SanityImage
+                    // pass asset, hotspot, and crop fields
+                    {...post.node.image}
+                    // tell Sanity how large to make the image (does not set any CSS)
+                    width={300}
+                    height={225}
+                    alt={post.node.image.alt}
+                    // Image style
+                    style={{
+                        width: "100%",
+                        objectFit: "cover"
+                    }}
+                />
+                    : null}
                 <small className={style.date}>{post.node.read}</small>
                 <small className={style.author}>{post.node.author}</small>
                 <h2 className={style.title}>{post.node.title}</h2>
             </Link>
-
         ))}
         <div className={style.clear}></div>
     </div>

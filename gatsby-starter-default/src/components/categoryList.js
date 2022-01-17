@@ -4,11 +4,7 @@ import BlockContent from '@sanity/block-content-to-react'
 import serializers from "../components/serializers"
 import * as style from "../components/categoryList.module.scss"
 
-
-
-
 const CategoryList = ({ categories, posts }) => {
-
   const findNumberOfCategoriesInArray = (array, category) => (
     array.map(function (item) {
       return item.node.category.filter(function (cat) {
@@ -18,12 +14,6 @@ const CategoryList = ({ categories, posts }) => {
       return el.length > 0
     }).length
   )
-
-
-  /*   const categoriesArray = data.categories.edges.map((item) => (
-      item.node.categoryTitle
-    )) */
-
 
   return (
     <div className={style.content}>
@@ -40,7 +30,6 @@ const CategoryList = ({ categories, posts }) => {
             </Link>
           )
         }
-
         return null
       })}
       <div className={style.link}></div>

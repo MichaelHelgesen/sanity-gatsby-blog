@@ -27,10 +27,7 @@ const findUniqueLettersInWords = (arr) => {
     })
 }
 
-
-
 const Dictionary = ({ props }) => (
-
     <div className={style.content}>
         <div className={style.index}>
             {/* Create index of letters */}
@@ -42,17 +39,15 @@ const Dictionary = ({ props }) => (
             }
         </div>
 
-
         {props.sort(function (a, b) {
-
-if (a.node.englishWord.toLowerCase() < b.node.englishWord.toLowerCase()) {
-    return -1;
-}
-if (a.node.englishWord.toLowerCase() > b.node.englishWord.toLowerCase()) {
-    return 1;
-}
-return 0;
-}).map((post, index) => (
+            if (a.node.englishWord.toLowerCase() < b.node.englishWord.toLowerCase()) {
+                return -1;
+            }
+            if (a.node.englishWord.toLowerCase() > b.node.englishWord.toLowerCase()) {
+                return 1;
+            }
+            return 0;
+        }).map((post, index) => (
             <div key={index}>
                 <div>
                     <h2 className={style.title}>

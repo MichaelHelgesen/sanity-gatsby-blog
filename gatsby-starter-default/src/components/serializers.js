@@ -6,13 +6,9 @@ import { CgExternal, CgLink } from "react-icons/cg"
 import BlockContent from '@sanity/block-content-to-react'
 import getYouTubeId from "get-youtube-id"
 import * as style from '../components/serializers.module.scss'
-import Image from "gatsby-plugin-sanity-image"
-import SimpleReactLightbox from "simple-react-lightbox"
-import { SRLWrapper } from "simple-react-lightbox";
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import SanityImage from "gatsby-plugin-sanity-image"
 
-function urlBuilder(image) {
+/* function urlBuilder(image) {
   const { width, height } = image.asset.metadata.dimensions;
   return (
     "w=1000" +
@@ -27,8 +23,9 @@ function urlBuilder(image) {
       :
       ""}`
   )
-}
+} */
 
+// Options for lightbox
 const options = {
   caption: {
     showCaption: false
@@ -43,75 +40,64 @@ const convertTitle = (title => {
     return title[0].props.node.children[0].replace(/\s/g, '-').toLowerCase()
   }
   else {
-    return title[0].replace(/\s/g, '-').toLowerCase()
+    return title[0].replace(/[\. ,:-]+/g, '-').toLowerCase()
   }
 })
 
+const titleMaker = ((prop, title) => {
+  return (
+    <span>
+      <span id={`${convertTitle(prop)}`} className={"anchor"}></span>
+      <a href={`#${convertTitle(prop)}`}><CgLink className={"linkIcon"} /></a>
+      {prop}
+    </span>
+  )
+})
 
 const serializers = {
   types: {
     block: props => {
-      const style = props.node.style || "normal";
-      if (style == "h1") {
-        return (
-          <h1 id={`title-${convertTitle(props.children)}`}>
-            <span id={`${convertTitle(props.children)}`} className={"anchor"}></span>
-            <a href={`#${convertTitle(props.children)}`}></a>
-            {props.children}
-          </h1>
-        );
+      const style = props.node.style
+      switch (props.node.style || "normal") {
+        case "h1":
+          return (
+            <h1 id={`title-${convertTitle(props.children)}`}>
+              {titleMaker(props.children, style)}
+            </h1>
+          )
+        case "h2":
+          return (
+            <h2 id={`title-${convertTitle(props.children)}`} className={"titleLink"}>
+              {titleMaker(props.children, style)}
+            </h2>
+          )
+        case "h3":
+          return (
+            <h3 id={`title-${convertTitle(props.children)}`} className={"titleLink"}>
+              {titleMaker(props.children, style)}
+            </h3>
+          )
+        case "h4":
+          return (
+            <h4 id={`title-${convertTitle(props.children)}`} className={"titleLink"}>
+              {titleMaker(props.children, style)}
+            </h4>
+          )
+        case "h5":
+          return (
+            <h5 id={`title-${convertTitle(props.children)}`} className={"titleLink"}>
+              {titleMaker(props.children, style)}
+            </h5>
+          )
+        case "h6":
+          return (
+            <h6 id={`title-${convertTitle(props.children)}`} className={"titleLink"}>
+              {titleMaker(props.children, style)}
+            </h6>
+          )
+        case "blockquote": return (<blockquote>- {props.children}</blockquote>)
+        default: return (<p>{props.children}</p>)
       }
-      if (style == "h2") {
-        return (
-          <h2 id={`title-${convertTitle(props.children)}`} className={"titleLink"}>
-            <span id={`${convertTitle(props.children)}`} className={"anchor"}></span>
-            <a href={`#${convertTitle(props.children)}`}><CgLink className={"linkIcon"} /></a>
-            {props.children}
-          </h2>
-        );
-      }
-      if (style == "h3") {
-        return (
-          <h3 id={`title-${convertTitle(props.children)}`} className={"titleLink"}>
-            <span id={`${convertTitle(props.children)}`} className={"anchor"}></span>
-            <a href={`#${convertTitle(props.children)}`}><CgLink className={"linkIcon"} /></a>
-            {props.children}
-          </h3>
-        );
-      }
-      if (style == "h4") {
-        return (
-          <h4 id={`title-${convertTitle(props.children)}`} className={"titleLink"}>
-            <span id={`${convertTitle(props.children)}`} className={"anchor"}></span>
-            <a href={`#${convertTitle(props.children)}`}><CgLink className={"linkIcon"} /></a>
-            {props.children}
-          </h4>
-        );
-      }
-      if (style == "h5") {
-        return (
-          <h5 id={`title-${convertTitle(props.children)}`} className={"titleLink"}>
-            <span id={`${convertTitle(props.children)}`} className={"anchor"}></span>
-            <a href={`#${convertTitle(props.children)}`}><CgLink className={"linkIcon"} /></a>
-            {props.children}
-          </h5>
-        );
-      }
-      if (style == "h6") {
-        return (
-          <h6 id={`title-${convertTitle(props.children)}`} className={"titleLink"}>
-            <span id={`${convertTitle(props.children)}`} className={"anchor"}></span>
-            <a href={`#${convertTitle(props.children)}`}><CgLink className={"linkIcon"} /></a>
-            {props.children}
-          </h6>
-        );
-      }
-  
-      return style === "blockquote" ? (
-        <blockquote>– {props.children}</blockquote>
-      ) : (
-        <p>{props.children}</p>
-      );
     },
     exampleUsage: props => {
       return (<SyntaxHighlighter language={props.node.language || "text"} style={atelierForestLight} showLineNumbers wrapLines={true} lineNumberStyle
@@ -120,7 +106,6 @@ const serializers = {
           let setClassName = {}
           if (props.node.highlightedLines) {
             if (props.node.highlightedLines.includes(lineNumber)) {
-              /* style.backgroundColor = '#d2d1d0';  e8dfd5 */
               style.backgroundColor = '#e8dfd5';
               setClassName.class = "highlightedLines"
             }
@@ -129,51 +114,27 @@ const serializers = {
         }}
       >
         {props.node.code}
-
       </SyntaxHighlighter>)
     },
     bodyImage: props => {
       return (
-
         <div className={style.bodyimage}>
-            
-              {/* <img src={`${props.node.asset.url}?${urlBuilder(props.node)}`} alt={props.node.alt}/> */}
-              <SanityImage
-                // pass asset, hotspot, and crop fields
-                {...props.node}
-                // tell Sanity how large to make the image (does not set any CSS)
-                width={300}
-                height={Math.round(300 / props.node.asset.metadata.dimensions.aspectRatio)}
-                options={{__experimentalAspectRatio:true}}
-                alt={props.node.alt}
-                //config={{blur:50}}
-                // style it how you want it
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover"
-              }}
-              />
-           
-
-          {/* <GatsbyImage image={getGatsbyImageData(props.node.asset.id, {fit: "FILLMAX", width:"1000", placeholder: "blurred"}, client)} alt={props.node.alt} /> */}
-          {/* <img
-            src={urlFor(props.node)
-              .auto('format')
-              .width(1000)
-              .fit('clip')
-              .quality(75)
-              .url()}
-          /> */}
-          {/*<Image
-    
-    {...props.node}
-    style={{
-      width: "100%",
-      height: "100%",
-      objectFit: "cover",
-    }}
-  />*/}
+          <SanityImage
+            // pass asset, hotspot, and crop fields
+            {...props.node}
+            // tell Sanity how large to make the image (does not set any CSS)
+            width={300}
+            height={Math.round(300 / props.node.asset.metadata.dimensions.aspectRatio)}
+            alt={props.node.alt}
+            //config={{blur:50}}
+            // style it how you want it
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover"
+            }}
+          />
+          {/* Image description */}
           <p className={style.imageDescription}>{props.node.description}</p>
         </div>
       )
@@ -255,8 +216,6 @@ const serializers = {
       return <a className={style.mail} href={props.mark.epost}>{props.children}</a>
     },
   },
-  
-
 }
 
 export default serializers;

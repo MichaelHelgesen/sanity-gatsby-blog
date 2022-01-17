@@ -207,7 +207,7 @@ const Page = ({ data }) => {
     const formatDate = (arg) => arg.node.date.slice(6).concat(arg.node.date.slice(3, 5)).concat(arg.node.date.slice(0, 2));
     return formatDate(b) - formatDate(a)
   });
-  
+
   const categories = data.categories.edges;
 
   // Filtrert kategori-liste
@@ -239,19 +239,33 @@ const Page = ({ data }) => {
 
   let posts
 
-  if (data.page.title === "Blogg") {
-    posts = <BlogList props={mergedContent} />
-  } else if (data.page.title === "Notater") {
-    posts = <Notes props={data.notes.edges} />
-  } else if (data.page.title === "Bibliotek") {
-    posts = <BookList props={data.book.edges} />
-  } else if (data.page.title === "Kategorier") {
-    posts = <CategoryList categories={data.categories.edges} posts={mergedContent} />
-  } else if (data.page.title === "Galleri") {
-    posts = <ImageGallery props={data.cloudinary.edges} />
-  } else if (data.page.title === "Dataordliste") {
-    posts = <Dictionary props={data.dictionary.edges} />
+  switch (data.page.title) {
+    case "Blogg": posts = <BlogList props={mergedContent} />
+      break;
+    case "Notater": posts = <Notes props={data.notes.edges} />
+      break;
+    case "Bibliotek": posts = <BookList props={data.book.edges} />
+      break;
+    case "Kategorier": posts = <CategoryList categories={data.categories.edges} posts={mergedContent} />
+      break;
+    case "Galleri": posts = <ImageGallery props={data.cloudinary.edges} />
+      break;
+    default: posts = <Dictionary props={data.dictionary.edges} />
   }
+
+  /*   if (data.page.title === "Blogg") {
+      posts = <BlogList props={mergedContent} />
+    } else if (data.page.title === "Notater") {
+      posts = <Notes props={data.notes.edges} />
+    } else if (data.page.title === "Bibliotek") {
+      posts = <BookList props={data.book.edges} />
+    } else if (data.page.title === "Kategorier") {
+      posts = <CategoryList categories={data.categories.edges} posts={mergedContent} />
+    } else if (data.page.title === "Galleri") {
+      posts = <ImageGallery props={data.cloudinary.edges} />
+    } else if (data.page.title === "Dataordliste") {
+      posts = <Dictionary props={data.dictionary.edges} />
+    } */
 
   return (
     <Layout>
@@ -270,19 +284,15 @@ const Page = ({ data }) => {
             <p className={style.ingress}>{data.page.introduction}</p>
             {data.page.title === "Blogg" ? <div className={style.categoryWrapper}>{categoryList}</div> : null}
           </div>
-
           <div className={style.topcolor}></div>
         </div>
         <div>
           {posts ? posts : <div className={style.content}><BlockContent blocks={data.page._rawContent} serializers={serializers} /></div>}
         </div>
-        {data.page.title === "Blogg" ? <div style={{height:"2.9rem"}}></div> : null}
+        {data.page.title === "Blogg" ? <div style={{ height: "2.9rem" }}></div> : null}
       </div>
     </Layout>
   )
 }
-
-
-
 
 export default Page

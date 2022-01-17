@@ -29,8 +29,6 @@ class TableOfContents extends React.Component {
             title: "Se innholdsfortegnelse",
             scrolling: false
         }
-
-
     }
 
     handleClick(e) {

@@ -57,7 +57,6 @@ const Notes = ({ props }) => {
                 month: norwegianMonth,
                 year: year
             }
-            /* `${day}. ${norwegianMonth} ${year}` */
         )
     }
 
@@ -66,24 +65,17 @@ const Notes = ({ props }) => {
             {props.map((post, index) => (
                 <div key={index} className={style.noteWrap}>
                     <div className={style.contentWrap}>
-                        
-                            <h2 className={style.title}>
-                                <span className={style.day}>{dateToNorwegian(post.node.date).day}</span>
-                                <span className={style.month}>{dateToNorwegian(post.node.date).month}</span>
-                                <span className={style.year}>{dateToNorwegian(post.node.date).year}</span>
-                            </h2>
-                        
+                        <h2 className={style.title}>
+                            <span className={style.day}>{dateToNorwegian(post.node.date).day}</span>
+                            <span className={style.month}>{dateToNorwegian(post.node.date).month}</span>
+                            <span className={style.year}>{dateToNorwegian(post.node.date).year}</span>
+                        </h2>
                         <div className={style.mainText}><BlockContent blocks={post.node._rawText} serializers={serializers} /></div>
                     </div>
                 </div>
-
             ))}
         </div>
     )
 }
-
-
-
-
 
 export default Notes
