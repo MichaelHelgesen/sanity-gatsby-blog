@@ -6,7 +6,7 @@ import serializers from "../components/serializers"
 import SimilarPosts from "../components/similarPosts"
 import { Helmet } from "react-helmet"
 import * as style from "../templates/book.module.scss"
-import Image from "gatsby-plugin-sanity-image"
+import SanityImage from "gatsby-plugin-sanity-image"
 
 
 export const pageQuery = graphql`
@@ -71,34 +71,9 @@ export const pageQuery = graphql`
       }
   }
 `
-
-
-
 const book = ({ data }) => {
   const post = data.sanityBook;
-  console.log(post.category)
-  //const imageData = getGatsbyImageData(post.image.asset.id, {maxWidth: 1024}, sanityConfig)
-
-  // Function for image settings and generating URL
-  function urlBuilder(image) {
-    const { width, height } = post.image.asset.metadata.dimensions;
-    return (
-      "w=1000" +
-      "&fit=clip" +
-      "&q=75" +
-      "&bg=000000" +
-      // Check if there is a crop
-      `${image.crop ?
-        "&rect=" +
-        `${Math.floor(width * image.crop.left)},` +
-        `${Math.floor(height * image.crop.top)},` +
-        `${Math.floor(width - (width * image.crop.left + width * image.crop.right))},` +
-        `${Math.floor(height - (width * image.crop.top + width * image.crop.bottom))}`
-        :
-        ""}`
-    )
-  }
-
+ 
   return (
     <Layout>
       <Helmet>
@@ -110,35 +85,34 @@ const book = ({ data }) => {
         <div className={style.headerwrap}>
           <div className={style.intro}>
             <div className={style.introWrapper}>
-            <small className={style.breadcrumb}>
-              <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg</Link> /
-            </small>
-            <h1 className={style.title}>{post.title}</h1>
-            <small className={style.dateCategory}>{post.date} •
-              <span> <Link to="/blogg/kategorier/bokomtale">Bokomtaler</Link> • <Link to={`/bibliotek/`}>Bibliotek</Link></span>
-            </small>
-            <p className={style.ingress}>{post.description}</p>
-{/*             <img className={style.bookIntroImage} src={`${post.image.asset.url}?${urlBuilder(post.image)}`} alt={post.image.alt ? post.image.alt : ""}/>
- */}            {post.image.asset._id ? <Image
-                        // pass asset, hotspot, and crop fields
-                        {...post.image}
-                        className={style.bookIntroImage}
-                        // tell Sanity how large to make the image (does not set any CSS)
-                        width={850}
-                        height={500}
-                        alt={"g"}
-                        //config={{blur:50}}
-                        // style it how you want it
-                        style={{
-                           
-                            height: "auto",
-                        }}
-                    /> : null}
+              <small className={style.breadcrumb}>
+                <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg</Link> /
+              </small>
+              <h1 className={style.title}>{post.title}</h1>
+              <small className={style.dateCategory}>{post.date} •
+                <span> <Link to="/blogg/kategorier/bokomtale">Bokomtaler</Link> • <Link to={`/bibliotek/`}>Bibliotek</Link></span>
+              </small>
+              <p className={style.ingress}>{post.description}</p>
+              {post.image.asset._id ?
+                <SanityImage
+                  // pass asset, hotspot, and crop fields
+                  {...post.image}
+                  className={style.bookIntroImage}
+                  // tell Sanity how large to make the image (does not set any CSS)
+                  width={850}
+                  height={500}
+                  alt={post.image.alt}
+                  // style it how you want it
+                  style={{
+                    height: "auto",
+                  }}
+                />
+                : null}
+            </div>
           </div>
-</div>
           <div className={style.topcolor}></div>
         </div>
-        <div className={style.content} style={{paddingTop:"0!important"}}>
+        <div className={style.content} style={{ paddingTop: "0!important" }}>
           {post._rawSummary ?
             <div>
               <h3>Boken oppsummert i tre setninger</h3>
@@ -150,7 +124,6 @@ const book = ({ data }) => {
               }
             </div>
             : null}
-
           {post._rawReasonToRead ?
             <div >
               <h3>Hvorfor lese den?</h3>
@@ -162,7 +135,6 @@ const book = ({ data }) => {
               }
             </div>
             : null}
-
           {post._rawImpression ?
             <div>
               <h3>Mitt inntrykk</h3>
@@ -174,7 +146,6 @@ const book = ({ data }) => {
               }
             </div>
             : null}
-
           {post._rawAffect ?
             <div >
               <h3>Hvordan påvirket den meg?</h3>
@@ -186,7 +157,6 @@ const book = ({ data }) => {
               }
             </div>
             : null}
-
           {post.quotes.length ?
             <div className={style.quotes}>
               <h3>Mine tre favoritt-sitater</h3>
@@ -195,60 +165,29 @@ const book = ({ data }) => {
               )}
             </div>
             : null}
-<div className={style.byline}>
-          <span>MIKKES BLOGG</span>
-          <h5>Takk for interessen</h5>
-          <p>Har du en kommentar, et spørsmål, ris, ros, eller ønsker å påpeke feil eller mangler, kan du sende meg en mail. Jeg setter stor pris på en tilbakemelding.</p>
-        </div>
-        </div>
-        
-      </div>
-        <SimilarPosts category={post.category} slug={post.slug.current} numberOfPosts={6} />
-        <div className={style.content}>
-          <div className={style.knapper}>
-            <Link
-              to="/blogg" className={style.categories}>
-              Se alle blogginnlegg
-            </Link>
-            <Link
-              to="/blogg/kategorier" className={style.categories}>
-              Se alle kategorier
-            </Link>
+          <div className={style.byline}>
+            <span>MIKKES BLOGG</span>
+            <h5>Takk for interessen</h5>
+            <p>Har du en kommentar, et spørsmål, ris, ros, eller ønsker å påpeke feil eller mangler, kan du sende meg en mail. Jeg setter stor pris på en tilbakemelding.</p>
           </div>
         </div>
+
+      </div>
+      <SimilarPosts category={post.category} slug={post.slug.current} numberOfPosts={6} />
+      <div className={style.content}>
+        <div className={style.knapper}>
+          <Link
+            to="/blogg" className={style.categories}>
+            Se alle blogginnlegg
+          </Link>
+          <Link
+            to="/blogg/kategorier" className={style.categories}>
+            Se alle kategorier
+          </Link>
+        </div>
+      </div>
     </Layout>
   )
 }
 
 export default book
-
-
-/* hotspot {
-  _key
-  _type
-  x
-  y
-  height
-  width
-}
-crop {
-  _key
-  _type
-  top
-  bottom
-  left
-  right
-}
-metadata {
-                _key
-                _type
-                lqip
-                hasAlpha
-                isOpaque
-                _rawLocation
-                _rawDimensions
-                _rawPalette
-              }
-              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-              id
-*/

@@ -57,7 +57,7 @@ const BlogList = ({ props }) => (
                                         post.node.category.map((cat, index) => (
                                             (index > 0 ? <span key={index}>, <span>{cat.categoryTitle}</span></span> : <span key={index}> {cat.categoryTitle}</span>)
                                         ))
-                                    : <span> Ukategorisert </span>
+                                        : <span> Ukategorisert </span>
                                 }
                             </small>
 

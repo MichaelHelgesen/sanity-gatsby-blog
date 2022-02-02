@@ -1,0 +1,61 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/lib/node_modules/@sanity/cli/vendor/yarn install --json --non-interactive --ignore-engines --registry https://registry.npmjs.org
+
+PATH: 
+  /Users/michaelhelgesen/Documents/GitHub/sanity-gatsby-blog/sanity-studio/node_modules/.bin:/Users/michaelhelgesen/Documents/GitHub/sanity-gatsby-blog/node_modules/.bin:/Users/michaelhelgesen/Documents/GitHub/node_modules/.bin:/Users/michaelhelgesen/Documents/node_modules/.bin:/Users/michaelhelgesen/node_modules/.bin:/Users/node_modules/.bin:/node_modules/.bin:/usr/local/bin:/usr/local/lib/node_modules/vendor:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.6.0
+
+Node version: 
+  16.13.2
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: ENOTDIR: not a directory, lstat '/Users/michaelhelgesen/Documents/GitHub/sanity-gatsby-blog/sanity-studio/node_modules/react-ace/dist/react-ace.js/main.js'
+
+npm manifest: 
+  {
+    "name": "sanitygatsbyblog",
+    "private": true,
+    "version": "1.0.0",
+    "description": "",
+    "main": "package.json",
+    "author": "Michael Helgesen <michaelhelgesen02@gmail.com>",
+    "license": "UNLICENSED",
+    "scripts": {
+      "start": "sanity start",
+      "build": "sanity build"
+    },
+    "keywords": [
+      "sanity"
+    ],
+    "dependencies": {
+      "@sanity/base": "^2.25.4",
+      "@sanity/client": "^2.23.2",
+      "@sanity/code-input": "^2.25.4",
+      "@sanity/components": "^2.14.0",
+      "@sanity/core": "^2.25.0",
+      "@sanity/default-layout": "^2.25.4",
+      "@sanity/default-login": "^2.24.1",
+      "@sanity/desk-tool": "^2.25.4",
+      "@sanity/vision": "^2.25.4",
+      "get-youtube-id": "^1.0.1",
+      "prop-types": "^15.7",
+      "react": "^17.0",
+      "react-dom": "^17.0",
+      "react-icons": "^4.2.0",
+      "sanity-plugin-asset-source-cloudinary": "^0.1.1",
+      "sanity-plugin-asset-source-unsplash": "^0.1.4",
+      "sanity-plugin-autocomplete-tags": "^1.0.1",
+      "styled-components": "^5.2.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

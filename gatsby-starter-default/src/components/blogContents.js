@@ -5,12 +5,7 @@ import * as style from "../components/blogContents.module.scss"
 import { CgMenu } from "react-icons/cg";
 import { CgClose } from "react-icons/cg";
 
-
-
-
-
 class TableOfContents extends React.Component {
-
     constructor(props) {
         const { rawContent, title } = props
 
@@ -69,9 +64,8 @@ class TableOfContents extends React.Component {
         window.removeEventListener('scroll', this.handleScroll);
     }
     handleScroll(event) {
-        var rect = document.querySelector(".test").getBoundingClientRect();
+        var rect = document.querySelector(".content").getBoundingClientRect();
         var rect2 = document.querySelector(".indexWrap").getBoundingClientRect();
-        //console.log(window.scrollY)
         if (rect2.y > 0 && this.state.scrolling === true) {
             this.setState({ scrolling: false });
         }
@@ -85,13 +79,13 @@ class TableOfContents extends React.Component {
             <div className={`${style.tableOfContentWrap}`}>
                 <div className={`indexWrap`} style={{ position: "relative", minHeight: "80px", zIndex: "999", maxWidth: "calc(780px - 2.175rem)" }}>
 
-                    <div className={`${style.tableOfContent} test ${this.state.scrolling ? 'test2' : 'test3'}`} style={{ position: this.state.scrolling ? 'fixed' : 'relative', top: "1px", maxWidth: "calc(780px - 2.175rem)" }}>
+                    <div className={`${style.tableOfContent} content`} style={{ position: this.state.scrolling ? 'fixed' : 'relative', top: "1px", maxWidth: "calc(780px - 2.175rem)" }}>
 
                         <div className={style.indexTitle} style={{ borderRadius: "5px", boxShadow: this.state.scrolling ? '3px 3px 3px gray' : 'none' }}>
 
                             <span id="title-span" onClick={this.handleClick}>{this.state.title}{this.state.icon}</span></div>
 
-                        <div className={`${this.state.class} ll ${this.state.scrolling ? 'test4' : "test5"}`}>
+                        <div className={`${this.state.class} ll`}>
 
                             <ul className={"indexList"} style={{ background: "white" }} onClick={this.handleClick}>
                                 <li><a href="#top">{this.title}</a></li>

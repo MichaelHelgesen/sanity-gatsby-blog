@@ -2,53 +2,6 @@
     console.log(`Node created of type "${node.internal.type}"`)
 } */
 
-
-
-
-
-/* let cloudinary = require("cloudinary")
-
-cloudinary.config({
-    cloud_name: "mikkesblogg",
-    api_key: "689568281515846",
-    api_secret: "RAb_aIzf7cFfjQxZWn4SUBcOUYI",
-    secure: true
-})
-
-
-exports.sourceNodes = async function ({ actions, createNodeId, createContentDigest }) {
-    const { createNode } = actions
-
-    await cloudinary.v2.search.expression("folder:mikkesblogg/*")
-        .sort_by("created_at", "asc")
-        .max_results(200)
-        .execute()
-        .then((result) => {
-            
-            const myResults = { ...result }
-            
-            const nodeContent = JSON.stringify(myResults)
-
-            const nodeMeta = {
-                id: createNodeId(`my-data-${myResults.asset_id}`),
-                parent: null,
-                children: [],
-                internal: {
-                    type: `cloudinaryImages`,
-                    mediaType: `text/html`,
-                    content: nodeContent,
-                    contentDigest: createContentDigest(myResults)
-                }
-            }
-            
-            const node = Object.assign({}, myResults, nodeMeta)
-            createNode(node)
-        }
-    )
-} */
-
-
-
 exports.createPages = async function ({ actions, graphql }) {
     const { createPage } = actions;
     const { data } = await graphql(`
@@ -151,8 +104,6 @@ exports.createPages = async function ({ actions, graphql }) {
         })
     }
 
-
-
     // Create single blog post
     data.posts.edges.forEach(({ node }) => {
         createPages(node)
@@ -175,41 +126,3 @@ exports.createPages = async function ({ actions, graphql }) {
         }
     })
 }
-
-
-
-
-
-
-
-
-
-
-
-/*     const mergedData = [...data.posts.edges, ...data.books.edges].forEach(({ node }) => {
-        createPages(node);
-    })
- */
-
-
-/* mergedData.forEach(({ node }) => {
-    createPages(node);
-}) */
-
-    // Create paginated pages for posts
-
-/*     const postPerPage = 3;
-    const numPages = Math.ceil(data.allSanityPost.edges.length / postPerPage) */
-
-/* Array.from({ length: numPages }).forEach((_, i) => {
-    actions.createPages({
-        path: i === 0 ? `/` : `/${i + 1}`,
-        component: require.resolve("./src/templates/allPosts.js"),
-        context: {
-            limit: postPerPage,
-            skip: i * postPerPage,
-            numPages,
-            currentPage: i + 1,
-        }
-    })
-}) */

@@ -7,11 +7,10 @@ import serializers2 from "../components/serializers2"
 import SimilarPosts from "../components/similarPosts"
 import { Helmet } from "react-helmet"
 import * as style from "../templates/blogPost.module.scss"
-import Image from "gatsby-plugin-sanity-image"
 import TableOfContents from "../components/blogContents"
+//import BlogDictionary from "../components/blogDictionary"
 import SimpleReactLightbox from "simple-react-lightbox"
 import { SRLWrapper } from "simple-react-lightbox";
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import SanityImage from "gatsby-plugin-sanity-image"
 
 export const pageQuery = graphql`
@@ -73,6 +72,15 @@ export const pageQuery = graphql`
             introduction
             _rawContent(resolveReferences:{maxDepth:10})
       }
+      dictionary: allSanityProgrammingDictionary {
+        edges {
+          node {
+            englishWord
+            norwegianWord
+            _rawContent(resolveReferences:{maxDepth:10})
+          }
+        }
+      }
       site {
         siteMetadata {
           title
@@ -89,37 +97,38 @@ export const pageQuery = graphql`
 
 const blogPost = ({ data }) => {
   const post = data.sanityPost;
+  const dictionary = data.dictionary;
   const showMessages = { ...post.showMessages }
 
+
   // Function for image settings and generating URL
-  function urlBuilder(image) {
-    const { width, height } = post.image.asset.metadata.dimensions;
-    return (
-      "w=1000" +
-      "&h=500" +
-      "&fit=crop" +
-      "&q=75" +
-      "&bg=000000" +
-      // Check if there is a crop
-      `${image.hotspot ?
-        "&crop=focalpoint" +
-        `&fp-x=${image.hotspot.x}` +
-        `&fp-y=${image.hotspot.y}`
-        : "&crop=center"}` +
-      // Check if there is a crop
-      `${image.crop ?
-        "&rect=" +
-        `${Math.floor(width * image.crop.left)},` +
-        `${Math.floor(height * image.crop.top)},` +
-        `${Math.floor(width - (width * image.crop.left + width * image.crop.right))},` +
-        `${Math.floor(height - (width * image.crop.top + width * image.crop.bottom))}`
-        :
-        ""}`
-    )
-  }
+  /*   function urlBuilder(image) {
+      const { width, height } = post.image.asset.metadata.dimensions;
+      return (
+        "w=1000" +
+        "&h=500" +
+        "&fit=crop" +
+        "&q=75" +
+        "&bg=000000" +
+        // Check if there is a crop
+        `${image.hotspot ?
+          "&crop=focalpoint" +
+          `&fp-x=${image.hotspot.x}` +
+          `&fp-y=${image.hotspot.y}`
+          : "&crop=center"}` +
+        // Check if there is a crop
+        `${image.crop ?
+          "&rect=" +
+          `${Math.floor(width * image.crop.left)},` +
+          `${Math.floor(height * image.crop.top)},` +
+          `${Math.floor(width - (width * image.crop.left + width * image.crop.right))},` +
+          `${Math.floor(height - (width * image.crop.top + width * image.crop.bottom))}`
+          :
+          ""}`
+      )
+    } */
 
   const createSlug = (string) => string.toLowerCase().replace(/\s+/g, '-').slice(0, 200);
-
 
   return (
     <Layout>
@@ -132,24 +141,24 @@ const blogPost = ({ data }) => {
         {/*         {post.image && post.image.toggleImage ? <div className={style.blogPostImage} style={{ background: `url(${post.image.asset.url}?${urlBuilder(post.image)}) no-repeat center center`, backgroundSize: "cover" }}> {post.image._rawAsset.creditLine ? <span className={style.creditLine}>{post.image._rawAsset.creditLine}</span> : null}</div> : null}
  */}        {post.image.asset._id ? <div className={style.blogPostImage} >
           <SanityImage
-          // pass asset, hotspot, and crop fields
-          {...post.image}
-          // tell Sanity how large to make the image (does not set any CSS)
-          width={1000}
-          height={600}
-          alt={post.image.alt}
-          //config={{blur:50}}
-          // style it how you want it
-          style={{
-            width: "100%",
-            minHeight: "300px",
-            height: "40vw",
-            maxHeight: "50vh",
-            objectFit: "cover"
-          }}
-        /> </div> : null}
+            // pass asset, hotspot, and crop fields
+            {...post.image}
+            // tell Sanity how large to make the image (does not set any CSS)
+            width={1000}
+            height={600}
+            alt={post.image.alt}
+            //config={{blur:50}}
+            // style it how you want it
+            style={{
+              width: "100%",
+              minHeight: "300px",
+              height: "40vw",
+              maxHeight: "50vh",
+              objectFit: "cover"
+            }}
+          /> </div> : null}
         <div className={post.image && post.image.toggleImage ? style.introWithImage : style.intro}>
-        {post.image._rawAsset.creditLine ? <span className={style.creditLine}>{post.image._rawAsset.creditLine}</span> : null}
+          {post.image._rawAsset.creditLine ? <span className={style.creditLine}>{post.image._rawAsset.creditLine}</span> : null}
           <div className={style.introWrapper}>
             <small className={style.breadcrumb}>
               <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg</Link> /
@@ -182,23 +191,28 @@ const blogPost = ({ data }) => {
             </div>
             : null
           }
-          {showMessages.index !== true ? 
-          <div classList={style.tableOfContent}>
-             <TableOfContents
+{/*           <BlogDictionary
               rawContent={post._rawContent}
-              serialiser={serializers2}
-              title={post.title}
-            />
+              serializers={serializers}
+              words={dictionary}
+           /> */}
+          {showMessages.index !== true ?
+            <div classList={style.tableOfContent}>
+              <TableOfContents
+                rawContent={post._rawContent}
+                serialiser={serializers2}
+                title={post.title}
+              />
             </div>
-             : null
+            : null
           }
           {post._rawContent ?
-       
+
             <BlockContent
               blocks={post._rawContent}
               serializers={serializers}
-            /> 
-           : null
+            />
+            : null
           }
         </div>
         {showMessages.bottomText !== false ?

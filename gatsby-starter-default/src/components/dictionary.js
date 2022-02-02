@@ -4,9 +4,10 @@ import BlockContent from '@sanity/block-content-to-react'
 import serializers from "../components/serializers"
 
 const removeSpacesInString = (string) => (
-    string.replace(/\s+/g, '')
+    string.replace(/[^A-Z0-9]+/ig, "-").toLowerCase()
 )
 
+// Create array of unique letters of words
 const findUniqueLettersInWords = (arr) => {
     let arrayOfLetters = []
     arr.forEach(({ node }) => {
@@ -16,7 +17,6 @@ const findUniqueLettersInWords = (arr) => {
         }
     })
     return arrayOfLetters.sort(function (a, b) {
-
         if (a.letter < b.letter) {
             return -1;
         }

@@ -37,22 +37,21 @@ const options = {
 
 const convertTitle = (title => {
   if (title[0].props) {
-    return title[0].props.node.children[0].replace(/\s/g, '-').toLowerCase()
+    return title[0].props.node.children[0].replace(/[^A-Z0-9]+/ig, "-").toLowerCase()
   }
   else {
-    return title[0].replace(/[\. ,:-]+/g, '-').toLowerCase()
+    return title[0].replace(/[^A-Z0-9]+/ig, "-").toLowerCase()
   }
 })
 
-const titleMaker = ((prop, title) => {
-  return (
-    <span>
-      <span id={`${convertTitle(prop)}`} className={"anchor"}></span>
-      <a href={`#${convertTitle(prop)}`}><CgLink className={"linkIcon"} /></a>
-      {prop}
-    </span>
-  )
-})
+const titleMaker = (prop => (
+  <span>
+    <span id={`${convertTitle(prop)}`} className={"anchor"}></span>
+    <a href={`#${convertTitle(prop)}`} aria-label="Anchor link"><CgLink className={"linkIcon"} /></a>
+    {prop}
+  </span>
+))
+
 
 const serializers = {
   types: {
@@ -96,7 +95,7 @@ const serializers = {
             </h6>
           )
         case "blockquote": return (<blockquote>- {props.children}</blockquote>)
-        default: return (<p>{props.children}</p>)
+        default: return (<p>{console.log(props.children)}{props.children}</p>)
       }
     },
     exampleUsage: props => {
@@ -204,7 +203,7 @@ const serializers = {
       )
     },
     internalLink: ({ mark, children }) => {
-      const link = mark.reference.slug ? mark.reference._type === "post" ? `/blogg/${mark.reference.slug.current}` : `/${mark.reference.slug.current}` : mark.reference._type === "post" ? `/blogg/${mark.reference.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}` : `/${mark.reference.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`
+      const link = mark.reference.slug ? (mark.reference._type === "post" || mark.reference._type === "book")  ? `/blogg/${mark.reference.slug.current}` : `/${mark.reference.slug.current}` : mark.reference._type === "post" ? `/blogg/${mark.reference.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}` : `/${mark.reference.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`
       return <Link to={
         link
       }>{children}</Link>

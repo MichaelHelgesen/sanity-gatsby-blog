@@ -2,10 +2,10 @@ import * as React from "react"
 
 const convertTitle = (title => {
   if (title[0].props) {
-    return title[0].props.node.children[0].replace(/\s/g, '-').toLowerCase()
+    return title[0].props.node.children[0].replace(/[^A-Z0-9]+/ig, "-").toLowerCase()
   }
   else {
-    return title[0].replace(/\s/g, '-').toLowerCase()
+    return title[0].replace(/[^A-Z0-9]+/ig, "-").toLowerCase()
   }
 })
 

@@ -250,22 +250,10 @@ const Page = ({ data }) => {
       break;
     case "Galleri": posts = <ImageGallery props={data.cloudinary.edges} />
       break;
-    default: posts = <Dictionary props={data.dictionary.edges} />
+    case "Dataordliste": posts = <Dictionary props={data.dictionary.edges} />
+      break;
+    default: posts = <div className={style.content}><BlockContent blocks={data.page._rawContent} serializers={serializers} /></div>
   }
-
-  /*   if (data.page.title === "Blogg") {
-      posts = <BlogList props={mergedContent} />
-    } else if (data.page.title === "Notater") {
-      posts = <Notes props={data.notes.edges} />
-    } else if (data.page.title === "Bibliotek") {
-      posts = <BookList props={data.book.edges} />
-    } else if (data.page.title === "Kategorier") {
-      posts = <CategoryList categories={data.categories.edges} posts={mergedContent} />
-    } else if (data.page.title === "Galleri") {
-      posts = <ImageGallery props={data.cloudinary.edges} />
-    } else if (data.page.title === "Dataordliste") {
-      posts = <Dictionary props={data.dictionary.edges} />
-    } */
 
   return (
     <Layout>
@@ -287,7 +275,7 @@ const Page = ({ data }) => {
           <div className={style.topcolor}></div>
         </div>
         <div>
-          {posts ? posts : <div className={style.content}><BlockContent blocks={data.page._rawContent} serializers={serializers} /></div>}
+          {posts}
         </div>
         {data.page.title === "Blogg" ? <div style={{ height: "2.9rem" }}></div> : null}
       </div>

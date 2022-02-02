@@ -7,7 +7,6 @@ cloudinary.config({
     secure: true
 })
 
-
 exports.sourceNodes = async function ({ actions, createNodeId, createContentDigest }) {
     const { createNode } = actions
 

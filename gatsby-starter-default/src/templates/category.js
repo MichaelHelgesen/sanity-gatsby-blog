@@ -121,31 +121,6 @@ query ($id: String!, $category: String!) {
 }
 `
 
-/* function urlBuilder(image) {
-  console.log(image.hotspot)
-  const { width, height } = image.asset.metadata.dimensions;
-  return (
-      `w=1000` +
-      `&h=1000` +
-      "&fit=crop" +
-      `${image.hotspot ?
-          "&crop=focalpoint" +
-          `&fp-x=${image.hotspot.x}` +
-          `&fp-y=${image.hotspot.y}`
-          : "&crop=center"}` +
-      `${image.crop ?
-          "&rect=" +
-          `${Math.floor(width * image.crop.left)},` + // Crop from left
-          `${Math.floor(height * image.crop.top)},` + // Crop from top
-          `${Math.floor(width - (width * image.crop.left + width * image.crop.right))},` +
-          `${Math.floor(height - (width * image.crop.top + width * image.crop.bottom))}`
-          :
-          ""}` +
-      `&q=50`
-  )
-} */
-
-
 const category = ({ data }) => {
 
   const categories = data.categories;
@@ -164,20 +139,20 @@ const category = ({ data }) => {
       <div style={{ margin: '0 0 40px 0', position: "relative" }}>
         <div className={style.headerwrap}>
           <div className={style.intro}>
-          <div className={style.introWrapper}>
-          <small className={style.breadcrumb}>
-              <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg</Link> / <Link to={`/blogg/kategorier`}>kategorier</Link> /
-            </small>
-            <h1 style={{display: "flex"}} className={style.title}>{categories.categoryTitle}&nbsp;<span style={{opacity: .5, fontWeight: 400, fontSize: ".5em", lineHeight: 1.65}}>({blogPosts.length})</span></h1>
-            <div className={style.ingress}>{
-              <BlockContent
-                blocks={categories._rawCategoryDescription}
-                serializers={serializers}
-              />
-            }</div>
+            <div className={style.introWrapper}>
+              <small className={style.breadcrumb}>
+                <Link to={`/`}>hjem</Link> / <Link to={`/blogg/`}>blogg</Link> / <Link to={`/blogg/kategorier`}>kategorier</Link> /
+              </small>
+              <h1 style={{ display: "flex" }} className={style.title}>{categories.categoryTitle}&nbsp;<span style={{ opacity: .5, fontWeight: 400, fontSize: ".5em", lineHeight: 1.65 }}>({blogPosts.length})</span></h1>
+              <div className={style.ingress}>{
+                <BlockContent
+                  blocks={categories._rawCategoryDescription}
+                  serializers={serializers}
+                />
+              }</div>
 
+            </div>
           </div>
-</div>
           <div className={style.topcolor}></div>
         </div>
         <div>

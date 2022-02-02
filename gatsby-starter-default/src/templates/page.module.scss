@@ -11,7 +11,6 @@
     right: 0;
     left: 0;
     height: 100%;
-    
 }
 
 .intro {
@@ -20,7 +19,6 @@
     @include base.contentLayout;
     padding-bottom: 1.45rem;
 }
-
 
 .content {
     @include base.contentLayout;
@@ -45,9 +43,7 @@
     font-weight: 700;
   }
 
-
-
-  .dateCategory {
+.dateCategory {
     @include base.dateCategory;
 }
 
@@ -86,7 +82,7 @@
         font-size: 2rem;
         line-height: 2.4rem;
     }
-  }
+}
 
   @media print {
       .title {

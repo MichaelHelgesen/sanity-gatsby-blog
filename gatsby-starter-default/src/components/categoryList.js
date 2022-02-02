@@ -5,6 +5,7 @@ import serializers from "../components/serializers"
 import * as style from "../components/categoryList.module.scss"
 
 const CategoryList = ({ categories, posts }) => {
+  
   const findNumberOfCategoriesInArray = (array, category) => (
     array.map(function (item) {
       return item.node.category.filter(function (cat) {

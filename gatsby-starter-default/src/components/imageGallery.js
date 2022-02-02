@@ -17,7 +17,7 @@ const breakpointColumnsObj = {
 
 const cld = new Cloudinary({
     cloud: {
-        cloudName: 'mikkesblogg'
+        cloudName: process.env.CLOUDINARY_CLOUD_NAME
     }
 });
 
