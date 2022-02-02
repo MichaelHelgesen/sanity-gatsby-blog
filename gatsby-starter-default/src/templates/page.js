@@ -238,6 +238,8 @@ const Page = ({ data }) => {
   });
 
   let posts
+  console.log(data.page.title)
+  console.log(data.page._rawContent)
 
   switch (data.page.title) {
     case "Blogg": posts = <BlogList props={mergedContent} />
@@ -252,7 +254,7 @@ const Page = ({ data }) => {
       break;
     case "Dataordliste": posts = <Dictionary props={data.dictionary.edges} />
       break;
-    default: posts = <div className={style.content}><BlockContent blocks={data.page._rawContent} serializers={serializers} /></div>
+   // default: posts = <div className={style.content}><BlockContent blocks={data.page._rawContent} serializers={serializers} /></div>
   }
 
   return (

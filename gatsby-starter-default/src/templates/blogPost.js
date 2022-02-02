@@ -93,13 +93,9 @@ export const pageQuery = graphql`
   }
 `
 
-
-
 const blogPost = ({ data }) => {
   const post = data.sanityPost;
-  const dictionary = data.dictionary;
   const showMessages = { ...post.showMessages }
-
 
   // Function for image settings and generating URL
   /*   function urlBuilder(image) {
@@ -191,7 +187,7 @@ const blogPost = ({ data }) => {
             </div>
             : null
           }
-{/*           <BlogDictionary
+          {/* <BlogDictionary
               rawContent={post._rawContent}
               serializers={serializers}
               words={dictionary}

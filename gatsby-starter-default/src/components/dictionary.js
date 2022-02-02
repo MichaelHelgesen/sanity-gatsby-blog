@@ -49,13 +49,15 @@ const Dictionary = ({ props }) => (
             return 0;
         }).map((post, index) => (
             <div key={index}>
+                {console.log(post.node._rawContent)}
                 <div>
                     <h2 className={style.title}>
                         <a href={`#${removeSpacesInString(post.node.englishWord)}`} name={removeSpacesInString(post.node.englishWord)} aria-current="location">
                             <span className={style.english_word}>{post.node.englishWord}</span>
                         </a>: <span className={style.norwegian_word}>{post.node.norwegianWord}</span></h2>
                     <div className={style.explanation}>
-                        <BlockContent blocks={post.node._rawContent} serializers={serializers} />
+                        {post.node._rawContent ? <BlockContent blocks={post.node._rawContent} serializers={serializers} /> : null}
+                        
                     </div>
                 </div>
             </div>
