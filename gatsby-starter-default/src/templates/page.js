@@ -250,7 +250,7 @@ const Page = ({ data }) => {
       break;
     case "Kategorier": posts = <CategoryList categories={data.categories.edges} posts={mergedContent} />
       break;
-    case "Galleri": posts = <ImageGallery props={data.cloudinary.edges} />
+    case "Galleri": posts =  [] //<ImageGallery props={data.cloudinary.edges} />
       break;
     case "Dataordliste": posts = <Dictionary props={data.dictionary.edges} />
       break;
