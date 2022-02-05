@@ -23,8 +23,8 @@ const cld = new Cloudinary({
 
 const ImageGallery = ({ props }) => (
     <div className={style.content}>
-        {/* <SimpleReactLightbox>
-            <SRLWrapper>
+       {/*  <SimpleReactLightbox>
+            <SRLWrapper> */}
                 <Masonry
                     breakpointCols={breakpointColumnsObj}
                     className={style.my_masonry_grid}
@@ -40,7 +40,7 @@ const ImageGallery = ({ props }) => (
                             </div>)
                     })}
                 </Masonry>
-            </SRLWrapper>
+            {/* </SRLWrapper>
         </SimpleReactLightbox> */}
     </div>
 )
