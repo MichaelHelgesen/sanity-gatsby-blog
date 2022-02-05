@@ -17,14 +17,14 @@ const breakpointColumnsObj = {
 
 const cld = new Cloudinary({
     cloud: {
-        cloudName: process.env.CLOUDINARY_CLOUD_NAME
+        cloudName: "mikkesblogg"
     }
 });
 
 const ImageGallery = ({ props }) => (
     <div className={style.content}>
-       {/*  <SimpleReactLightbox>
-            <SRLWrapper> */}
+        <SimpleReactLightbox>
+            <SRLWrapper>
                 <Masonry
                     breakpointCols={breakpointColumnsObj}
                     className={style.my_masonry_grid}
@@ -40,8 +40,8 @@ const ImageGallery = ({ props }) => (
                             </div>)
                     })}
                 </Masonry>
-            {/* </SRLWrapper>
-        </SimpleReactLightbox> */}
+            </SRLWrapper>
+        </SimpleReactLightbox>
     </div>
 )
 
