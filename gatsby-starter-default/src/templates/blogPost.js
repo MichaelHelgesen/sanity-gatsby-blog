@@ -9,8 +9,8 @@ import { Helmet } from "react-helmet"
 import * as style from "../templates/blogPost.module.scss"
 import TableOfContents from "../components/blogContents"
 //import BlogDictionary from "../components/blogDictionary"
-import SimpleReactLightbox from "simple-react-lightbox"
-import { SRLWrapper } from "simple-react-lightbox";
+//import SimpleReactLightbox from "simple-react-lightbox"
+//import { SRLWrapper } from "simple-react-lightbox";
 import SanityImage from "gatsby-plugin-sanity-image"
 
 export const pageQuery = graphql`
