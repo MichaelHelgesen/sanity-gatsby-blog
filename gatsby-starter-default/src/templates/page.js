@@ -254,7 +254,7 @@ const Page = ({ data }) => {
       break;
     case "Dataordliste": posts = <Dictionary props={data.dictionary.edges} />
       break;
-   // default: posts = <div className={style.content}><BlockContent blocks={data.page._rawContent} serializers={serializers} /></div>
+    default: posts = <div className={style.content}><BlockContent blocks={data.page._rawContent} serializers={serializers} /></div>
   }
 
   return (
