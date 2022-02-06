@@ -215,7 +215,7 @@ const blogPost = ({ data }) => {
           <div className={style.byline}>
             <span>MIKKES BLOGG</span>
             <h5>Takk for interessen</h5>
-            <p>Har du en kommentar, et spørsmål, ris, ros, eller ønsker å påpeke feil eller mangler, kan du <a href={`mailto:post@mikkesblogg.no?subject=Henvendelse angående ${post.title} på Mikkesblogg.no`}>sende meg en mail</a>. Jeg setter stor pris på en tilbakemelding.</p>
+            <p>Har du en kommentar, et spørsmål, ris, ros, eller ønsker å påpeke feil eller mangler, kan du <a href={`mailto:post@mikkesblogg.no?subject=Henvendelse angående ${post.title} på Mikkesblogg.no`}>sende meg en e-post</a>. Jeg setter stor pris på en tilbakemelding.</p>
           </div>
           : null}
       </div>
