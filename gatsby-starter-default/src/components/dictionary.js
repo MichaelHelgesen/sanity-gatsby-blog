@@ -49,7 +49,6 @@ const Dictionary = ({ props }) => (
             return 0;
         }).map((post, index) => (
             <div key={index}>
-                {console.log(post.node._rawContent)}
                 <div>
                     <h2 className={style.title}>
                         <a href={`#${removeSpacesInString(post.node.englishWord)}`} name={removeSpacesInString(post.node.englishWord)} aria-current="location">

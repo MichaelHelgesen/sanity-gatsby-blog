@@ -31,7 +31,10 @@ export default {
                             {
                                 name: "internalLink",
                                 type: "internalLink",
-
+                            },
+                            {
+                                name: "dictionaryLink",
+                                type: "dictionaryLink",
                             }
                         ]
                     },

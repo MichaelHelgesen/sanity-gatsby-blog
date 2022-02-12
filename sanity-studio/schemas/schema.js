@@ -7,6 +7,7 @@ import bodyImage from "./bodyImage"
 import book from "./book"
 import categories from "./categories"
 import codePen from './codePenEmbed'
+import dictionaryLink from './dictionaryLink'
 import emailLink from './emailLink'
 import exampleUsage from "./codeExample"
 import externalLink from "./externalLink"
@@ -32,13 +33,14 @@ export default createSchema({
     blogPostImage,
     bodyImage,
     codePen,
+    dictionaryLink,
     emailLink,
     exampleUsage,
     externalLink,
     internalLink,
     quote,
     showHideGlobalMessages,
-    tipField,
+    tipField, 
     youtubeLink,
     //
     post,

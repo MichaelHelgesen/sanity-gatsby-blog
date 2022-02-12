@@ -35,6 +35,10 @@ const options = {
   }
 }
 
+const removeSpacesInString = (string) => (
+  string.replace(/[^A-Z0-9]+/ig, "-").toLowerCase()
+)
+
 const convertTitle = (title => {
   if (title[0].props) {
     return title[0].props.node.children[0].replace(/[^A-Z0-9]+/ig, "-").toLowerCase()
@@ -95,7 +99,7 @@ const serializers = {
             </h6>
           )
         case "blockquote": return (<blockquote>- {props.children}</blockquote>)
-        default: return (<p>{console.log(props.children)}{props.children}</p>)
+        default: return (<p>{props.children}</p>)
       }
     },
     exampleUsage: props => {
@@ -139,7 +143,7 @@ const serializers = {
       )
     },
     tipField: props => {
-      let color = props.node.tipColor || "186, 255, 220";
+      let color;
       switch (props.node.tipColor) {
         case "#baffdc": color = "186, 255, 220";
           break;
@@ -147,7 +151,7 @@ const serializers = {
           break;
         case "#ffffde": color = "237, 237, 156";
           break;
-        default: color = "186, 255, 220";
+        default: color = props.node.tipColor;
       };
       return (
         <div className={style.tipfield} style={{ backgroundColor: `rgba(${color}, .7)`, border: `3px solid rgb(${color})` }}>
@@ -201,6 +205,12 @@ const serializers = {
           </SyntaxHighlighter>
         </span>
       )
+    },
+    dictionaryLink: ({ mark, children }) => {
+      const link = `#${removeSpacesInString(mark.reference.englishWord)}`
+      return <a href={
+        link
+      }>{children}</a>
     },
     internalLink: ({ mark, children }) => {
       const link = mark.reference.slug ? (mark.reference._type === "post" || mark.reference._type === "book")  ? `/blogg/${mark.reference.slug.current}` : `/${mark.reference.slug.current}` : mark.reference._type === "post" ? `/blogg/${mark.reference.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}` : `/${mark.reference.title.toLowerCase().replace(/\s+/g, '-').slice(0, 200)}`

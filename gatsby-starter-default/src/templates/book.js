@@ -115,7 +115,7 @@ const book = ({ data }) => {
         <div className={style.content} style={{ paddingTop: "0!important" }}>
           {post._rawSummary ?
             <div>
-              <h3>Boken oppsummert i tre setninger</h3>
+              <h3>Boken oppsummert med tre setninger</h3>
               {post._rawSummary ?
                 <BlockContent
                   blocks={post._rawSummary}
