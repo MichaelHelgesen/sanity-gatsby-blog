@@ -183,7 +183,7 @@ const blogPost = ({ data }) => {
           {showMessages.topText !== false ?
             <div className={style.disclaimer}>
               <h5>Før du leser</h5>
-              <p><Link to={"/om-mikke"}>Jeg er i en læringsprosess.</Link> <b>Teksten reflekterer dermed min forståelse av emnet, basert på tilgjengelig informasjon ved publiseringsdato.</b> Feil og utdatert data kan forekomme. <a href={`mailto:post@mikkesblogg.no?subject=Henvendelse angående ${post.title} på Mikkesblogg.no`}>Send meg gjerne en e-post</a> dersom du kommer over noe som bør rettes.</p>
+              <p><Link to={"/om-mikke"}>Jeg er i kontinuerlig læringsprosess.</Link> <b>Teksten reflekterer dermed min forståelse av emnet, basert på tilgjengelig informasjon ved publiseringsdato.</b> Feil og utdatert data kan forekomme. <a href={`mailto:post@mikkesblogg.no?subject=Henvendelse angående ${post.title} på Mikkesblogg.no`}>Send meg gjerne en e-post</a> dersom du kommer over noe som bør rettes.</p>
             </div>
             : null
           }
